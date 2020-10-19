@@ -1,0 +1,155 @@
+
+// Lastenheft Gruppe_02
+
+1. Zielbestimmung
+Das Produkt soll den Nutzern ein gemeinsames, vom jeweiligen Ort der Spieler unabhängiges Kniffel-Spielerlebnis einfach und ohne notwendige, physikalischen Spielmaterialien ermöglichen.
+Kniffel ist ein Würfelspiel mit fünf Würfeln, mit welchen max. dreimal gewürfelt werden darf.
+Bei jedem Wurf dürfen eine beliebige Anzahl an Würfeln rausgelegt werden. Diese werden für bei einem neuen Wurf nicht gewürfelt.
+Rausgelegte Würfel dürfen auch wieder zum würfeln benutzt werden (also wieder reingelegt werden).
+Ziel ist es, eine Tabelle mit Feldern für unterschiedliche Würfel-Augen-Kombinationen auszufüllen.
+Sollte kein Feld mit drei oder weniger Würfen ausgefüllt werden können, muss ein Feld gestrichen werden.
+Können keine Felder mehr gestrichen oder ausgefüllt werden, ist das Spiel für diesen Spieler zu ende.
+Je nach ausgefülltem Feld werden Punkte gesammelt, welche am Ende des Spiels zusammengerechnet werden.
+Die höchste Punktzahl am Ende des Spiels gewinnt.
+
+Die Software soll Spielspaß für jede Altersklasse garantieren, zu jeder Zeit und an jedem Ort.
+
+
+2. Produkteinsatz
+Das Produkt soll für jeden geeignet sein, der Kniffel gemeinsam mit Familie, Freunden oder Bekannten spielen möchte.
+Die Nutzergruppen teilen sich auf in:
+
+1. Spieler - Diese nehmen an einem erstellten Kniffel-Spiel teil.
+2. Registrierte Spieler - Nehmen ebenfalls an einem erstellten Spiel teil - können jedoch Fortschritt, Punkte, Gewinnzahlen und Statistiken unter ihrem Account speichern - Dies sollte optional sein, sodass man auch ohne Anmeldung spielen kann.
+3. Host - Ein (möglicher registrierter) Spieler, welcher das Spiel erstellt und den Spielern (siehe oben 1 & 2) ermöglicht mitzuspielen. Dieser kann das Spiel konfigurieren.
+
+Das Spiel soll als downloadbare Software auf Windows, Linux und MacOS, als App für Android und iOS - sowie in Browsern verfügbar sein.
+Zudem sollte die Kompatibilität zwischen den Plattformen gewährleistet sein, d.h. jemand mit der Windows-Software soll mit (beispielsweise) drei weiteren Nutzern z.B. im Browser, MacOS und Android spielen können.
+Das Produkt soll auch lokal ohne Internet nutzbar sein - indem sich Spieler an z.B. einem Gerät abwechseln.
+
+
+3. Produktfunktionen
+/PF01/ Anmelden, registrieren oder als Gast fortfahren
+- Das Produkt soll dem Nutzer die Möglichkeit geben, bei Start der Software auszuwählen, ob dieser sich mit einem existierenden Account anmelden möchte,
+einen neuen Account (mit Name und Passwort) zu erstellen oder ohne Account fortzufahren.
+
+/PF02/ Spielen
+- Der Nutzer soll die Entscheidung treffen können, ob dieser ein lokales Spiel ohne Internet starten möchte,
+dieser einem Spiel beitreten möchte, welches von einem Host erstellt wurde oder als Host ein Spiel erstellen möchte.
+
+/PF03/ Lokal spielen, d.h. ohne Internet
+- Der Host soll die (max.) Spieleranzahl angeben (und deren Bezeichnungen (Namen) angeben -> nur lokal).
+- Der Host soll zwischen einer Rundenanzahl (z.B. 3 Runden -> 3 Gewinner) und einem Best-Of-X Format (Best of 5 -> Bei 2 Spielern ist das Spiel nach 3 gewonnen Runden zuende) wählen können.
+- Der Host soll zwischen einem automatischen System, welches Werte in die Tabelle einträgt und zusammenrechnet, und manuell (Eintragung der Werte erfolgt durch den Nutzer) wechseln können.
+- Der Host soll entscheiden können, ob ein Assistent, welcher geeignete Würfel und Felder zum Gewinnen markiert, erwünscht ist.
+- Der Host soll - vor dem Spiel - entscheiden können, ob ein Spiel in seine (optional lokale) Statistik einfließen soll.
+- Der Host soll Spieler aus dem Spiel entfernen können, sodass das Spiel fortfahren kann, wenn ein Spieler keinen Zug ausführt.
+- Der Host soll das Spiel abbrechen, stoppen und neustarten können.
+
+/PF04/ Spiel erstellen, d.h. mit Internet
+- Der Host soll alle Funktionen aus /PF03/ nutzen können.
+- Der Host soll einem Spiel einen identifizierbaren Namen mit (optionalem) Passwort geben können (dies ist für lokal nicht notwendig).
+
+/PF05/ Spiel beitreten und verlassen, d.h. mit Internet
+- Der Nutzer soll sich einen Namen geben können, sofern dieser nicht angemeldet ist (siehe /PF01/).
+- Der Spieler soll einem Spiel per Name (und optionalem Passwort) beitreten können.
+- Der Nutzer soll ein beigetretendes Spiel verlassen können.
+
+/PF06/ Eingabe
+- Der Nutzer soll per Tastatur und/oder Mauseingabe das Spiel vollständig spielen können.
+
+/PF07/ Würfeln
+- Der Nutzer soll würfeln können.
+
+/PF08/ Rauslegen/Reinlegen
+- Der Nutzer soll Würfel markieren können, welche rausgelegt/reingelegt werden.
+
+/PF09/ Wert eintragen
+- Der Nutzer soll in die jeweils dafür vorgesehenen Felder Werte eintippen können, sofern die Einstellung (/PF03/ Punkt 3) ihm dies ermöglicht.
+
+/PF10/ Tabellenpunkte streichen
+- Der Nutzer soll ein Feld streichen können.
+
+/PF11/ Statistiken einsehen
+- Der Nutzer soll Statistiken für sich selbst und lokal erstellte "Spieler" (welche eine Bezeichnung bekommen, /PF03/ Punkt 1) einsehen können.
+
+/PF12/ Spiel beenden
+- Der Nutzer soll die Software beenden können.
+
+
+4. Produktdaten
+/PD01/ Accountdaten
+- Nutzernummer eines Spielers
+- Nutzername eines Spielers
+- (Passwort eines Spielers)
+
+/PD02/ Statistik
+- Anzahl an gespielten Spielen
+- Anzahl an gewonnen/verlorenen Spielen
+- Anzahl an gesammelten Punkten
+- Anzahl der gewürfelten Würfel
+- Spielzeit
+- Statistik zu allen Feldern der Tabelle (wie viele ausgefüllt, max. Punktzahl, etc.)
+
+/PD03/ Tabellen
+- Namen und Bezeichnungen der Tabellenfelder (auch die, der anderen Spieler)
+
+/PD04/ Spielverlauf
+- Namen der Spieler
+- Wurfnummer (z.B. Wurf 2/3)
+- Augenzahlen aller Würfel jedes Wurfs
+- (Eingetragene) Werte der Tabelle
+
+
+5. Qualitätsanforderungen
+/QA01/ Zuverlässigkeit
+- Das Spiel soll dem Nutzer die Möglichkeit geben, einem laufenden Spiel beizutreten, wenn dieser bereits mitgespielt hat und z.B. Verbindungsprobleme/Abstürze hatte.
+- Das Spiel soll den Fortschritt regelmäßig speichern, falls es zu Systemabstürzen oder Problemen kommen sollte.
+
+/QA02/ Effizienz
+- Das Spiel soll fortgeführt werden können, auch wenn der Spielersteller (Host) das Spiel verlässt. Ein anderer Spieler wird dann zum Host ernannt.
+- Das Spiel soll nach einer bestimmten Inaktivität eines Spielers fortgeführt werden, indem dieser übersprungen (1. Warnung), ein Feld gestrichen bekommt (2. Warnung) oder aus dem Spiel entfernt wird.
+
+/QA03/ Gebrauchstauglichkeit
+- Das gemeinsame Spielen über das Internet sollte einfach, schnell, flüssig, responsiv und fehlerfrei ablaufen.
+- Das Spiel soll dem bekannten Kniffel ähneln, sodass Nutzer, die bereits vertraut mit dem Spiel sind, sich nur noch auf die Bedienung konzentrieren müssen.
+
+/QA04/ Sicherheit
+- Die Software nimmt keine wichtigen personenbezogenen Daten entgegen, sondern nur einen Benutzernamen, und besitzt, neben dem Passwort, keine schützenswerten Daten.
+
+/QA05/ Kompatibilität
+- Das Spiel soll als downloadbare Software auf Windows, Linux und MacOS, als App für Android und iOS - sowie in Browsern verfügbar sein.
+- Kompatibilität zwischen den Plattformen soll gewährleistet sein, d.h. jeder kann mit jedem spielen - egal welches Gerät.
+
+/QA06/ Wartbarkeit
+- Das Spiel ist hauptsächlich Zahlenbasiert und kann somit mithilfe einfachster mathematischer Operationen modifiziert werden.
+
+/QA07/ Portabilität
+- Das Spiel wird per Java Virtual-Machine laufen und somit für alle Rechnerarchitekturen kompatibel sein.
+
+
+6. Ergänzungen
+Keine.
+
+
+7. Glossar
+Spieler - Ein Nutzer, welches einem Spiel beigetreten ist/mitspielt (also dieses nicht erstellt hat).
+Host - Ein Spieler, welches das Spiel erstellt und konfiguriert hat.
+Nutzer - Alle Nutzer der Software (also Host & Spieler).
+(Tabellenpunkte) streichen - In das gestrichene Feld kann keine Punktzahl mehr eingetragen werden - verlorene Punkte in der Gesamtsumme.
+
+Tabellenbegriffe:
+"nur Einser zählen" - bei drei oder mehr Würfeln mit der Augenzahl "1" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "1" eingetragen werden (min. 3 Würfel -> 3 Punkte, max. 5 Würfel -> 5 Punkte).
+"nur Zweier zählen" - bei drei oder mehr Würfeln mit der Augenzahl "2" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "2" eingetragen werden (min. 3 Würfel -> 6 Punkte, max. 5 Würfel -> 10 Punkte).
+"nur Dreier zählen" - bei drei oder mehr Würfeln mit der Augenzahl "3" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "3" eingetragen werden (min. 3 Würfel -> 9 Punkte, max. 5 Würfel -> 15 Punkte).
+"nur Vierer zählen" - bei drei oder mehr Würfeln mit der Augenzahl "4" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "4" eingetragen werden (min. 3 Würfel -> 12 Punkte, max. 5 Würfel -> 20 Punkte).
+"nur Fünfer zählen" - bei drei oder mehr Würfeln mit der Augenzahl "5" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "5" eingetragen werden (min. 3 Würfel -> 15 Punkte, max. 5 Würfel -> 25 Punkte).
+"nur Sechser zählen" - bei drei oder mehr Würfeln mit der Augenzahl "6" kann in dieses Feld die Gesamtsumme aller Würfel der Augenzahl "6" eingetragen werden (min. 3 Würfel -> 18 Punkte, max. 5 Würfel -> 30 Punkte).
+"Bonus bei 63 oder mehr, +35 Punkte" - sollte die Summe aller Punkte der sechs Dreierpasche (siehe oben) 63 oder mehr ergeben, werden nochmal 35 Punkte dazugerechnet.
+"Dreierpasch" - bei drei oder mehr Würfeln mit der gleichen Augenzahl kann in dieses Feld die Gesamtsumme aller fünf Würfel eingetragen werden.
+"Viererpasch" - bei vier oder mehr Würfeln mit der gleichen Augenzahl kann in dieses Feld die Gesamtsumme aller fünf Würfel eingetragen werden.
+"Full-House" - bei drei Würfeln der gleichen Augenzahl und zwei Würfeln einer gleichen, anderen Augenzahl kann man 25 Punkte eintragen.
+"Kleine Straße" - bei vier, aufeinanderfolgenden Augenzahlen (z.B. 2-3-4-5, 1-2-3-4, etc.) kann man 30 Punkte eintragen.
+"Große Straße" - bei fünf, aufeinanderfolgenden Augenzahlen (1-2-3-4-5, 2-3-4-5-6) kann man 40 Punkte eintragen.
+"Kniffel" - bei fünf (allen) Würfeln mit der gleichen Augenzahl kann man 50 Punkte eintragen.
+"Chance" - Die Gesamtsumme aller fünf Würfel kann eingetragen werden.
