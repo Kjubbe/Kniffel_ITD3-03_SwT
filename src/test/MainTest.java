@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
  * testing class for testing main
- * -> use seeds for testing
+ * - use seeds for testing
  * 
  * @author Kjell Treder
  */

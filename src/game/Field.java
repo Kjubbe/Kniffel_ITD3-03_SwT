@@ -73,8 +73,6 @@ public class Field {
 
 	/**
 	 * Set the chosen value to true
-	 * 
-	 * @param b boolean to be set
 	 */
 	public void choose() {
 		this.isChosen = true;
@@ -82,10 +80,8 @@ public class Field {
 
 	/**
 	 * Set the crossed value to true
-	 * 
-	 * @param b boolean to be set
 	 */
-	public void cross(boolean b) {
+	public void cross() {
 		this.isCrossed = true;
 	}
 
