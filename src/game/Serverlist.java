@@ -13,7 +13,7 @@ import java.util.List;
 
 public final class Serverlist {
 
-	private static final List<Server> servers = new ArrayList<>();
+	private static final List<Game> servers = new ArrayList<>();
 
 	/**
 	 * private constructor, because this class is not meant to be instantiated
@@ -29,7 +29,7 @@ public final class Serverlist {
 	 * 
 	 * @param g server
 	 */
-	public static void makePublic(Server g) {
+	public static void makePublic(Game g) {
 		if (!servers.contains(g)) {
 			servers.add(g); // Add Game to List of Games
 		}
@@ -40,7 +40,7 @@ public final class Serverlist {
 	 * 
 	 * @return List of all the servers
 	 */
-	public static List<Server> getServers() {
+	public static List<Game> getServers() {
 		return servers;
 	}
 }
