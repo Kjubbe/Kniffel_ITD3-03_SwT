@@ -13,7 +13,7 @@ public class Player {
 	// data fields
 	protected String name;
 
-	protected Server joinedServer;
+	protected Game joinedServer;
 	protected Stats myStats;
 	protected Card myCard;
 
@@ -42,7 +42,7 @@ public class Player {
 	 * @param server server to be joined
 	 * @return if joining was successful.
 	 */
-	public boolean joinServer(Server server) {
+	public boolean joinServer(Game server) {
 		// TODO assign the joined server
 		// TODO tell the server that the player joined
 		return false;

@@ -17,7 +17,7 @@ public class Die {
 	private boolean isRollable = true; // if the die is rollable
 	private int value; // value of the die
 
-	private static final Random rng = new Random(111111111);
+	private static final Random rng = new Random();
 
 	/**
 	 * Constructor, gives an id to the die

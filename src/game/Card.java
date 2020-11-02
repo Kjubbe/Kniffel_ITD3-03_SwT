@@ -14,14 +14,14 @@ public class Card {
 
 	// Data fields
 
-	// TODO change to cardOwner?
-	private Player cardOf; // Card Owner
-	private final int bonus = 35; // Bonus points for reaching 63 points on the first card
-	private int openFields = 13; // Number of Fields to be chosen or crossed // TODO maybe work with the array?
+	private Player owner; // Card Owner
+	private static final int BONUS = 35; // Bonus points for reaching 63 points on the first card
+	private static final int BONUS_REQ = 63;
+	private static final int PART1_END_INDEX = 5;
+	private int openFields = 13; // Number of Fields to be chosen or crossed
 
 	// Fields on the card
-	// TODO convert to a list to remove elements and work with that
-	private final Field[] fields = new Field[] { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
+	private final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
 			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
@@ -39,7 +39,7 @@ public class Card {
 	 * @param player Player, who is the owner of this card.
 	 */
 	public Card(Player player) {
-		this.cardOf = player;
+		this.owner = player;
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class Card {
 	 * @return Player, who owns the card
 	 */
 	public Player getCardOwner() {
-		return cardOf;
+		return owner;
 	}
 
 	/**
@@ -83,13 +83,13 @@ public class Card {
 	 */
 	public int getPart1() {
 		int part1 = 0;
-		for (int i = 0; i <= 5; i++) { // TODO remove hard coding the 5
+		for (int i = 0; i <= PART1_END_INDEX; i++) {
 			if (fields[i].isChosen()) {
 				part1 += fields[i].getValue();
 			}
 		}
-		if (part1 >= 63) { // TODO make 63 a constant
-			part1 += bonus;
+		if (part1 >= BONUS_REQ) {
+			part1 += BONUS;
 		}
 		return part1;
 	}
@@ -101,7 +101,7 @@ public class Card {
 	 */
 	public int getPart2() {
 		int part2 = 0;
-		for (int i = 6; i <= 12; i++) { // TODO dont hard code the 12 and 6 here, use constants
+		for (int i = 6; i < fields.length; i++) {
 			if (fields[i].isChosen()) {
 				part2 += fields[i].getValue();
 			}
