@@ -72,21 +72,21 @@ public class Field {
 	}
 
 	/**
-	 * Set the chosen value to true or false
+	 * Set the chosen value to true
 	 * 
 	 * @param b boolean to be set
 	 */
-	public void setIsChosen(boolean b) { // TODO maybe change this to choose()?
-		this.isChosen = b;
+	public void choose() {
+		this.isChosen = true;
 	}
 
 	/**
-	 * Set the crossed value to true or false
+	 * Set the crossed value to true
 	 * 
 	 * @param b boolean to be set
 	 */
-	public void setIsCrossed(boolean b) { // TODO maybe change this to cross()?
-		this.isCrossed = b;
+	public void cross(boolean b) {
+		this.isCrossed = true;
 	}
 
 	/**

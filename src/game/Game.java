@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 
-public class Server {
+public class Game {
 
 	// data fields
 	private final boolean useAssistant; // Toggle the use of an Assistant
@@ -25,7 +25,7 @@ public class Server {
 	private int roundNr = 1;
 
 	private final List<Player> players = new LinkedList<>();
-	private final Host hostOf;
+	private final Host hostOf; // TODO remove this
 
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
@@ -39,7 +39,7 @@ public class Server {
 	 * @param win amount of games needed to win
 	 * @param h   host of the server
 	 */
-	public Server(String s, String pw, boolean a, int max, int maxG, int win, Host h) {
+	public Game(String s, String pw, boolean a, int max, int maxG, int win, Host h) {
 		this.serverName = s;
 		this.password = pw;
 		this.useAssistant = a;
@@ -55,10 +55,10 @@ public class Server {
 	 * Add Player to the server
 	 * 
 	 * @param p  Player, who is added to the server
-	 * @param pw password input of the player // TODO maybe move this to player?
+	 * @param pw password input of the player // TODO remove pw
 	 * @return if the adding was successful or not
 	 */
-	public boolean addPlayer(Player p, String pw) {
+	public boolean addPlayer(Player p, String pw) { // TODO remove pw
 		// TODO check the password and if the maximum player count has not been reached
 		return false;
 	}
