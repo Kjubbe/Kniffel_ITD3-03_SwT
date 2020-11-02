@@ -43,7 +43,7 @@ public class DatabaseinterfaceTest {
 
             // test: delete a non existing player
             player = new RegisteredPlayer("Karin", "pw123");
-            result = Databaseinterface.getInstance().deletePlayer(player);
+            result = Databaseinterface.getInstance().deletePlayer(player.getName());
             assertFalse(result);
 
             // test: delete null
@@ -60,6 +60,8 @@ public class DatabaseinterfaceTest {
 
             // test: save a non existing player with stats
             player.assignStats();
+            assertNotNull(player);
+            assertNotNull(player.getStats());
             result = Databaseinterface.getInstance().savePlayer(player);
             assertTrue(result);
 
@@ -94,11 +96,14 @@ public class DatabaseinterfaceTest {
             assertEquals(1000, player.getStats().getPoints());
 
             // test: delete all players
-            result = Databaseinterface.getInstance().deletePlayer(player);
+            assertNotNull(player);
+            assertNotNull(player2);
+            assertNotNull(player3);
+            result = Databaseinterface.getInstance().deletePlayer(player.getName());
             assertTrue(result);
-            result = Databaseinterface.getInstance().deletePlayer(player2);
+            result = Databaseinterface.getInstance().deletePlayer(player2.getName());
             assertTrue(result);
-            result = Databaseinterface.getInstance().deletePlayer(player3);
+            result = Databaseinterface.getInstance().deletePlayer(player3.getName());
             assertTrue(result);
 
             // safety tests:

@@ -57,67 +57,84 @@ public final class Databaseinterface {
      * @throws SQLException if a database access error occurs
      */
     public RegisteredPlayer readPlayer(String name) throws SQLException {
-        connect();
-
         RegisteredPlayer player = null;
         int statsId;
+        connect();
+
+        // search for the players name in the database
         ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + name + "'");
-        if (valid(set)) {
-            player = new RegisteredPlayer(name, set.getString("password"));
-            statsId = set.getInt("stats_id");
-        } else {
-            return null;
+        if (newData(set)) { // player found
+            player = new RegisteredPlayer(name, set.getString("password")); // new player object with data
+            statsId = set.getInt("stats_id"); // retrieve the id of the stats
+        } else { // player not found
+            return null; // skip the following code
         }
 
+        // search for the stats in the database
         Stats stats = null;
-        set = read("SELECT * FROM Stats WHERE stats_id=" + statsId);
-        if (valid(set)) {
+        set = read("SELECT * FROM Stats WHERE id=" + statsId);
+        if (newData(set)) { // stats found
             stats = new Stats(player, set.getInt("gamesWon"), set.getInt("gamesPlayed"), set.getInt("roundsPlayed"),
-                    set.getInt("points"), set.getInt("diceRolled"), set.getInt("timePlayed"));
-        } else {
-            return null;
+                    set.getInt("points"), set.getInt("diceRolled"), set.getInt("timePlayed")); // new stats object
+            player.assignStats(stats); // assign the stats to the player
+        } else { // stats not found
+            return null; // skip the following code
         }
-        player.assignStats(stats);
 
         close();
-
-        return player;
+        return player; // return the player object
     }
 
     /**
      * save a player and their stats in the database
      * 
      * @param player player object containing data
+     * @return if successful
      * @throws SQLException if a database access error occurs
      */
     public boolean savePlayer(RegisteredPlayer player) throws SQLException {
+        boolean result = false;
         connect();
 
+        // player and their stats can not be null
         if (player != null && player.getStats() != null) {
-            Stats playerStats = player.getStats();
+            Stats playerStats = player.getStats(); // retrieve the players stats
+
+            // check for the player in the database
             ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + player.getName() + "'");
-            if (valid(set)) {
-                int statsId = set.getInt("stats_id");
-                set = write("UPDATE Stats SET gamesWon=" + playerStats.getGamesWon() + "," + "gamesPlayed="
+            if (newData(set)) { // player found
+                int statsId = set.getInt("stats_id"); // retrieve their stats id from the database
+
+                // check if the player has changed their password TODO is this good?
+                if (!set.getString("password").equals(player.getPassword())) {
+                    write("UPDATE RegisteredPlayer SET password='" + player.getPassword() + "'");
+                }
+
+                // update the players stats
+                write("UPDATE Stats SET gamesWon=" + playerStats.getGamesWon() + "," + "gamesPlayed="
                         + playerStats.getGamesPlayed() + "," + "roundsPlayed=" + playerStats.getRoundsPlayed() + ","
                         + "points=" + playerStats.getPoints() + "," + "diceRolled=" + playerStats.getDiceRolled() + ","
-                        + "timePlayed=" + playerStats.getTimePlayed() + " WHERE id=" + statsId);
-            } else {
-                set = write("INSERT INTO Stats (gamesPlayed, roundsPlayed, points, diceRolled, timePlayed) VALUES ("
-                        + playerStats.getGamesWon() + "," + playerStats.getGamesPlayed() + ","
-                        + playerStats.getRoundsPlayed() + "," + playerStats.getPoints() + ","
-                        + playerStats.getDiceRolled() + "," + playerStats.getTimePlayed() + ")");
-                if (valid(set)) {
-                    set = write("INSERT INTO RegisteredPlayer (name, password, stats_id) VALUES ('" + player.getName()
-                            + "','" + player.getPassword() + "'," + set.getInt("id") + ")");
+                        + "timePlayed=" + playerStats.getTimePlayed() + " WHERE id=" + statsId); // update their stats
+                result = true;
+            } else { // player not found
+                // create a new row in the Stats table
+                set = write("INSERT INTO Stats (gamesWon, gamesPlayed, roundsPlayed,"
+                        + " points, diceRolled, timePlayed) VALUES (" + playerStats.getGamesWon() + ","
+                        + playerStats.getGamesPlayed() + "," + playerStats.getRoundsPlayed() + ","
+                        + playerStats.getPoints() + "," + playerStats.getDiceRolled() + ","
+                        + playerStats.getTimePlayed() + ")");
+                if (newData(set)) { // if successful
+                    // create a new row in the RegisteredPlayer table with the id of the stats row
+                    write("INSERT INTO RegisteredPlayer (name, password, stats_id) VALUES ('" + player.getName() + "','"
+                            + player.getPassword() + "'," + set.getInt("id") + ")");
+                    result = true;
                 }
+
             }
-
-            close();
-
-            return valid(set);
         }
-        return false;
+
+        close();
+        return result;
     }
 
     /**
@@ -127,22 +144,20 @@ public final class Databaseinterface {
      * @return if successful
      * @throws SQLException if a database access error occurs
      */
-    public boolean deletePlayer(RegisteredPlayer player) throws SQLException {
-        if (player == null) {
-            return false;
-        }
-
+    public boolean deletePlayer(String name) throws SQLException {
+        boolean result = false;
         connect();
 
-        ResultSet set = write("DELETE FROM RegisteredPlayer WHERE name='" + player.getName() + "'");
-        if (valid(set)) {
-            set = write("DELETE FROM Stats WHERE id=" + set.getInt("stats_id"));
+        // check for the player in the database
+        ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + name + "'");
+        if (newData(set)) { // player found
+            write("DELETE FROM RegisteredPlayer WHERE name='" + name + "'"); // delete the player
+            write("DELETE FROM Stats WHERE id=" + set.getInt("stats_id")); // delete their stats
+            result = true;
         }
 
         close();
-
-        return valid(set);
-
+        return result;
     }
 
     /**
@@ -152,8 +167,7 @@ public final class Databaseinterface {
      * @throws SQLException if a database access error occurs
      */
     private boolean connect() throws SQLException {
-        close();
-
+        close(); // close before connecting if connected
         try {
             conn = DriverManager.getConnection(DB_URL, NAME, PASSWORD);
             System.out.println("Connection successful.");
@@ -172,8 +186,9 @@ public final class Databaseinterface {
      * @throws SQLException if a database access error occurs
      */
     private boolean close() {
-        if (isConnected()) {
-            try (Statement stmt = conn.createStatement()) {
+        if (isConnected()) { // only close if connected
+            try {
+                Statement stmt = conn.createStatement();
                 stmt.executeUpdate("SHUTDOWN");
                 conn.close();
                 System.out.println("Connection closed.");
@@ -194,9 +209,10 @@ public final class Databaseinterface {
      * @throws SQLException if a database access error occurs
      */
     private ResultSet read(String query) {
-        if (isConnected() && !query.isBlank()) {
+        System.out.println("Reading query: " + query);
+        if (isConnected() && !query.isBlank()) { // execute only non-blank queries on open connection
             try (Statement stmt = conn.createStatement()) {
-                return stmt.executeQuery(query);
+                return stmt.executeQuery(query); // return the result set from the query
             } catch (SQLException exc) {
                 exc.printStackTrace();
                 abort();
@@ -214,12 +230,12 @@ public final class Databaseinterface {
      * @throws SQLException if a database access error occurs
      */
     private ResultSet write(String query) {
-        if (isConnected() && !query.isBlank()) {
-            try (Statement stmt = conn.createStatement()) {
-                int nLines = stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-                if (nLines != 0) {
-                    return stmt.getGeneratedKeys();
-                }
+        System.out.println("Writing query: " + query);
+        if (isConnected() && !query.isBlank()) { // execute only non-blank updates on open connection
+            try {
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+                return stmt.getGeneratedKeys(); // return the result set from the query
             } catch (SQLException exc) {
                 exc.printStackTrace();
                 abort();
@@ -235,7 +251,7 @@ public final class Databaseinterface {
      */
     private boolean isConnected() {
         try {
-            return conn != null && !conn.isClosed();
+            return conn != null && !conn.isClosed(); // connected, if connection is not null and open
         } catch (SQLException exc) {
             exc.printStackTrace();
             abort();
@@ -249,9 +265,9 @@ public final class Databaseinterface {
      * @param set the result set to be checked
      * @return true if this set is not null and has a next entry
      */
-    private boolean valid(ResultSet set) {
+    private boolean newData(ResultSet set) {
         try {
-            return set != null && set.next();
+            return set != null && set.next(); // valid, if not null and has at least one changed row
         } catch (SQLException exc) {
             exc.printStackTrace();
             abort();
@@ -263,7 +279,7 @@ public final class Databaseinterface {
      * Terminate the program
      */
     private void abort() {
-        close();
+        close(); // close before exiting
         System.exit(-1);
     }
 }
