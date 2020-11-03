@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +13,7 @@ import org.junit.Test;
 public class MainTest {
 
     /**
-     * setup before each method
+     * setup before testing
      */
     @Before
     public void setup() {
@@ -24,5 +26,7 @@ public class MainTest {
     @Test
     public void test() {
         // testing goes here
+        System.out.println("Testing...");
+        assertTrue(true);
     }
 }
