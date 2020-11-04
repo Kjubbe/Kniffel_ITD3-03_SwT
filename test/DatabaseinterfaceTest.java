@@ -38,12 +38,12 @@ public class DatabaseinterfaceTest {
     /**
      * determines the amount of iterations for data generation
      */
-    private static final int DATA_GEN_ITERATIONS = 20;
+    private static final int DATA_GEN_ITERATIONS = 5;
 
     /**
      * determines the amount of iterations for testing players
      */
-    private static final int TEST_PLAYER_ITERATIONS = 300;
+    private static final int TEST_PLAYER_ITERATIONS = 20;
 
     /**
      * setup before each test
