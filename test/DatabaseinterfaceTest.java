@@ -70,7 +70,7 @@ public class DatabaseinterfaceTest {
     private static void generate(RegisteredPlayer p) {
         if (p.getStats() != null) {
             System.out.println("Generating random data...");
-            for (int i = 0; i < DATA_GEN_ITERATIONS; i++) { // 20 iterations
+            for (int i = 0; i < DATA_GEN_ITERATIONS; i++) {
                 Stats s = p.getStats();
                 switch (rng.nextInt(6)) { // get a random player stat
                     case 0:
