@@ -197,7 +197,7 @@ public final class Databaseinterface {
     /**
      * delete a player from the database by the name
      * 
-     * @param player player object containing data
+     * @param name name of the player
      * @return if successful
      * @throws SQLException if a database access error occurs
      */
@@ -299,7 +299,7 @@ public final class Databaseinterface {
     /**
      * reset the whole database
      * 
-     * @throws SQLException
+     * @throws SQLException if a database access error occurs
      */
     public void reset() throws SQLException {
         for (RegisteredPlayer p : allPlayers()) {
