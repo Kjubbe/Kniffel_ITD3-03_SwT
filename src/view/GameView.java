@@ -287,7 +287,7 @@ public class GameView extends javax.swing.JFrame  {
 
     private void crossFieldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossFieldButtonActionPerformed
             // TODO cross a selected field
-
+            System.out.println("test");
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void turnFinishedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnFinishedActionPerformed
