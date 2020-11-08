@@ -12,14 +12,14 @@ import javax.swing.JPanel;
  *
  */
 
-public class StartScreenGUI extends javax.swing.JFrame {
+public class StartScreenView extends javax.swing.JFrame {
 
 	private JButton displayStatsButton;
 	private JButton newGameButton;
 	private JPanel mainPanel;
 	private JLabel label;
 
-	public StartScreenGUI() {
+	public StartScreenView() {
 		super();
 		this.setVisible(true);
         this.setBounds(200, 200, 1000, 600);

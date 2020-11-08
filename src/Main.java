@@ -16,6 +16,6 @@ public class Main {
 		System.out.println("Hello World"); // :)
 		// TODO
 		// scur scur
-		StartScreenGUI start = new StartScreenGUI();
+		StartScreenView start = new StartScreenView();
 	}
 }
