@@ -5,17 +5,42 @@
  */
 package view;
 
+import game.Card;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hanne
  */
 public class GameView extends javax.swing.JFrame  {
 
+        
+    
     /**
      * Creates new form GameView
      */
     public GameView() {
         initComponents();
+        tableSetFieldNames();
+        playercard.setToolTipText("PART2");
+        playercard.setName(""); // NOI18N
+        playercard.setRowHeight(20);
+        jScrollPane2.setViewportView(playercard);
+
+        
+
+        crossFieldButton.setText("Feld streichen");
+        crossFieldButton.setEnabled(false);
+        crossFieldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crossFieldButtonActionPerformed(evt);
+            }
+        });
+        
+        
+        
+            
+        
     }
 
     /**
@@ -27,13 +52,10 @@ public class GameView extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTablePart1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTablePart2 = new javax.swing.JTable();
-        turnFinished = new javax.swing.JButton();
+        playercard = new javax.swing.JTable();
         crossFieldButton = new javax.swing.JButton();
-        chooseField = new javax.swing.JButton();
+        chooseFieldButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -59,79 +81,36 @@ public class GameView extends javax.swing.JFrame  {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jTablePart1.setModel(new javax.swing.table.DefaultTableModel(
+        playercard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Nur Einser Zählen:", null},
-                {"Nur Zweier Zählen:", null},
-                {"Nur Dreier Zählen:", null},
-                {"Nur Vierer Zählen:", null},
-                {"Nur Fünfer Zählen:", null},
-                {"Nur Sechser Zählen:", null},
-                {"Gesamt:", null},
-                {"Bonus bei über 63:", null},
-                {"Gesameter Erster Teil:", null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {"Zwischensumme:", null},
+                {"Bonus bei min. 63:", null},
+                {"Gesamter erster Teil:", null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {"Gesamter erster Teil:", null},
+                {"Gesamter zweiter Teil:", null},
+                {"Endsumme:", null}
             },
             new String [] {
                 "", "Punktzahl"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTablePart1.setToolTipText("PART2");
-        jTablePart1.setName(""); // NOI18N
-        jTablePart1.setRowHeight(20);
-        jScrollPane1.setViewportView(jTablePart1);
-        jTablePart1.getAccessibleContext().setAccessibleDescription("");
-
-        jTablePart2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Dreierpasch:", null},
-                {"Viererpasch:", null},
-                {"Fullhouse:", null},
-                {"Kleine Straße:", null},
-                {"Große Straße:", null},
-                {"Kniffel:", null},
-                {"Chance:", null},
-                {"Gesamter Erster Teil:", null},
-                {"Gesamter Zweite Teil:", null},
-                {"Endsumme", null}
-            },
-            new String [] {
-                "", "Punkzahl"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTablePart2.setToolTipText("PART2");
-        jTablePart2.setName(""); // NOI18N
-        jTablePart2.setRowHeight(20);
-        jScrollPane2.setViewportView(jTablePart2);
-
-        turnFinished.setText("Zug beenden");
-        turnFinished.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                turnFinishedActionPerformed(evt);
-            }
-        });
+        ));
+        playercard.setToolTipText("playercard");
+        playercard.setName(""); // NOI18N
+        playercard.setRowHeight(20);
+        jScrollPane2.setViewportView(playercard);
 
         crossFieldButton.setText("Feld streichen");
         crossFieldButton.setEnabled(false);
@@ -141,10 +120,10 @@ public class GameView extends javax.swing.JFrame  {
             }
         });
 
-        chooseField.setText("Feld auswählen");
-        chooseField.setEnabled(false);
-        chooseField.setMaximumSize(new java.awt.Dimension(110, 32));
-        chooseField.setMinimumSize(new java.awt.Dimension(110, 32));
+        chooseFieldButton.setText("Feld auswählen");
+        chooseFieldButton.setEnabled(false);
+        chooseFieldButton.setMaximumSize(new java.awt.Dimension(110, 32));
+        chooseFieldButton.setMinimumSize(new java.awt.Dimension(110, 32));
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -246,37 +225,26 @@ public class GameView extends javax.swing.JFrame  {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(chooseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(crossFieldButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(turnFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(79, 79, 79)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(chooseFieldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(crossFieldButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(733, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(498, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chooseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(crossFieldButton))
-                    .addComponent(turnFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chooseFieldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crossFieldButton))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
@@ -289,10 +257,6 @@ public class GameView extends javax.swing.JFrame  {
             // TODO cross a selected field
             System.out.println("test");
     }//GEN-LAST:event_crossFieldButtonActionPerformed
-
-    private void turnFinishedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnFinishedActionPerformed
-        // TODO finish the turn of the current player
-    }//GEN-LAST:event_turnFinishedActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         // TODO add your handling code here:
@@ -316,38 +280,27 @@ public class GameView extends javax.swing.JFrame  {
     }//GEN-LAST:event_Player3ButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Setting the fieldnames into the playercard
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void tableSetFieldNames() {
+        for (int i = 0; i < 6; i++) {
+            playercard.setValueAt(Card.fields[i].getName(), i, 0);
         }
-        //</editor-fold>
+        for (int j = 6; j < 13; j++) {
+            playercard.setValueAt(Card.fields[j].getName(), j+3, 0);
+        }
+    }
+    
+    /**
+     * Setting the points into the playercard
+     */
+    private void tableSetPoints() {
+        // TODO show the points of the choosen fields
+        //playercard.setValueAt(Card.getPart1(), 9, 1);     // Part 1
+        //playercard.setValueAt(Card.getPart1(), 17, 1);    // Part 1
+        //playercard.setValueAt(Card.getPart2(), 18, 1);    // Part 2
+        //playercard.setValueAt(Card.getTotal(), 19, 1);    // Totals
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GameView().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -357,7 +310,7 @@ public class GameView extends javax.swing.JFrame  {
     private javax.swing.JMenu Player2Button;
     private javax.swing.JMenu Player3Button;
     private javax.swing.JMenu Player4Button;
-    private javax.swing.JButton chooseField;
+    private javax.swing.JButton chooseFieldButton;
     private javax.swing.JButton crossFieldButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -374,10 +327,7 @@ public class GameView extends javax.swing.JFrame  {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablePart1;
-    private javax.swing.JTable jTablePart2;
-    private javax.swing.JButton turnFinished;
+    private javax.swing.JTable playercard;
     // End of variables declaration//GEN-END:variables
 }
