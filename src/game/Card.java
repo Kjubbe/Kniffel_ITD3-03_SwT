@@ -21,7 +21,7 @@ public class Card {
 	private int openFields = 13; // Number of Fields to be chosen or crossed
 
 	// Fields on the card
-	private final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
+	public static final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
 			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),

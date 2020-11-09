@@ -1,3 +1,6 @@
+
+import view.GameView;
+
 /**
  * Main
  * 
@@ -16,5 +19,7 @@ public class Main {
 		System.out.println("Hello World"); // :)
 		// TODO
                 // scur scur 
+                new GameView().setVisible(true);
+                
 	}
 }
