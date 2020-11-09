@@ -1,3 +1,5 @@
+import view.StartScreenView;
+
 /**
  * Main
  * 
