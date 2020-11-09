@@ -101,7 +101,7 @@ public class Card {
 	 */
 	public int getPart2() {
 		int part2 = 0;
-		for (int i = 6; i < fields.length; i++) {
+		for (int i = PART1_END_INDEX + 1; i < fields.length; i++) {
 			if (fields[i].isChosen()) {
 				part2 += fields[i].getValue();
 			}
