@@ -79,8 +79,12 @@ public class GameView extends javax.swing.JFrame  {
         jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(21, 10, 22));
         setResizable(false);
 
+        playercard.setBackground(new java.awt.Color(21, 20, 22));
+        playercard.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
+        playercard.setForeground(new java.awt.Color(255, 117, 139));
         playercard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -108,6 +112,7 @@ public class GameView extends javax.swing.JFrame  {
             }
         ));
         playercard.setToolTipText("playercard");
+        playercard.setFocusCycleRoot(true);
         playercard.setName(""); // NOI18N
         playercard.setRowHeight(25);
         jScrollPane2.setViewportView(playercard);
@@ -228,7 +233,7 @@ public class GameView extends javax.swing.JFrame  {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(chooseFieldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(37, 37, 37)
                         .addComponent(crossFieldButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -244,7 +249,7 @@ public class GameView extends javax.swing.JFrame  {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chooseFieldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(crossFieldButton))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
