@@ -22,9 +22,8 @@ public class GameView extends javax.swing.JFrame  {
     public GameView() {
         initComponents();
         tableSetFieldNames();
-        playercard.setToolTipText("PART2");
         playercard.setName(""); // NOI18N
-        playercard.setRowHeight(20);
+        playercard.setRowHeight(25);
         jScrollPane2.setViewportView(playercard);
 
         
