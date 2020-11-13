@@ -72,16 +72,16 @@ public class Card {
 	 * 
 	 * @return total points
 	 */
-	public int getTotal() {
+	public static int getTotal() {
 		return getPart1() + getPart2();
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the points of part1
 	 * 
-	 * @return total points
+	 * @return points of part1
 	 */
-	public int getPart1() {
+	public static int getPart1() {
 		int part1 = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
 			if (fields[i].isChosen()) {
@@ -93,13 +93,28 @@ public class Card {
 		}
 		return part1;
 	}
+        
+        /**
+	 * Calculate and return the points of part1 without the bonus
+	 * 
+	 * @return points of part1 without the possible bonus
+	 */
+        public static int getPart1NoBonus() {
+            int part1NoBonus = 0;
+            for (int i = 0; i <= PART1_END_INDEX; i++) {
+			if (fields[i].isChosen()) {
+				part1NoBonus += fields[i].getValue();
+			}
+		}
+            return part1NoBonus;
+        }
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the points of part2
 	 * 
-	 * @return total points
+	 * @return points of part2
 	 */
-	public int getPart2() {
+	public static int getPart2() {
 		int part2 = 0;
 		for (int i = 6; i < fields.length; i++) {
 			if (fields[i].isChosen()) {

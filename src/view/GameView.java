@@ -22,6 +22,7 @@ public class GameView extends javax.swing.JFrame  {
     public GameView() {
         initComponents();
         tableSetFieldNames();
+        tableSetPoints();
         playercard.setName(""); // NOI18N
         playercard.setRowHeight(25);
         jScrollPane2.setViewportView(playercard);
@@ -299,12 +300,19 @@ public class GameView extends javax.swing.JFrame  {
      * Setting the points into the playercard
      */
     private void tableSetPoints() {
-        // TODO show the points of the choosen fields
-        //playercard.setValueAt(Card.getPart1(), 9, 1);     // Part 1
-        //playercard.setValueAt(Card.getPart1(), 17, 1);    // Part 1
-        //playercard.setValueAt(Card.getPart2(), 18, 1);    // Part 2
-        //playercard.setValueAt(Card.getTotal(), 19, 1);    // Totals
-
+        for (int i = 0; i < 6; i++) {
+            if(Card.fields[i].isChosen()) playercard.setValueAt(Card.fields[i].getValue(), i, 1);
+            if(Card.fields[i].isCrossed()) playercard.setValueAt("---", i, 1);
+        }
+        for (int j = 6; j < 13; j++) {
+            if(Card.fields[j].isChosen()) playercard.setValueAt(Card.fields[j].getValue(), j+3, 1);
+            if(Card.fields[j].isCrossed()) playercard.setValueAt("---", j+3, 1);
+        }
+        playercard.setValueAt(Card.getPart1NoBonus(), 6, 1);     // Part 1
+        playercard.setValueAt(Card.getPart1(), 8, 1);     // Part 1
+        playercard.setValueAt(Card.getPart1(), 16, 1);    // Part 1
+        playercard.setValueAt(Card.getPart2(), 17, 1);    // Part 2
+        playercard.setValueAt(Card.getTotal(), 18, 1);    // Totals
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
