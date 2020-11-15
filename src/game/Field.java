@@ -83,12 +83,11 @@ public class Field {
 	 * @return if successful
 	 */
 	public boolean choose() {
-		if (isOpen() && currentValue != 0) {
+		boolean result = isOpen() && currentValue != 0;
+		if (result) {
 			this.chosenValue = currentValue;
-			return true;
-		} else {
-			return false;
 		}
+		return result;
 	}
 
 	/**

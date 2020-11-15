@@ -39,7 +39,7 @@ public class Host extends Player {
 	 * Start the game
 	 */
 	public void startGame() {
-		joinedServer.play();
+		myGame.play();
 	}
 
 	/**
@@ -53,14 +53,14 @@ public class Host extends Player {
 	 * Stop the game
 	 */
 	public void stopGame() {
-		joinedServer.endServer();
+		myGame.endServer();
 	}
 
 	/**
 	 * Restart the game
 	 */
 	public void restartGame() {
-		joinedServer.restartServer();
+		myGame.restartServer();
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class Host extends Player {
 	 * @param player player to be removed
 	 */
 	public void removePlayer(Player player) {
-		joinedServer.removePlayer(player);
+		myGame.removePlayer(player);
 	}
 
 }

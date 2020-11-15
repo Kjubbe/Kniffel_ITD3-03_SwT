@@ -169,8 +169,6 @@ public class Card {
 				sumOfSame += num[i];
 		}
 
-		Field currentField;
-
 		/**
 		 * part 1: only one field in part 1 can be chosen each turn, because three dice
 		 * are needed and there are only five dice three dice also = Three Of A Kind
@@ -180,8 +178,7 @@ public class Card {
 			allFields[THREE_OF_A_KIND_INDEX].setValue(total);
 
 			/**
-			 * four of a kind,
-			 * if four dice have the same value
+			 * four of a kind, if four dice have the same value
 			 */
 			if (quad) {
 				allFields[FOUR_OF_A_KIND_INDEX].setValue(total);
@@ -241,7 +238,13 @@ public class Card {
 	 * @return if successful
 	 */
 	public boolean chooseField(Field field) {
-		return field.choose();
+		boolean result = field.choose();
+		if (result) {
+			for (Field f : allFields) {
+				f.setValue(0);
+			}
+		}
+		return result;
 	}
 
 	/**

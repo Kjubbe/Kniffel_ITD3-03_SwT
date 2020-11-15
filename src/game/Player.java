@@ -14,9 +14,9 @@ public class Player {
 	protected String name;
 	protected boolean saveStats;
 
-	protected Game joinedServer;
+	protected Game myGame;
 	protected Stats myStats;
-	protected Card myCard;
+	protected Card myCard = new Card(this);
 
 	protected int wins;
 
@@ -27,7 +27,6 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
-		assignCard();
 	}
 
 	/**
@@ -63,13 +62,6 @@ public class Player {
 	 */
 	public final void assignStats(Stats stats) {
 		this.myStats = stats;
-	}
-
-	/**
-	 * Assign stats to this player
-	 */
-	public final void assignStats() {
-		this.myStats = new Stats(this);
 	}
 
 	/**
