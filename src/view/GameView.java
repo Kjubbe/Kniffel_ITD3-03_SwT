@@ -67,16 +67,16 @@ public class GameView extends javax.swing.JFrame  {
         jMenuItem1 = new javax.swing.JMenuItem();
         Player2Button = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        Player4Button = new javax.swing.JMenu();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         Player3Button = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        Player4Button = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -173,31 +173,13 @@ public class GameView extends javax.swing.JFrame  {
         jMenuItem8.setText("Spielerkarte anzeigen");
         Player2Button.add(jMenuItem8);
 
-        jMenuItem9.setText("Spieler entfernen");
-        Player2Button.add(jMenuItem9);
-
         jMenuItem10.setText("Spieler überspringen");
         Player2Button.add(jMenuItem10);
 
+        jMenuItem9.setText("Spieler entfernen");
+        Player2Button.add(jMenuItem9);
+
         jMenuBar1.add(Player2Button);
-
-        Player4Button.setText("Spieler 4");
-        Player4Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Player4ButtonActionPerformed(evt);
-            }
-        });
-
-        jMenuItem14.setText("jMenuItem14");
-        Player4Button.add(jMenuItem14);
-
-        jMenuItem15.setText("jMenuItem15");
-        Player4Button.add(jMenuItem15);
-
-        jMenuItem16.setText("jMenuItem16");
-        Player4Button.add(jMenuItem16);
-
-        jMenuBar1.add(Player4Button);
 
         Player3Button.setText("Spieler 3");
         Player3Button.addActionListener(new java.awt.event.ActionListener() {
@@ -212,10 +194,38 @@ public class GameView extends javax.swing.JFrame  {
         jMenuItem12.setText("Spieler überspringen");
         Player3Button.add(jMenuItem12);
 
-        jMenuItem13.setText("jMenuItem13");
+        jMenuItem13.setText("Spieler entfernen");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         Player3Button.add(jMenuItem13);
 
         jMenuBar1.add(Player3Button);
+
+        Player4Button.setText("Spieler 4");
+        Player4Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Player4ButtonActionPerformed(evt);
+            }
+        });
+
+        jMenuItem14.setText("Spielerkarte anzeigen");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        Player4Button.add(jMenuItem14);
+
+        jMenuItem15.setText("Spieler überspringen");
+        Player4Button.add(jMenuItem15);
+
+        jMenuItem16.setText("Spieler entfernen");
+        Player4Button.add(jMenuItem16);
+
+        jMenuBar1.add(Player4Button);
 
         setJMenuBar(jMenuBar1);
 
@@ -233,7 +243,7 @@ public class GameView extends javax.swing.JFrame  {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(498, Short.MAX_VALUE))
+                .addContainerGap(513, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +254,7 @@ public class GameView extends javax.swing.JFrame  {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chooseFieldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(crossFieldButton))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
@@ -278,6 +288,14 @@ public class GameView extends javax.swing.JFrame  {
     private void Player3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player3ButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Player3ButtonActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     /**
      * Setting the fieldnames into the playercard
