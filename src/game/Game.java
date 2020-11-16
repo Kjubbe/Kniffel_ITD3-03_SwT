@@ -19,9 +19,6 @@ public class Game {
 	private final int maxGames; // max number of games to be played
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
-	private final String serverName;
-	private final String password;
-
 	private int roundNr = 1;
 
 	private final List<Player> players;
@@ -38,9 +35,7 @@ public class Game {
 	 * @param win     amount of games needed to win
 	 * @param players players on the server
 	 */
-	public Game(String s, String pw, boolean a, int max, int maxG, int win, List<Player> players) {
-		this.serverName = s;
-		this.password = pw;
+	public Game(boolean a, int max, int maxG, int win, List<Player> players) {
 		this.useAssistant = a;
 		this.maxPlayers = max;
 		this.maxGames = maxG;
