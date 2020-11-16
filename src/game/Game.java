@@ -27,8 +27,6 @@ public class Game {
 	 * Constructor, defines the name, a password, the usage of the assistant, max
 	 * players, max Games, games to win and the host.
 	 * 
-	 * @param s       server name
-	 * @param pw      password
 	 * @param a       if using assistant
 	 * @param max     number of max players
 	 * @param maxG    number of max games
