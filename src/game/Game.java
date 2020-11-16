@@ -106,13 +106,4 @@ public class Game {
 		// TODO
 		return false;
 	}
-
-	/**
-	 * Getter-method for the name
-	 * 
-	 * @return name
-	 */
-	public String getName() {
-		return this.serverName;
-	}
 }
