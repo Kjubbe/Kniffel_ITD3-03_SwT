@@ -23,7 +23,7 @@ public class Card {
 	// Fields on the card
 	private final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
-			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
+			new Field("Nur Sechser Zählen"), new Field("Dreierpasch"), new Field("Viererpasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
 			new Field("Kniffel", 50), new Field("Chance") };
 
@@ -101,7 +101,7 @@ public class Card {
 	 */
 	public int getPart2() {
 		int part2 = 0;
-		for (int i = 6; i < fields.length; i++) {
+		for (int i = PART1_END_INDEX + 1; i < fields.length; i++) {
 			if (fields[i].isChosen()) {
 				part2 += fields[i].getValue();
 			}
