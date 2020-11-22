@@ -6,6 +6,7 @@
 package view;
 
 import game.Card;
+import game.Host;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -130,6 +131,11 @@ public class GameView extends javax.swing.JFrame  {
         File.setText("Spiel");
 
         jMenuItem6.setText("Spiel pausieren");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         File.add(jMenuItem6);
 
         ExitButton.setText("Spiel abbrechen");
@@ -141,6 +147,11 @@ public class GameView extends javax.swing.JFrame  {
         File.add(ExitButton);
 
         jMenuItem7.setText("Spiel neustarten");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         File.add(jMenuItem7);
 
         jMenuBar1.add(File);
@@ -159,6 +170,11 @@ public class GameView extends javax.swing.JFrame  {
         Player1Button.add(jMenuItem3);
 
         jMenuItem1.setText("Spieler entfernen");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         Player1Button.add(jMenuItem1);
 
         jMenuBar1.add(Player1Button);
@@ -177,6 +193,11 @@ public class GameView extends javax.swing.JFrame  {
         Player2Button.add(jMenuItem10);
 
         jMenuItem9.setText("Spieler entfernen");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         Player2Button.add(jMenuItem9);
 
         jMenuBar1.add(Player2Button);
@@ -223,6 +244,11 @@ public class GameView extends javax.swing.JFrame  {
         Player4Button.add(jMenuItem15);
 
         jMenuItem16.setText("Spieler entfernen");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         Player4Button.add(jMenuItem16);
 
         jMenuBar1.add(Player4Button);
@@ -269,7 +295,8 @@ public class GameView extends javax.swing.JFrame  {
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
-        // TODO add your handling code here:
+        // Stop Game
+        Host.stopGame();
 
     }//GEN-LAST:event_ExitButtonActionPerformed
 
@@ -290,12 +317,35 @@ public class GameView extends javax.swing.JFrame  {
     }//GEN-LAST:event_Player3ButtonActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
+        Host.removePlayer(3);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        //Pause Game
+        Host.pauseGame();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // Restart Game
+        Host.restartGame();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // Remove Player
+        Host.removePlayer(1);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        Host.removePlayer(2);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        Host.removePlayer(4);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**
      * Setting the fieldnames into the playercard
