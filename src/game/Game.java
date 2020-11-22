@@ -19,39 +19,26 @@ public class Game {
 	private final int maxGames; // max number of games to be played
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
-	private final String serverName;
-	private final String password;
-
 	private int roundNr = 1;
 
-	private final List<Player> players = new LinkedList<>();
-        
-        public static Die[] dice = {new Die(1), new Die(2), new Die(3), new Die(4), new Die(5)}; // Array der Dice
-
-	private final Host hostOf; // TODO remove this
+	private final List<Player> players;
 
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
 	 * players, max Games, games to win and the host.
 	 * 
-	 * @param s   server name
-	 * @param pw  password
-	 * @param a   if using assistant
-	 * @param max number of max players
-	 * @param maxG number of max games
-	 * @param win amount of games needed to win
-	 * @param h   host of the server
+	 * @param a       if using assistant
+	 * @param max     number of max players
+	 * @param maxG    number of max games
+	 * @param win     amount of games needed to win
+	 * @param players players on the server
 	 */
-	public Game(String s, String pw, boolean a, int max, int maxG, int win, Host h) {
-		this.serverName = s;
-		this.password = pw;
+	public Game(boolean a, int max, int maxG, int win, List<Player> players) {
 		this.useAssistant = a;
 		this.maxPlayers = max;
 		this.maxGames = maxG;
 		this.gamesToWin = win;
-
-		this.hostOf = h; // TODO remove this, since there is only local support
-		players.add(h); // Host plays too
+		this.players = players;
 	}
 
 	/**
@@ -116,14 +103,5 @@ public class Game {
 	public boolean removePlayer(Player other) {
 		// TODO
 		return false;
-	}
-
-	/**
-	 * Getter-method for the name
-	 * 
-	 * @return name
-	 */
-	public String getName() {
-		return this.serverName;
 	}
 }
