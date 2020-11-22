@@ -50,8 +50,8 @@ public class GameView extends javax.swing.JFrame  {
         dice4 = new javax.swing.JLabel();
         dice5 = new javax.swing.JLabel();
         choosenDiece = new javax.swing.JPanel();
-        dice6 = new javax.swing.JLabel();
         dice7 = new javax.swing.JLabel();
+        dice6 = new javax.swing.JLabel();
         dice8 = new javax.swing.JLabel();
         dice9 = new javax.swing.JLabel();
         dice10 = new javax.swing.JLabel();
@@ -121,14 +121,39 @@ public class GameView extends javax.swing.JFrame  {
         playercardScrollPane.setViewportView(playercard);
 
         dice1.setText("dice1");
+        dice1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice1MouseClicked(evt);
+            }
+        });
 
         dice2.setText("dice2");
+        dice2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice2MouseClicked(evt);
+            }
+        });
 
         dice3.setText("dice3");
+        dice3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice3MouseClicked(evt);
+            }
+        });
 
         dice4.setText("dice4");
+        dice4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice4MouseClicked(evt);
+            }
+        });
 
         dice5.setText("dice5");
+        dice5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout availableDieceLayout = new javax.swing.GroupLayout(availableDiece);
         availableDiece.setLayout(availableDieceLayout);
@@ -164,15 +189,40 @@ public class GameView extends javax.swing.JFrame  {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        dice6.setText("dice7");
+        dice7.setText("dice7");
+        dice7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice7MouseClicked(evt);
+            }
+        });
 
-        dice7.setText("dice6");
+        dice6.setText("dice6");
+        dice6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice6MouseClicked(evt);
+            }
+        });
 
         dice8.setText("dice8");
+        dice8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice8MouseClicked(evt);
+            }
+        });
 
         dice9.setText("dice9");
+        dice9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice9MouseClicked(evt);
+            }
+        });
 
         dice10.setText("dice10");
+        dice10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dice10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout choosenDieceLayout = new javax.swing.GroupLayout(choosenDiece);
         choosenDiece.setLayout(choosenDieceLayout);
@@ -180,9 +230,9 @@ public class GameView extends javax.swing.JFrame  {
             choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(choosenDieceLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addComponent(dice7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dice6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dice7)
                 .addGap(128, 128, 128))
             .addGroup(choosenDieceLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
@@ -198,8 +248,8 @@ public class GameView extends javax.swing.JFrame  {
             .addGroup(choosenDieceLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dice7)
-                    .addComponent(dice6))
+                    .addComponent(dice6)
+                    .addComponent(dice7))
                 .addGap(70, 70, 70)
                 .addGroup(choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dice8)
@@ -393,6 +443,46 @@ public class GameView extends javax.swing.JFrame  {
         }
     }//GEN-LAST:event_rollButtonActionPerformed
 
+    private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice1MouseClicked
+
+    private void dice2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice2MouseClicked
+
+    private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice3MouseClicked
+
+    private void dice4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice4MouseClicked
+
+    private void dice5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice5MouseClicked
+
+    private void dice6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice6MouseClicked
+
+    private void dice7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice7MouseClicked
+
+    private void dice8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice8MouseClicked
+
+    private void dice9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice9MouseClicked
+
+    private void dice10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dice10MouseClicked
+
     /**
      * Setting the fieldnames into the playercard
      */
@@ -408,12 +498,12 @@ public class GameView extends javax.swing.JFrame  {
     
     private void showDie() {
         if(Game.dice[0].isRollable()){
-            dice6.setVisible(false);
+            dice7.setVisible(false);
         } else {
             dice1.setVisible(false);
         }
         if(Game.dice[1].isRollable()){
-            dice7.setVisible(false);
+            dice6.setVisible(false);
         } else {
             dice2.setVisible(false);
         }

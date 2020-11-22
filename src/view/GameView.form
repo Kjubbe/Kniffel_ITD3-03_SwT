@@ -324,26 +324,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="dice1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice1MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice2">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice2MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice3">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice3MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice4">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice4"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice4MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice5">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice5"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice5MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -354,9 +369,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                  <Component id="dice7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="dice6" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="dice7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -375,8 +390,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dice7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dice6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -390,30 +405,45 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="dice6">
+        <Component class="javax.swing.JLabel" name="dice7">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice7"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice7MouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="dice7">
+        <Component class="javax.swing.JLabel" name="dice6">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice6"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice6MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice8">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice8"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice8MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice9">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice9"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice9MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="dice10">
           <Properties>
             <Property name="text" type="java.lang.String" value="dice10"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice10MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
