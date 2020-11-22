@@ -21,12 +21,15 @@ public class Card {
 	private int openFields = 13; // Number of Fields to be chosen or crossed
 
 	// Fields on the card
-	public static final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
+	public final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
 			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
 			new Field("Kniffel", 50), new Field("Chance") };
 
+        public static String[] fieldnames = {"Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen", "Nur Vierer Zählen", "Nur Fünfer Zählen", 
+                                "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch", "Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance"};
+       
 	/**
 	 * Constructor.
 	 */
@@ -72,7 +75,7 @@ public class Card {
 	 * 
 	 * @return total points
 	 */
-	public static int getTotal() {
+	public int getTotal() {
 		return getPart1() + getPart2();
 	}
 
@@ -81,7 +84,7 @@ public class Card {
 	 * 
 	 * @return points of part1
 	 */
-	public static int getPart1() {
+	public  int getPart1() {
 		int part1 = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
 			if (fields[i].isChosen()) {
@@ -99,7 +102,7 @@ public class Card {
 	 * 
 	 * @return points of part1 without the possible bonus
 	 */
-        public static int getPart1NoBonus() {
+        public int getPart1NoBonus() {
             int part1NoBonus = 0;
             for (int i = 0; i <= PART1_END_INDEX; i++) {
 			if (fields[i].isChosen()) {
@@ -114,7 +117,7 @@ public class Card {
 	 * 
 	 * @return points of part2
 	 */
-	public static int getPart2() {
+	public int getPart2() {
 		int part2 = 0;
 		for (int i = 6; i < fields.length; i++) {
 			if (fields[i].isChosen()) {
