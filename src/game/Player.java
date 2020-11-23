@@ -12,6 +12,7 @@ public class Player {
 
 	// data fields
 	protected String name;
+	protected boolean saveStats;
 
 	protected Game joinedServer;
 	protected Stats myStats;
@@ -27,6 +28,13 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 		assignCard();
+	}
+
+	/**
+	 * invoke to save the players stats
+	 */
+	public void saveStats() {
+		saveStats = true;
 	}
 
 	/**

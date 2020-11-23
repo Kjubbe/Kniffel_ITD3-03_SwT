@@ -51,19 +51,4 @@ public final class Menu {
 	public static void playAsGuest(String name) {
 		// TODO
 	}
-
-	/**
-	 * the user wants to join a game
-	 */
-	public static void bePlayer() {
-		// TODO remove this, since there is only local support
-	}
-
-	/**
-	 * the user wants to host a game
-	 */
-	public static void beHost() {
-		// TODO remove this, since there is only local support
-	}
-
 }
