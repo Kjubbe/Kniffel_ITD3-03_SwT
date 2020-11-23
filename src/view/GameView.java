@@ -56,7 +56,7 @@ public class GameView extends javax.swing.JFrame {
         finishTurnButton = new javax.swing.JButton();
         rollButton = new javax.swing.JButton();
         playercardOf = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        dieSeperation = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -271,6 +271,10 @@ public class GameView extends javax.swing.JFrame {
         playercardOf.setFocusable(false);
         playercardOf.setOpaque(false);
 
+        dieSeperation.setBackground(new java.awt.Color(0, 0, 0));
+        dieSeperation.setForeground(new java.awt.Color(0, 0, 0));
+        dieSeperation.setDoubleBuffered(true);
+
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         File.setText("Spiel");
@@ -378,7 +382,7 @@ public class GameView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
+                            .addComponent(dieSeperation)
                             .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
@@ -398,7 +402,7 @@ public class GameView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(choosenDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
@@ -593,6 +597,7 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JLabel dice7;
     private javax.swing.JLabel dice8;
     private javax.swing.JLabel dice9;
+    private javax.swing.JSeparator dieSeperation;
     private javax.swing.JButton finishTurnButton;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -609,7 +614,6 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable playercard;
     private javax.swing.JTextField playercardOf;
     private javax.swing.JScrollPane playercardScrollPane;
