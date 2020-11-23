@@ -238,11 +238,11 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="playercardOf" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="9" max="32767" attributes="0"/>
                       <Component id="playercardScrollPane" min="-2" pref="500" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  * @author hanne
  */
 public class GameView extends javax.swing.JFrame {
+    public Game game;
 
     //private Player playerWithTurn;
     /**
@@ -448,9 +449,9 @@ public class GameView extends javax.swing.JFrame {
                             .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
@@ -466,8 +467,8 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
-        // Stop Game
-
+        // Back to Main Menu
+        game.endServer();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void Player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player1ButtonActionPerformed
@@ -556,10 +557,13 @@ public class GameView extends javax.swing.JFrame {
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
+        //game.stopServer();
     }//GEN-LAST:event_pauseGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
+        game.restartServer();
+        System.out.println("test");
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
