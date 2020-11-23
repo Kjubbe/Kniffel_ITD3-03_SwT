@@ -421,15 +421,14 @@ public class GameView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dieSeperation)
                             .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                            .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-
                         .addGap(96, 96, 96)
                         .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(41, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
+                .addContainerGap(513, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,8 +450,7 @@ public class GameView extends javax.swing.JFrame {
                         .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
@@ -469,7 +467,6 @@ public class GameView extends javax.swing.JFrame {
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // Stop Game
-        Host.stopGame();
 
     }//GEN-LAST:event_quitGameActionPerformed
 
@@ -550,7 +547,7 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
-        Host.removePlayer(3);
+
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showCardPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCardPlayer4ActionPerformed
@@ -559,25 +556,22 @@ public class GameView extends javax.swing.JFrame {
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
-        Host.pauseGame();
     }//GEN-LAST:event_pauseGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
-        Host.restartGame();
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
         // Remove Player
-        Host.removePlayer(1);
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
     private void removePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer2ActionPerformed
-        Host.removePlayer(2);
+
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
-        Host.removePlayer(4);
+
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
 
@@ -655,7 +649,7 @@ public class GameView extends javax.swing.JFrame {
     public void showChoosenDiece() {
         // TODO
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu OptionsButton;
     private javax.swing.JMenu Player1Button;
@@ -677,19 +671,17 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JSeparator dieSeperation;
     private javax.swing.JButton finishTurnButton;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem pauseGame;
     private javax.swing.JTable playercard;
     private javax.swing.JTextField playercardOf;
     private javax.swing.JScrollPane playercardScrollPane;
-    private javax.swing.JButton rollButton;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JMenuItem pauseGame;
-    private javax.swing.JTable playercard;
     private javax.swing.JMenuItem quitGame;
     private javax.swing.JMenuItem removePlayer1;
     private javax.swing.JMenuItem removePlayer2;
     private javax.swing.JMenuItem removePlayer3;
     private javax.swing.JMenuItem removePlayer4;
     private javax.swing.JMenuItem restartGame;
+    private javax.swing.JButton rollButton;
     private javax.swing.JMenuItem showCardPlayer4;
     private javax.swing.JMenuItem showPlayer1Card;
     private javax.swing.JMenuItem showPlayer2Card;
