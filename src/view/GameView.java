@@ -11,15 +11,13 @@ import game.Player;
 
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author hanne
  */
-public class GameView extends javax.swing.JFrame  {
+public class GameView extends javax.swing.JFrame {
 
     //private Player playerWithTurn;
-    
     /**
      * Creates new form GameView
      */
@@ -29,7 +27,7 @@ public class GameView extends javax.swing.JFrame  {
         showDie();
         //tableSetPoints();
         playercard.setRowHeight(25);
-        playercardScrollPane.setViewportView(playercard);   
+        playercardScrollPane.setViewportView(playercard);
     }
 
     /**
@@ -58,6 +56,7 @@ public class GameView extends javax.swing.JFrame  {
         finishTurnButton = new javax.swing.JButton();
         rollButton = new javax.swing.JButton();
         playercardOf = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -186,7 +185,7 @@ public class GameView extends javax.swing.JFrame  {
                     .addComponent(dice3)
                     .addComponent(dice4)
                     .addComponent(dice5))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         dice7.setText("dice7");
@@ -255,7 +254,7 @@ public class GameView extends javax.swing.JFrame  {
                     .addComponent(dice8)
                     .addComponent(dice9)
                     .addComponent(dice10))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         finishTurnButton.setText("Zug beenden");
@@ -375,15 +374,16 @@ public class GameView extends javax.swing.JFrame  {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(playercardScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                     .addComponent(playercardOf))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
                             .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(96, 96, 96)
                         .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -392,18 +392,20 @@ public class GameView extends javax.swing.JFrame  {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(choosenDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -438,92 +440,106 @@ public class GameView extends javax.swing.JFrame  {
     }//GEN-LAST:event_Player3ButtonActionPerformed
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
-        for(int i = 0; i < 6; i++){
-            if(Game.dice[i].isRollable()) Game.dice[i].roll();
+        for (int i = 0; i < 6; i++) {
+            if (Game.dice[i].isRollable()) {
+                Game.dice[i].roll();
+            }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
 
     private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
-        // TODO add your handling code here:
+        dice1.setVisible(false);
+        dice6.setVisible(true);
     }//GEN-LAST:event_dice1MouseClicked
 
     private void dice2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice2MouseClicked
-        // TODO add your handling code here:
+        dice2.setVisible(false);
+        dice7.setVisible(true);
+
     }//GEN-LAST:event_dice2MouseClicked
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
-        // TODO add your handling code here:
+        dice3.setVisible(false);
+        dice8.setVisible(true);
+
     }//GEN-LAST:event_dice3MouseClicked
 
     private void dice4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice4MouseClicked
-        // TODO add your handling code here:
+        dice4.setVisible(false);
+        dice9.setVisible(true);
     }//GEN-LAST:event_dice4MouseClicked
 
     private void dice5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice5MouseClicked
-        // TODO add your handling code here:
+        dice5.setVisible(false);
+        dice10.setVisible(true);
     }//GEN-LAST:event_dice5MouseClicked
 
     private void dice6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice6MouseClicked
-        // TODO add your handling code here:
+        dice6.setVisible(false);
+        dice1.setVisible(true);
     }//GEN-LAST:event_dice6MouseClicked
 
     private void dice7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice7MouseClicked
-        // TODO add your handling code here:
+        dice7.setVisible(false);
+        dice2.setVisible(true);
     }//GEN-LAST:event_dice7MouseClicked
 
     private void dice8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice8MouseClicked
-        // TODO add your handling code here:
+        dice8.setVisible(false);
+        dice3.setVisible(true);
     }//GEN-LAST:event_dice8MouseClicked
 
     private void dice9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice9MouseClicked
-        // TODO add your handling code here:
+        dice9.setVisible(false);
+        dice4.setVisible(true);
     }//GEN-LAST:event_dice9MouseClicked
 
     private void dice10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice10MouseClicked
-        // TODO add your handling code here:
+        dice10.setVisible(false);
+        dice5.setVisible(true);
     }//GEN-LAST:event_dice10MouseClicked
 
     /**
      * Setting the fieldnames into the playercard
      */
     private void tableSetFieldNames() {
-        playercardOf.setText("Spielerkarte von " /*+ playerWithTurn.getName()*/ );
+        playercardOf.setText("Spielerkarte von " /*+ playerWithTurn.getName()*/);
         for (int i = 0; i < 6; i++) {
             playercard.setValueAt(Card.fieldnames[i], i, 0);
         }
         for (int j = 6; j < 13; j++) {
-            playercard.setValueAt(Card.fieldnames[j], j+3, 0);
+            playercard.setValueAt(Card.fieldnames[j], j + 3, 0);
         }
     }
-    
+
     private void showDie() {
-        if(Game.dice[0].isRollable()){
+        if (Game.dice[0].isRollable()) {
             dice7.setVisible(false);
         } else {
             dice1.setVisible(false);
         }
-        if(Game.dice[1].isRollable()){
+        if (Game.dice[1].isRollable()) {
             dice6.setVisible(false);
         } else {
             dice2.setVisible(false);
         }
-        if(Game.dice[2].isRollable()){
+        if (Game.dice[2].isRollable()) {
             dice8.setVisible(false);
         } else {
             dice3.setVisible(false);
         }
-        if(Game.dice[3].isRollable()){
+        if (Game.dice[3].isRollable()) {
             dice9.setVisible(false);
         } else {
             dice4.setVisible(false);
         }
-        if(Game.dice[4].isRollable()){
+        if (Game.dice[4].isRollable()) {
             dice10.setVisible(false);
         } else {
             dice5.setVisible(false);
         }
     }
-    
+
     /**
      * Setting the points into the playercard
      */
@@ -543,22 +559,21 @@ public class GameView extends javax.swing.JFrame  {
         playercard.setValueAt(Card.getPart2(), 17, 1);    // Part 2
         playercard.setValueAt(Card.getTotal(), 18, 1);    // Totals
     }
-    */
-    
+     */
     /**
      * show the avalibleDiece
      */
     public void showAvalibleDiece() {
-       // TODO 
+        // TODO 
     }
-    
+
     /**
      * show the choosenDiece
      */
     public void showChoosenDiece() {
-       // TODO
+        // TODO
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ExitButton;
     private javax.swing.JMenu File;
@@ -594,6 +609,7 @@ public class GameView extends javax.swing.JFrame  {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable playercard;
     private javax.swing.JTextField playercardOf;
     private javax.swing.JScrollPane playercardScrollPane;
