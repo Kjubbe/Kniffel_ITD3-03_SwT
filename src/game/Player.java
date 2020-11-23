@@ -137,7 +137,11 @@ public class Player {
 	 */
 	protected void makeTurn() {
 		// TODO create die for the player
+
 		// TODO roll all die
+                for(int i = 0; i < 6; i++){
+                    Game.dice[i].roll();     
+                }
 		// TODO wait for user input to choose dice or roll again
 		// TODO end turn
 	}
