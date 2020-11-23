@@ -25,6 +25,9 @@ public class Game {
 	private int roundNr = 1;
 
 	private final List<Player> players = new LinkedList<>();
+        
+        public static Die[] dice = {new Die(1), new Die(2), new Die(3), new Die(4), new Die(5)}; // Array der Dice
+
 	private final Host hostOf; // TODO remove this
 
 	/**

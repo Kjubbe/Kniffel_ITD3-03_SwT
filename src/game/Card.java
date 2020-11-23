@@ -21,12 +21,15 @@ public class Card {
 	private int openFields = 13; // Number of Fields to be chosen or crossed
 
 	// Fields on the card
-	public static final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
+	public final Field[] fields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
 			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
 			new Field("Kniffel", 50), new Field("Chance") };
 
+        public static String[] fieldnames = {"Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen", "Nur Vierer Zählen", "Nur Fünfer Zählen", 
+                                "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch", "Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance"};
+       
 	/**
 	 * Constructor.
 	 */
@@ -77,11 +80,11 @@ public class Card {
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the points of part1
 	 * 
-	 * @return total points
+	 * @return points of part1
 	 */
-	public int getPart1() {
+	public  int getPart1() {
 		int part1 = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
 			if (fields[i].isChosen()) {
@@ -93,11 +96,26 @@ public class Card {
 		}
 		return part1;
 	}
+        
+        /**
+	 * Calculate and return the points of part1 without the bonus
+	 * 
+	 * @return points of part1 without the possible bonus
+	 */
+        public int getPart1NoBonus() {
+            int part1NoBonus = 0;
+            for (int i = 0; i <= PART1_END_INDEX; i++) {
+			if (fields[i].isChosen()) {
+				part1NoBonus += fields[i].getValue();
+			}
+		}
+            return part1NoBonus;
+        }
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the points of part2
 	 * 
-	 * @return total points
+	 * @return points of part2
 	 */
 	public int getPart2() {
 		int part2 = 0;
