@@ -67,8 +67,6 @@ public class Player {
 	/**
 	 * Assign stats to this player
 	 * TODO remove, this is for testing purposes
-	 * 
-	 * @param stats Stats to be assigned
 	 */
 	public final void assignStats() {
 		this.myStats = new Stats(this);

@@ -66,6 +66,7 @@ public class Card {
 	/**
 	 * Calculate and return the total points of part 1
 	 * 
+	 * @param withBonus if the points include the bonus
 	 * @return points of part 1
 	 */
 	public int getPart1(boolean withBonus) {
