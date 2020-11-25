@@ -53,14 +53,14 @@ public class Host extends Player {
 	 * Stop the game
 	 */
 	public void stopGame() {
-		myGame.endServer();
+		//
 	}
 
 	/**
 	 * Restart the game
 	 */
 	public void restartGame() {
-		myGame.restartServer();
+		//
 	}
 
 	/**
