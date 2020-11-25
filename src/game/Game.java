@@ -1,6 +1,5 @@
 package game;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public class Game {
 	private final List<Player> players;
 	private Player currentPlayer;
 
-	public static Die[] dice = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
+	public static final Die[] DICE = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
 
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
@@ -81,7 +80,7 @@ public class Game {
 	 * roll all die
 	 */
 	public void rollDie() {
-		for (Die d : dice) {
+		for (Die d : DICE) {
 			d.roll();
 		}
 	}
@@ -90,7 +89,7 @@ public class Game {
 	 * end your turn
 	 */
 	public void endTurn() {
-		//
+		// TODO
 	}
 
 	/**
@@ -119,7 +118,7 @@ public class Game {
 	 * restart the game
 	 */
 	public void restart() {
-		//
+		// TODO
 	}
 
 	/**
@@ -133,7 +132,7 @@ public class Game {
 	 * pause the game
 	 */
 	public void pause() {
-
+		// TODO
 	}
 
 	/**
@@ -153,6 +152,6 @@ public class Game {
 	 * @return if the removing was successful or not
 	 */
 	public boolean skipPlayer(Player other) {
-		// 
+		return false;
 	}
 }
