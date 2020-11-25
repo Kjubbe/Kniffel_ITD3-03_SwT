@@ -24,6 +24,8 @@ public class Game {
 	private final List<Player> players;
 	private Player currentPlayer;
 
+	public static Die[] dice = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
+
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
 	 * players, max Games, games to win and the host.
@@ -81,7 +83,9 @@ public class Game {
 	 * roll all die
 	 */
 	public void rollDie() {
-		//
+		for (Die d : dice) {
+			d.roll();
+		}
 	}
 
 	/**

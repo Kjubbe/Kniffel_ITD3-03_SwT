@@ -1,11 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * This class holds information about the card of a player, it contains all 13
  * fields
@@ -31,12 +25,12 @@ public class Card {
 	private static final int YAHTZEE_INDEX = 11;
 	private static final int CHANCE_INDEX = 12;
 
+	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
+			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
+			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
+
 	// Fields on the card
-	private final Field[] allFields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
-			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
-			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
-			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
-			new Field("Kniffel", 50), new Field("Chance") };
+	private final Field[] allFields;
 
 	/**
 	 * Constructor, assigns an owner to the card.
@@ -45,6 +39,10 @@ public class Card {
 	 */
 	public Card(Player player) {
 		this.owner = player;
+		allFields = new Field[13];
+		for (int i = 0; i < FIELD_NAMES.length; i++) {
+			allFields[i] = new Field(FIELD_NAMES[i]);
+		}
 	}
 
 	/**
@@ -62,29 +60,29 @@ public class Card {
 	 * @return total points
 	 */
 	public int getTotal() {
-		return getPart1() + getPart2();
+		return getPart1(true) + getPart2();
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the total points of part 1
 	 * 
-	 * @return total points
+	 * @return points of part 1
 	 */
-	public int getPart1() {
+	public int getPart1(boolean withBonus) {
 		int result = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
 			result += allFields[i].getValue();
 		}
-		if (result >= BONUS_REQ) {
+		if (withBonus && result >= BONUS_REQ) {
 			result += BONUS;
 		}
 		return result;
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * Calculate and return the total points of part 2
 	 * 
-	 * @return total points
+	 * @return points of part 2
 	 */
 	public int getPart2() {
 		int result = 0;
