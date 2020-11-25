@@ -160,14 +160,18 @@ public class DatabaseinterfaceTest {
                         assertTrue(Math.abs(pStats.getTimePlayed() - dbStats.getTimePlayed()) < 0.0001);
                     }
 
-                } else if (state < 0.95) {// 35% updating player
+                } else if (state < 0.8) {// 20% updating player stats
                     generate(chosenOne);
-                    result = Databaseinterface.getInstance().updatePlayer(chosenOne);
+                    result = Databaseinterface.getInstance().updatePlayerStats(chosenOne);
+                    assertTrue(result);
+                } else if (state < 0.95) {// 15% updating player password
+                    chosenOne.changePassword("newpw" + rng.nextInt(99999));
+                    result = Databaseinterface.getInstance().updatePlayerPassword(chosenOne);
                     assertTrue(result);
                 } else { // 5% nonsense and null
                     switch (rng.nextInt(6)) {
                         case 0: // null test: updating
-                            result = Databaseinterface.getInstance().updatePlayer(null);
+                            result = Databaseinterface.getInstance().updatePlayerStats(null);
                             assertFalse(result);
                             break;
 

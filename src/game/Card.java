@@ -34,7 +34,7 @@ public class Card {
 	// Fields on the card
 	private final Field[] allFields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
 			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
-			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
+			new Field("Nur Sechser Zählen"), new Field("Dreierpasch"), new Field("Viererpasch"),
 			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40),
 			new Field("Kniffel", 50), new Field("Chance") };
 
