@@ -28,4 +28,13 @@ public class RegisteredPlayer extends Player {
 	public String getPassword() {
 		return password;
 	}
+
+	/**
+	 * change password
+	 * 
+	 * @param pw new password
+	 */
+	public void changePassword(String pw) {
+		password = pw;
+	}
 }
