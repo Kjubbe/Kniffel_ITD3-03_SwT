@@ -124,15 +124,6 @@ public class Player {
 	}
 
 	/**
-	 * Getter for the amount of open fields
-	 * 
-	 * @return total points
-	 */
-	public int getOpenFields() {
-		return myCard.getOpenFields();
-	}
-
-	/**
 	 * Make your turn
 	 */
 	protected void makeTurn() {
