@@ -72,12 +72,12 @@ public final class Databaseinterface {
 
             // check for the players stats
             ResultSet statsSet = read("SELECT * FROM Stats WHERE id=" + statsId);
-            if (check(statsSet)) { // stats found // TODO: check if condition is needed
+            if (check(statsSet)) { // stats found
                 Stats stats = new Stats(player, statsSet.getInt("gamesWon"), statsSet.getInt("gamesPlayed"),
                         statsSet.getInt("roundsPlayed"), statsSet.getInt("points"), statsSet.getInt("diceRolled"),
                         statsSet.getInt("timePlayed")); // new stats object
                 player.assignStats(stats); // assign the stats to the player
-                all.add(player); // TODO: players without stats are not added to the list
+                all.add(player);
             }
         }
 
@@ -109,7 +109,7 @@ public final class Databaseinterface {
         // search for the stats in the database
         Stats stats = null;
         set = read("SELECT * FROM Stats WHERE id=" + statsId);
-        if (check(set)) { // stats found // TODO: check if condition is needed
+        if (check(set)) { // stats found
             stats = new Stats(player, set.getInt("gamesWon"), set.getInt("gamesPlayed"), set.getInt("roundsPlayed"),
                     set.getInt("points"), set.getInt("diceRolled"), set.getInt("timePlayed")); // new stats object
             player.assignStats(stats); // assign the stats to the player
@@ -122,13 +122,13 @@ public final class Databaseinterface {
     }
 
     /**
-     * update a player and their stats in the database
+     * update a players stats in the database
      * 
      * @param player player object containing data
      * @return if successful
      * @throws SQLException if a database access error occurs
      */
-    public boolean updatePlayer(RegisteredPlayer player) throws SQLException {
+    public boolean updatePlayerStats(RegisteredPlayer player) throws SQLException {
         boolean result = false;
         connect();
 
@@ -141,15 +141,37 @@ public final class Databaseinterface {
             if (check(set)) { // player found
                 int statsId = set.getInt("stats_id"); // retrieve their stats id from the database
 
-                // update the players password // TODO: always executing query on db is resource heavy
-                write("UPDATE RegisteredPlayer SET password='" + player.getPassword() + "' WHERE name='"
-                            + player.getName() + "'");
-
-                // update the players stats // TODO: always executing query on db is resource heavy
                 write("UPDATE Stats SET gamesWon=" + playerStats.getGamesWon() + "," + "gamesPlayed="
                         + playerStats.getGamesPlayed() + "," + "roundsPlayed=" + playerStats.getRoundsPlayed() + ","
                         + "points=" + playerStats.getPoints() + "," + "diceRolled=" + playerStats.getDiceRolled() + ","
                         + "timePlayed=" + playerStats.getTimePlayed() + " WHERE id=" + statsId); // update their stats
+                result = true;
+            }
+        }
+
+        close();
+        return result;
+    }
+
+    /**
+     * update a players password in the database
+     * 
+     * @param player player object containing data
+     * @return if successful
+     * @throws SQLException if a database access error occurs
+     */
+    public boolean updatePlayerPassword(RegisteredPlayer player) throws SQLException {
+        boolean result = false;
+        connect();
+
+        // player and their stats can not be null
+        if (player != null) {
+            // check for the player in the database
+            ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + player.getName() + "'");
+            if (check(set)) { // player found
+                // update the players password
+                write("UPDATE RegisteredPlayer SET password='" + player.getPassword() + "' WHERE name='"
+                        + player.getName() + "'");
                 result = true;
             }
         }
@@ -172,7 +194,7 @@ public final class Databaseinterface {
         // player and their stats can not be null
         if (player != null && player.getStats() != null) { // player not found
             ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + player.getName() + "'");
-            if (!check(set)) { // no player found with that name // TODO: check if condition is good
+            if (!check(set)) { // no player found with that name
                 Stats playerStats = player.getStats(); // retrieve the players stats
 
                 // create a new row in the Stats table
@@ -181,7 +203,7 @@ public final class Databaseinterface {
                         + playerStats.getGamesPlayed() + "," + playerStats.getRoundsPlayed() + ","
                         + playerStats.getPoints() + "," + playerStats.getDiceRolled() + ","
                         + playerStats.getTimePlayed() + ")");
-                if (check(set)) { // if successful // TODO: check if condition is needed
+                if (check(set)) { // if successful
                     // create a new row in the RegisteredPlayer table with the id of the stats row
                     write("INSERT INTO RegisteredPlayer (name, password, stats_id) VALUES ('" + player.getName() + "','"
                             + player.getPassword() + "'," + set.getInt("id") + ")");

@@ -12,10 +12,11 @@ public class Player {
 
 	// data fields
 	protected String name;
+	protected boolean saveStats;
 
-	protected Game joinedServer;
+	protected Game myGame;
 	protected Stats myStats;
-	protected Card myCard;
+	protected Card myCard = new Card(this);
 
 	protected int wins;
 
@@ -26,7 +27,13 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
-		assignCard();
+	}
+
+	/**
+	 * invoke to save the players stats
+	 */
+	public void saveStats() {
+		saveStats = true;
 	}
 
 	/**
@@ -59,6 +66,7 @@ public class Player {
 
 	/**
 	 * Assign stats to this player
+	 * TODO remove, this is for testing purposes
 	 */
 	public final void assignStats() {
 		this.myStats = new Stats(this);
@@ -121,15 +129,6 @@ public class Player {
 	 */
 	public int getWins() {
 		return wins;
-	}
-
-	/**
-	 * Getter for the amount of open fields
-	 * 
-	 * @return total points
-	 */
-	public int getOpenFields() {
-		return myCard.getOpenFields();
 	}
 
 	/**
