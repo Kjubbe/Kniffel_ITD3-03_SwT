@@ -46,8 +46,7 @@ public class Player {
 	}
 
 	/**
-	 * Assign stats to this player
-	 * TODO remove, this is for testing purposes
+	 * Assign stats to this player TODO remove, this is for testing purposes
 	 */
 	public final void assignStats() {
 		this.myStats = new Stats(this);

@@ -27,15 +27,19 @@ public class Game {
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
 	private final List<Player> players; // contains all participating players
-	public Player currentPlayer;
-	public Player winner;
-	private int playerIndex;
 
+	public Player currentPlayer; // the current player doing his turn
+	private int playerIndex; // index of the current player
+	public Player winner; // winner of the game
+
+	/**
+	 * array of dice for rolling
+	 */
 	public static final Die[] DICE = { new Die(), new Die(), new Die(), new Die(), new Die() };
-	private int[] diceValues;
 	public static final int MAX_ROLLS = 3;
-
+	private int[] diceValues;
 	public int rolls;
+
 	public static final int MAX_ROUNDS = Card.FIELD_NAMES.length;
 	private int roundsPlayed;
 	private int gamesPlayed;
@@ -69,7 +73,7 @@ public class Game {
 	public Game(boolean autofill, boolean autocalc, byte gamesToWin, List<Player> players) {
 		this.useAutofill = autofill;
 		this.useAutocalc = autocalc;
-		this.maxGames = (gamesToWin - 1) * players.size();
+		this.maxGames = (gamesToWin - 1) * players.size(); // the maximum amount of games is calculated
 		this.gamesToWin = gamesToWin;
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
@@ -83,13 +87,13 @@ public class Game {
 	public boolean rollDie() {
 		boolean turnOver = rolls >= 3;
 		if (!turnOver) {
-			for (Die d : DICE) {
+			for (Die d : DICE) { // roll the die when the turn is not over
 				d.roll();
 			}
 			rolls++;
 
 			turnOver = rolls >= 3;
-			if (turnOver) {
+			if (turnOver) { // end the turn if the turn is over after rolling
 				endTurn();
 			}
 		}
@@ -104,15 +108,15 @@ public class Game {
 	public boolean nextPlayer() {
 		playerIndex++;
 		rolls = 0;
-		if (players.size() - 1 > playerIndex) {
-			playerIndex = 0;
+		if (players.size() - 1 > playerIndex) { // check if there is another player
+			playerIndex = 0; // loop around
 			roundsPlayed++;
 		}
-		if (roundsPlayed >= MAX_ROUNDS) {
-			findWinner();
+		if (roundsPlayed >= MAX_ROUNDS) { // check if all rounds have been played
+			findWinner(); // find a winner
 			return true;
-		} else {
-			currentPlayer = players.get(playerIndex);
+		} else { // there are more rounds
+			currentPlayer = players.get(playerIndex); // set the next player
 		}
 		return false;
 	}
@@ -123,6 +127,7 @@ public class Game {
 	 * @return true if this was the last game
 	 */
 	public boolean nextGame() {
+		// first, check if someone has won enough games
 		boolean done = false;
 		for (Player p : players) {
 			if (p.getWins() >= gamesToWin) {
@@ -130,6 +135,7 @@ public class Game {
 				break;
 			}
 		}
+		// second, check if there are enough games played
 		boolean over = done || gamesPlayed >= maxGames;
 		if (!over) {
 			restart();
@@ -145,9 +151,9 @@ public class Game {
 	public void endTurn() {
 		diceValues = new int[DICE.length];
 		for (int i = 0; i < diceValues.length; i++) {
-			diceValues[i] = DICE[i].getValue();
+			diceValues[i] = DICE[i].getValue(); // set each value in the array
 		}
-		currentPlayer.getCard().calculatePoints(diceValues);
+		currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
 	}
 
 	/**
@@ -180,26 +186,26 @@ public class Game {
 	}
 
 	/**
-	 * Remove a player from the server
+	 * remove a player from the server
 	 * 
-	 * @param other Player, who is removed
+	 * @param player Player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean removePlayer(Player other) {
-		if (other == currentPlayer) {
-			skipPlayer(other);
+	public boolean removePlayer(Player player) {
+		if (player == currentPlayer) {
+			skipPlayer(player);
 		}
-		return players.remove(other);
+		return players.remove(player);
 	}
 
 	/**
-	 * Remove a player from the server
+	 * remove a player from the server
 	 * 
-	 * @param other Player, who is removed
+	 * @param player player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean skipPlayer(Player other) {
-		boolean result = other == currentPlayer;
+	public boolean skipPlayer(Player player) {
+		boolean result = player == currentPlayer;
 		if (result) {
 			currentPlayer.getCard().setToZero();
 			nextPlayer();

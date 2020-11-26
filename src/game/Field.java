@@ -19,8 +19,8 @@ public class Field {
 	private int defaultValue;
 
 	/**
-	 * contains the possible, current value for this field. this is calculated by the
-	 * card for each turn
+	 * contains the possible, current value for this field. this is calculated by
+	 * the card for each turn
 	 */
 	private int currentValue;
 
@@ -77,13 +77,14 @@ public class Field {
 	}
 
 	/**
-	 * choose this field, sets the chosen value to the current value when the card is
-	 * not chosen or crossed and if the current value is not 0
+	 * choose this field, sets the chosen value to the current value when the card
+	 * is not chosen or crossed and if the current value is not 0
 	 * 
 	 * @return if successful
 	 */
 	public boolean choose() {
-		// there is no point in choosing a card which is worth 0 points. so it is not possible
+		// there is no point in choosing a card which is worth 0 points. so it is not
+		// possible
 		boolean result = isOpen() && currentValue != 0;
 		if (result) {
 			this.chosenValue = currentValue;

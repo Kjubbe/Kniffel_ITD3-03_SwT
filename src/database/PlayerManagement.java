@@ -11,7 +11,7 @@ import game.RegisteredPlayer;
 import game.Stats;
 
 /**
- * manages players with the database
+ * manages players inside the database
  * 
  * @author Kjell Treder
  */
@@ -19,6 +19,7 @@ import game.Stats;
 public class PlayerManagement {
 
     private static PlayerManagement instance;
+
     /**
      * contains all logged in players
      */
