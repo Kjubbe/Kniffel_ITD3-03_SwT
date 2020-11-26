@@ -114,6 +114,8 @@ public class Player {
 
 	/**
 	 * check if player wants to save their stats
+	 * 
+	 * @return if saving stats
 	 */
 	public boolean isSavingStats() {
 		return saveStats;
