@@ -32,7 +32,7 @@ public class Game {
 	private int playerIndex;
 
 	public static final Die[] DICE = { new Die(), new Die(), new Die(), new Die(), new Die() };
-	public int[] diceValues;
+	private int[] diceValues;
 	public static final int MAX_ROLLS = 3;
 
 	public int rolls;
@@ -130,7 +130,7 @@ public class Game {
 				break;
 			}
 		}
-		boolean over = done || gamesPlayed >= maxGames
+		boolean over = done || gamesPlayed >= maxGames;
 		if (!over) {
 			restart();
 		} else {
