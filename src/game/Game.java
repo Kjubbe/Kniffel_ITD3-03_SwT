@@ -21,7 +21,7 @@ public class Game {
 	private int roundNr = 1;
 
 	private final List<Player> players;
-	private Player currentPlayer;
+	public Player currentPlayer;
 
 	public static final Die[] DICE = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
 

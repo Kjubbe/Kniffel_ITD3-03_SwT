@@ -622,20 +622,21 @@ public class GameView extends javax.swing.JFrame {
     /*
     private void tableSetPoints() {
         for (int i = 0; i < 6; i++) {
-            if(Card.fields[i].isChosen()) playercard.setValueAt(Card.fields[i].getValue(), i, 1);
-            if(Card.fields[i].isCrossed()) playercard.setValueAt("---", i, 1);
+            if(game.currentPlayer.getCard().allFields[i].getValue() == 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getValue(), i, 1);
+            if(game.currentPlayer.getCard().allFields[i].getValue() == -1) playercard.setValueAt("---" , i, 1);
         }
         for (int j = 6; j < 13; j++) {
-            if(Card.fields[j].isChosen()) { playercard.setValueAt(Card.fields[j].getValue(), j+3, 1);
-            if(Card.fields[j].isCrossed()) playercard.setValueAt("---", j+3, 1);
+            if(game.currentPlayer.getCard().allFields[j].getValue() == 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getValue(), j+3, 1);
+            if(game.currentPlayer.getCard().allFields[j].getValue() == -1) playercard.setValueAt("---" , j+3, 1);
         }
-        playercard.setValueAt(Card.getPart1NoBonus(), 6, 1);     // Part 1
-        playercard.setValueAt(Card.getPart1(), 8, 1);     // Part 1 + Bonus
-        playercard.setValueAt(Card.getPart1(), 16, 1);    // Part 1
-        playercard.setValueAt(Card.getPart2(), 17, 1);    // Part 2
-        playercard.setValueAt(Card.getTotal(), 18, 1);    // Totals
+        playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1);     // Part 1
+        playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
+        playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 16, 1);    // Part 1
+        playercard.setValueAt(game.currentPlayer.getCard().getPart2(), 17, 1);    // Part 2
+        playercard.setValueAt(game.currentPlayer.getCard().getTotal(), 18, 1);    // Totals
+        
     }
-     */
+    */
     /**
      * show the avalibleDiece
      */
