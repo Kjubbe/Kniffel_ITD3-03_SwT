@@ -88,9 +88,7 @@ public class Card {
         public int getPart1NoBonus() {
             int part1NoBonus = 0;
             for (int i = 0; i <= PART1_END_INDEX; i++) {
-			if (fields[i].isChosen()) {
-				part1NoBonus += fields[i].getValue();
-			}
+			part1NoBonus += allFields[i].getValue();
 		}
             return part1NoBonus;
         }
