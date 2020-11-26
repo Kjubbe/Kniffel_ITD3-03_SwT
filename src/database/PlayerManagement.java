@@ -116,6 +116,7 @@ public class PlayerManagement {
      * the user can continue as a guest
      * 
      * @param name player name
+     * @return if successful
      */
     public boolean playAsGuest(String name) {
         return addPlayer(new Player(name));

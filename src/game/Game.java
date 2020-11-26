@@ -1,6 +1,5 @@
 package game;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,6 +21,9 @@ public class Game {
 	private int roundNr = 1;
 
 	private final List<Player> players;
+	private Player currentPlayer;
+
+	public static final Die[] DICE = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
 
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
@@ -45,53 +47,92 @@ public class Game {
 	 * Add Player to the server
 	 * 
 	 * @param p  Player, who is added to the server
-	 * @param pw password input of the player // TODO remove pw
 	 * @return if the adding was successful or not
 	 */
-	public boolean addPlayer(Player p, String pw) { // TODO remove pw
-		// TODO check the password and if the maximum player count has not been reached
-		return false;
-	}
-
-	/**
-	 * End the server
-	 */
-	public void endServer() {
-		// TODO show how many wins each player had
+	public boolean addPlayer(Player p) {
+		boolean result = false;
+		if (players.size() < maxPlayers) {
+			players.add(p);
+			result = true;
+		}
+		return result;
 	}
 
 	/**
 	 * Play the game
 	 */
 	public void play() {
-		// TODO start the game
-		// TODO let each player do their turns
-		// TODO repeat until no players have any open fields
-		// TODO find a winner
-		// TODO restart the game until all games are played
-		// TODO end the server
+		for (int i = 0; i < maxGames; i++) {
+			for (Player p : players) {
+				if (p.wins >= gamesToWin) {
+					findWinner();
+					return;
+				}
+			}
+			
+			for (Player p : players) {
+				p.makeTurn();
+			}
+		}
+	}
+
+	/**
+	 * roll all die
+	 */
+	public void rollDie() {
+		for (Die d : DICE) {
+			d.roll();
+		}
+	}
+
+	/**
+	 * end your turn
+	 */
+	public void endTurn() {
+		// TODO
 	}
 
 	/**
 	 * Find the winner of the game
 	 */
-	private void findWinner() {
-		// TODO
+	public void findWinner() {
+		Player winner = players.get(0);
+		for (Player p : players) {
+			int points = p.getPoints();
+			if (points > winner.getPoints()) {
+				winner = p;
+			}
+		}
 	}
 
 	/**
 	 * Reset, so another game can be played
 	 */
-	private void reset() {
-		// TODO reassign new cards for every player
+	public void reset() {
+		for (Player p : players) {
+			p.assignCard();
+		}
 	}
 
 	/**
-	 * Restart the server.
+	 * restart the game
 	 */
-	public void restartServer() {
-		reset();
-		play();
+	public void restart() {
+		// TODO
+	}
+
+	/**
+	 * stop the game
+	 */
+	public void stop() {
+		// TODO show how many wins each player had
+	}
+
+	/**
+	 * pause the game
+	 */
+	public void pause() {
+		// TODO
 	}
 
 	/**
@@ -101,7 +142,16 @@ public class Game {
 	 * @return if the removing was successful or not
 	 */
 	public boolean removePlayer(Player other) {
-		// TODO
+		return players.remove(other);
+	}
+  
+	/**
+	 * Remove a player from the server
+	 * 
+	 * @param other Player, who is removed
+	 * @return if the removing was successful or not
+	 */
+	public boolean skipPlayer(Player other) {
 		return false;
 	}
 }
