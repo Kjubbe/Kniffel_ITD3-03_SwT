@@ -165,4 +165,19 @@ public class PlayerManagement {
     public List<Player> getAllPlayers() {
         return loggedIn;
     }
+
+    /**
+     * save all players in the database
+     */
+    public void savePlayers() {
+        for (Player p : loggedIn) {
+            if (p instanceof RegisteredPlayer && p.isSavingStats()) {
+                try {
+                    Databaseinterface.getInstance().savePlayer((RegisteredPlayer) p);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
 }

@@ -4,7 +4,7 @@ package game;
  * Player management, contains information about the state of the player player
  * can play the game
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
@@ -176,5 +176,12 @@ public class Player {
 	 */
 	protected void crossField() {
 		// TODO cross fields based on user input
+	}
+
+	/**
+	 * check if player wants to save their stats
+	 */
+	public boolean isSavingStats() {
+		return saveStats;
 	}
 }

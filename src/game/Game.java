@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * a server instance manages the game and their players
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

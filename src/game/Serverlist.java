@@ -7,7 +7,7 @@ import java.util.List;
  * the server list holds all servers
  * TODO remove this, since there is only local support
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

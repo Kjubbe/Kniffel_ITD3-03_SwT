@@ -3,7 +3,7 @@ package game;
 /**
  * This class holds information about a field, a field can be crossed or chosen
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

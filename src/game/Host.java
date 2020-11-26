@@ -3,7 +3,7 @@ package game;
 /**
  * This class manages the actions of the host, inherits from player
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

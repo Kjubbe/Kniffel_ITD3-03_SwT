@@ -6,7 +6,7 @@ import java.util.Random;
  * This class holds information about a die, a die can be rollable or not
  * rollable, a die can be rolled
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

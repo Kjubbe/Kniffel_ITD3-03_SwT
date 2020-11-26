@@ -3,7 +3,7 @@ package game;
 /**
  * contains all data for a player
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 

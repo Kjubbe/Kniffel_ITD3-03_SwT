@@ -1,22 +1,20 @@
 package game;
 
 /**
- * This class holds information about the card of a player, it contains all 13
- * fields
+ * contains information about a card of a player. the player can choose or cross fields. this class also manages all calculations with points for all existing fields
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
 public class Card {
 
-	// Data fields
-
-	private Player owner; // Card Owner
-	private static final int BONUS = 35; // Bonus points for reaching 63 points on the first card
-	private static final int BONUS_REQ = 63;
+	private Player owner; // card owner
+	private static final int BONUS = 35; // the amount of bonus points
+	private static final int BONUS_REQ = 63; // the required amount of points in part 1 to get bonus points
 	private static final int PART1_END_INDEX = 5;
 
+	// indices of the fields on the card
 	private static final int THREE_OF_A_KIND_INDEX = 6;
 	private static final int FOUR_OF_A_KIND_INDEX = 7;
 	private static final int FULL_HOUSE_INDEX = 8;
@@ -25,37 +23,39 @@ public class Card {
 	private static final int YAHTZEE_INDEX = 11;
 	private static final int CHANCE_INDEX = 12;
 
+	// names for the fields
 	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
 			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
 			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
 
-	// Fields on the card
-	private final Field[] allFields;
+	// array with all the fields on this card
+	private final Field[] allFields = new Field[FIELD_NAMES.length];
 
 	/**
-	 * Constructor, assigns an owner to the card.
+	 * constructor, assigns a player to this card
 	 * 
-	 * @param player Player, who is the owner of this card.
+	 * @param player the owner of this card
 	 */
 	public Card(Player player) {
 		this.owner = player;
-		allFields = new Field[13];
+
+		// add all fields to the array
 		for (int i = 0; i < FIELD_NAMES.length; i++) {
 			allFields[i] = new Field(FIELD_NAMES[i]);
 		}
 	}
 
 	/**
-	 * Getter for owner of the card
+	 * get the card owner
 	 * 
-	 * @return Player, who owns the card
+	 * @return player object, who owns this card
 	 */
 	public Player getCardOwner() {
 		return owner;
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * calculate and return the total points of the card
 	 * 
 	 * @return total points
 	 */
@@ -64,9 +64,9 @@ public class Card {
 	}
 
 	/**
-	 * Calculate and return the total points of part 1
+	 * calculate and return the points of part 1
 	 * 
-	 * @param withBonus if the points include the bonus
+	 * @param withBonus if the point calculation should include the bonus if applicable
 	 * @return points of part 1
 	 */
 	public int getPart1(boolean withBonus) {
@@ -98,7 +98,7 @@ public class Card {
 	 * 
 	 * @param num value of the five die
 	 */
-	public void calculatePoints(Integer[] num) {
+	public void calculatePoints(int[] num) {
 		bubbleSort(num);
 
 		int total = 0;
@@ -261,12 +261,12 @@ public class Card {
 	 * 
 	 * @param num value of the five die
 	 */
-	private void bubbleSort(Integer[] num) {
+	private static void bubbleSort(int[] num) {
 		boolean unsorted = true;
 		while (unsorted) {
 			unsorted = false;
 			for (int i = 0; i < num.length - 1; i++) {
-				if (!(num[i] >= num[i + 1])) {
+				if ((num[i] < num[i + 1])) {
 					int dummy = num[i];
 					num[i] = num[i + 1];
 					num[i + 1] = dummy;

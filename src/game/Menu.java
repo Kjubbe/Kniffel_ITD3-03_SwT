@@ -3,7 +3,7 @@ package game;
 /**
  * Class for menu management
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
