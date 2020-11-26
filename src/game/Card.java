@@ -1,7 +1,9 @@
 package game;
 
 /**
- * contains information about a card of a player. the player can choose or cross fields. this class also manages all calculations with points for all existing fields
+ * contains information about a card of a player. the player can choose or cross
+ * fields. this class also manages all calculations with points for all existing
+ * fields
  * 
  * @author Kjell Treder
  *
@@ -29,7 +31,7 @@ public class Card {
 			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
 
 	// array with all the fields on this card
-	private final Field[] allFields = new Field[FIELD_NAMES.length];
+	public final Field[] allFields = new Field[FIELD_NAMES.length];
 
 	/**
 	 * constructor, assigns a player to this card
@@ -66,7 +68,8 @@ public class Card {
 	/**
 	 * calculate and return the points of part 1
 	 * 
-	 * @param withBonus if the point calculation should include the bonus if applicable
+	 * @param withBonus if the point calculation should include the bonus if
+	 *                  applicable
 	 * @return points of part 1
 	 */
 	public int getPart1(boolean withBonus) {
@@ -81,7 +84,7 @@ public class Card {
 	}
 
 	/**
-	 * Calculate and return the total points of part 2
+	 * calculate and return the total points of part 2
 	 * 
 	 * @return points of part 2
 	 */
@@ -96,11 +99,13 @@ public class Card {
 	/**
 	 * calculate the points for the fields
 	 * 
-	 * @param num value of the five die
+	 * @param num values of the five dice
 	 */
 	public void calculatePoints(int[] num) {
-		bubbleSort(num);
+		// first, sort the values
+		num = bubbleSort(num);
 
+		// calculate the total
 		int total = 0;
 		for (int n : num) {
 			total += n;
@@ -136,7 +141,7 @@ public class Card {
 		 */
 		boolean quad = false;
 		for (int i = 0; i < num.length - 1; i++) {
-			// Test if the adjacent numbers are the same
+			// test if the adjacent numbers are the same
 			if (num[i] == num[i + 1]) {
 				sameAdjacentPairs++; // increase amount of same adjacent pairs
 				pairs++; // increase amount of pairs
@@ -145,7 +150,7 @@ public class Card {
 				sameAdjacentPairs = 0;
 			}
 
-			// Test if the adjacent numbers are increasing
+			// test if the adjacent numbers are increasing
 			if (num[i] == num[i + 1] + 1) {
 				increase++;
 			}
@@ -226,8 +231,12 @@ public class Card {
 	 * @param field the field to be crossed
 	 * @return if successful
 	 */
-	public boolean crossField(Field field) {
-		return field.cross();
+	public boolean crossField(int index) {
+		Field field = allFields[index];
+		boolean result = field.cross();
+		if (result)
+			setToZero();
+		return result;
 	}
 
 	/**
@@ -236,32 +245,32 @@ public class Card {
 	 * @param field the field to be chosen
 	 * @return if successful
 	 */
-	public boolean chooseField(Field field) {
+	public boolean chooseField(int index) {
+		Field field = allFields[index];
 		boolean result = field.choose();
-		if (result) {
-			for (Field f : allFields) {
-				f.setValue(0);
-			}
-		}
+		if (result)
+			setToZero();
 		return result;
 	}
 
 	/**
-	 * choose a field and set its value
+	 * choose a field and set its value. this is useful when playing without
+	 * autofill
 	 * 
 	 * @param field the field to be chosen
 	 * @param value the new value of the field
 	 */
-	public void chooseField(Field field, int value) {
+	public void chooseField(int index, int value) {
+		Field field = allFields[index];
 		field.choose(value);
 	}
 
 	/**
-	 * bubble-sorting algorithm for sorting the dice
+	 * bubble-sorting algorithm for sorting the dice values
 	 * 
-	 * @param num value of the five die
+	 * @param num value of the five dice
 	 */
-	private static void bubbleSort(int[] num) {
+	private static int[] bubbleSort(int[] num) {
 		boolean unsorted = true;
 		while (unsorted) {
 			unsorted = false;
@@ -273,6 +282,16 @@ public class Card {
 					unsorted = true;
 				}
 			}
+		}
+		return num;
+	}
+
+	/**
+	 * set all field values to zero
+	 */
+	public void setToZero() {
+		for (Field f : allFields) {
+			f.setValue(0);
 		}
 	}
 }

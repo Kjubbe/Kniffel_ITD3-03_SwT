@@ -37,25 +37,6 @@ public class Player {
 	}
 
 	/**
-	 * Search for a server
-	 */
-	public void searchServer() {
-		// TODO
-	}
-
-	/**
-	 * Join a server
-	 * 
-	 * @param server server to be joined
-	 * @return if joining was successful.
-	 */
-	public boolean joinServer(Game server) {
-		// TODO assign the joined server
-		// TODO tell the server that the player joined
-		return false;
-	}
-
-	/**
 	 * Assign stats to this player
 	 * 
 	 * @param stats Stats to be assigned
@@ -129,53 +110,6 @@ public class Player {
 	 */
 	public int getWins() {
 		return wins;
-	}
-
-	/**
-	 * Make your turn
-	 */
-	protected void makeTurn() {
-		// TODO create die for the player
-		// TODO roll all die
-		// TODO wait for user input to choose dice or roll again
-		// TODO end turn
-	}
-
-	/**
-	 * End your turn
-	 * 
-	 * @param dice[] array of the dices
-	 */
-	protected void endTurn(Die[] dice) {
-		// TODO show the card
-		// TODO choose or cross a field
-	}
-
-	/**
-	 * Choose dice
-	 * 
-	 * @param dice Players dice
-	 * @return if player wants to roll again
-	 */
-	protected boolean chooseDice(Die[] dice) {
-		// TODO toggle the state of the die based on user input
-		return false;
-	}
-
-	/**
-	 * Choose a field to fill
-	 * 
-	 * @param result Value of the dice
-	 */
-	protected void chooseField(Integer[] result) {
-		// TODO choose or cross fields based on user input
-	}
-
-	/**
-	 * Choose a field to cross
-	 */
-	protected void crossField() {
-		// TODO cross fields based on user input
 	}
 
 	/**

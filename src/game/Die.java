@@ -3,8 +3,8 @@ package game;
 import java.util.Random;
 
 /**
- * This class holds information about a die, a die can be rollable or not
- * rollable, a die can be rolled
+ * contains information about a specific die with a value. a die can be rolled
+ * and toggled
  * 
  * @author Kjell Treder
  *
@@ -13,23 +13,13 @@ import java.util.Random;
 public class Die {
 
 	// data fields
-	private final int id; // identifier for the die
 	private boolean isRollable = true; // if the die is rollable
 	private int value; // value of the die
 
 	private static final Random rng = new Random();
 
 	/**
-	 * Constructor, gives an id to the die
-	 * 
-	 * @param id id of the die
-	 */
-	public Die(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Roll the die sets a number between one and six
+	 * roll the die. generates a random value between 1 and 6
 	 */
 	public void roll() {
 		if (isRollable) {
@@ -38,32 +28,23 @@ public class Die {
 	}
 
 	/**
-	 * Toggle the rollable boolean of the die
+	 * toggle the ability to roll this die
 	 */
 	public void toggle() {
 		isRollable = !isRollable;
 	}
 
 	/**
-	 * Getter for the value
+	 * get the value of this die
 	 * 
-	 * @return value
+	 * @return value of the die
 	 */
 	public int getValue() {
 		return value;
 	}
 
 	/**
-	 * Getter for the id
-	 * 
-	 * @return id of the die
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * Getter for the status
+	 * check if the die is rollable
 	 * 
 	 * @return rollable boolean of the die
 	 */
