@@ -201,9 +201,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dieSeperation" alignment="0" max="32767" attributes="0"/>
                           <Component id="availableDiece" alignment="0" max="32767" attributes="0"/>
                           <Component id="choosenDiece" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dieSeperation" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -214,7 +214,6 @@
                       <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="513" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,8 +225,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="availableDiece" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="dieSeperation" min="-2" pref="8" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="dieSeperation" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="choosenDiece" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="32767" attributes="0"/>

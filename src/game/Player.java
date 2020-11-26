@@ -139,7 +139,7 @@ public class Player {
 
 		// TODO roll all die
                 for(int i = 0; i < 6; i++){
-                    Game.dice[i].roll();     
+                    Game.DICE[i].roll();     
                 }
 		// TODO wait for user input to choose dice or roll again
 		// TODO end turn

@@ -420,16 +420,15 @@ public class GameView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dieSeperation)
                             .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dieSeperation, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
-                .addContainerGap(513, Short.MAX_VALUE))
+                        .addContainerGap(41, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,8 +438,8 @@ public class GameView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(choosenDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
@@ -468,7 +467,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // Back to Main Menu
-        game.endServer();
+        //game.endServer();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void Player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player1ButtonActionPerformed
@@ -489,8 +488,8 @@ public class GameView extends javax.swing.JFrame {
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         for (int i = 0; i < 6; i++) {
-            if (Game.dice[i].isRollable()) {
-                Game.dice[i].roll();
+            if (Game.DICE[i].isRollable()) {
+                Game.DICE[i].roll();
             }
         }
     }//GEN-LAST:event_rollButtonActionPerformed
@@ -557,12 +556,12 @@ public class GameView extends javax.swing.JFrame {
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
-        //game.stopServer();
+        game.stop();
     }//GEN-LAST:event_pauseGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
-        game.restartServer();
+        game.restart();
         System.out.println("test");
     }//GEN-LAST:event_restartGameActionPerformed
 
@@ -584,36 +583,33 @@ public class GameView extends javax.swing.JFrame {
      */
     private void tableSetFieldNames() {
         playercardOf.setText("Spielerkarte von " /*+ playerWithTurn.getName()*/);
-        for (int i = 0; i < 6; i++) {
-            playercard.setValueAt(Card.fieldnames[i], i, 0);
-        }
-        for (int j = 6; j < 13; j++) {
-            playercard.setValueAt(Card.fieldnames[j], j + 3, 0);
+        for (int i = 0; i < 13; i++) {
+            playercard.setValueAt(Card.FIELD_NAMES[i], i, 0);
         }
     }
 
     private void showDie() {
-        if (Game.dice[0].isRollable()) {
+        if (Game.DICE[0].isRollable()) {
             dice7.setVisible(false);
         } else {
             dice1.setVisible(false);
         }
-        if (Game.dice[1].isRollable()) {
+        if (Game.DICE[1].isRollable()) {
             dice6.setVisible(false);
         } else {
             dice2.setVisible(false);
         }
-        if (Game.dice[2].isRollable()) {
+        if (Game.DICE[2].isRollable()) {
             dice8.setVisible(false);
         } else {
             dice3.setVisible(false);
         }
-        if (Game.dice[3].isRollable()) {
+        if (Game.DICE[3].isRollable()) {
             dice9.setVisible(false);
         } else {
             dice4.setVisible(false);
         }
-        if (Game.dice[4].isRollable()) {
+        if (Game.DICE[4].isRollable()) {
             dice10.setVisible(false);
         } else {
             dice5.setVisible(false);
