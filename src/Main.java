@@ -1,5 +1,4 @@
 
-import view.GameView;
 import view.StartScreenView;
 
 /**
@@ -20,9 +19,9 @@ public class Main {
 		System.out.println("Hello World"); // :)
 		// TODO
                 // scur scur 
-                new GameView().setVisible(true);
+                //new GameView().setVisible(true);
                 
 		// scur scur
-    StartScreenView start = new StartScreenView();
+		new StartScreenView();
 	}
 }

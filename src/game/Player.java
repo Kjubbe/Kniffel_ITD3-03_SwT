@@ -29,6 +29,10 @@ public class Player {
 		this.name = name;
 		assignCard();
 	}
+	
+	public String toString() {
+		return name;
+	}
 
 	/**
 	 * invoke to save the players stats
