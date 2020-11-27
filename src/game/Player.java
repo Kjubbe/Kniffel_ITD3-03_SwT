@@ -4,7 +4,7 @@ package game;
  * Player management, contains information about the state of the player player
  * can play the game
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
@@ -14,9 +14,9 @@ public class Player {
 	protected String name;
 	protected boolean saveStats;
 
-	protected Game joinedServer;
+	protected Game myGame;
 	protected Stats myStats;
-	protected Card myCard;
+	protected Card myCard = new Card(this);
 
 	protected int wins;
 
@@ -27,9 +27,8 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
-		assignCard();
 	}
-	
+
 	public String toString() {
 		return name;
 	}
@@ -42,25 +41,6 @@ public class Player {
 	}
 
 	/**
-	 * Search for a server
-	 */
-	public void searchServer() {
-		// TODO
-	}
-
-	/**
-	 * Join a server
-	 * 
-	 * @param server server to be joined
-	 * @return if joining was successful.
-	 */
-	public boolean joinServer(Game server) {
-		// TODO assign the joined server
-		// TODO tell the server that the player joined
-		return false;
-	}
-
-	/**
 	 * Assign stats to this player
 	 * 
 	 * @param stats Stats to be assigned
@@ -70,7 +50,7 @@ public class Player {
 	}
 
 	/**
-	 * Assign stats to this player
+	 * Assign stats to this player TODO remove, this is for testing purposes
 	 */
 	public final void assignStats() {
 		this.myStats = new Stats(this);
@@ -136,62 +116,11 @@ public class Player {
 	}
 
 	/**
-	 * Getter for the amount of open fields
+	 * check if player wants to save their stats
 	 * 
-	 * @return total points
+	 * @return if saving stats
 	 */
-	public int getOpenFields() {
-		return myCard.getOpenFields();
-	}
-
-	/**
-	 * Make your turn
-	 */
-	protected void makeTurn() {
-		// TODO create die for the player
-
-		// TODO roll all die
-                for(int i = 0; i < 6; i++){
-                    Game.dice[i].roll();     
-                }
-		// TODO wait for user input to choose dice or roll again
-		// TODO end turn
-	}
-
-	/**
-	 * End your turn
-	 * 
-	 * @param dice[] array of the dices
-	 */
-	protected void endTurn(Die[] dice) {
-		// TODO show the card
-		// TODO choose or cross a field
-	}
-
-	/**
-	 * Choose dice
-	 * 
-	 * @param dice Players dice
-	 * @return if player wants to roll again
-	 */
-	protected boolean chooseDice(Die[] dice) {
-		// TODO toggle the state of the die based on user input
-		return false;
-	}
-
-	/**
-	 * Choose a field to fill
-	 * 
-	 * @param result Value of the dice
-	 */
-	protected void chooseField(Integer[] result) {
-		// TODO choose or cross fields based on user input
-	}
-
-	/**
-	 * Choose a field to cross
-	 */
-	protected void crossField() {
-		// TODO cross fields based on user input
+	public boolean isSavingStats() {
+		return saveStats;
 	}
 }
