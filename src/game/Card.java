@@ -79,6 +79,19 @@ public class Card {
 		}
 		return result;
 	}
+        
+        /**
+	 * Calculate and return the points of part1 without the bonus
+	 * 
+	 * @return points of part1 without the possible bonus
+	 */
+        public int getPart1NoBonus() {
+            int part1NoBonus = 0;
+            for (int i = 0; i <= PART1_END_INDEX; i++) {
+			part1NoBonus += allFields[i].getValue();
+		}
+            return part1NoBonus;
+        }
 
 	/**
 	 * Calculate and return the total points of part 2
