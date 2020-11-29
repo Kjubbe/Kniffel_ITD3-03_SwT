@@ -467,7 +467,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // Back to Main Menu
-        //game.endServer();
+        game.stop();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void Player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player1ButtonActionPerformed
@@ -550,7 +550,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
-        game.stop();
+        game.pause();
     }//GEN-LAST:event_pauseGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
