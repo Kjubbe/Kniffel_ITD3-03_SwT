@@ -491,7 +491,19 @@ public class GameView extends javax.swing.JFrame {
             if (Game.DICE[i].isRollable()) {
                 Game.DICE[i].roll();
             }
+            
         }
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
+        
+        dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
+        dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
+        dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
+        dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
+        dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
     }//GEN-LAST:event_rollButtonActionPerformed
 
     private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
