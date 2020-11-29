@@ -509,47 +509,56 @@ public class GameView extends javax.swing.JFrame {
     private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
         dice1.setVisible(false);
         dice6.setVisible(true);
+        Game.DICE[0].toggle();
     }//GEN-LAST:event_dice1MouseClicked
 
     private void dice2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice2MouseClicked
         dice2.setVisible(false);
         dice7.setVisible(true);
+        Game.DICE[1].toggle();
 
     }//GEN-LAST:event_dice2MouseClicked
 
     private void dice4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice4MouseClicked
         dice4.setVisible(false);
         dice9.setVisible(true);
+        Game.DICE[3].toggle();
     }//GEN-LAST:event_dice4MouseClicked
 
     private void dice5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice5MouseClicked
         dice5.setVisible(false);
         dice10.setVisible(true);
+        Game.DICE[4].toggle();
     }//GEN-LAST:event_dice5MouseClicked
 
     private void dice6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice6MouseClicked
         dice6.setVisible(false);
         dice1.setVisible(true);
+        Game.DICE[0].toggle();
     }//GEN-LAST:event_dice6MouseClicked
 
     private void dice7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice7MouseClicked
         dice7.setVisible(false);
         dice2.setVisible(true);
+        Game.DICE[1].toggle();
     }//GEN-LAST:event_dice7MouseClicked
 
     private void dice8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice8MouseClicked
         dice8.setVisible(false);
         dice3.setVisible(true);
+        Game.DICE[2].toggle();
     }//GEN-LAST:event_dice8MouseClicked
 
     private void dice9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice9MouseClicked
         dice9.setVisible(false);
         dice4.setVisible(true);
+        Game.DICE[3].toggle();
     }//GEN-LAST:event_dice9MouseClicked
 
     private void dice10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice10MouseClicked
         dice10.setVisible(false);
         dice5.setVisible(true);
+        Game.DICE[4].toggle();
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
@@ -586,6 +595,7 @@ public class GameView extends javax.swing.JFrame {
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
         dice3.setVisible(false);
         dice8.setVisible(true);
+        Game.DICE[2].toggle();
     }//GEN-LAST:event_dice3MouseClicked
 
 
