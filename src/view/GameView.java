@@ -122,35 +122,35 @@ public class GameView extends javax.swing.JFrame {
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
 
-        dice1.setText("dice1");
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/1.png"))); // NOI18N
         dice1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice1MouseClicked(evt);
             }
         });
 
-        dice2.setText("dice2");
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/2.png"))); // NOI18N
         dice2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice2MouseClicked(evt);
             }
         });
 
-        dice3.setText("dice3");
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/3.png"))); // NOI18N
         dice3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice3MouseClicked(evt);
             }
         });
 
-        dice4.setText("dice4");
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/4.png"))); // NOI18N
         dice4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice4MouseClicked(evt);
             }
         });
 
-        dice5.setText("dice5");
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/5.png"))); // NOI18N
         dice5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice5MouseClicked(evt);
@@ -188,38 +188,38 @@ public class GameView extends javax.swing.JFrame {
                     .addComponent(dice3)
                     .addComponent(dice4)
                     .addComponent(dice5))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        dice7.setText("dice7");
+        dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/2.png"))); // NOI18N
         dice7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice7MouseClicked(evt);
             }
         });
 
-        dice6.setText("dice6");
+        dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/1.png"))); // NOI18N
         dice6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice6MouseClicked(evt);
             }
         });
 
-        dice8.setText("dice8");
+        dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/3.png"))); // NOI18N
         dice8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice8MouseClicked(evt);
             }
         });
 
-        dice9.setText("dice9");
+        dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/4.png"))); // NOI18N
         dice9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice9MouseClicked(evt);
             }
         });
 
-        dice10.setText("dice10");
+        dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/5.png"))); // NOI18N
         dice10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dice10MouseClicked(evt);
@@ -448,9 +448,9 @@ public class GameView extends javax.swing.JFrame {
                             .addComponent(finishTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("1");
@@ -504,12 +504,6 @@ public class GameView extends javax.swing.JFrame {
         dice7.setVisible(true);
 
     }//GEN-LAST:event_dice2MouseClicked
-
-    private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
-        dice3.setVisible(false);
-        dice8.setVisible(true);
-
-    }//GEN-LAST:event_dice3MouseClicked
 
     private void dice4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice4MouseClicked
         dice4.setVisible(false);
@@ -576,6 +570,11 @@ public class GameView extends javax.swing.JFrame {
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
 
     }//GEN-LAST:event_removePlayer4ActionPerformed
+
+    private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
+        dice3.setVisible(false);
+        dice8.setVisible(true);
+    }//GEN-LAST:event_dice3MouseClicked
 
 
     /**

@@ -237,11 +237,11 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="playercardOf" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="playercardScrollPane" min="-2" pref="500" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -337,7 +337,7 @@
                       <Component id="dice4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dice5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -345,7 +345,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="dice1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice1"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/1.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice1MouseClicked"/>
@@ -353,7 +355,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice2"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/2.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice2MouseClicked"/>
@@ -361,7 +365,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice3"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/3.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice3MouseClicked"/>
@@ -369,7 +375,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice4"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/4.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice4MouseClicked"/>
@@ -377,7 +385,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice5"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/5.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice5MouseClicked"/>
@@ -430,7 +440,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="dice7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice7"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/2.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice7MouseClicked"/>
@@ -438,7 +450,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice6"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/1.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice6MouseClicked"/>
@@ -446,7 +460,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice8"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/3.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice8MouseClicked"/>
@@ -454,7 +470,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice9"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/4.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice9MouseClicked"/>
@@ -462,7 +480,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="dice10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="dice10"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ressources/5.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dice10MouseClicked"/>
