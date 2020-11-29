@@ -487,7 +487,7 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_Player3ButtonActionPerformed
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             if (Game.DICE[i].isRollable()) {
                 Game.DICE[i].roll();
             }
