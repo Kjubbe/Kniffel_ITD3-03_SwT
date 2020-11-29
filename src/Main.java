@@ -2,6 +2,8 @@
 import view.GameView;
 import view.StartScreenView;
 import view.LoginScreenView;
+import view.StatistikSpeichernView;
+import view.StatistikDialogView;
 
 /**
  * Main
@@ -23,6 +25,8 @@ public class Main {
                 // scur scur 
                 new GameView().setVisible(true);
                 new LoginScreenView().setVisible(true);
+                new StatistikSpeichernView().setVisible(true);
+                new StatistikDialogView().setVisible(true);
                 
 		// scur scur
                 StartScreenView start = new StartScreenView();
