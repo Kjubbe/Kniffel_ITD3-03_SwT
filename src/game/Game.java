@@ -85,18 +85,16 @@ public class Game {
 	 * @return true if turn endet
 	 */
 	public boolean rollDie() {
-		boolean turnOver = rolls >= 3;
-		if (!turnOver) {
-			for (Die d : DICE) { // roll the die when the turn is not over
-				d.roll();
-			}
-			rolls++;
-
-			turnOver = rolls >= 3;
-			if (turnOver) { // end the turn if the turn is over after rolling
-				endTurn();
-			}
+		for (Die d : DICE) { // roll the die
+			d.roll();
 		}
+		rolls++;
+		
+		boolean turnOver = rolls >= 3;
+		if (turnOver) { // end the turn when more than 3 rolls
+			endTurn();
+		}
+
 		return turnOver;
 	}
 
