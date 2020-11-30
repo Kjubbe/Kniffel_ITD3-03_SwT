@@ -248,8 +248,10 @@ public class Card {
 	public boolean chooseField(int index) {
 		Field field = allFields[index];
 		boolean result = field.choose();
-		if (result)
+		if (result) {
 			setToZero();
+			owner.getStats().increasePoints(field.getValue()); // TODO is this the right place?
+		}
 		return result;
 	}
 

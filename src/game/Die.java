@@ -20,11 +20,14 @@ public class Die {
 
 	/**
 	 * roll the die. generates a random value between 1 and 6
+	 * 
+	 * @return if successfull
 	 */
-	public void roll() {
+	public boolean roll() {
 		if (isRollable) {
 			value = 1 + rng.nextInt(6);
 		}
+		return isRollable;
 	}
 
 	/**

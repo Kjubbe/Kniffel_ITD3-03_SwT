@@ -86,7 +86,9 @@ public class Game {
 	 */
 	public boolean rollDie() {
 		for (Die d : DICE) { // roll the die
-			d.roll();
+			if (d.roll()) {
+				currentPlayer.getStats().increaseDiceRolled();
+			}
 		}
 		rolls++;
 		
@@ -152,6 +154,7 @@ public class Game {
 			diceValues[i] = DICE[i].getValue(); // set each value in the array
 		}
 		currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
+		currentPlayer.getStats().increaseRoundsPlayed();
 	}
 
 	/**
@@ -167,6 +170,7 @@ public class Game {
 			// TODO tie
 		}
 		winner.increaseWins();
+		winner.getStats().increaseGamesWon();
 		nextGame();
 	}
 
@@ -219,7 +223,9 @@ public class Game {
 	 */
 	public boolean chooseField(int index) {
 		boolean result = currentPlayer.getCard().chooseField(index);
-		nextPlayer();
+		if (result) {
+			nextPlayer();
+		}
 		return result;
 	}
 
@@ -231,7 +237,10 @@ public class Game {
 	 */
 	public boolean crossField(int index) {
 		boolean result = currentPlayer.getCard().crossField(index);
-		nextPlayer();
+		if (result) {
+			
+			nextPlayer();
+		}
 		return result;
 	}
 }
