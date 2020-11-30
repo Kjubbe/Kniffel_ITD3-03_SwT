@@ -3,7 +3,7 @@ package game;
 /**
  * registered player, inherits from player, stores a password
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
