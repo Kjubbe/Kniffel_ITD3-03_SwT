@@ -42,12 +42,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="Player1Button">
+        <Menu class="javax.swing.JMenu" name="player1Button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Spieler 1"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Player1ButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player1ButtonActionPerformed"/>
           </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="showPlayer1Card">
@@ -70,12 +70,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="Player2Button">
+        <Menu class="javax.swing.JMenu" name="player2Button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Spieler 2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Player2ButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player2ButtonActionPerformed"/>
           </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="showPlayer2Card">
@@ -98,12 +98,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="Player3Button">
+        <Menu class="javax.swing.JMenu" name="player3Button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Spieler 3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Player3ButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player3ButtonActionPerformed"/>
           </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="showPlayer3Card">
@@ -126,12 +126,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="Player4Button">
+        <Menu class="javax.swing.JMenu" name="player4Button">
           <Properties>
             <Property name="text" type="java.lang.String" value="Spieler 4"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Player4ButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player4ButtonActionPerformed"/>
           </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="showCardPlayer4">
@@ -332,15 +332,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dice1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="dice2" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="dice1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dice3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dice4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dice5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="dice3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice4" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice5" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -427,15 +427,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dice6" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="dice7" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="dice7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice6" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dice8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dice9" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="dice10" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice9" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="dice8" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
@@ -499,6 +499,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Zug beenden"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finishTurnButtonMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="rollButton">
       <Properties>
