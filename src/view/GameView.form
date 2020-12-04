@@ -134,12 +134,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="player4ButtonActionPerformed"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="showCardPlayer4">
+            <MenuItem class="javax.swing.JMenuItem" name="showPlayer4Card">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showCardPlayer4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showPlayer4CardActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="skipPlayer4">
@@ -154,6 +154,94 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removePlayer4ActionPerformed"/>
               </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="player5Button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spieler 5"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="showPlayer5Card">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="skipPlayer5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="removePlayer5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="player6Button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spieler 6"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="showPlayer6Card">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="skipPlayer6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="removePlayer6">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="player7Button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spieler 7"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="showPlayer7Card">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="skipPlayer7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="removePlayer7">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="player8Button">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spieler 8"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="showPlayer8Card">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="skipPlayer8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="removePlayer8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

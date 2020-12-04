@@ -21,12 +21,110 @@ public class GameView extends javax.swing.JFrame {
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
+        
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
-        player1Button.setText(game.players.get(0).getName());
-        player2Button.setText(game.players.get(1).getName());
-        player3Button.setText(game.players.get(2).getName());
-        player4Button.setText(game.players.get(3).getName());
+        
+        player1Button.setVisible(false);
+        player2Button.setVisible(false);
+        player3Button.setVisible(false);
+        player4Button.setVisible(false);
+        player5Button.setVisible(false);
+        player6Button.setVisible(false);
+        player7Button.setVisible(false);
+        player8Button.setVisible(false);
+       
+       
+        for (int j = 0; j < game.players.size(); j++) {
+            if (j == 0) {
+                player1Button.setText(game.players.get(j).getName());
+                player1Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer1Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer1Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer1.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer1.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 1) {
+                player2Button.setText(game.players.get(j).getName());
+                player2Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer2Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer2Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer2.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer2.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 2) {
+                player3Button.setText(game.players.get(j).getName());
+                player3Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer3Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer3Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer3.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer3.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 3) {
+                player4Button.setText(game.players.get(j).getName());
+                player4Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer4Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer4Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer4.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer4.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 4) {
+                player5Button.setText(game.players.get(j).getName());
+                player5Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer5Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer5Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer5.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer5.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 5) {
+                player6Button.setText(game.players.get(j).getName());
+                player6Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer6Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer6Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer6.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer6.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 6) {
+                player7Button.setText(game.players.get(j).getName());
+                player7Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer7Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer7Card.setText(game.players.get(j).getName() + " Spielerkarte");
+                }
+                skipPlayer7.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer7.setText(game.players.get(j).getName() + " entfernen");
+            }
+            if (j == 7) {
+                player8Button.setText(game.players.get(j).getName());
+                player8Button.setVisible(true);
+                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                    showPlayer8Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
+                } else {
+                    showPlayer8Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                }
+                skipPlayer8.setText(game.players.get(j).getName() + " überspringen");
+                removePlayer8.setText(game.players.get(j).getName() + " entfernen");
+            }
 
+        }
         //tableSetPoints();
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
@@ -88,9 +186,25 @@ public class GameView extends javax.swing.JFrame {
         skipPlayer3 = new javax.swing.JMenuItem();
         removePlayer3 = new javax.swing.JMenuItem();
         player4Button = new javax.swing.JMenu();
-        showCardPlayer4 = new javax.swing.JMenuItem();
+        showPlayer4Card = new javax.swing.JMenuItem();
         skipPlayer4 = new javax.swing.JMenuItem();
         removePlayer4 = new javax.swing.JMenuItem();
+        player5Button = new javax.swing.JMenu();
+        showPlayer5Card = new javax.swing.JMenuItem();
+        skipPlayer5 = new javax.swing.JMenuItem();
+        removePlayer5 = new javax.swing.JMenuItem();
+        player6Button = new javax.swing.JMenu();
+        showPlayer6Card = new javax.swing.JMenuItem();
+        skipPlayer6 = new javax.swing.JMenuItem();
+        removePlayer6 = new javax.swing.JMenuItem();
+        player7Button = new javax.swing.JMenu();
+        showPlayer7Card = new javax.swing.JMenuItem();
+        skipPlayer7 = new javax.swing.JMenuItem();
+        removePlayer7 = new javax.swing.JMenuItem();
+        player8Button = new javax.swing.JMenu();
+        showPlayer8Card = new javax.swing.JMenuItem();
+        skipPlayer8 = new javax.swing.JMenuItem();
+        removePlayer8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(21, 10, 22));
@@ -399,13 +513,13 @@ public class GameView extends javax.swing.JFrame {
             }
         });
 
-        showCardPlayer4.setText("Spielerkarte anzeigen");
-        showCardPlayer4.addActionListener(new java.awt.event.ActionListener() {
+        showPlayer4Card.setText("Spielerkarte anzeigen");
+        showPlayer4Card.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showCardPlayer4ActionPerformed(evt);
+                showPlayer4CardActionPerformed(evt);
             }
         });
-        player4Button.add(showCardPlayer4);
+        player4Button.add(showPlayer4Card);
 
         skipPlayer4.setText("Spieler überspringen");
         player4Button.add(skipPlayer4);
@@ -419,6 +533,58 @@ public class GameView extends javax.swing.JFrame {
         player4Button.add(removePlayer4);
 
         jMenuBar1.add(player4Button);
+
+        player5Button.setText("Spieler 5");
+
+        showPlayer5Card.setText("Spielerkarte anzeigen");
+        player5Button.add(showPlayer5Card);
+
+        skipPlayer5.setText("Spieler überspringen");
+        player5Button.add(skipPlayer5);
+
+        removePlayer5.setText("Spieler entfernen");
+        player5Button.add(removePlayer5);
+
+        jMenuBar1.add(player5Button);
+
+        player6Button.setText("Spieler 6");
+
+        showPlayer6Card.setText("Spielerkarte anzeigen");
+        player6Button.add(showPlayer6Card);
+
+        skipPlayer6.setText("Spieler überspringen");
+        player6Button.add(skipPlayer6);
+
+        removePlayer6.setText("Spieler entfernen");
+        player6Button.add(removePlayer6);
+
+        jMenuBar1.add(player6Button);
+
+        player7Button.setText("Spieler 7");
+
+        showPlayer7Card.setText("Spielerkarte anzeigen");
+        player7Button.add(showPlayer7Card);
+
+        skipPlayer7.setText("Spieler überspringen");
+        player7Button.add(skipPlayer7);
+
+        removePlayer7.setText("Spieler entfernen");
+        player7Button.add(removePlayer7);
+
+        jMenuBar1.add(player7Button);
+
+        player8Button.setText("Spieler 8");
+
+        showPlayer8Card.setText("Spielerkarte anzeigen");
+        player8Button.add(showPlayer8Card);
+
+        skipPlayer8.setText("Spieler überspringen");
+        player8Button.add(skipPlayer8);
+
+        removePlayer8.setText("Spieler entfernen");
+        player8Button.add(removePlayer8);
+
+        jMenuBar1.add(player8Button);
 
         setJMenuBar(jMenuBar1);
 
@@ -604,9 +770,9 @@ public class GameView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
-    private void showCardPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCardPlayer4ActionPerformed
+    private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_showCardPlayer4ActionPerformed
+    }//GEN-LAST:event_showPlayer4CardActionPerformed
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
@@ -732,6 +898,10 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenu player2Button;
     private javax.swing.JMenu player3Button;
     private javax.swing.JMenu player4Button;
+    private javax.swing.JMenu player5Button;
+    private javax.swing.JMenu player6Button;
+    private javax.swing.JMenu player7Button;
+    private javax.swing.JMenu player8Button;
     private javax.swing.JTable playercard;
     private javax.swing.JTextField playercardOf;
     private javax.swing.JScrollPane playercardScrollPane;
@@ -740,15 +910,27 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenuItem removePlayer2;
     private javax.swing.JMenuItem removePlayer3;
     private javax.swing.JMenuItem removePlayer4;
+    private javax.swing.JMenuItem removePlayer5;
+    private javax.swing.JMenuItem removePlayer6;
+    private javax.swing.JMenuItem removePlayer7;
+    private javax.swing.JMenuItem removePlayer8;
     private javax.swing.JMenuItem restartGame;
     private javax.swing.JButton rollButton;
-    private javax.swing.JMenuItem showCardPlayer4;
     private javax.swing.JMenuItem showPlayer1Card;
     private javax.swing.JMenuItem showPlayer2Card;
     private javax.swing.JMenuItem showPlayer3Card;
+    private javax.swing.JMenuItem showPlayer4Card;
+    private javax.swing.JMenuItem showPlayer5Card;
+    private javax.swing.JMenuItem showPlayer6Card;
+    private javax.swing.JMenuItem showPlayer7Card;
+    private javax.swing.JMenuItem showPlayer8Card;
     private javax.swing.JMenuItem skipPlayer1;
     private javax.swing.JMenuItem skipPlayer2;
     private javax.swing.JMenuItem skipPlayer3;
     private javax.swing.JMenuItem skipPlayer4;
+    private javax.swing.JMenuItem skipPlayer5;
+    private javax.swing.JMenuItem skipPlayer6;
+    private javax.swing.JMenuItem skipPlayer7;
+    private javax.swing.JMenuItem skipPlayer8;
     // End of variables declaration//GEN-END:variables
 }
