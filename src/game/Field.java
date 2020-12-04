@@ -1,37 +1,37 @@
 package game;
 
 /**
- * This class holds information about a field, a field can be crossed or chosen
+ * contains information about a specific field on a card. a field holds three
+ * values and can be crossed or chosen
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
 public class Field {
 
-	// data fields
 	private final String name;
 
 	/**
-	 * contains the default value of this card most cards do not have a default
+	 * contains the default value of this field. most fields do not have a default
 	 * value
 	 */
-	private int defaultValue = 0;
+	private int defaultValue;
 
 	/**
-	 * contains the possible, current value for this card this is calculated by the
-	 * card
+	 * contains the possible, current value for this field. this is calculated by
+	 * the card for each turn
 	 */
-	private int currentValue = 0;
+	private int currentValue;
 
 	/**
-	 * contains the chosen value for this card. this value can only change once it
+	 * contains the chosen value for this card. this value can only change once. it
 	 * is -1 if the card is crossed
 	 */
-	private int chosenValue = 0;
+	private int chosenValue;
 
 	/**
-	 * Constructor, defines a name for the field
+	 * constructor, defines a name for the field
 	 * 
 	 * @param name name of the field
 	 */
@@ -40,7 +40,7 @@ public class Field {
 	}
 
 	/**
-	 * Constructor, defines a name and a default value for the field
+	 * constructor, defines a name and a default value for the field
 	 * 
 	 * @param name         name of the field
 	 * @param defaultValue value of the field
@@ -51,7 +51,7 @@ public class Field {
 	}
 
 	/**
-	 * get the actual value of this card
+	 * get the actual value of this card for calculations
 	 * 
 	 * @return value of this card
 	 */
@@ -77,12 +77,14 @@ public class Field {
 	}
 
 	/**
-	 * choose this field, sets the chosen value to the current value if the card is
-	 * not chosen or crossed and if the current value is not 0
+	 * choose this field, sets the chosen value to the current value when the card
+	 * is not chosen or crossed and if the current value is not 0
 	 * 
 	 * @return if successful
 	 */
 	public boolean choose() {
+		// there is no point in choosing a card which is worth 0 points. so it is not
+		// possible
 		boolean result = isOpen() && currentValue != 0;
 		if (result) {
 			this.chosenValue = currentValue;
@@ -105,12 +107,11 @@ public class Field {
 	 * @return if successful
 	 */
 	public boolean cross() {
-		if (isOpen()) {
+		boolean result = isOpen();
+		if (result) {
 			this.chosenValue = -1;
-			return true;
-		} else {
-			return false;
 		}
+		return result;
 	}
 
 	/**
@@ -123,13 +124,20 @@ public class Field {
 	}
 
 	/**
-	 * Getter-method for the name
+	 * check if this field is crossed
+	 * 
+	 * @return if crossed
+	 */
+	public boolean isCrossed() {
+		return chosenValue == -1;
+	}
+
+	/**
+	 * get the name of this card
 	 * 
 	 * @return name
 	 */
 	public String getName() {
 		return name;
 	}
-
-	// TODO calculate the points
 }

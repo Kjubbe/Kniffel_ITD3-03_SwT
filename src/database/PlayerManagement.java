@@ -2,14 +2,16 @@ package database;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import game.Player;
 import game.RegisteredPlayer;
 import game.Stats;
 
 /**
- * manages players with the database
+ * manages players inside the database
  * 
  * @author Kjell Treder
  */
@@ -17,10 +19,17 @@ import game.Stats;
 public class PlayerManagement {
 
     private static PlayerManagement instance;
+
     /**
      * contains all logged in players
      */
     private List<Player> loggedIn = new ArrayList<>();
+
+    public static final int MAX_PLAYERS = 8;
+    private static final String MAX_REACHED = "Maximale Anzahl an Spielern erreicht.";
+    private static final String PLAYER_ALREADY_ADDED = "Spieler bereits hinzugefügt";
+    private static final String SUCCESS = "Spieler wurde hinzugefügt.";
+    private static final String ERROR = "Es ist ein Fehler aufgetreten.";
 
     /**
      * private constructor prevents external instantiation, the PlayerManagement can
@@ -51,7 +60,7 @@ public class PlayerManagement {
      * @param saveStats if the stats should be saved after the game
      * @return if successful
      */
-    public boolean login(String name, String password, boolean saveStats) {
+    public Map<String, Boolean> login(String name, String password, boolean saveStats) {
         try {
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
             if (player != null && password.equals(player.getPassword())) {
@@ -63,7 +72,7 @@ public class PlayerManagement {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false;
+        return Collections.singletonMap(ERROR, false);
     }
 
     /**
@@ -74,7 +83,7 @@ public class PlayerManagement {
      * @param saveStats if the stats should be saved after the game
      * @return the player object if found
      */
-    public boolean register(String name, String password, boolean saveStats) {
+    public Map<String, Boolean> register(String name, String password, boolean saveStats) {
         try {
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
             if (player == null) {
@@ -84,16 +93,15 @@ public class PlayerManagement {
                     player.saveStats();
                 }
                 // if adding the player failed, remove the local player
-                if (!addPlayer(player) && result) {
+                if (addPlayer(player).containsValue(false) && result) {
                     logout(name);
-                    addPlayer(player); // add the logged in player
                 }
-                return result;
+                return addPlayer(player); // add the logged in player
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false;
+        return Collections.singletonMap(ERROR, false);
     }
 
     /**
@@ -118,7 +126,7 @@ public class PlayerManagement {
      * @param name player name
      * @return if successful
      */
-    public boolean playAsGuest(String name) {
+    public Map<String, Boolean> playAsGuest(String name) {
         return addPlayer(new Player(name));
     }
 
@@ -129,14 +137,17 @@ public class PlayerManagement {
      * @param player player object to be checked
      * @return if unique
      */
-    private boolean addPlayer(Player player) {
+    private Map<String, Boolean> addPlayer(Player player) {
+        if (loggedIn.size() >= MAX_PLAYERS) {
+            return Collections.singletonMap(MAX_REACHED, false);
+        }
         for (Player p : loggedIn) {
             if (p.getName().equals(player.getName())) {
-                return false;
+                return Collections.singletonMap(PLAYER_ALREADY_ADDED, false);
             }
         }
         loggedIn.add(player);
-        return true;
+        return Collections.singletonMap(SUCCESS, true);
     }
 
     /**
@@ -164,5 +175,20 @@ public class PlayerManagement {
      */
     public List<Player> getAllPlayers() {
         return loggedIn;
+    }
+
+    /**
+     * save all players in the database
+     */
+    public void savePlayers() {
+        for (Player p : loggedIn) {
+            if (p instanceof RegisteredPlayer && p.isSavingStats()) {
+                try {
+                    Databaseinterface.getInstance().savePlayer((RegisteredPlayer) p);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
 }
