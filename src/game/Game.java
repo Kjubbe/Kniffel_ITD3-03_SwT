@@ -102,10 +102,8 @@ public class Game {
 
 	/**
 	 * get to the next player
-	 * 
-	 * @return true if game is over
 	 */
-	public boolean nextPlayer() {
+	public void nextPlayer() {
 		playerIndex++;
 		rolls = 0;
 		if (players.size() - 1 > playerIndex) { // check if there is another player
@@ -114,11 +112,9 @@ public class Game {
 		}
 		if (roundsPlayed >= MAX_ROUNDS) { // check if all rounds have been played
 			findWinner(); // find a winner
-			return true;
 		} else { // there are more rounds
 			currentPlayer = players.get(playerIndex); // set the next player
 		}
-		return false;
 	}
 
 	/**
