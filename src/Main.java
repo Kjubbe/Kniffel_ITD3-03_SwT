@@ -22,9 +22,9 @@ public class Main {
 		System.out.println("Hello World"); // :)
 		// TODO
                 // scur scur 
-                new GameView().setVisible(true);
-                new LoginScreenView().setVisible(true);
-                new StatistikDialogView().setVisible(true);
+                //new GameView().setVisible(true);
+                //new LoginScreenView().setVisible(true);
+                //new StatistikDialogView().setVisible(true);
                 
 		// scur scur
                 StartScreenView start = new StartScreenView();
