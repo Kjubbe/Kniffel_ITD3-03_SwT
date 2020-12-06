@@ -228,8 +228,8 @@ public class MenuView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_StartGameButtonActionPerformed
     
-    private void updatePlayers() {
-    	quickPlayers = pM.getAllPlayers();
+    private void addPlayerToList(String name) {
+    	playerList.addElement(new Player(name));
     }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlayerButtonActionPerformed
