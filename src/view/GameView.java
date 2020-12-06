@@ -9,7 +9,7 @@ import game.Card;
 
 import game.Game;
 import game.Player;
-import game.Host;
+//import game.Host;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -467,7 +467,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // Back to Main Menu
-        game.stop();
+        //game.stop();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void Player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Player1ButtonActionPerformed
@@ -571,7 +571,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
         //Pause Game
-        game.pause();
+        //game.pause();
     }//GEN-LAST:event_pauseGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
