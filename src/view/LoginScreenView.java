@@ -148,7 +148,7 @@ public class LoginScreenView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        System.out.println("Button one confirmed");
+        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
@@ -157,13 +157,13 @@ public class LoginScreenView extends javax.swing.JFrame {
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
         // PlayerManagement.login(playerName, playerPassword, statsSave);
-        //LoginScreenView().setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_loginActionPerformed
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestActionPerformed
         String playerName = jFormattedTextField1.getText();
         MenuView.addPlayerToList(playerName);
-        //LoginScreenView().setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_guestActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
@@ -171,12 +171,12 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
-        //PlayerManagement.register(playerName, playerPassword, statsSave);
-        //LoginScreenView().setVisible(false);
+        PlayerManagement.register(playerName, playerPassword, statsSave);
+        this.setVisible(false);
     }//GEN-LAST:event_registerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton guest;
+    private static javax.swing.JButton guest;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -184,8 +184,8 @@ public class LoginScreenView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JButton login;
-    private javax.swing.JButton register;
+    private static javax.swing.JButton login;
+    private static javax.swing.JButton register;
     // End of variables declaration//GEN-END:variables
 
  
