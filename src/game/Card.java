@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Arrays;
+
 /**
  * contains information about a card of a player. the player can choose or cross
  * fields. this class also manages all calculations with points for all existing
@@ -104,6 +106,8 @@ public class Card {
 	public void calculatePoints(int[] num) {
 		// first, sort the values
 		num = bubbleSort(num);
+                
+                System.out.println(Arrays.toString(num));
 
 		// calculate the total
 		int total = 0;

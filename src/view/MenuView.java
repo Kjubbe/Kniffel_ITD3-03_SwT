@@ -222,8 +222,8 @@ public class MenuView extends javax.swing.JFrame {
         //addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH, h));
         //int maxPlayers = length();
         
-        new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
-        new GameView().setVisible(true);
+        Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        new GameView(game).setVisible(true);
         
         
     }                                               
@@ -239,36 +239,6 @@ public class MenuView extends javax.swing.JFrame {
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
     	new LoginScreenView().setVisible(true);
-    	
-    	//        JDialog newPlayerDialog = new JDialog();
-        
-//        newPlayerDialog.setTitle("Mein JDialog Beispiel");
-//        newPlayerDialog.setSize(200,200);
-//        newPlayerDialog.setVisible(true);
-//        JTextField nameTF = new JTextField();
-//        nameTF.setVisible(true);
-//        nameTF.setSize(100, 50);
-//        newPlayerDialog.add(nameTF);
-//        JButton add = new JButton("Hinzufügen");
-//        
-//        add.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                if (nameTF.getText().length() != 0){
-//                newPlayerDialog.setVisible(false);
-//                Player p = new Player(nameTF.getText());
-//                playerList.addElement(p);
-//                
-//                String a = new String("asd");
-//                //JListOfPlayers.add(a);
-//                stringList.add(a);
-//                System.out.println(stringList);
-//                }
-//            }
-//        });
-//        
-//        newPlayerDialog.add(add);
-//        
-        
         
     }                                               
 
@@ -293,7 +263,6 @@ public class MenuView extends javax.swing.JFrame {
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;
-    private Player[] players;
     LinkedList stringList = new LinkedList<String>();
     static PlayerManagement pM = PlayerManagement.getInstance();
 
