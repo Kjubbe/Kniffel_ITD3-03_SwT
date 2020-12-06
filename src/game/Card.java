@@ -84,8 +84,6 @@ public class Card {
 		}
 		return result;
 	}
-        
-       
 
 	/**
 	 * calculate and return the total points of part 2
