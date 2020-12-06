@@ -1,4 +1,8 @@
 
+import game.Game;
+import game.Player;
+import java.util.ArrayList;
+import java.util.List;
 import view.GameView;
 import view.StartScreenView;
 import view.LoginScreenView;
@@ -27,7 +31,7 @@ public class Main {
                 new StatistikDialogView().setVisible(true);
                 
 		// scur scur
-                StartScreenView start = new StartScreenView();
+                //StartScreenView start = new StartScreenView();
                
 	}
 }

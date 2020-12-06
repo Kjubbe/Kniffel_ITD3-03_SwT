@@ -22,14 +22,15 @@ public final class Databaseinterface {
     private static Databaseinterface instance;
     private Connection conn;
 
+    // data for the connection
     private static final String DRIVER_NAME = "org.hsqldb.jdbc.JDBCDriver";
     private static final String DB_URL = "jdbc:hsqldb:file:data/KniffelStats;ifexists=true";
     private static final String NAME = "SA";
     private static final String PASSWORD = "";
 
     /**
-     * private constructor prevents external instantiation the Databaseinterface can
-     * be instantiated with getInstance
+     * private constructor prevents external instantiation, the Databaseinterface
+     * can be instantiated with getInstance method
      */
     private Databaseinterface() {
         try {

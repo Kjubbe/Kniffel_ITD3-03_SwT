@@ -1,22 +1,22 @@
 package game;
 
 /**
- * This class holds information about the card of a player, it contains all 13
+ * contains information about a card of a player. the player can choose or cross
+ * fields. this class also manages all calculations with points for all existing
  * fields
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
 public class Card {
 
-	// Data fields
-
-	private Player owner; // Card Owner
-	private static final int BONUS = 35; // Bonus points for reaching 63 points on the first card
-	private static final int BONUS_REQ = 63;
+	private Player owner; // card owner
+	private static final int BONUS = 35; // the amount of bonus points
+	private static final int BONUS_REQ = 63; // the required amount of points in part 1 to get bonus points
 	private static final int PART1_END_INDEX = 5;
 
+	// indices of the fields on the card
 	private static final int THREE_OF_A_KIND_INDEX = 6;
 	private static final int FOUR_OF_A_KIND_INDEX = 7;
 	private static final int FULL_HOUSE_INDEX = 8;
@@ -25,37 +25,39 @@ public class Card {
 	private static final int YAHTZEE_INDEX = 11;
 	private static final int CHANCE_INDEX = 12;
 
+	// names for the fields
 	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
 			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
 			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
 
-	// Fields on the card
-	public final Field[] allFields;
+	// array with all the fields on this card
+	public final Field[] allFields = new Field[FIELD_NAMES.length];
 
 	/**
-	 * Constructor, assigns an owner to the card.
+	 * constructor, assigns a player to this card
 	 * 
-	 * @param player Player, who is the owner of this card.
+	 * @param player the owner of this card
 	 */
 	public Card(Player player) {
 		this.owner = player;
-		allFields = new Field[13];
+
+		// add all fields to the array
 		for (int i = 0; i < FIELD_NAMES.length; i++) {
 			allFields[i] = new Field(FIELD_NAMES[i]);
 		}
 	}
 
 	/**
-	 * Getter for owner of the card
+	 * get the card owner
 	 * 
-	 * @return Player, who owns the card
+	 * @return player object, who owns this card
 	 */
 	public Player getCardOwner() {
 		return owner;
 	}
 
 	/**
-	 * Calculate and return the total points of the card
+	 * calculate and return the total points of the card
 	 * 
 	 * @return total points
 	 */
@@ -64,9 +66,10 @@ public class Card {
 	}
 
 	/**
-	 * Calculate and return the total points of part 1
+	 * calculate and return the points of part 1
 	 * 
-	 * @param withBonus if the points include the bonus
+	 * @param withBonus if the point calculation should include the bonus if
+	 *                  applicable
 	 * @return points of part 1
 	 */
 	public int getPart1(boolean withBonus) {
@@ -83,7 +86,7 @@ public class Card {
        
 
 	/**
-	 * Calculate and return the total points of part 2
+	 * calculate and return the total points of part 2
 	 * 
 	 * @return points of part 2
 	 */
@@ -98,11 +101,13 @@ public class Card {
 	/**
 	 * calculate the points for the fields
 	 * 
-	 * @param num value of the five die
+	 * @param num values of the five dice
 	 */
-	public void calculatePoints(Integer[] num) {
-		bubbleSort(num);
+	public void calculatePoints(int[] num) {
+		// first, sort the values
+		num = bubbleSort(num);
 
+		// calculate the total
 		int total = 0;
 		for (int n : num) {
 			total += n;
@@ -138,7 +143,7 @@ public class Card {
 		 */
 		boolean quad = false;
 		for (int i = 0; i < num.length - 1; i++) {
-			// Test if the adjacent numbers are the same
+			// test if the adjacent numbers are the same
 			if (num[i] == num[i + 1]) {
 				sameAdjacentPairs++; // increase amount of same adjacent pairs
 				pairs++; // increase amount of pairs
@@ -147,7 +152,7 @@ public class Card {
 				sameAdjacentPairs = 0;
 			}
 
-			// Test if the adjacent numbers are increasing
+			// test if the adjacent numbers are increasing
 			if (num[i] == num[i + 1] + 1) {
 				increase++;
 			}
@@ -225,56 +230,70 @@ public class Card {
 	/**
 	 * cross a field
 	 * 
-	 * @param field the field to be crossed
+	 * @param index the index of the field to be crossed
 	 * @return if successful
 	 */
-	public boolean crossField(Field field) {
-		return field.cross();
+	public boolean crossField(int index) {
+		Field field = allFields[index];
+		boolean result = field.cross();
+		if (result)
+			setToZero();
+		return result;
 	}
 
 	/**
 	 * choose a field
 	 * 
-	 * @param field the field to be chosen
+	 * @param index the index of the field to be crossed
 	 * @return if successful
 	 */
-	public boolean chooseField(Field field) {
+	public boolean chooseField(int index) {
+		Field field = allFields[index];
 		boolean result = field.choose();
-		if (result) {
-			for (Field f : allFields) {
-				f.setValue(0);
-			}
-		}
+		if (result)
+			setToZero();
 		return result;
 	}
 
 	/**
-	 * choose a field and set its value
+	 * choose a field and set its value. this is useful when playing without
+	 * autofill
 	 * 
-	 * @param field the field to be chosen
+	 * @param index the index of the field to be crossed
 	 * @param value the new value of the field
 	 */
-	public void chooseField(Field field, int value) {
+	public void chooseField(int index, int value) {
+		Field field = allFields[index];
 		field.choose(value);
 	}
 
 	/**
-	 * bubble-sorting algorithm for sorting the dice
+	 * bubble-sorting algorithm for sorting the dice values
 	 * 
-	 * @param num value of the five die
+	 * @param num value of the five dice
 	 */
-	private void bubbleSort(Integer[] num) {
+	private static int[] bubbleSort(int[] num) {
 		boolean unsorted = true;
 		while (unsorted) {
 			unsorted = false;
 			for (int i = 0; i < num.length - 1; i++) {
-				if (!(num[i] >= num[i + 1])) {
+				if ((num[i] < num[i + 1])) {
 					int dummy = num[i];
 					num[i] = num[i + 1];
 					num[i + 1] = dummy;
 					unsorted = true;
 				}
 			}
+		}
+		return num;
+	}
+
+	/**
+	 * set all field values to zero
+	 */
+	public void setToZero() {
+		for (Field f : allFields) {
+			f.setValue(0);
 		}
 	}
 }

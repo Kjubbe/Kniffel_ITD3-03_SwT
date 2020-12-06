@@ -1,157 +1,246 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * a server instance manages the game and their players
+ * a game instance manages the game and their players
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
 public class Game {
 
-	// data fields
-	private final boolean useAssistant; // Toggle the use of an Assistant
-	private boolean gameIsDone; // Is the game done?
-	private final int maxPlayers; // max number of players able to join
+	/**
+	 * toggles the use of autofill. if autofill is enabled, all fields on the card
+	 * are filled with values to choose from
+	 */
+	public final boolean useAutofill;
+
+	/**
+	 * toggles the use of auto calculation. if auto calculation is enabled, the
+	 * chosen field calculates its value automatically
+	 */
+	public final boolean useAutocalc;
+
 	private final int maxGames; // max number of games to be played
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
-	private int roundNr = 1;
+	public final List<Player> players; // contains all participating players
 
-	private final List<Player> players;
-	public Player currentPlayer;
+	public Player currentPlayer; // the current player doing his turn
+	private int playerIndex; // index of the current player
+	public Player winner; // winner of the game
 
-	public static final Die[] DICE = { new Die(0), new Die(1), new Die(2), new Die(3), new Die(4) };
+	/**
+	 * array of dice for rolling
+	 */
+	public static final Die[] DICE = { new Die(), new Die(), new Die(), new Die(), new Die() };
+	public static final int MAX_ROLLS = 3;
+	private int[] diceValues;
+	public int rolls;
+
+	public static final int MAX_ROUNDS = Card.FIELD_NAMES.length;
+	private int roundsPlayed;
+	private int gamesPlayed;
 
 	/**
 	 * Constructor, defines the name, a password, the usage of the assistant, max
 	 * players, max Games, games to win and the host.
 	 * 
-	 * @param a       if using assistant
-	 * @param max     number of max players
-	 * @param maxG    number of max games
-	 * @param win     amount of games needed to win
-	 * @param players players on the server
+	 * @param autofill if using autofill
+	 * @param autocalc if using autocalc
+	 * @param maxGames number of max games
+	 * @param players  players on the server
 	 */
-	public Game(boolean a, int max, int maxG, int win, List<Player> players) {
-		this.useAssistant = a;
-		this.maxPlayers = max;
-		this.maxGames = maxG;
-		this.gamesToWin = win;
+	public Game(boolean autofill, boolean autocalc, int maxGames, List<Player> players) {
+		this.useAutofill = autofill;
+		this.useAutocalc = autocalc;
+		this.maxGames = maxGames;
+		this.gamesToWin = maxGames;
 		this.players = players;
 	}
 
 	/**
-	 * Add Player to the server
+	 * Constructor, defines the name, a password, the usage of the assistant, max
+	 * players, max Games, games to win and the host.
 	 * 
-	 * @param p  Player, who is added to the server
-	 * @return if the adding was successful or not
+	 * @param autofill   if using autofill
+	 * @param autocalc   if using autocalc
+	 * @param gamesToWin amount of games needed to win
+	 * @param players    players on the server
 	 */
-	public boolean addPlayer(Player p) {
-		boolean result = false;
-		if (players.size() < maxPlayers) {
-			players.add(p);
-			result = true;
-		}
-		return result;
+	public Game(boolean autofill, boolean autocalc, byte gamesToWin, List<Player> players) {
+		this.useAutofill = autofill;
+		this.useAutocalc = autocalc;
+		this.maxGames = (gamesToWin - 1) * players.size(); // the maximum amount of games is calculated
+		this.gamesToWin = gamesToWin;
+		this.players = players;
+		this.currentPlayer = players.get(playerIndex);
 	}
 
-	/**
-	 * Play the game
-	 */
-	public void play() {
-		for (int i = 0; i < maxGames; i++) {
-			for (Player p : players) {
-				if (p.wins >= gamesToWin) {
-					findWinner();
-					return;
-				}
-			}
-			
-			for (Player p : players) {
-				p.makeTurn();
-			}
-		}
-	}
+    public Game() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 	/**
 	 * roll all die
+	 * 
+	 * @return true if turn endet
 	 */
-	public void rollDie() {
-		for (Die d : DICE) {
-			d.roll();
+	public boolean rollDie() {
+		boolean turnOver = rolls >= 3;
+		if (!turnOver) {
+			for (Die d : DICE) { // roll the die when the turn is not over
+				d.roll();
+			}
+			rolls++;
+
+			turnOver = rolls >= 3;
+			if (turnOver) { // end the turn if the turn is over after rolling
+				endTurn();
+			}
 		}
+		return turnOver;
+	}
+        
+        
+
+	/**
+	 * get to the next player
+	 * 
+	 * @return true if game is over
+	 */
+	public boolean nextPlayer() {
+		playerIndex++;
+		rolls = 0;
+		if (players.size() - 1 < playerIndex) { // check if there is another player
+			playerIndex = 0; // loop around
+			roundsPlayed++;
+		}
+		if (roundsPlayed >= MAX_ROUNDS) { // check if all rounds have been played
+			findWinner(); // find a winner
+			return true;
+		} else { // there are more rounds
+			currentPlayer = players.get(playerIndex); // set the next player
+		}
+		return false;
 	}
 
 	/**
-	 * end your turn
+	 * get to the next game
+	 * 
+	 * @return true if this was the last game
+	 */
+	public boolean nextGame() {
+		// first, check if someone has won enough games
+		boolean done = false;
+		for (Player p : players) {
+			if (p.getWins() >= gamesToWin) {
+				done = true;
+				break;
+			}
+		}
+		// second, check if there are enough games played
+		boolean over = done || gamesPlayed >= maxGames;
+		if (!over) {
+			restart();
+		} else {
+			findWinner(); // TODO
+		}
+		return over;
+	}
+
+	/**
+	 * ends the current players turn
 	 */
 	public void endTurn() {
-		// TODO
+		diceValues = new int[DICE.length];
+		for (int i = 0; i < diceValues.length; i++) {
+			diceValues[i] = DICE[i].getValue(); // set each value in the array
+		}
+		currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
 	}
 
 	/**
-	 * Find the winner of the game
+	 * find the winner of the game
 	 */
 	public void findWinner() {
-		Player winner = players.get(0);
+		winner = players.get(0);
 		for (Player p : players) {
 			int points = p.getPoints();
 			if (points > winner.getPoints()) {
 				winner = p;
 			}
+			// TODO tie
 		}
-	}
-
-	/**
-	 * Reset, so another game can be played
-	 */
-	public void reset() {
-		for (Player p : players) {
-			p.assignCard();
-		}
+		winner.increaseWins();
+		nextGame();
 	}
 
 	/**
 	 * restart the game
 	 */
 	public void restart() {
-		// TODO
+		for (Player p : players) {
+			p.assignCard();
+		}
+		rolls = 0;
+		playerIndex = -1;
+		roundsPlayed = 0;
+		nextPlayer();
 	}
 
 	/**
-	 * stop the game
-	 */
-	public void stop() {
-		// TODO show how many wins each player had
-	}
-
-	/**
-	 * pause the game
-	 */
-	public void pause() {
-		// TODO
-	}
-
-	/**
-	 * Remove a player from the server
+	 * remove a player from the server
 	 * 
-	 * @param other Player, who is removed
+	 * @param player Player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean removePlayer(Player other) {
-		return players.remove(other);
+	public boolean removePlayer(Player player) {
+		if (player == currentPlayer) {
+			skipPlayer(player);
+		}
+		return players.remove(player);
 	}
-  
+
 	/**
-	 * Remove a player from the server
+	 * remove a player from the server
 	 * 
-	 * @param other Player, who is removed
+	 * @param player player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean skipPlayer(Player other) {
-		return false;
+	public boolean skipPlayer(Player player) {
+		boolean result = player == currentPlayer;
+		if (result) {
+			currentPlayer.getCard().setToZero();
+			nextPlayer();
+		}
+		return result;
+	}
+
+	/**
+	 * choose a field
+	 * 
+	 * @param index index of the field
+	 * @return if successful
+	 */
+	public boolean chooseField(int index) {
+		boolean result = currentPlayer.getCard().chooseField(index);
+		nextPlayer();
+		return result;
+	}
+
+	/**
+	 * cross a field
+	 * 
+	 * @param index index of the field
+	 * @return if successful
+	 */
+	public boolean crossField(int index) {
+		boolean result = currentPlayer.getCard().crossField(index);
+		nextPlayer();
+		return result;
 	}
 }
