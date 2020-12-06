@@ -683,7 +683,7 @@ public class GameView extends javax.swing.JFrame {
         dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
         dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
         if (game.rolls == 3)
-            System.out.println("Du dumme Nutte, du darfst nicht mehr");
+            System.out.println("du darfst nicht mehr");
     }//GEN-LAST:event_rollButtonActionPerformed
 
     private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
@@ -692,7 +692,7 @@ public class GameView extends javax.swing.JFrame {
             dice6.setVisible(true);
             Game.DICE[0].toggle();
         } else {
-            System.out.println("Du dumme Nutte, du musst noch würfeln");
+            System.out.println("du musst noch würfeln");
         }
     }//GEN-LAST:event_dice1MouseClicked
 
@@ -702,7 +702,7 @@ public class GameView extends javax.swing.JFrame {
             dice7.setVisible(true);
             Game.DICE[1].toggle();
         } else {
-            System.out.println("Du dumme Nutte, du musst noch würfeln");
+            System.out.println("du musst noch würfeln");
         }
     }//GEN-LAST:event_dice2MouseClicked
 
@@ -712,7 +712,7 @@ public class GameView extends javax.swing.JFrame {
             dice9.setVisible(true);
             Game.DICE[3].toggle();
         } else {
-            System.out.println("Du dumme Nutte, du musst noch würfeln");
+            System.out.println("du musst noch würfeln");
         }
     }//GEN-LAST:event_dice4MouseClicked
 
@@ -722,7 +722,7 @@ public class GameView extends javax.swing.JFrame {
             dice10.setVisible(true);
             Game.DICE[4].toggle();
         } else {
-            System.out.println("Du dumme Nutte, du musst noch würfeln");
+            System.out.println("du musst noch würfeln");
         }
     }//GEN-LAST:event_dice5MouseClicked
 
@@ -805,7 +805,9 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice3MouseClicked
 
     private void finishTurnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finishTurnButtonMouseClicked
+
         game.endTurn();
+        tableSetPoints();
         game.nextPlayer();
         refresh();
     }//GEN-LAST:event_finishTurnButtonMouseClicked
@@ -847,24 +849,23 @@ public class GameView extends javax.swing.JFrame {
     /**
      * Setting the points into the playercard
      */
-    /*
     private void tableSetPoints() {
         for (int i = 0; i < 6; i++) {
-            if(game.currentPlayer.getCard().allFields[i].getValue() == 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getValue(), i, 1);
-            if(game.currentPlayer.getCard().allFields[i].getValue() == -1) playercard.setValueAt("---" , i, 1);
+            System.out.println("Test");
+            if(game.currentPlayer.getCard().allFields[i].getCurrentValue() >= 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getCurrentValue(), i, 1);
+            if(game.currentPlayer.getCard().allFields[i].getCurrentValue() == 0) playercard.setValueAt("---" , i, 1);
         }
         for (int j = 6; j < 13; j++) {
-            if(game.currentPlayer.getCard().allFields[j].getValue() == 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getValue(), j+3, 1);
-            if(game.currentPlayer.getCard().allFields[j].getValue() == -1) playercard.setValueAt("---" , j+3, 1);
+            System.out.println("Test");
+            if(game.currentPlayer.getCard().allFields[j].getCurrentValue() >= 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getCurrentValue(), j+3, 1);
+            if(game.currentPlayer.getCard().allFields[j].getCurrentValue() == 0) playercard.setValueAt("---" , j+3, 1);
         }
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1);     // Part 1
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 16, 1);    // Part 1
         playercard.setValueAt(game.currentPlayer.getCard().getPart2(), 17, 1);    // Part 2
         playercard.setValueAt(game.currentPlayer.getCard().getTotal(), 18, 1);    // Totals
-        
     }
-     */
     /**
      * Refresh the GameView, set the values for the new currentplayer and resets
      * the die
