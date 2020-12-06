@@ -3,6 +3,7 @@ package view;
 
 import game.Game;
 import game.Player;
+import database.PlayerManagement;
 import game.Stats;
 import java.awt.List;
 import java.util.ArrayList;
@@ -39,9 +40,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         register = new javax.swing.JButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,24 +75,10 @@ public class LoginScreenView extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton3.setText("Statistik nicht speichern");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
-
         jRadioButton1.setText("Statistik speichern");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Statistik lokal speichern");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
             }
         });
 
@@ -120,9 +105,7 @@ public class LoginScreenView extends javax.swing.JFrame {
                         .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(register, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                         .addComponent(guest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -141,17 +124,13 @@ public class LoginScreenView extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(guest)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(register)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,26 +151,29 @@ public class LoginScreenView extends javax.swing.JFrame {
         System.out.println("Button one confirmed");
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
+        String playerName = jFormattedTextField1.getText();
+        String playerPassword = String.valueOf(jPasswordField1.getPassword());
+        Boolean statsSave = jRadioButton1.isSelected();
+        MenuView.addPlayerToList(playerName);
+        // PlayerManagement.login(playerName, playerPassword, statsSave);
+        //LoginScreenView().setVisible(false);
     }//GEN-LAST:event_loginActionPerformed
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestActionPerformed
-        // TODO add your handling code here:
+        String playerName = jFormattedTextField1.getText();
+        MenuView.addPlayerToList(playerName);
+        //LoginScreenView().setVisible(false);
     }//GEN-LAST:event_guestActionPerformed
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-        // TODO add your handling code here:
+        String playerName = jFormattedTextField1.getText();
+        String playerPassword = String.valueOf(jPasswordField1.getPassword());
+        Boolean statsSave = jRadioButton1.isSelected();
+        MenuView.addPlayerToList(playerName);
+        //PlayerManagement.register(playerName, playerPassword, statsSave);
+        //LoginScreenView().setVisible(false);
     }//GEN-LAST:event_registerActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton guest;
@@ -202,11 +184,9 @@ public class LoginScreenView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JButton login;
     private javax.swing.JButton register;
     // End of variables declaration//GEN-END:variables
 
-    
+ 
 }

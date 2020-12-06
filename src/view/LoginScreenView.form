@@ -54,9 +54,7 @@
                           <Component id="jFormattedTextField1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
                           <Component id="register" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jRadioButton3" alignment="0" pref="159" max="32767" attributes="0"/>
-                          <Component id="jRadioButton1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jRadioButton1" alignment="0" pref="159" max="32767" attributes="0"/>
                           <Component id="guest" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -79,17 +77,13 @@
                   <Component id="jPasswordField1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jRadioButton1" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jRadioButton2" min="-2" pref="23" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jRadioButton3" min="-2" pref="23" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="login" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="guest" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="register" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace pref="108" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -148,28 +142,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Statistik nicht speichern"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Statistik speichern"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Statistik lokal speichern"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="login">

@@ -231,6 +231,10 @@ public class MenuView extends javax.swing.JFrame {
     private void updatePlayers() {
     	quickPlayers = pM.getAllPlayers();
     }
+    
+    public static void addPlayerToList(String name){
+        System.out.println(name);
+    }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPlayerButtonActionPerformed
     	new LoginScreenView().setVisible(true);
@@ -263,10 +267,6 @@ public class MenuView extends javax.swing.JFrame {
 //        
 //        newPlayerDialog.add(add);
 //        
-        
-        
-        
-        
         
         
     }//GEN-LAST:event_addPlayerButtonActionPerformed
