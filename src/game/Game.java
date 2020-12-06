@@ -61,6 +61,7 @@ public class Game {
 		this.maxGames = maxGames;
 		this.gamesToWin = maxGames;
 		this.players = players;
+                this.currentPlayer = players.get(playerIndex);
 	}
 
 	/**

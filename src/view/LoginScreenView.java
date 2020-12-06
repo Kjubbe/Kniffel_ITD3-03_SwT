@@ -155,13 +155,14 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
-        // PlayerManagement.login(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
         this.setVisible(false);
     }                                     
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {                                      
         String playerName = jFormattedTextField1.getText();
         MenuView.addPlayerToList(playerName);
+        PlayerManagement.getInstance().playAsGuest(playerName);
         this.setVisible(false);
     }                                     
 
@@ -170,7 +171,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
-        //PlayerManagement.register(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
         this.setVisible(false);
     }                                        
 

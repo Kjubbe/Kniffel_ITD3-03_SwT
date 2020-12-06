@@ -221,8 +221,9 @@ public class MenuView extends javax.swing.JFrame {
         //new game.Game(a=assistanWanted);
         //addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH, h));
         //int maxPlayers = length();
-        
+        System.out.println(pM.getAllPlayers().size() + "Gaming");
         Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        
         new GameView(game).setVisible(true);
         
         
