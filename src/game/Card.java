@@ -242,7 +242,7 @@ public class Card {
 	/**
 	 * choose a field
 	 * 
-	 * @param index the index of the field to be crossed
+	 * @param index the index of the field to be chosen
 	 * @return if successful
 	 */
 	public boolean chooseField(int index) {
@@ -257,7 +257,7 @@ public class Card {
 
 	/**
 	 * choose a field and set its value. this is useful when playing without
-	 * autofill
+	 * autocalc
 	 * 
 	 * @param index the index of the field to be crossed
 	 * @param value the new value of the field

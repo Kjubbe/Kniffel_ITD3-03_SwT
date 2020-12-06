@@ -226,6 +226,17 @@ public class Game {
 	}
 
 	/**
+	 * choose a field and its value
+	 * 
+	 * @param index index of the field
+	 * @param value value of the field
+	 */
+	public void chooseField(int index, int value) {
+		currentPlayer.getCard().chooseField(index, value);
+		nextPlayer();
+	}
+
+	/**
 	 * cross a field
 	 * 
 	 * @param index index of the field

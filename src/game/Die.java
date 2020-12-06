@@ -21,7 +21,7 @@ public class Die {
 	/**
 	 * roll the die. generates a random value between 1 and 6
 	 * 
-	 * @return if successfull
+	 * @return if successful
 	 */
 	public boolean roll() {
 		if (isRollable) {

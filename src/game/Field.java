@@ -61,6 +61,15 @@ public class Field {
 	}
 
 	/**
+	 * get the current value
+	 * 
+	 * @return value of this card
+	 */
+	public int getCurrentValue() {
+		return currentValue;
+	}
+
+	/**
 	 * set the current value for this card
 	 * 
 	 * @param value value to be set
