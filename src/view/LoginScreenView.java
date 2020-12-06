@@ -156,7 +156,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
-        // PlayerManagement.login(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
         this.setVisible(false);
     }//GEN-LAST:event_loginActionPerformed
 
@@ -171,7 +171,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
         MenuView.addPlayerToList(playerName);
-        PlayerManagement.register(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
         this.setVisible(false);
     }//GEN-LAST:event_registerActionPerformed
 
