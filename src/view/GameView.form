@@ -296,11 +296,13 @@
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <Component id="FeldStreichenButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <Component id="FeldWaehlenButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="rollButton" min="-2" pref="153" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-              <Component id="finishTurnButton" min="-2" pref="155" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -310,31 +312,25 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="availableDiece" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="dieSeperation" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="choosenDiece" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Component id="playercardOf" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="playercardScrollPane" min="-2" pref="500" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="availableDiece" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="dieSeperation" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="choosenDiece" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="rollButton" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                                  <Component id="finishTurnButton" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="FeldWaehlenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FeldStreichenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rollButton" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -583,14 +579,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="finishTurnButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Zug beenden"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finishTurnButtonMouseClicked"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="rollButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="W&#xfc;rfeln"/>
@@ -617,6 +605,22 @@
         </Property>
         <Property name="doubleBuffered" type="boolean" value="true"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="FeldStreichenButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feld streichen"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeldStreichenButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="FeldWaehlenButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feld ausw&#xe4;hlen"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeldWaehlenButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -184,7 +184,7 @@ public class Card {
 		 * are needed and there are only five dice three dice also = Three Of A Kind
 		 */
 		if (triple) {
-			allFields[specialNumber + 1].setValue(sumOfSame);
+			allFields[specialNumber - 1].setValue(sumOfSame);
 			allFields[THREE_OF_A_KIND_INDEX].setValue(total);
 
 			/**
