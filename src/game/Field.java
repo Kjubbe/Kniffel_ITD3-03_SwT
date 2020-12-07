@@ -16,7 +16,7 @@ public class Field {
 	 * contains the default value of this field. most fields do not have a default
 	 * value
 	 */
-	private int defaultValue;
+	public int defaultValue;
 
 	/**
 	 * contains the possible, current value for this field. this is calculated by
