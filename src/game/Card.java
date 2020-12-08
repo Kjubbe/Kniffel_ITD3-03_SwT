@@ -25,13 +25,12 @@ public class Card {
 	private static final int YAHTZEE_INDEX = 11;
 	private static final int CHANCE_INDEX = 12;
 
-	// names for the fields
-	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
-			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
-			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
-
 	// array with all the fields on this card
-	public final Field[] allFields = new Field[FIELD_NAMES.length];
+	public final Field[] allFields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
+			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
+			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
+			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40), new Field("Kniffel", 50),
+			new Field("Chance") };
 
 	/**
 	 * constructor, assigns a player to this card
@@ -40,16 +39,6 @@ public class Card {
 	 */
 	public Card(Player player) {
 		this.owner = player;
-
-		// add all fields to the array
-		for (int i = 0; i < FIELD_NAMES.length; i++) {
-			allFields[i] = new Field(FIELD_NAMES[i]);
-		}
-
-		allFields[FULL_HOUSE_INDEX].defaultValue = 25;
-		allFields[SMALL_STRAIGHT_INDEX].defaultValue = 30;
-		allFields[LARGE_STRAIGHT_INDEX].defaultValue = 40;
-		allFields[YAHTZEE_INDEX].defaultValue = 50;
 	}
 
 	/**
@@ -59,6 +48,16 @@ public class Card {
 	 */
 	public Player getCardOwner() {
 		return owner;
+	}
+
+	/**
+	 * get a field name
+	 * 
+	 * @param index index of the field
+	 * @return name of the field
+	 */
+	public String getFieldName(int index) {
+		return allFields[index].getName();
 	}
 
 	/**
@@ -80,7 +79,7 @@ public class Card {
 	public int getPart1(boolean withBonus) {
 		int result = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
-			result += allFields[i].getValue();
+			result += allFields[i].getChosenValue();
 		}
 		if (withBonus && result >= BONUS_REQ) {
 			result += BONUS;
@@ -96,7 +95,7 @@ public class Card {
 	public int getPart2() {
 		int result = 0;
 		for (int i = PART1_END_INDEX + 1; i < allFields.length; i++) {
-			result += allFields[i].getValue();
+			result += allFields[i].getChosenValue();
 		}
 		return result;
 	}
