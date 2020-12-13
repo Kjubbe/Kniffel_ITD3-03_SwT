@@ -202,26 +202,14 @@ public class MenuView extends javax.swing.JFrame {
         numberOfRounds = (int)NumberOfRoundsNeededSelector.getValue();
     	assistantWanted = assistantWantedCheckBox.isSelected();
     	autocompleteWanted = autocompleteWantedCheckBox.isSelected();
-		if (playerList.size() < 1) {
+		if (playerList.size() < 2 || maxRounds < 1 || numberOfRounds < 1 ) {
                     showError();
+                    return;
                 }
-                
-		if (maxRounds < 1 ) return;
-		if (numberOfRounds < 1) return;
-        this.setVisible(false);
-        System.out.println("assistand"+assistantWanted);
-        System.out.println("auto"+autocompleteWanted);
-        System.out.println("maxRounds:"+maxRounds);
-        System.out.println("numberofrounds:"+numberOfRounds);
-        System.out.println("playerList"+playerList);
-        
-        //new game.Game(a=assistanWanted);
-        //addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH, h));
-        //int maxPlayers = length();
-        
         Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
         new GameView(game).setVisible(true);
-        
+        this.setVisible(false);
+       
         
     }                         
     
