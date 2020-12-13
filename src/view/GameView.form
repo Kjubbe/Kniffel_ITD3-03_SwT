@@ -279,13 +279,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="playercardScrollPane" pref="0" max="32767" attributes="0"/>
-                  <Component id="playercardOf" min="-2" pref="355" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="playercardScrollPane" pref="0" max="32767" attributes="0"/>
+                          <Component id="playercardOf" min="-2" pref="355" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="FeldStreichenButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="FeldWaehlenButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="yourTurnTextField" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="rollButton" alignment="2" min="-2" pref="153" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="counterTextField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="367" pref="367" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="dieSeperation" alignment="1" max="32767" attributes="0"/>
                   <Component id="choosenDiece" alignment="0" max="32767" attributes="0"/>
@@ -295,42 +315,37 @@
                   </Group>
               </Group>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="FeldStreichenButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-              <Component id="FeldWaehlenButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="rollButton" min="-2" pref="153" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="availableDiece" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="dieSeperation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="choosenDiece" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="playercardOf" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="playercardScrollPane" min="-2" pref="500" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="FeldWaehlenButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="FeldStreichenButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rollButton" alignment="3" min="-2" pref="54" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
+              <Component id="availableDiece" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Component id="dieSeperation" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="choosenDiece" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="yourTurnTextField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="18" pref="18" max="18" attributes="0"/>
+              <Group type="103" groupAlignment="2" attributes="0">
+                  <Component id="rollButton" alignment="2" min="-2" pref="54" max="-2" attributes="0"/>
+                  <Component id="counterTextField" alignment="2" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+              <Component id="playercardOf" min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="playercardScrollPane" min="-2" pref="500" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="FeldWaehlenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="FeldStreichenButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -382,7 +397,6 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Spielerkarte"/>
             <Property name="focusCycleRoot" type="boolean" value="true"/>
-            <Property name="focusable" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="rowHeight" type="int" value="25"/>
           </Properties>
@@ -621,6 +635,23 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FeldWaehlenButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="yourTurnTextField">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="Beispielname, du bist dran. W&#xfc;rfel jetzt!"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="yourTurnTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="counterTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0/3"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -21,9 +21,12 @@ public class GameView extends javax.swing.JFrame {
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
-        
+
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
-        
+        counterTextField.setText(game.rolls+1 + "/3");
+
+        yourTurnTextField.setText(game.currentPlayer.getName() + ", du bist dran. Würfel jetzt!");
+
         player1Button.setVisible(false);
         player2Button.setVisible(false);
         player3Button.setVisible(false);
@@ -32,13 +35,12 @@ public class GameView extends javax.swing.JFrame {
         player6Button.setVisible(false);
         player7Button.setVisible(false);
         player8Button.setVisible(false);
-       
-       
+
         for (int j = 0; j < game.players.size(); j++) {
             if (j == 0) {
                 player1Button.setText(game.players.get(j).getName());
                 player1Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer1Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer1Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -49,7 +51,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 1) {
                 player2Button.setText(game.players.get(j).getName());
                 player2Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer2Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer2Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -60,7 +62,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 2) {
                 player3Button.setText(game.players.get(j).getName());
                 player3Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer3Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer3Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -71,7 +73,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 3) {
                 player4Button.setText(game.players.get(j).getName());
                 player4Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer4Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer4Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -82,7 +84,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 4) {
                 player5Button.setText(game.players.get(j).getName());
                 player5Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer5Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer5Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -93,7 +95,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 5) {
                 player6Button.setText(game.players.get(j).getName());
                 player6Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer6Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer6Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -104,7 +106,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 6) {
                 player7Button.setText(game.players.get(j).getName());
                 player7Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer7Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer7Card.setText(game.players.get(j).getName() + " Spielerkarte");
@@ -115,7 +117,7 @@ public class GameView extends javax.swing.JFrame {
             if (j == 7) {
                 player8Button.setText(game.players.get(j).getName());
                 player8Button.setVisible(true);
-                if(game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's'){
+                if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer8Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
                     showPlayer8Card.setText(game.players.get(j).getName() + "Spielerkarte");
@@ -169,6 +171,8 @@ public class GameView extends javax.swing.JFrame {
         dieSeperation = new javax.swing.JSeparator();
         FeldStreichenButton = new javax.swing.JButton();
         FeldWaehlenButton = new javax.swing.JButton();
+        yourTurnTextField = new javax.swing.JTextField();
+        counterTextField = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         OptionsButton = new javax.swing.JMenu();
         pauseGame = new javax.swing.JMenuItem();
@@ -242,7 +246,6 @@ public class GameView extends javax.swing.JFrame {
         ));
         playercard.setToolTipText("Spielerkarte");
         playercard.setFocusCycleRoot(true);
-        playercard.setFocusable(false);
         playercard.setName(""); // NOI18N
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
@@ -414,6 +417,19 @@ public class GameView extends javax.swing.JFrame {
                 FeldWaehlenButtonActionPerformed(evt);
             }
         });
+
+        yourTurnTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        yourTurnTextField.setText("Beispielname, du bist dran. Würfel jetzt!");
+        yourTurnTextField.setToolTipText("");
+        yourTurnTextField.setFocusable(false);
+        yourTurnTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yourTurnTextFieldActionPerformed(evt);
+            }
+        });
+
+        counterTextField.setText("0/3");
+        counterTextField.setFocusable(false);
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -601,46 +617,58 @@ public class GameView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(FeldStreichenButton)
+                        .addGap(68, 68, 68)
+                        .addComponent(FeldWaehlenButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(367, 367, 367)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dieSeperation, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(FeldStreichenButton)
-                .addGap(68, 68, 68)
-                .addComponent(FeldWaehlenButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(191, 191, 191))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(FeldWaehlenButton)
-                            .addComponent(FeldStreichenButton)
-                            .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FeldWaehlenButton)
+                    .addComponent(FeldStreichenButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -677,30 +705,39 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_player3ButtonActionPerformed
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
-        
-        if(game.rollDie()) {
+        yourTurnTextField.setVisible(false);
+        counterTextField.setText(game.rolls + "/3");
+        if (game.rollDie()) {
             System.out.println("Du darfst nicht mehr du Penner");
         } else {
-            dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
-            dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
-            dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
-            dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
-            dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
+            if (Game.DICE[0].isRollable()) {
+                dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
+            }
+            if (Game.DICE[1].isRollable()) {
+                dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
+            }
 
-            dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
-            dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
-            dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
-            dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
-            dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
-            tableSetPoints();
+            if (Game.DICE[2].isRollable()) {
+                dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
+            }
+
+            if (Game.DICE[3].isRollable()) {
+                dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
+            }
+
+            if (Game.DICE[4].isRollable()) {
+                dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
+            }
+
         }
-        
+
+        tableSetPoints();
     }//GEN-LAST:event_rollButtonActionPerformed
 
     private void dice1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice1MouseClicked
         if (game.rolls > 0) {
-            dice1.setVisible(false);
-            dice6.setVisible(true);
+            dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+            dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
             Game.DICE[0].toggle();
         } else {
             System.out.println("du musst noch würfeln");
@@ -709,8 +746,8 @@ public class GameView extends javax.swing.JFrame {
 
     private void dice2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice2MouseClicked
         if (game.rolls > 0) {
-            dice2.setVisible(false);
-            dice7.setVisible(true);
+            dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+            dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
             Game.DICE[1].toggle();
         } else {
             System.out.println("du musst noch würfeln");
@@ -719,8 +756,8 @@ public class GameView extends javax.swing.JFrame {
 
     private void dice4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice4MouseClicked
         if (game.rolls > 0) {
-            dice4.setVisible(false);
-            dice9.setVisible(true);
+            dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+            dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
             Game.DICE[3].toggle();
         } else {
             System.out.println("du musst noch würfeln");
@@ -729,8 +766,8 @@ public class GameView extends javax.swing.JFrame {
 
     private void dice5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice5MouseClicked
         if (game.rolls > 0) {
-            dice5.setVisible(false);
-            dice10.setVisible(true);
+            dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+            dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
             Game.DICE[4].toggle();
         } else {
             System.out.println("du musst noch würfeln");
@@ -739,40 +776,40 @@ public class GameView extends javax.swing.JFrame {
 
     private void dice6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice6MouseClicked
 
-        dice6.setVisible(false);
-        dice1.setVisible(true);
+        dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[0].getValue() + ".png")));
         Game.DICE[0].toggle();
 
     }//GEN-LAST:event_dice6MouseClicked
 
     private void dice7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice7MouseClicked
 
-        dice7.setVisible(false);
-        dice2.setVisible(true);
+        dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[1].getValue() + ".png")));
         Game.DICE[1].toggle();
 
     }//GEN-LAST:event_dice7MouseClicked
 
     private void dice8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice8MouseClicked
 
-        dice8.setVisible(false);
-        dice3.setVisible(true);
+        dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
         Game.DICE[2].toggle();
 
     }//GEN-LAST:event_dice8MouseClicked
 
     private void dice9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice9MouseClicked
-        if (game.rolls > 0) {
-            dice9.setVisible(false);
-            dice4.setVisible(true);
-            Game.DICE[3].toggle();
-        }
+
+        dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[3].getValue() + ".png")));
+        Game.DICE[3].toggle();
+
     }//GEN-LAST:event_dice9MouseClicked
 
     private void dice10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice10MouseClicked
 
-        dice10.setVisible(false);
-        dice5.setVisible(true);
+        dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[4].getValue() + ".png")));
         Game.DICE[4].toggle();
 
     }//GEN-LAST:event_dice10MouseClicked
@@ -809,26 +846,41 @@ public class GameView extends javax.swing.JFrame {
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
         if (game.rolls > 0) {
-            dice3.setVisible(false);
-            dice8.setVisible(true);
+            dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+            dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/" + Game.DICE[2].getValue() + ".png")));
             Game.DICE[2].toggle();
         }
     }//GEN-LAST:event_dice3MouseClicked
 
     private void FeldStreichenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeldStreichenButtonActionPerformed
-        // TODO add your handling code here:
+        int index = playercard.getSelectedRow();
+        if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
+            if (index > 5) {
+            index -= 3;
+        }
+        game.crossField(index);
+        refresh();
+        } else {
+            System.out.println("Falsche Zeile");
+        }
     }//GEN-LAST:event_FeldStreichenButtonActionPerformed
 
     private void FeldWaehlenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeldWaehlenButtonActionPerformed
         int index = playercard.getSelectedRow();
-        
-        if(index > 5) {
+        if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
+            if (index > 5) {
             index -= 3;
         }
         game.chooseField(index);
-        game.crossField(index);
         refresh();
+        } else {
+            System.out.println("Falsche Zeile");
+        }
     }//GEN-LAST:event_FeldWaehlenButtonActionPerformed
+
+    private void yourTurnTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yourTurnTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yourTurnTextFieldActionPerformed
 
     /**
      * Setting the fieldnames into the playercard
@@ -851,16 +903,18 @@ public class GameView extends javax.swing.JFrame {
                 d.toggle();
             }
         }
-        dice1.setVisible(true);
-        dice2.setVisible(true);
-        dice3.setVisible(true);
-        dice4.setVisible(true);
-        dice5.setVisible(true);
-        dice6.setVisible(false);
-        dice7.setVisible(false);
-        dice8.setVisible(false);
-        dice9.setVisible(false);
-        dice10.setVisible(false);
+
+        dice6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+        dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
+
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
 
     }
 
@@ -869,12 +923,24 @@ public class GameView extends javax.swing.JFrame {
      */
     private void tableSetPoints() {
         for (int i = 0; i < 6; i++) {
-            if(game.currentPlayer.getCard().allFields[i].getCurrentValue() >= 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getCurrentValue(), i, 1);
-            if(game.currentPlayer.getCard().allFields[i].getCurrentValue() == 0) playercard.setValueAt("---" , i, 1);
+            if (game.currentPlayer.getCard().allFields[i].isOpen()) {
+                playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getCurrentValue(), i, 1);
+            } else if (game.currentPlayer.getCard().allFields[i].isCrossed()) {
+                playercard.setValueAt("---", i, 1);
+            } else {
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getValue(), i, 1);
+            }
+
         }
         for (int j = 6; j < 13; j++) {
-            if(game.currentPlayer.getCard().allFields[j].getCurrentValue() >= 1) playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getCurrentValue(), j+3, 1);
-            if(game.currentPlayer.getCard().allFields[j].getCurrentValue() == 0) playercard.setValueAt("---" , j+3, 1);
+            if (game.currentPlayer.getCard().allFields[j].isOpen()) {
+                playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getCurrentValue(), j + 3, 1);
+            } else if (game.currentPlayer.getCard().allFields[j].isCrossed()) {
+                playercard.setValueAt("---", j + 3, 1);
+            } else {
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getValue(), j + 3, 1);
+            }
+
         }
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1);     // Part 1
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
@@ -882,6 +948,7 @@ public class GameView extends javax.swing.JFrame {
         playercard.setValueAt(game.currentPlayer.getCard().getPart2(), 17, 1);    // Part 2
         playercard.setValueAt(game.currentPlayer.getCard().getTotal(), 18, 1);    // Totals
     }
+
     /**
      * Refresh the GameView, set the values for the new currentplayer and resets
      * the die
@@ -890,6 +957,9 @@ public class GameView extends javax.swing.JFrame {
         showDefaultDie();
         tableSetPoints();
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
+        yourTurnTextField.setVisible(true);
+        yourTurnTextField.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
+        counterTextField.setText(game.rolls + "/3");
 
     }
 
@@ -899,6 +969,7 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenu OptionsButton;
     private javax.swing.JPanel availableDiece;
     private javax.swing.JPanel choosenDiece;
+    private javax.swing.JTextField counterTextField;
     private javax.swing.JLabel dice1;
     private javax.swing.JLabel dice10;
     private javax.swing.JLabel dice2;
@@ -950,5 +1021,6 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenuItem skipPlayer6;
     private javax.swing.JMenuItem skipPlayer7;
     private javax.swing.JMenuItem skipPlayer8;
+    private javax.swing.JTextField yourTurnTextField;
     // End of variables declaration//GEN-END:variables
 }
