@@ -685,7 +685,7 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
-        // Back to Main Menu
+        dispose();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1ButtonActionPerformed
@@ -829,6 +829,7 @@ public class GameView extends javax.swing.JFrame {
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
         game.restart();
+        dispose();
         System.out.println("test");
     }//GEN-LAST:event_restartGameActionPerformed
 
