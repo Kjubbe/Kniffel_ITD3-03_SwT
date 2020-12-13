@@ -154,24 +154,24 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
-        MenuView.addPlayerToList(playerName);
-        // PlayerManagement.login(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
         this.setVisible(false);
+        MenuView.addPlayerToList();
     }                                     
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {                                      
         String playerName = jFormattedTextField1.getText();
-        MenuView.addPlayerToList(playerName);
         this.setVisible(false);
+        MenuView.addPlayerToList();
     }                                     
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
-        MenuView.addPlayerToList(playerName);
-        //PlayerManagement.register(playerName, playerPassword, statsSave);
+        PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
         this.setVisible(false);
+        MenuView.addPlayerToList();
     }                                        
 
     // Variables declaration - do not modify                     
