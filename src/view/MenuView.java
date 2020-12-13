@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JList;
 import javax.swing.JTextField;
 import database.PlayerManagement;
 /**
@@ -43,7 +44,7 @@ public class MenuView extends javax.swing.JFrame {
         NumberOfRoundsNeededSelector = new javax.swing.JSpinner();
         javax.swing.JLabel NumberOfRoundsNeededLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JListOfPlayers = new javax.swing.JList<>();
+        JList JListOfPlayers = new javax.swing.JList<>();
         StartGameButton = new javax.swing.JButton();
         assistantWantedCheckBox = new javax.swing.JCheckBox();
         autocompleteWantedCheckBox = new javax.swing.JCheckBox();
@@ -205,12 +206,13 @@ public class MenuView extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void StartGameButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        //if (playerList.size() < 1) return;
-        //if (jSpinner1. < 1 ) return;
     	maxRounds = (int)maxRoundsSelector.getValue();
         numberOfRounds = (int)NumberOfRoundsNeededSelector.getValue();
     	assistantWanted = assistantWantedCheckBox.isSelected();
     	autocompleteWanted = autocompleteWantedCheckBox.isSelected();
+		if (playerList.size() < 1) return;
+		if (maxRounds < 1 ) return;
+		if (numberOfRounds < 1) return;
         this.setVisible(false);
         System.out.println("assistand"+assistantWanted);
         System.out.println("auto"+autocompleteWanted);
@@ -228,13 +230,13 @@ public class MenuView extends javax.swing.JFrame {
         
     }                                               
     
-    private void updatePlayers() {
-    	quickPlayers = pM.getAllPlayers();
-    }
-    
     public static void addPlayerToList(String name){
-        System.out.println(name);
-        playerList.addElement(new Player(name));
+    	loggedIn = pM.getAllPlayers();
+    	System.out.println(loggedIn);
+    	for(Player p: loggedIn) {
+    		playerList.addElement(p);
+    	}
+   
     }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
@@ -244,7 +246,6 @@ public class MenuView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify                     
-    private javax.swing.JList<Player> JListOfPlayers;
     private javax.swing.JSpinner NumberOfRoundsNeededSelector;
     private javax.swing.JButton StartGameButton;
     private javax.swing.JButton addPlayerButton;
@@ -259,15 +260,10 @@ public class MenuView extends javax.swing.JFrame {
     // End of variables declaration                   
     private int numberOfRounds;
     private int maxRounds;
-    java.util.List<Player> quickPlayers = new ArrayList<Player>();
+    private static java.util.List<Player> loggedIn = new ArrayList<Player>();
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;
-    LinkedList stringList = new LinkedList<String>();
     static PlayerManagement pM = PlayerManagement.getInstance();
-
-    private void addPlayersToGame() {
-       
-    }
    
 }
