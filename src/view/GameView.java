@@ -469,9 +469,19 @@ public class GameView extends javax.swing.JFrame {
         });
 
         showPlayer1Card.setText("Spielerkarte anzeigen");
+        showPlayer1Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer1CardActionPerformed(evt);
+            }
+        });
         player1Button.add(showPlayer1Card);
 
         skipPlayer1.setText("Spieler überspringen");
+        skipPlayer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer1ActionPerformed(evt);
+            }
+        });
         player1Button.add(skipPlayer1);
 
         removePlayer1.setText("Spieler entfernen");
@@ -495,6 +505,11 @@ public class GameView extends javax.swing.JFrame {
         player2Button.add(showPlayer2Card);
 
         skipPlayer2.setText("Spieler überspringen");
+        skipPlayer2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer2ActionPerformed(evt);
+            }
+        });
         player2Button.add(skipPlayer2);
 
         removePlayer2.setText("Spieler entfernen");
@@ -518,6 +533,11 @@ public class GameView extends javax.swing.JFrame {
         player3Button.add(showPlayer3Card);
 
         skipPlayer3.setText("Spieler überspringen");
+        skipPlayer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer3ActionPerformed(evt);
+            }
+        });
         player3Button.add(skipPlayer3);
 
         removePlayer3.setText("Spieler entfernen");
@@ -546,6 +566,11 @@ public class GameView extends javax.swing.JFrame {
         player4Button.add(showPlayer4Card);
 
         skipPlayer4.setText("Spieler überspringen");
+        skipPlayer4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer4ActionPerformed(evt);
+            }
+        });
         player4Button.add(skipPlayer4);
 
         removePlayer4.setText("Spieler entfernen");
@@ -564,9 +589,19 @@ public class GameView extends javax.swing.JFrame {
         player5Button.add(showPlayer5Card);
 
         skipPlayer5.setText("Spieler überspringen");
+        skipPlayer5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer5ActionPerformed(evt);
+            }
+        });
         player5Button.add(skipPlayer5);
 
         removePlayer5.setText("Spieler entfernen");
+        removePlayer5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePlayer5ActionPerformed(evt);
+            }
+        });
         player5Button.add(removePlayer5);
 
         jMenuBar1.add(player5Button);
@@ -577,9 +612,19 @@ public class GameView extends javax.swing.JFrame {
         player6Button.add(showPlayer6Card);
 
         skipPlayer6.setText("Spieler überspringen");
+        skipPlayer6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer6ActionPerformed(evt);
+            }
+        });
         player6Button.add(skipPlayer6);
 
         removePlayer6.setText("Spieler entfernen");
+        removePlayer6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePlayer6ActionPerformed(evt);
+            }
+        });
         player6Button.add(removePlayer6);
 
         jMenuBar1.add(player6Button);
@@ -590,9 +635,19 @@ public class GameView extends javax.swing.JFrame {
         player7Button.add(showPlayer7Card);
 
         skipPlayer7.setText("Spieler überspringen");
+        skipPlayer7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer7ActionPerformed(evt);
+            }
+        });
         player7Button.add(skipPlayer7);
 
         removePlayer7.setText("Spieler entfernen");
+        removePlayer7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePlayer7ActionPerformed(evt);
+            }
+        });
         player7Button.add(removePlayer7);
 
         jMenuBar1.add(player7Button);
@@ -603,9 +658,19 @@ public class GameView extends javax.swing.JFrame {
         player8Button.add(showPlayer8Card);
 
         skipPlayer8.setText("Spieler überspringen");
+        skipPlayer8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipPlayer8ActionPerformed(evt);
+            }
+        });
         player8Button.add(skipPlayer8);
 
         removePlayer8.setText("Spieler entfernen");
+        removePlayer8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePlayer8ActionPerformed(evt);
+            }
+        });
         player8Button.add(removePlayer8);
 
         jMenuBar1.add(player8Button);
@@ -815,7 +880,10 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
-
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(2));
+        player3Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
@@ -834,15 +902,24 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
-        // Remove Player
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(0));
+        player1Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
     private void removePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer2ActionPerformed
-
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(1));
+        player2Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
-
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(3));
+        player4Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
@@ -882,6 +959,78 @@ public class GameView extends javax.swing.JFrame {
     private void yourTurnTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yourTurnTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yourTurnTextFieldActionPerformed
+
+    private void removePlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer5ActionPerformed
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(4));
+        player5Button.setVisible(false);
+        }
+    }//GEN-LAST:event_removePlayer5ActionPerformed
+
+    private void removePlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer6ActionPerformed
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(5));
+        player6Button.setVisible(false);
+        }
+    }//GEN-LAST:event_removePlayer6ActionPerformed
+
+    private void removePlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer7ActionPerformed
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(6));
+        player7Button.setVisible(false);
+        }
+    }//GEN-LAST:event_removePlayer7ActionPerformed
+
+    private void removePlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer8ActionPerformed
+        if(game.players.size() > 2) {
+        game.removePlayer(game.players.get(7));
+        player8Button.setVisible(false);
+        }
+    }//GEN-LAST:event_removePlayer8ActionPerformed
+
+    private void skipPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer1ActionPerformed
+        game.skipPlayer(game.players.get(0));
+        refresh();
+    }//GEN-LAST:event_skipPlayer1ActionPerformed
+
+    private void skipPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer2ActionPerformed
+        game.skipPlayer(game.players.get(1));
+        refresh();
+    }//GEN-LAST:event_skipPlayer2ActionPerformed
+
+    private void skipPlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer3ActionPerformed
+        game.skipPlayer(game.players.get(2));
+        refresh();
+    }//GEN-LAST:event_skipPlayer3ActionPerformed
+
+    private void skipPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer4ActionPerformed
+        game.skipPlayer(game.players.get(3));
+        refresh();
+    }//GEN-LAST:event_skipPlayer4ActionPerformed
+
+    private void skipPlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer5ActionPerformed
+        game.skipPlayer(game.players.get(4));
+        refresh();
+    }//GEN-LAST:event_skipPlayer5ActionPerformed
+
+    private void skipPlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer6ActionPerformed
+        game.skipPlayer(game.players.get(5));
+        refresh();
+    }//GEN-LAST:event_skipPlayer6ActionPerformed
+
+    private void skipPlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer7ActionPerformed
+        game.skipPlayer(game.players.get(6));
+        refresh();
+    }//GEN-LAST:event_skipPlayer7ActionPerformed
+
+    private void skipPlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer8ActionPerformed
+        game.skipPlayer(game.players.get(7));
+        refresh();
+    }//GEN-LAST:event_skipPlayer8ActionPerformed
+
+    private void showPlayer1CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer1CardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showPlayer1CardActionPerformed
 
     /**
      * Setting the fieldnames into the playercard
@@ -961,7 +1110,6 @@ public class GameView extends javax.swing.JFrame {
         yourTurnTextField.setVisible(true);
         yourTurnTextField.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
         counterTextField.setText(game.rolls + "/3");
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

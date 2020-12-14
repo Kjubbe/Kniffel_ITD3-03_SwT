@@ -54,11 +54,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spielerkarte anzeigen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showPlayer1CardActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="skipPlayer1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer1ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer1">
               <Properties>
@@ -87,6 +93,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer2ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer2">
               <Properties>
@@ -115,6 +124,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer3ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer3">
               <Properties>
@@ -146,6 +158,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer4ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer4">
               <Properties>
@@ -171,11 +186,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer5ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removePlayer5ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -193,11 +214,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer6ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removePlayer6ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -215,11 +242,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer7ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removePlayer7ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -237,11 +270,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler &#xfc;berspringen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipPlayer8ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="removePlayer8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spieler entfernen"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removePlayer8ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
