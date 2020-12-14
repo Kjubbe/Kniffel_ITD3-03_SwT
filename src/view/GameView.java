@@ -23,7 +23,7 @@ public class GameView extends javax.swing.JFrame {
         showDefaultDie();
 
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
-        counterTextField.setText(game.rolls+1 + "/3");
+        counterTextField.setText(game.rolls + "/3");
 
         yourTurnTextField.setText(game.currentPlayer.getName() + ", du bist dran. Würfel jetzt!");
 
@@ -629,12 +629,15 @@ public class GameView extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(FeldWaehlenButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(164, 164, 164))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(367, 367, 367)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -653,13 +656,13 @@ public class GameView extends javax.swing.JFrame {
                 .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -706,7 +709,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
         yourTurnTextField.setVisible(false);
-        counterTextField.setText(game.rolls + "/3");
+        if(game.rolls < 3) counterTextField.setText(game.rolls+1 + "/3");
         if (game.rollDie()) {
             System.out.println("Du darfst nicht mehr du Penner");
         } else {
@@ -910,11 +913,11 @@ public class GameView extends javax.swing.JFrame {
         dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
         dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
 
-        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
 
     }
 
@@ -960,7 +963,6 @@ public class GameView extends javax.swing.JFrame {
         yourTurnTextField.setVisible(true);
         yourTurnTextField.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
         counterTextField.setText(game.rolls + "/3");
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
