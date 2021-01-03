@@ -63,6 +63,7 @@ public class StartScreenView extends javax.swing.JFrame {
 	}
 
 	void onNewGameButtonClicked() {
+            new MenuView();
 		
 	}
 

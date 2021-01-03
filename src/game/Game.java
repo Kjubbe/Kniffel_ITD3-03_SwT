@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class Game {
 	private final int maxGames; // max number of games to be played
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
-	private final List<Player> players; // contains all participating players
+	public final List<Player> players; // contains all participating players
 
 	public Player currentPlayer; // the current player doing his turn
 	private int playerIndex; // index of the current player
@@ -59,6 +61,7 @@ public class Game {
 		this.maxGames = maxGames;
 		this.gamesToWin = maxGames;
 		this.players = players;
+                this.currentPlayer = players.get(playerIndex);
 	}
 
 	/**
@@ -79,6 +82,10 @@ public class Game {
 		this.currentPlayer = players.get(playerIndex);
 	}
 
+    public Game() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 	/**
 	 * roll all die
 	 * 
@@ -91,14 +98,16 @@ public class Game {
 				d.roll();
 			}
 			rolls++;
-
-			turnOver = rolls >= 3;
-			if (turnOver) { // end the turn if the turn is over after rolling
-				endTurn();
-			}
+                        diceValues = new int[DICE.length];
+                        for (int i = 0; i < diceValues.length; i++) {
+                            diceValues[i] = DICE[i].getValue(); // set each value in the array
+                        }
+                        currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
 		}
 		return turnOver;
 	}
+        
+        
 
 	/**
 	 * get to the next player
@@ -108,7 +117,7 @@ public class Game {
 	public boolean nextPlayer() {
 		playerIndex++;
 		rolls = 0;
-		if (players.size() - 1 > playerIndex) { // check if there is another player
+		if (players.size() - 1 < playerIndex) { // check if there is another player
 			playerIndex = 0; // loop around
 			roundsPlayed++;
 		}

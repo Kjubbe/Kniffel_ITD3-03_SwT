@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Arrays;
+
 /**
  * contains information about a card of a player. the player can choose or cross
  * fields. this class also manages all calculations with points for all existing
@@ -45,6 +47,10 @@ public class Card {
 		for (int i = 0; i < FIELD_NAMES.length; i++) {
 			allFields[i] = new Field(FIELD_NAMES[i]);
 		}
+            allFields[FULL_HOUSE_INDEX].defaultValue = 25;
+            allFields[SMALL_STRAIGHT_INDEX].defaultValue = 30;
+            allFields[LARGE_STRAIGHT_INDEX].defaultValue = 40;
+            allFields[YAHTZEE_INDEX].defaultValue = 50;
 	}
 
 	/**
@@ -104,6 +110,8 @@ public class Card {
 	public void calculatePoints(int[] num) {
 		// first, sort the values
 		num = bubbleSort(num);
+                
+                System.out.println(Arrays.toString(num));
 
 		// calculate the total
 		int total = 0;
@@ -178,7 +186,7 @@ public class Card {
 		 * are needed and there are only five dice three dice also = Three Of A Kind
 		 */
 		if (triple) {
-			allFields[specialNumber + 1].setValue(sumOfSame);
+			allFields[specialNumber - 1].setValue(sumOfSame);
 			allFields[THREE_OF_A_KIND_INDEX].setValue(total);
 
 			/**
