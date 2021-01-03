@@ -41,15 +41,6 @@ public class Card {
 	 */
 	public Card(Player player) {
 		this.owner = player;
-
-		// add all fields to the array
-		for (int i = 0; i < FIELD_NAMES.length; i++) {
-			allFields[i] = new Field(FIELD_NAMES[i]);
-		}
-            allFields[FULL_HOUSE_INDEX].defaultValue = 25;
-            allFields[SMALL_STRAIGHT_INDEX].defaultValue = 30;
-            allFields[LARGE_STRAIGHT_INDEX].defaultValue = 40;
-            allFields[YAHTZEE_INDEX].defaultValue = 50;
 	}
 
 	/**
