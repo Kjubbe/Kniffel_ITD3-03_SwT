@@ -1,12 +1,6 @@
 package view;
 
-import game.Game;
-import game.Player;
 import database.PlayerManagement;
-import game.Stats;
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
 /**
  *
  * @author jarmo

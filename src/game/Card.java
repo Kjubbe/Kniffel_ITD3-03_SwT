@@ -28,11 +28,15 @@ public class Card {
 	private static final int CHANCE_INDEX = 12;
 
 	// array with all the fields on this card
-	public final Field[] allFields = { new Field("Nur Einser Zählen"), new Field("Nur Zweier Zählen"),
-			new Field("Nur Dreier Zählen"), new Field("Nur Vierer Zählen"), new Field("Nur Fünfer Zählen"),
-			new Field("Nur Sechser Zählen"), new Field("Dreier Pasch"), new Field("Vierer Pasch"),
-			new Field("Full House", 25), new Field("Kleine Straße", 30), new Field("Große Straße", 40), new Field("Kniffel", 50),
-			new Field("Chance") };
+	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
+			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
+			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
+
+	// array with all the fields on this card
+	public final Field[] allFields = { new Field(FIELD_NAMES[0]), new Field(FIELD_NAMES[1]), new Field(FIELD_NAMES[2]),
+			new Field(FIELD_NAMES[3]), new Field(FIELD_NAMES[4]), new Field(FIELD_NAMES[5]), new Field(FIELD_NAMES[6]),
+			new Field(FIELD_NAMES[7]), new Field(FIELD_NAMES[8], 25), new Field(FIELD_NAMES[9], 30),
+			new Field(FIELD_NAMES[10], 40), new Field(FIELD_NAMES[11], 50), new Field(FIELD_NAMES[12]) };
 
 	/**
 	 * constructor, assigns a player to this card
@@ -50,16 +54,6 @@ public class Card {
 	 */
 	public Player getCardOwner() {
 		return owner;
-	}
-
-	/**
-	 * get a field name
-	 * 
-	 * @param index index of the field
-	 * @return name of the field
-	 */
-	public String getFieldName(int index) {
-		return allFields[index].getName();
 	}
 
 	/**
@@ -110,8 +104,8 @@ public class Card {
 	public void calculatePoints(int[] num) {
 		// first, sort the values
 		num = bubbleSort(num);
-                
-                System.out.println(Arrays.toString(num));
+
+		System.out.println(Arrays.toString(num));
 
 		// calculate the total
 		int total = 0;

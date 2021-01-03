@@ -1078,7 +1078,7 @@ public class GameView extends javax.swing.JFrame {
             } else if (game.currentPlayer.getCard().allFields[i].isCrossed()) {
                 playercard.setValueAt("---", i, 1);
             } else {
-                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getValue(), i, 1);
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getChosenValue(), i, 1);
             }
 
         }
@@ -1088,7 +1088,7 @@ public class GameView extends javax.swing.JFrame {
             } else if (game.currentPlayer.getCard().allFields[j].isCrossed()) {
                 playercard.setValueAt("---", j + 3, 1);
             } else {
-                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getValue(), j + 3, 1);
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getChosenValue(), j + 3, 1);
             }
 
         }

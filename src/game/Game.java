@@ -1,7 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -81,10 +79,6 @@ public class Game {
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
 	}
-
-    public Game() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 	/**
 	 * roll all die
