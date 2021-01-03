@@ -59,6 +59,11 @@ public class Field {
 		// a value of -1 means the card is worth 0
 		return chosenValue == -1 ? 0 : chosenValue;
 	}
+        
+        public int getCurrentValue() {
+		// a value of -1 means the card is worth 0
+		return currentValue;
+	}
 
 	/**
 	 * get the current value

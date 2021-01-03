@@ -1,4 +1,8 @@
+
+import view.GameView;
 import view.StartScreenView;
+import view.LoginScreenView;
+import view.StatistikDialogView;
 
 /**
  * Main
@@ -17,7 +21,13 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello World"); // :)
 		// TODO
+                // scur scur 
+                //new GameView().setVisible(true);
+                //new LoginScreenView().setVisible(true);
+                //new StatistikDialogView().setVisible(true);
+                
 		// scur scur
-		StartScreenView start = new StartScreenView();
+                StartScreenView start = new StartScreenView();
+               
 	}
 }
