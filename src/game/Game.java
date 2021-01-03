@@ -59,7 +59,7 @@ public class Game {
 		this.maxGames = maxGames;
 		this.gamesToWin = maxGames;
 		this.players = players;
-                this.currentPlayer = players.get(playerIndex);
+		this.currentPlayer = players.get(playerIndex);
 	}
 
 	/**
@@ -86,27 +86,26 @@ public class Game {
 	 * @return true if turn endet
 	 */
 	public boolean rollDie() {
-		for (Die d : DICE) { // roll the die
-			if (d.roll()) {
-				currentPlayer.getStats().increaseDiceRolled();
-			}
-		}
-		rolls++;
-
-		for (int i = 0; i < diceValues.length; i++) {
-			diceValues[i] = DICE[i].getValue(); // set each value in the array
-		}
-		currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
-		
 		boolean turnOver = rolls >= 3;
-		if (turnOver) { // end the turn when more than 3 rolls
+
+		if (!turnOver) {
+			for (Die d : DICE) { // roll the die
+				if (d.roll()) {
+					currentPlayer.getStats().increaseDiceRolled();
+				}
+			}
+			rolls++;
+
+			for (int i = 0; i < diceValues.length; i++) {
+				diceValues[i] = DICE[i].getValue(); // set each value in the array
+			}
+			currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
+		} else { // end the turn when more than 3 rolls
 			currentPlayer.getStats().increaseRoundsPlayed();
 		}
 
 		return turnOver;
 	}
-        
-        
 
 	/**
 	 * get to the next player

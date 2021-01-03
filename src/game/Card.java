@@ -102,7 +102,10 @@ public class Card {
 	 * @param num values of the five dice
 	 */
 	public void calculatePoints(int[] num) {
-		// first, sort the values
+		// reset all fields
+                setToZero();
+
+                // first, sort the values
 		num = bubbleSort(num);
 
 		System.out.println(Arrays.toString(num));
