@@ -254,7 +254,7 @@ public class Card {
 		boolean result = field.choose();
 		if (result) {
 			setToZero();
-			owner.getStats().increasePoints(field.getValue()); // TODO is this the right place?
+			owner.getStats().increasePoints(field.getChosenValue()); // TODO is this the right place?
 		}
 		return result;
 	}
