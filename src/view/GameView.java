@@ -217,9 +217,9 @@ public class GameView extends javax.swing.JFrame {
         setBackground(new java.awt.Color(21, 10, 22));
         setResizable(false);
 
-        playercard.setBackground(new java.awt.Color(21, 20, 22));
-        playercard.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        playercard.setForeground(new java.awt.Color(255, 117, 139));
+        playercard.setBackground(new java.awt.Color(55, 55, 55));
+        playercard.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
+        playercard.setForeground(new java.awt.Color(255, 255, 255));
         playercard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
