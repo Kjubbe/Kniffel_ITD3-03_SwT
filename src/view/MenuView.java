@@ -211,7 +211,11 @@ public class MenuView extends javax.swing.JFrame {
         this.setVisible(false);
        
         
-    }                         
+    }     
+    
+    private void updatePlayers() {
+    	quickPlayers = pM.getAllPlayers();
+    }
     
     public static void showError(){
     	JDialog dialog = new JDialog();
@@ -221,13 +225,9 @@ public class MenuView extends javax.swing.JFrame {
     	dialog.setVisible(true);
     }
     
-    public static void addPlayerToList(){
-    	loggedIn = pM.getAllPlayers();
-    	System.out.println(loggedIn);
-    	for(Player p: loggedIn) {
-    		playerList.addElement(p);
-    	}
-   
+    public static void addPlayerToList(String name){
+    	System.out.println(name);
+        playerList.addElement(new Player(name));
     }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
@@ -237,6 +237,7 @@ public class MenuView extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify                     
+    private javax.swing.JList<Player> JListOfPlayers;
     private javax.swing.JSpinner NumberOfRoundsNeededSelector;
     private javax.swing.JButton StartGameButton;
     private javax.swing.JButton addPlayerButton;
@@ -248,16 +249,20 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner maxRoundsSelector;
-    private JList JListOfPlayers;
     // End of variables declaration
     
     
     private int numberOfRounds;
     private int maxRounds;
-    private static java.util.List<Player> loggedIn = new ArrayList<Player>();
+    java.util.List<Player> quickPlayers = new ArrayList<Player>();
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;
+    LinkedList stringList = new LinkedList<String>();
     static PlayerManagement pM = PlayerManagement.getInstance();
+
+    private void addPlayersToGame() {
+       
+    }
    
 }

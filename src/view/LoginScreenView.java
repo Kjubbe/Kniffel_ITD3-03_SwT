@@ -7,6 +7,7 @@ import game.Stats;
 import java.awt.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author jarmo
@@ -150,29 +151,59 @@ public class LoginScreenView extends javax.swing.JFrame {
         
     }                                             
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {                                      
+    // Password Validator (1 Großbuchstabe, 1 Zahl und ein Minuskel
+    private static boolean checkPassword(String password) {
+        boolean hasNum = false; boolean hasCap = false; boolean hasLow = false; char c;
+        for(int i = 0; i < password.length(); i++) {
+            c = password.charAt(i);
+            if(Character.isDigit(c)) {
+                hasNum = true;
+            } 
+            else if(Character.isUpperCase(c)) {
+                hasCap = true;
+            } 
+            else if(Character.isLowerCase(c)) {
+                hasLow = true;
+            }
+            if(hasNum && hasCap && hasLow) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {     
+        
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
+        MenuView.addPlayerToList(playerName);
         PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
         this.setVisible(false);
-        MenuView.addPlayerToList();
     }                                     
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {                                      
         String playerName = jFormattedTextField1.getText();
+        MenuView.addPlayerToList(playerName);
+        PlayerManagement.getInstance().playAsGuest(playerName);
         this.setVisible(false);
-        MenuView.addPlayerToList();
     }                                     
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
-        PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
-        this.setVisible(false);
-        MenuView.addPlayerToList();
-    }                                        
+        if(playerName.length() < 5) {
+            JOptionPane.showMessageDialog(null, "Der Benutzername muss mindestens 5 Zeichen lang sein!", "Registration Error", JOptionPane.ERROR_MESSAGE);
+        } else if(playerPassword.length() < 7 || checkPassword(playerPassword) == false) {
+            JOptionPane.showMessageDialog(null, "Das Passwort mus mindestens einen Großbuchstaben, eine Zahl haben und Sieben Zeichen lang sein.", "Passwort Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            MenuView.addPlayerToList(playerName);
+            PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt", "Registration Error", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }            
 
     // Variables declaration - do not modify                     
     private static javax.swing.JButton guest;
