@@ -88,15 +88,19 @@ public class PlayerManagement {
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
             if (player == null) {
                 player = new RegisteredPlayer(name, password);
-                boolean result = Databaseinterface.getInstance().savePlayer(player);
                 if (saveStats) {
                     player.saveStats();
                 }
+
+                boolean saved = Databaseinterface.getInstance().savePlayer(player);
+                
                 // if adding the player failed, remove the local player
-                if (addPlayer(player).containsValue(false) && result) {
+                Map<String, Boolean> res = addPlayer(player);
+                if (res.containsValue(false) && saved) {
                     logout(name);
+                    res = addPlayer(player);
                 }
-                return addPlayer(player); // add the logged in player
+                return res; // add the logged in player
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -107,7 +111,7 @@ public class PlayerManagement {
     /**
      * remove a player by logging out
      * 
-     * @param name name of the player loggin out
+     * @param name name of the player logging out
      * @return if successful
      */
     public boolean logout(String name) {
