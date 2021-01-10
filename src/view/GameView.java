@@ -1084,10 +1084,6 @@ public class GameView extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_skipPlayer8ActionPerformed
 
-    private void showPlayer1CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer1CardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showPlayer1CardActionPerformed
-
     /**
      * Setting the fieldnames into the playercard
      */
