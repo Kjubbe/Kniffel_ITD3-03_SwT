@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import database.PlayerManagement;
+
 /**
  *
  * @author simeonmurzin
@@ -206,7 +207,19 @@ public class MenuView extends javax.swing.JFrame {
                     showError();
                     return;
                 }
+        this.setVisible(false);
+        System.out.println("assistand"+assistantWanted);
+        System.out.println("auto"+autocompleteWanted);
+        System.out.println("maxRounds:"+maxRounds);
+        System.out.println("numberofrounds:"+numberOfRounds);
+        System.out.println("playerList"+playerList);
+        
+        //new game.Game(a=assistanWanted);
+        //addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH, h));
+        //int maxPlayers = length();
+        System.out.println(pM.getAllPlayers().size() + "Gaming");
         Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        
         new GameView(game).setVisible(true);
         this.setVisible(false);
        

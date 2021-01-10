@@ -1,7 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -39,10 +37,10 @@ public class Game {
 	 */
 	public static final Die[] DICE = { new Die(), new Die(), new Die(), new Die(), new Die() };
 	public static final int MAX_ROLLS = 3;
-	private int[] diceValues;
+	private final int[] diceValues = new int[DICE.length];
 	public int rolls;
 
-	public static final int MAX_ROUNDS = Card.FIELD_NAMES.length;
+	public static final int MAX_ROUNDS = 13;
 	private int roundsPlayed;
 	private int gamesPlayed;
 
@@ -61,6 +59,7 @@ public class Game {
 		this.maxGames = maxGames;
 		this.gamesToWin = maxGames;
 		this.players = players;
+		this.currentPlayer = players.get(playerIndex);
 	}
 
 	/**
@@ -81,10 +80,6 @@ public class Game {
 		this.currentPlayer = players.get(playerIndex);
 	}
 
-    public Game() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 	/**
 	 * roll all die
 	 * 
@@ -92,28 +87,30 @@ public class Game {
 	 */
 	public boolean rollDie() {
 		boolean turnOver = rolls >= 3;
+
 		if (!turnOver) {
-			for (Die d : DICE) { // roll the die when the turn is not over
-				d.roll();
+			for (Die d : DICE) { // roll the die
+				if (d.roll()) {
+					currentPlayer.getStats().increaseDiceRolled();
+				}
 			}
 			rolls++;
 
-			turnOver = rolls >= 3;
-			if (turnOver) { // end the turn if the turn is over after rolling
-				endTurn();
+			for (int i = 0; i < diceValues.length; i++) {
+				diceValues[i] = DICE[i].getValue(); // set each value in the array
 			}
+			currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
+		} else { // end the turn when more than 3 rolls
+			currentPlayer.getStats().increaseRoundsPlayed();
 		}
+
 		return turnOver;
 	}
-        
-        
 
 	/**
 	 * get to the next player
-	 * 
-	 * @return true if game is over
 	 */
-	public boolean nextPlayer() {
+	public void nextPlayer() {
 		playerIndex++;
 		rolls = 0;
 		if (players.size() - 1 < playerIndex) { // check if there is another player
@@ -122,11 +119,9 @@ public class Game {
 		}
 		if (roundsPlayed >= MAX_ROUNDS) { // check if all rounds have been played
 			findWinner(); // find a winner
-			return true;
 		} else { // there are more rounds
 			currentPlayer = players.get(playerIndex); // set the next player
 		}
-		return false;
 	}
 
 	/**
@@ -148,20 +143,9 @@ public class Game {
 		if (!over) {
 			restart();
 		} else {
-			findWinner(); // TODO
+			findWinner();
 		}
 		return over;
-	}
-
-	/**
-	 * ends the current players turn
-	 */
-	public void endTurn() {
-		diceValues = new int[DICE.length];
-		for (int i = 0; i < diceValues.length; i++) {
-			diceValues[i] = DICE[i].getValue(); // set each value in the array
-		}
-		currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
 	}
 
 	/**
@@ -177,6 +161,7 @@ public class Game {
 			// TODO tie
 		}
 		winner.increaseWins();
+		winner.getStats().increaseGamesWon();
 		nextGame();
 	}
 
@@ -229,8 +214,21 @@ public class Game {
 	 */
 	public boolean chooseField(int index) {
 		boolean result = currentPlayer.getCard().chooseField(index);
-		nextPlayer();
+		if (result) {
+			nextPlayer();
+		}
 		return result;
+	}
+
+	/**
+	 * choose a field and its value
+	 * 
+	 * @param index index of the field
+	 * @param value value of the field
+	 */
+	public void chooseField(int index, int value) {
+		currentPlayer.getCard().chooseField(index, value);
+		nextPlayer();
 	}
 
 	/**
@@ -241,7 +239,9 @@ public class Game {
 	 */
 	public boolean crossField(int index) {
 		boolean result = currentPlayer.getCard().crossField(index);
-		nextPlayer();
+		if (result) {
+			nextPlayer();
+		}
 		return result;
 	}
 }

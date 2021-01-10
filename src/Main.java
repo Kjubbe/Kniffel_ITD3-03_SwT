@@ -1,8 +1,4 @@
-
-import view.GameView;
 import view.StartScreenView;
-import view.LoginScreenView;
-import view.StatistikDialogView;
 
 /**
  * Main
@@ -14,20 +10,11 @@ import view.StatistikDialogView;
 public class Main {
 
 	/**
-	 * Main method
+	 * Main method, creates a new start screen
 	 * 
 	 * @param args command parameters
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello World"); // :)
-		// TODO
-                // scur scur 
-                //new GameView().setVisible(true);
-                //new LoginScreenView().setVisible(true);
-                //new StatistikDialogView().setVisible(true);
-                
-		// scur scur
-                StartScreenView start = new StartScreenView();
-               
+		new StartScreenView();
 	}
 }

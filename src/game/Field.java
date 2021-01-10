@@ -16,7 +16,7 @@ public class Field {
 	 * contains the default value of this field. most fields do not have a default
 	 * value
 	 */
-	private int defaultValue;
+	public int defaultValue;
 
 	/**
 	 * contains the possible, current value for this field. this is calculated by
@@ -55,13 +55,17 @@ public class Field {
 	 * 
 	 * @return value of this card
 	 */
-	public int getValue() {
+	public int getChosenValue() {
 		// a value of -1 means the card is worth 0
 		return chosenValue == -1 ? 0 : chosenValue;
 	}
-        
-        public int getCurrentValue() {
-		// a value of -1 means the card is worth 0
+
+	/**
+	 * get the current value
+	 * 
+	 * @return value of this card
+	 */
+	public int getCurrentValue() {
 		return currentValue;
 	}
 
