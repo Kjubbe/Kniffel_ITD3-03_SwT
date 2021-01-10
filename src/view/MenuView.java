@@ -221,7 +221,6 @@ public class MenuView extends javax.swing.JFrame {
         Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
         
         new GameView(game).setVisible(true);
-        new EndDialogView(game).setVisible(true);
         this.setVisible(false);
        
         

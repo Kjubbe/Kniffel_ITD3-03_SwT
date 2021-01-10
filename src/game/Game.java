@@ -1,6 +1,7 @@
 package game;
 
 import java.util.List;
+import view.EndDialogView;
 
 /**
  * a game instance manages the game and their players
@@ -162,6 +163,7 @@ public class Game {
 		}
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
+                new EndDialogView(this).setVisible(true);
 		nextGame();
 	}
 
