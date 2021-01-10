@@ -126,7 +126,7 @@ public class PlayerCard extends javax.swing.JFrame {
             if (player.getCard().allFields[i].isCrossed()) {
                 playercard.setValueAt("---", i, 1);
             } else if (!player.getCard().allFields[i].isOpen()) {
-                playercard.setValueAt("gewählt: " + player.getCard().allFields[i].getValue(), i, 1);
+                playercard.setValueAt("gewählt: " + player.getCard().allFields[i].getChosenValue(), i, 1);
 
             }
 
@@ -136,7 +136,7 @@ public class PlayerCard extends javax.swing.JFrame {
             if (player.getCard().allFields[j].isCrossed()) {
                 playercard.setValueAt("---", j + 3, 1);
             } else if (!player.getCard().allFields[j].isOpen()) {
-                playercard.setValueAt("gewählt: " + player.getCard().allFields[j].getValue(), j + 3, 1);
+                playercard.setValueAt("gewählt: " + player.getCard().allFields[j].getChosenValue(), j + 3, 1);
 
             }
 

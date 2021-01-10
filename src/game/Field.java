@@ -55,7 +55,7 @@ public class Field {
 	 * 
 	 * @return value of this card
 	 */
-	public int getValue() {
+	public int getChosenValue() {
 		// a value of -1 means the card is worth 0
 		return chosenValue == -1 ? 0 : chosenValue;
 	}
