@@ -61,6 +61,7 @@ public class Game {
 		this.maxGames = maxGames;
 		this.gamesToWin = maxGames;
 		this.players = players;
+                this.currentPlayer = players.get(playerIndex);
 	}
 
 	/**
@@ -97,11 +98,11 @@ public class Game {
 				d.roll();
 			}
 			rolls++;
-
-			turnOver = rolls >= 3;
-			if (turnOver) { // end the turn if the turn is over after rolling
-				endTurn();
-			}
+                        diceValues = new int[DICE.length];
+                        for (int i = 0; i < diceValues.length; i++) {
+                            diceValues[i] = DICE[i].getValue(); // set each value in the array
+                        }
+                        currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
 		}
 		return turnOver;
 	}
