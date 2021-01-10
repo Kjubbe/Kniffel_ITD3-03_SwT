@@ -177,9 +177,14 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
-        MenuView.addPlayerToList(playerName);
-        PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
-        this.setVisible(false);
+        if(PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(true)) {
+            MenuView.addPlayerToList(playerName);
+            PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Du bist nun als: " + playerName + " eingeloggt", "Eingeloggt", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Der Benutzername ist nicht vorhanden oder du hast dein Passwort falsch eingegeben", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
     }                                     
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {                                      
@@ -199,8 +204,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         } else if(playerPassword.length() < 7 || checkPassword(playerPassword) == false) {
             JOptionPane.showMessageDialog(null, "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl haben und Sieben Zeichen lang sein.", "Passwort Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            MenuView.addPlayerToList(playerName);
-            if(PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(true)) {
+            if(PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(false)) {
                 JOptionPane.showMessageDialog(null, "Der Benutzername existiert bereits", "Registration Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 MenuView.addPlayerToList(playerName);
