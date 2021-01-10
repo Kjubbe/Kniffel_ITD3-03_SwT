@@ -196,12 +196,12 @@ public class LoginScreenView extends javax.swing.JFrame {
         if(playerName.length() < 5) {
             JOptionPane.showMessageDialog(null, "Der Benutzername muss mindestens 5 Zeichen lang sein!", "Registration Error", JOptionPane.ERROR_MESSAGE);
         } else if(playerPassword.length() < 7 || checkPassword(playerPassword) == false) {
-            JOptionPane.showMessageDialog(null, "Das Passwort mus mindestens einen Großbuchstaben, eine Zahl haben und Sieben Zeichen lang sein.", "Passwort Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl haben und Sieben Zeichen lang sein.", "Passwort Error", JOptionPane.ERROR_MESSAGE);
         } else {
             MenuView.addPlayerToList(playerName);
             PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
             this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt", "Registration Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt", "Registration", JOptionPane.INFORMATION_MESSAGE);
         }
     }            
 
