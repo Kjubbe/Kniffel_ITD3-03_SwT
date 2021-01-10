@@ -27,8 +27,13 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
+		assignStats();
 	}
 
+	/**
+	 * toString method
+	 */
+	@Override
 	public String toString() {
 		return name;
 	}

@@ -2,14 +2,10 @@ package view;
 
 import game.Game;
 import game.Player;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JTextField;
 import database.PlayerManagement;
 /**
  *
