@@ -151,7 +151,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         
     }                                             
 
-    // Password Validator (1 Großbuchstabe, 1 Zahl und ein Minuskel
+    // Password Validator (1 Großbuchstabe, 1 Zahl und ein Minuskel)
     private static boolean checkPassword(String password) {
         boolean hasNum = false; boolean hasCap = false; boolean hasLow = false; char c;
         for(int i = 0; i < password.length(); i++) {
@@ -193,15 +193,21 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
+        
         if(playerName.length() < 5) {
             JOptionPane.showMessageDialog(null, "Der Benutzername muss mindestens 5 Zeichen lang sein!", "Registration Error", JOptionPane.ERROR_MESSAGE);
         } else if(playerPassword.length() < 7 || checkPassword(playerPassword) == false) {
             JOptionPane.showMessageDialog(null, "Das Passwort muss mindestens einen Großbuchstaben, eine Zahl haben und Sieben Zeichen lang sein.", "Passwort Error", JOptionPane.ERROR_MESSAGE);
         } else {
             MenuView.addPlayerToList(playerName);
-            PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt", "Registration", JOptionPane.INFORMATION_MESSAGE);
+            if(PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(true)) {
+                JOptionPane.showMessageDialog(null, "Der Benutzername existiert bereits", "Registration Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                MenuView.addPlayerToList(playerName);
+                PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt", "Registration", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }            
 
