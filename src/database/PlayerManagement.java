@@ -103,6 +103,7 @@ public class PlayerManagement {
                 return res; // add the logged in player
             }
         } catch (SQLException ex) {
+            System.out.println("There was an error with the registration");
             ex.printStackTrace();
         }
         return Collections.singletonMap(ERROR, false);
