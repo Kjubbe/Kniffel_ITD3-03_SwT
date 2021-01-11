@@ -111,7 +111,7 @@ public class PlayerManagement {
     /**
      * remove a player by logging out
      * 
-     * @param name name of the player loggin out
+     * @param name name of the player logging out
      * @return if successful
      */
     public boolean logout(String name) {

@@ -1,7 +1,5 @@
 package view;
 
-import game.Game;
-import game.Player;
 import database.PlayerManagement;
 import game.Stats;
 import java.awt.List;

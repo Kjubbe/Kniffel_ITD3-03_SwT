@@ -21,12 +21,14 @@ public class GameView extends javax.swing.JFrame {
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
+        
+        
 
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
-        counterTextField.setText(game.rolls+1 + "/3");
+        counterLabel.setText(game.rolls + "/3");
 
-        yourTurnTextField.setText(game.currentPlayer.getName() + ", du bist dran. Würfel jetzt!");
-
+        yourTurnLabel.setText(game.currentPlayer.getName() + ", du bist dran. Würfel jetzt!");
+       
         player1Button.setVisible(false);
         player2Button.setVisible(false);
         player3Button.setVisible(false);
@@ -127,7 +129,7 @@ public class GameView extends javax.swing.JFrame {
             }
 
         }
-        //tableSetPoints();
+        
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
     }
@@ -167,12 +169,12 @@ public class GameView extends javax.swing.JFrame {
         dice9 = new javax.swing.JLabel();
         dice10 = new javax.swing.JLabel();
         rollButton = new javax.swing.JButton();
-        playercardOf = new javax.swing.JTextField();
         dieSeperation = new javax.swing.JSeparator();
         FeldStreichenButton = new javax.swing.JButton();
         FeldWaehlenButton = new javax.swing.JButton();
-        yourTurnTextField = new javax.swing.JTextField();
-        counterTextField = new javax.swing.JTextField();
+        yourTurnLabel = new javax.swing.JLabel();
+        counterLabel = new javax.swing.JLabel();
+        playercardOf = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         OptionsButton = new javax.swing.JMenu();
         pauseGame = new javax.swing.JMenuItem();
@@ -215,9 +217,9 @@ public class GameView extends javax.swing.JFrame {
         setBackground(new java.awt.Color(21, 10, 22));
         setResizable(false);
 
-        playercard.setBackground(new java.awt.Color(21, 20, 22));
-        playercard.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        playercard.setForeground(new java.awt.Color(255, 117, 139));
+        playercard.setBackground(new java.awt.Color(55, 55, 55));
+        playercard.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
+        playercard.setForeground(new java.awt.Color(255, 255, 255));
         playercard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -290,19 +292,20 @@ public class GameView extends javax.swing.JFrame {
         availableDieceLayout.setHorizontalGroup(
             availableDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(availableDieceLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(dice1)
-                .addGap(126, 126, 126)
-                .addComponent(dice2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(availableDieceLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(dice3)
-                .addGap(121, 121, 121)
-                .addComponent(dice4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                .addComponent(dice5)
-                .addGap(56, 56, 56))
+                .addGap(100, 100, 100)
+                .addGroup(availableDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(availableDieceLayout.createSequentialGroup()
+                        .addComponent(dice3)
+                        .addGap(121, 121, 121)
+                        .addComponent(dice4)
+                        .addGap(138, 138, 138)
+                        .addComponent(dice5))
+                    .addGroup(availableDieceLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(dice1)
+                        .addGap(126, 126, 126)
+                        .addComponent(dice2)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         availableDieceLayout.setVerticalGroup(
             availableDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,19 +362,23 @@ public class GameView extends javax.swing.JFrame {
         choosenDieceLayout.setHorizontalGroup(
             choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(choosenDieceLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(dice8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dice9)
-                .addGap(123, 123, 123)
-                .addComponent(dice10)
-                .addGap(71, 71, 71))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, choosenDieceLayout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(dice6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dice7)
-                .addGap(138, 138, 138))
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dice8)
+                    .addGroup(choosenDieceLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(dice6)))
+                .addGap(69, 69, 69)
+                .addGroup(choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(choosenDieceLayout.createSequentialGroup()
+                        .addComponent(dice9)
+                        .addGap(123, 123, 123)
+                        .addComponent(dice10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, choosenDieceLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(dice7)
+                        .addGap(67, 67, 67)))
+                .addGap(91, 91, 91))
         );
         choosenDieceLayout.setVerticalGroup(
             choosenDieceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,11 +402,6 @@ public class GameView extends javax.swing.JFrame {
             }
         });
 
-        playercardOf.setText("Spielerkarte von ");
-        playercardOf.setToolTipText("Spielerkarte");
-        playercardOf.setFocusable(false);
-        playercardOf.setOpaque(false);
-
         dieSeperation.setBackground(new java.awt.Color(0, 0, 0));
         dieSeperation.setForeground(new java.awt.Color(0, 0, 0));
         dieSeperation.setDoubleBuffered(true);
@@ -418,18 +420,12 @@ public class GameView extends javax.swing.JFrame {
             }
         });
 
-        yourTurnTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        yourTurnTextField.setText("Beispielname, du bist dran. Würfel jetzt!");
-        yourTurnTextField.setToolTipText("");
-        yourTurnTextField.setFocusable(false);
-        yourTurnTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yourTurnTextFieldActionPerformed(evt);
-            }
-        });
+        yourTurnLabel.setText("Beispielname, du bist dran. Würfel jetzt!");
 
-        counterTextField.setText("0/3");
-        counterTextField.setFocusable(false);
+        counterLabel.setText("0/3");
+
+        playercardOf.setText("Spielerkarte von ");
+        playercardOf.setToolTipText("Spielerkarte");
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -502,6 +498,11 @@ public class GameView extends javax.swing.JFrame {
         });
 
         showPlayer2Card.setText("Spielerkarte anzeigen");
+        showPlayer2Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer2CardActionPerformed(evt);
+            }
+        });
         player2Button.add(showPlayer2Card);
 
         skipPlayer2.setText("Spieler überspringen");
@@ -530,6 +531,11 @@ public class GameView extends javax.swing.JFrame {
         });
 
         showPlayer3Card.setText("Spielerkarte anzeigen");
+        showPlayer3Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer3CardActionPerformed(evt);
+            }
+        });
         player3Button.add(showPlayer3Card);
 
         skipPlayer3.setText("Spieler überspringen");
@@ -586,6 +592,11 @@ public class GameView extends javax.swing.JFrame {
         player5Button.setText("Spieler 5");
 
         showPlayer5Card.setText("Spielerkarte anzeigen");
+        showPlayer5Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer5CardActionPerformed(evt);
+            }
+        });
         player5Button.add(showPlayer5Card);
 
         skipPlayer5.setText("Spieler überspringen");
@@ -609,6 +620,11 @@ public class GameView extends javax.swing.JFrame {
         player6Button.setText("Spieler 6");
 
         showPlayer6Card.setText("Spielerkarte anzeigen");
+        showPlayer6Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer6CardActionPerformed(evt);
+            }
+        });
         player6Button.add(showPlayer6Card);
 
         skipPlayer6.setText("Spieler überspringen");
@@ -632,6 +648,11 @@ public class GameView extends javax.swing.JFrame {
         player7Button.setText("Spieler 7");
 
         showPlayer7Card.setText("Spielerkarte anzeigen");
+        showPlayer7Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer7CardActionPerformed(evt);
+            }
+        });
         player7Button.add(showPlayer7Card);
 
         skipPlayer7.setText("Spieler überspringen");
@@ -655,6 +676,11 @@ public class GameView extends javax.swing.JFrame {
         player8Button.setText("Spieler 8");
 
         showPlayer8Card.setText("Spielerkarte anzeigen");
+        showPlayer8Card.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPlayer8CardActionPerformed(evt);
+            }
+        });
         player8Button.add(showPlayer8Card);
 
         skipPlayer8.setText("Spieler überspringen");
@@ -682,52 +708,57 @@ public class GameView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(FeldStreichenButton)
-                        .addGap(68, 68, 68)
-                        .addComponent(FeldWaehlenButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dieSeperation, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(availableDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(FeldStreichenButton)
+                                .addGap(68, 68, 68)
+                                .addComponent(FeldWaehlenButton))
+                            .addComponent(playercardOf))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(yourTurnLabel)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22)))
+                                .addGap(51, 51, 51)
+                                .addComponent(counterLabel)
+                                .addGap(137, 137, 137))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(choosenDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(43, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(availableDiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(dieSeperation, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(choosenDiece, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(yourTurnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addComponent(yourTurnLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rollButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(counterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                    .addComponent(counterLabel))
+                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(playercardOf, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(playercardOf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -770,8 +801,8 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_player3ButtonActionPerformed
 
     private void rollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollButtonActionPerformed
-        yourTurnTextField.setVisible(false);
-        counterTextField.setText(game.rolls + "/3");
+        yourTurnLabel.setVisible(false);
+        if(game.rolls < 3) counterLabel.setText(game.rolls+1 + "/3");
         if (game.rollDie()) {
             System.out.println("Du darfst nicht mehr du Penner");
         } else {
@@ -887,7 +918,7 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
-        // TODO add your handling code here:
+        new PlayerCard(game, game.players.get(3)).setVisible(true);
     }//GEN-LAST:event_showPlayer4CardActionPerformed
 
     private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
@@ -956,9 +987,34 @@ public class GameView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_FeldWaehlenButtonActionPerformed
 
-    private void yourTurnTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yourTurnTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yourTurnTextFieldActionPerformed
+    private void showPlayer1CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer1CardActionPerformed
+        new PlayerCard(game, game.players.get(0)).setVisible(true);
+    }//GEN-LAST:event_showPlayer1CardActionPerformed
+
+    private void showPlayer2CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer2CardActionPerformed
+        new PlayerCard(game, game.players.get(1)).setVisible(true);
+
+    }//GEN-LAST:event_showPlayer2CardActionPerformed
+
+    private void showPlayer3CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer3CardActionPerformed
+        new PlayerCard(game, game.players.get(2)).setVisible(true);
+    }//GEN-LAST:event_showPlayer3CardActionPerformed
+
+    private void showPlayer5CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer5CardActionPerformed
+        new PlayerCard(game, game.players.get(4)).setVisible(true);
+    }//GEN-LAST:event_showPlayer5CardActionPerformed
+
+    private void showPlayer6CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer6CardActionPerformed
+        new PlayerCard(game, game.players.get(5)).setVisible(true);
+    }//GEN-LAST:event_showPlayer6CardActionPerformed
+
+    private void showPlayer7CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer7CardActionPerformed
+        new PlayerCard(game, game.players.get(6)).setVisible(true);
+    }//GEN-LAST:event_showPlayer7CardActionPerformed
+
+    private void showPlayer8CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer8CardActionPerformed
+        new PlayerCard(game, game.players.get(7)).setVisible(true);
+    }//GEN-LAST:event_showPlayer8CardActionPerformed
 
     private void removePlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer5ActionPerformed
         if(game.players.size() > 2) {
@@ -1028,10 +1084,6 @@ public class GameView extends javax.swing.JFrame {
         refresh();
     }//GEN-LAST:event_skipPlayer8ActionPerformed
 
-    private void showPlayer1CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer1CardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showPlayer1CardActionPerformed
-
     /**
      * Setting the fieldnames into the playercard
      */
@@ -1060,11 +1112,11 @@ public class GameView extends javax.swing.JFrame {
         dice9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
         dice10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/Transparent.png")));
 
-        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
-        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/6.png")));
+        dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
+        dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/default.png")));
 
     }
 
@@ -1078,7 +1130,7 @@ public class GameView extends javax.swing.JFrame {
             } else if (game.currentPlayer.getCard().allFields[i].isCrossed()) {
                 playercard.setValueAt("---", i, 1);
             } else {
-                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getValue(), i, 1);
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getChosenValue(), i, 1);
             }
 
         }
@@ -1088,7 +1140,7 @@ public class GameView extends javax.swing.JFrame {
             } else if (game.currentPlayer.getCard().allFields[j].isCrossed()) {
                 playercard.setValueAt("---", j + 3, 1);
             } else {
-                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getValue(), j + 3, 1);
+                playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getChosenValue(), j + 3, 1);
             }
 
         }
@@ -1107,9 +1159,9 @@ public class GameView extends javax.swing.JFrame {
         showDefaultDie();
         tableSetPoints();
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
-        yourTurnTextField.setVisible(true);
-        yourTurnTextField.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
-        counterTextField.setText(game.rolls + "/3");
+        yourTurnLabel.setVisible(true);
+        yourTurnLabel.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
+        counterLabel.setText(game.rolls + "/3");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1118,7 +1170,7 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenu OptionsButton;
     private javax.swing.JPanel availableDiece;
     private javax.swing.JPanel choosenDiece;
-    private javax.swing.JTextField counterTextField;
+    private javax.swing.JLabel counterLabel;
     private javax.swing.JLabel dice1;
     private javax.swing.JLabel dice10;
     private javax.swing.JLabel dice2;
@@ -1141,7 +1193,7 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenu player7Button;
     private javax.swing.JMenu player8Button;
     private javax.swing.JTable playercard;
-    private javax.swing.JTextField playercardOf;
+    private javax.swing.JLabel playercardOf;
     private javax.swing.JScrollPane playercardScrollPane;
     private javax.swing.JMenuItem quitGame;
     private javax.swing.JMenuItem removePlayer1;
@@ -1170,6 +1222,6 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JMenuItem skipPlayer6;
     private javax.swing.JMenuItem skipPlayer7;
     private javax.swing.JMenuItem skipPlayer8;
-    private javax.swing.JTextField yourTurnTextField;
+    private javax.swing.JLabel yourTurnLabel;
     // End of variables declaration//GEN-END:variables
 }

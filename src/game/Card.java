@@ -27,13 +27,16 @@ public class Card {
 	private static final int YAHTZEE_INDEX = 11;
 	private static final int CHANCE_INDEX = 12;
 
-	// names for the fields
+	// array with all the fields on this card
 	public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
 			"Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
 			"Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
 
 	// array with all the fields on this card
-	public final Field[] allFields = new Field[FIELD_NAMES.length];
+	public final Field[] allFields = { new Field(FIELD_NAMES[0]), new Field(FIELD_NAMES[1]), new Field(FIELD_NAMES[2]),
+			new Field(FIELD_NAMES[3]), new Field(FIELD_NAMES[4]), new Field(FIELD_NAMES[5]), new Field(FIELD_NAMES[6]),
+			new Field(FIELD_NAMES[7]), new Field(FIELD_NAMES[8], 25), new Field(FIELD_NAMES[9], 30),
+			new Field(FIELD_NAMES[10], 40), new Field(FIELD_NAMES[11], 50), new Field(FIELD_NAMES[12]) };
 
 	/**
 	 * constructor, assigns a player to this card
@@ -42,15 +45,6 @@ public class Card {
 	 */
 	public Card(Player player) {
 		this.owner = player;
-
-		// add all fields to the array
-		for (int i = 0; i < FIELD_NAMES.length; i++) {
-			allFields[i] = new Field(FIELD_NAMES[i]);
-		}
-            allFields[FULL_HOUSE_INDEX].defaultValue = 25;
-            allFields[SMALL_STRAIGHT_INDEX].defaultValue = 30;
-            allFields[LARGE_STRAIGHT_INDEX].defaultValue = 40;
-            allFields[YAHTZEE_INDEX].defaultValue = 50;
 	}
 
 	/**
@@ -81,7 +75,7 @@ public class Card {
 	public int getPart1(boolean withBonus) {
 		int result = 0;
 		for (int i = 0; i <= PART1_END_INDEX; i++) {
-			result += allFields[i].getValue();
+			result += allFields[i].getChosenValue();
 		}
 		if (withBonus && result >= BONUS_REQ) {
 			result += BONUS;
@@ -97,7 +91,7 @@ public class Card {
 	public int getPart2() {
 		int result = 0;
 		for (int i = PART1_END_INDEX + 1; i < allFields.length; i++) {
-			result += allFields[i].getValue();
+			result += allFields[i].getChosenValue();
 		}
 		return result;
 	}
@@ -108,10 +102,13 @@ public class Card {
 	 * @param num values of the five dice
 	 */
 	public void calculatePoints(int[] num) {
-		// first, sort the values
+		// reset all fields
+                setToZero();
+
+                // first, sort the values
 		num = bubbleSort(num);
-                
-                System.out.println(Arrays.toString(num));
+
+		System.out.println(Arrays.toString(num));
 
 		// calculate the total
 		int total = 0;
@@ -250,20 +247,22 @@ public class Card {
 	/**
 	 * choose a field
 	 * 
-	 * @param index the index of the field to be crossed
+	 * @param index the index of the field to be chosen
 	 * @return if successful
 	 */
 	public boolean chooseField(int index) {
 		Field field = allFields[index];
 		boolean result = field.choose();
-		if (result)
+		if (result) {
 			setToZero();
+			owner.getStats().increasePoints(field.getChosenValue()); // TODO is this the right place?
+		}
 		return result;
 	}
 
 	/**
 	 * choose a field and set its value. this is useful when playing without
-	 * autofill
+	 * autocalc
 	 * 
 	 * @param index the index of the field to be crossed
 	 * @param value the new value of the field
