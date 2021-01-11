@@ -978,10 +978,14 @@ public class GameView extends javax.swing.JFrame {
         int index = playercard.getSelectedRow();
         if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
             if (index > 5) {
-            index -= 3;
-        }
-        game.chooseField(index);
-        refresh();
+                index -= 3;
+            }
+            
+            if (game.chooseField(index)) {
+                refresh();
+            } else {
+                System.out.println("Diese Feld kann nicht ausgewählt werden");
+            }
         } else {
             System.out.println("Falsche Zeile");
         }
