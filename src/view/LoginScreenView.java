@@ -149,7 +149,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         boolean hasCap = false;
         boolean hasLow = false;
         char c;
-        for (int i = 0; i < password.length(); i++) {
+        for (int i = 0; i < password.length(); i++) {   
             c = password.charAt(i);
             if (Character.isDigit(c)) {
                 hasNum = true;
