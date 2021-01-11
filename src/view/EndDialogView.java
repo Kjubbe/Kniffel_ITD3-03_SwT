@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import game.Game;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,22 +17,24 @@ public class EndDialogView extends javax.swing.JFrame {
     /**
      * Creates new form EndDialogView
      */
-     public Game game;
-        
+    public Game game;
+
     public EndDialogView(Game game) {
         this.game = game;
         this.setVisible(true);
         initComponents();
-        
-        //winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!"); auskommentiert, da es ohne gewinner noch fehlermeldung gibt
+
+        // winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!");
+        // auskommentiert, da es ohne gewinner noch fehlermeldung gibt
         winnerLabel.setText(game.players.get(1).getName() + " hat das Spiel gewonnen!");
-        
+
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        for(int i = 0; i < game.players.size(); i++) {
-            model.addRow(new Object[]{game.players.get(i).getName(), game.players.get(i).getPoints()});
-        }  
+
+        for (int i = 0; i < game.players.size(); i++) {
+            model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getPoints() });
+        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,71 +53,44 @@ public class EndDialogView extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
-        spielerTabelle.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2"
-            }
-        ));
+        spielerTabelle
+                .setModel(new javax.swing.table.DefaultTableModel(
+                        new Object[][] { { null, null }, { null, null }, { null, null }, { null, null }, { null, null },
+                                { null, null }, { null, null }, { null, null } },
+                        new String[] { "Title 1", "Title 2" }));
         jScrollPane2.setViewportView(spielerTabelle);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         winnerLabel.setText("hat das Spiel gewonnen!");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-            },
-            new String [] {
-                "Spieler", "Punkte"
-            }
-        ));
+        }, new String[] { "Spieler", "Punkte" }));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+                .createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(winnerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(winnerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                        .addGroup(layout.createSequentialGroup().addGap(130, 130, 130).addComponent(winnerLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+                .createSequentialGroup().addContainerGap()
+                .addComponent(winnerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33,
+                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139,
+                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;

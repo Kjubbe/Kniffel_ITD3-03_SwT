@@ -163,7 +163,7 @@ public class Game {
 		}
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
-                new EndDialogView(this).setVisible(true);
+		new EndDialogView(this).setVisible(true);
 		nextGame();
 	}
 

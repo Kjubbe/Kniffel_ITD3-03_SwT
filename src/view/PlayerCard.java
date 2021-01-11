@@ -85,23 +85,19 @@ public class PlayerCard extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+                .createSequentialGroup().addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playercardName)
-                    .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(playercardName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                        .addComponent(playercardName).addComponent(playercardScrollPane,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE)));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(playercardName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,13 +137,12 @@ public class PlayerCard extends javax.swing.JFrame {
             }
 
         }
-        playercard.setValueAt(player.getCard().getPart1(false), 6, 1);     // Part 1
-        playercard.setValueAt(player.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
-        playercard.setValueAt(player.getCard().getPart1(true), 16, 1);    // Part 1
-        playercard.setValueAt(player.getCard().getPart2(), 17, 1);    // Part 2
-        playercard.setValueAt(player.getCard().getTotal(), 18, 1);    // Totals
+        playercard.setValueAt(player.getCard().getPart1(false), 6, 1); // Part 1
+        playercard.setValueAt(player.getCard().getPart1(true), 8, 1); // Part 1 + Bonus
+        playercard.setValueAt(player.getCard().getPart1(true), 16, 1); // Part 1
+        playercard.setValueAt(player.getCard().getPart2(), 17, 1); // Part 2
+        playercard.setValueAt(player.getCard().getTotal(), 18, 1); // Totals
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable playercard;

@@ -93,7 +93,7 @@ public class PlayerManagement {
                 }
 
                 boolean saved = Databaseinterface.getInstance().savePlayer(player);
-                
+
                 // if adding the player failed, remove the local player
                 Map<String, Boolean> res = addPlayer(player);
                 if (res.containsValue(false) && saved) {

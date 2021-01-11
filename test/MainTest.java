@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * testing class for testing main
- * - use seeds for testing
+ * testing class for testing main - use seeds for testing
  * 
  * @author Kjell Treder
  */

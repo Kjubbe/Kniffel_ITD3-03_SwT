@@ -22,14 +22,13 @@ public class StartScreenView extends javax.swing.JFrame {
 	public StartScreenView() {
 		super();
 		this.setVisible(true);
-        this.setBounds(200, 200, 1000, 600);
+		this.setBounds(200, 200, 1000, 600);
 		System.out.println("StartScreen");
 		initComponents();
 	};
 
 	public void initComponents() {
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		
 
 		displayStatsButton = new JButton();
 		displayStatsButton.addActionListener(new ActionListener() {
@@ -37,8 +36,6 @@ public class StartScreenView extends javax.swing.JFrame {
 				onDisplayStatsButtonClicked();
 			}
 		});
-		
-		
 
 		newGameButton = new JButton();
 		newGameButton.addActionListener(new ActionListener() {
@@ -46,8 +43,7 @@ public class StartScreenView extends javax.swing.JFrame {
 				onNewGameButtonClicked();
 			}
 		});
-		
-		
+
 		mainPanel = new JPanel();
 		label = new JLabel("Kniffel");
 
@@ -63,8 +59,8 @@ public class StartScreenView extends javax.swing.JFrame {
 	}
 
 	void onNewGameButtonClicked() {
-            new MenuView();
-		
+		new MenuView();
+
 	}
 
 	void onDisplayStatsButtonClicked() {

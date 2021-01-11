@@ -103,9 +103,9 @@ public class Card {
 	 */
 	public void calculatePoints(int[] num) {
 		// reset all fields
-                setToZero();
+		setToZero();
 
-                // first, sort the values
+		// first, sort the values
 		num = bubbleSort(num);
 
 		System.out.println(Arrays.toString(num));
