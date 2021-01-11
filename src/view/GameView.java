@@ -1197,7 +1197,9 @@ public class GameView extends javax.swing.JFrame {
      */
     private void refresh() {
         showDefaultDie();
-        tableSetPoints();
+        if(game.useAutofill == true) {
+            tableSetPoints();
+        }
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
         yourTurnLabel.setVisible(true);
         yourTurnLabel.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
