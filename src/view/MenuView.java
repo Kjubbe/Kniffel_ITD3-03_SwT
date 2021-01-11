@@ -256,5 +256,4 @@ public class MenuView extends javax.swing.JFrame {
     private void addPlayersToGame() {
 
     }
-
 }
