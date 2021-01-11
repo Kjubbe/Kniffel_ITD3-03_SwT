@@ -171,9 +171,8 @@ public class LoginScreenView extends javax.swing.JFrame {
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
 
-        if (PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(true)) {
+        if (PlayerManagement.getInstance().login(playerName, playerPassword, statsSave).containsValue(true)) {
             MenuView.addPlayerToList(playerName);
-            PlayerManagement.getInstance().login(playerName, playerPassword, statsSave);
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Du bist nun als: " + playerName + " eingeloggt", "Eingeloggt",
                     JOptionPane.INFORMATION_MESSAGE);

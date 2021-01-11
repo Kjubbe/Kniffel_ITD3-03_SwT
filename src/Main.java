@@ -3,7 +3,7 @@ import view.StartScreenView;
 /**
  * Main
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
