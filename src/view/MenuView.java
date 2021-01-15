@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import database.PlayerManagement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,7 +48,6 @@ public class MenuView extends javax.swing.JFrame {
         maxRoundsSelector = new javax.swing.JSpinner();
         javax.swing.JLabel numberOfRounds = new javax.swing.JLabel();
         addPlayerButton = new javax.swing.JButton();
-        NumberOfRoundsNeededSelector = new javax.swing.JSpinner();
         javax.swing.JLabel NumberOfRoundsNeededLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JListOfPlayers = new javax.swing.JList<>();
@@ -77,20 +77,16 @@ public class MenuView extends javax.swing.JFrame {
                 .addGap(0, 300, Short.MAX_VALUE));
 
 
-        jPanel1.setToolTipText("");
 
         numberOfRounds.setText("max. Rundenanzahl");
-        numberOfRounds.setToolTipText("");
 
         addPlayerButton.setText("Spieler hinzufügen");
-        addPlayerButton.setToolTipText("");
         addPlayerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPlayerButtonActionPerformed(evt);
             }
         });
 
-        NumberOfRoundsNeededLabel.setText("Runden nötig für Sieg");
         JListOfPlayers.setModel(playerList);
         jScrollPane1.setViewportView(JListOfPlayers);
 
@@ -102,8 +98,6 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(NumberOfRoundsNeededSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(NumberOfRoundsNeededLabel))
                         .addComponent(addPlayerButton)
@@ -126,8 +120,6 @@ public class MenuView extends javax.swing.JFrame {
                                 .addComponent(numberOfRounds))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(NumberOfRoundsNeededSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(NumberOfRoundsNeededLabel))
                         .addGap(8, 8, 8)));
 
@@ -180,7 +172,6 @@ public class MenuView extends javax.swing.JFrame {
 
     private void StartGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
         maxRounds = (int) maxRoundsSelector.getValue();
-        numberOfRounds = (int) NumberOfRoundsNeededSelector.getValue();
         assistantWanted = assistantWantedCheckBox.isSelected();
         autocompleteWanted = autocompleteWantedCheckBox.isSelected();
         if (playerList.size() < 2 || maxRounds < 1 || numberOfRounds < 1) {
@@ -194,28 +185,20 @@ public class MenuView extends javax.swing.JFrame {
         System.out.println("numberofrounds:" + numberOfRounds);
         System.out.println("playerList" + playerList);
 
-        // new game.Game(a=assistanWanted);
-        // addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH,
-        // h));
-        // int maxPlayers = length();
+
         System.out.println(pM.getAllPlayers().size() + "Gaming");
-        Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        Game game = new Game(assistantWanted, autocompleteWanted, maxRounds, pM.getAllPlayers());
 
         new GameView(game).setVisible(true);
         this.setVisible(false);
 
     }
 
-    private void updatePlayers() {
-        quickPlayers = pM.getAllPlayers();
-    }
 
     public static void showError() {
-        JDialog dialog = new JDialog();
-        JLabel label = new JLabel(new ImageIcon((MenuView.class.getResource("/ressources/nope.jpeg"))));
-        dialog.add(label);
-        dialog.pack();
-        dialog.setVisible(true);
+        JOptionPane.showMessageDialog(null,
+                    "Spiel kann noch nicht gestartet werden.", "Settings Error",
+                    JOptionPane.ERROR_MESSAGE);
     }
 
     public static void addPlayerToList(String name) {
@@ -225,12 +208,10 @@ public class MenuView extends javax.swing.JFrame {
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         new LoginScreenView().setVisible(true);
-
     }
 
     // Variables declaration - do not modify
     private javax.swing.JList<Player> JListOfPlayers;
-    private javax.swing.JSpinner NumberOfRoundsNeededSelector;
     private javax.swing.JButton StartGameButton;
     private javax.swing.JButton addPlayerButton;
     private javax.swing.JCheckBox assistantWantedCheckBox;
@@ -245,14 +226,8 @@ public class MenuView extends javax.swing.JFrame {
 
     private int numberOfRounds;
     private int maxRounds;
-    java.util.List<Player> quickPlayers = new ArrayList<Player>();
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;
-    LinkedList stringList = new LinkedList<String>();
     static PlayerManagement pM = PlayerManagement.getInstance();
-
-    private void addPlayersToGame() {
-
-    }
 }
