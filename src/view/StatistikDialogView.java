@@ -5,6 +5,8 @@
  */
 package view;
 
+import game.Stats;
+
 /**
  *
  * @author jarmo
@@ -14,7 +16,7 @@ public class StatistikDialogView extends javax.swing.JFrame {
     /**
      * Creates new form StatistikDialogView
      */
-    public StatistikDialogView() {
+    public StatistikDialogView(Stats playerStats) {
         this.setVisible(true);
         System.out.println("StatistikDialog");
         initComponents();

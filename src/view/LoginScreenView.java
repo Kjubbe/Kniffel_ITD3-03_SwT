@@ -42,7 +42,6 @@ public class LoginScreenView extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         login = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(41, 128, 185));
 

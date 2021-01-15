@@ -1,4 +1,4 @@
-import view.StartScreenView;
+import view.OpeningScreen;
 
 /**
  * Main
@@ -15,6 +15,6 @@ public class Main {
 	 * @param args command parameters
 	 */
 	public static void main(String[] args) {
-		new StartScreenView();
+                new OpeningScreen();
 	}
 }

@@ -76,7 +76,6 @@ public class MenuView extends javax.swing.JFrame {
         jDialog3Layout.setVerticalGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 300, Short.MAX_VALUE));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setToolTipText("");
 
