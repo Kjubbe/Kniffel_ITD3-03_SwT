@@ -18,6 +18,7 @@ public class LoginScreenView extends javax.swing.JFrame {
      */
     public LoginScreenView() {
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
         System.out.println("LoginScreen");
         initComponents();
     }
@@ -171,7 +172,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         Boolean statsSave = jRadioButton1.isSelected();
 
         if (PlayerManagement.getInstance().login(playerName, playerPassword, statsSave).containsValue(true)) {
-            MenuView.addPlayerToList(playerName);
+            MenuView.updatePlayers();
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, "Du bist nun als: " + playerName + " eingeloggt", "Eingeloggt",
                     JOptionPane.INFORMATION_MESSAGE);
@@ -184,9 +185,15 @@ public class LoginScreenView extends javax.swing.JFrame {
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {
         String playerName = jFormattedTextField1.getText();
-        MenuView.addPlayerToList(playerName);
-        PlayerManagement.getInstance().playAsGuest(playerName);
-        this.setVisible(false);
+        
+        if (PlayerManagement.getInstance().playAsGuest(playerName).containsValue(false)) {
+            JOptionPane.showMessageDialog(null,
+                    "Der Spieler konnte nicht hinzugefügt werden.",
+                    "Add Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            MenuView.updatePlayers();
+            this.setVisible(false);
+        }
     }
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,8 +213,7 @@ public class LoginScreenView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Der Benutzername existiert bereits", "Registration Error",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                MenuView.addPlayerToList(playerName);
-                PlayerManagement.getInstance().register(playerName, playerPassword, statsSave);
+                MenuView.updatePlayers();
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null,
                         "Registrierung erfolgreich, der User: " + playerName + " wurde in der Datenbank erstellt",
