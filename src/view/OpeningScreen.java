@@ -24,6 +24,7 @@ public class OpeningScreen extends javax.swing.JFrame {
         initComponents();
         pM = PlayerManagement.getInstance();
         this.ErrorLabel.setVisible(false);
+   
     }
 
     /**
@@ -59,6 +60,8 @@ public class OpeningScreen extends javax.swing.JFrame {
 
         playerNameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         playerNameTextField.setText("Spielername");
+        playerNameTextField.setMaximumSize(new java.awt.Dimension(87, 26));
+        playerNameTextField.setMinimumSize(new java.awt.Dimension(87, 26));
 
         showStatsButton.setText("OK");
         showStatsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +98,7 @@ public class OpeningScreen extends javax.swing.JFrame {
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ErrorLabel)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(playerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(playerNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(showStatsButton)))
                 .addContainerGap(65, Short.MAX_VALUE))
@@ -120,7 +123,7 @@ public class OpeningScreen extends javax.swing.JFrame {
                 .addComponent(newGameButton)
                 .addGap(18, 18, 18)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(playerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(playerNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(showStatsButton)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

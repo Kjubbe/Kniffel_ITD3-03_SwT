@@ -3,19 +3,17 @@ package view;
 import game.Game;
 import game.Player;
 
-import java.awt.Component;
-import java.awt.List;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+
 import database.PlayerManagement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,6 +28,13 @@ public class MenuView extends javax.swing.JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         initComponents();
+        
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 99, 2);
+        maxRoundsSelector.setModel(spinnerModel);
+        assistantWantedCheckBox.setSelected(true);
+        autocompleteWantedCheckBox.setSelected(true);
+
+        
     }
 
     /**
@@ -46,12 +51,12 @@ public class MenuView extends javax.swing.JFrame {
         jDialog3 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         maxRoundsSelector = new javax.swing.JSpinner();
-        javax.swing.JLabel numberOfRounds = new javax.swing.JLabel();
+        javax.swing.JLabel maxRoundsLabel = new javax.swing.JLabel();
         addPlayerButton = new javax.swing.JButton();
-        NumberOfRoundsNeededSelector = new javax.swing.JSpinner();
-        javax.swing.JLabel NumberOfRoundsNeededLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JListOfPlayers = new javax.swing.JList<>();
+        JListOfPlayers.setMaximumSize(JListOfPlayers.getPreferredSize());
+        JListOfPlayers.setMinimumSize(JListOfPlayers.getPreferredSize());
         StartGameButton = new javax.swing.JButton();
         assistantWantedCheckBox = new javax.swing.JCheckBox();
         autocompleteWantedCheckBox = new javax.swing.JCheckBox();
@@ -80,8 +85,8 @@ public class MenuView extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("");
 
-        numberOfRounds.setText("max. Rundenanzahl");
-        numberOfRounds.setToolTipText("");
+        maxRoundsLabel.setText("max. Rundenanzahl");
+        maxRoundsLabel.setToolTipText("");
 
         addPlayerButton.setText("Spieler hinzufügen");
         addPlayerButton.setToolTipText("");
@@ -91,7 +96,6 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
-        NumberOfRoundsNeededLabel.setText("Runden nötig für Sieg");
         JListOfPlayers.setModel(playerList);
         jScrollPane1.setViewportView(JListOfPlayers);
 
@@ -103,16 +107,13 @@ public class MenuView extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(NumberOfRoundsNeededSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(NumberOfRoundsNeededLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                         .addComponent(addPlayerButton)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(maxRoundsSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numberOfRounds)))
+                                .addComponent(maxRoundsLabel)))
                         .addContainerGap(93, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup().addContainerGap()
@@ -124,12 +125,9 @@ public class MenuView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(maxRoundsSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(numberOfRounds))
+                                .addComponent(maxRoundsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(NumberOfRoundsNeededSelector, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(NumberOfRoundsNeededLabel))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE))
                         .addGap(8, 8, 8)));
 
         StartGameButton.setText("Spiel Starten");
@@ -181,18 +179,24 @@ public class MenuView extends javax.swing.JFrame {
 
     private void StartGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
         maxRounds = (int) maxRoundsSelector.getValue();
-        numberOfRounds = (int) NumberOfRoundsNeededSelector.getValue();
         assistantWanted = assistantWantedCheckBox.isSelected();
         autocompleteWanted = autocompleteWantedCheckBox.isSelected();
-        if (playerList.size() < 2 || maxRounds < 1 || numberOfRounds < 1) {
-            showError();
+        if (playerList.size() < 2) {
+            JOptionPane.showMessageDialog(null,
+                    "Es müssen mindestends zwei Spieler vorhanden sein.", "Starting Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (maxRounds < 1 || maxRounds%2!=0) {
+             JOptionPane.showMessageDialog(null,
+                    "Du kannst nur eine ungerade Anzahl von Runden über 1 spielen.", "Starting Error",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
         this.setVisible(false);
         System.out.println("assistand" + assistantWanted);
         System.out.println("auto" + autocompleteWanted);
         System.out.println("maxRounds:" + maxRounds);
-        System.out.println("numberofrounds:" + numberOfRounds);
         System.out.println("playerList" + playerList);
 
         // new game.Game(a=assistanWanted);
@@ -200,7 +204,7 @@ public class MenuView extends javax.swing.JFrame {
         // h));
         // int maxPlayers = length();
         System.out.println(pM.getAllPlayers().size() + "Gaming");
-        Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        Game game = new Game(assistantWanted, autocompleteWanted, maxRounds, pM.getAllPlayers());
 
         new GameView(game).setVisible(true);
         this.setVisible(false);
@@ -208,22 +212,8 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     public static void updatePlayers() {
-        System.out.println(pM.getAllPlayers());
         playerList.removeAllElements();
         playerList.addAll(pM.getAllPlayers());
-    }
-
-    public static void showError() {
-        JDialog dialog = new JDialog();
-        JLabel label = new JLabel(new ImageIcon((MenuView.class.getResource("/ressources/nope.jpeg"))));
-        dialog.add(label);
-        dialog.pack();
-        dialog.setVisible(true);
-    }
-
-    public static void addPlayerToList(String name) {
-        System.out.println(name);
-        playerList.addElement(new Player(name));
     }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +223,6 @@ public class MenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     private javax.swing.JList<Player> JListOfPlayers;
-    private javax.swing.JSpinner NumberOfRoundsNeededSelector;
     private javax.swing.JButton StartGameButton;
     private javax.swing.JButton addPlayerButton;
     private javax.swing.JCheckBox assistantWantedCheckBox;
@@ -246,16 +235,11 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JSpinner maxRoundsSelector;
     // End of variables declaration
 
-    private int numberOfRounds;
     private int maxRounds;
-    static java.util.List<Player> quickPlayers = new ArrayList<Player>();
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;
     LinkedList stringList = new LinkedList<String>();
     static PlayerManagement pM = PlayerManagement.getInstance();
 
-    private void addPlayersToGame() {
-
-    }
 }
