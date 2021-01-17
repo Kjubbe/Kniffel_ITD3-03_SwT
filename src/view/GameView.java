@@ -818,7 +818,8 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
-        dispose();
+        new OpeningScreen();
+        this.dispose();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1ButtonActionPerformed
@@ -963,7 +964,8 @@ public class GameView extends javax.swing.JFrame {
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
         game.restart();
-        dispose();
+        //dispose();
+        refresh();
         System.out.println("test");
     }//GEN-LAST:event_restartGameActionPerformed
 
@@ -1263,7 +1265,10 @@ public class GameView extends javax.swing.JFrame {
             }
 
         }
-        playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1);     // Part 1
+        playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1); // Part 1
+        int bonus = game.currentPlayer.getCard().getPart1(false) != game.currentPlayer.getCard().getPart1(true) ? Card.BONUS
+                : 0;
+        playercard.setValueAt(bonus, 7, 1);     // Bonus
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 16, 1);    // Part 1
         playercard.setValueAt(game.currentPlayer.getCard().getPart2(), 17, 1);    // Part 2

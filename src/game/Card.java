@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class Card {
 
 	private Player owner; // card owner
-	private static final int BONUS = 35; // the amount of bonus points
+	public static final int BONUS = 35; // the amount of bonus points
 	private static final int BONUS_REQ = 63; // the required amount of points in part 1 to get bonus points
 	private static final int PART1_END_INDEX = 5;
 
