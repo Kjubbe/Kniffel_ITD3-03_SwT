@@ -105,10 +105,7 @@ public class Game {
 				diceValues[i] = DICE[i].getValue(); // set each value in the array
 			}
 			currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
-		} else { // end the turn when more than 3 rolls
-			currentPlayer.getStats().increaseRoundsPlayed();
 		}
-
 		return turnOver;
 	}
 
@@ -158,7 +155,8 @@ public class Game {
 			if (points > winner.getPoints()) {
 				winner = p;
 			}
-			// TODO tie
+			p.getStats().increasePoints(points);
+			p.getStats().increaseGamesPlayed();
 		}
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
@@ -220,6 +218,7 @@ public class Game {
 	public boolean chooseField(int index) {
 		boolean result = currentPlayer.getCard().chooseField(index);
 		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
 			nextPlayer();
 		}
 		return result;
@@ -234,6 +233,7 @@ public class Game {
 	public boolean chooseField(int index, int value) {
 		boolean result = currentPlayer.getCard().chooseField(index, value);
 		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
 			nextPlayer();
 		}
 		return result;
@@ -248,6 +248,7 @@ public class Game {
 	public boolean crossField(int index) {
 		boolean result = currentPlayer.getCard().crossField(index);
 		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
 			nextPlayer();
 		}
 		return result;

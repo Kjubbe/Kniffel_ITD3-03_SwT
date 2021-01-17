@@ -1,5 +1,7 @@
 package game;
 
+import java.util.GregorianCalendar;
+
 /**
  * contains all data for a player
  * 
@@ -11,6 +13,9 @@ public class Stats {
 
 	// data fields
 	private Player statsOf;
+
+	private GregorianCalendar start;
+	private GregorianCalendar stop;
 	private int gamesWon;
 	private int gamesPlayed;
 	private int roundsPlayed;
@@ -38,6 +43,7 @@ public class Stats {
 		this.points = points;
 		this.diceRolled = diceRolled;
 		this.timePlayed = timePlayed;
+		start = new GregorianCalendar();
 	}
 
 	/**
@@ -47,6 +53,10 @@ public class Stats {
 	 */
 	public Stats(Player statsOf) {
 		this.statsOf = statsOf;
+	}
+
+	public void stopPlaying() {
+		stop = new GregorianCalendar();
 	}
 
 	/**
