@@ -31,7 +31,7 @@ public class MenuView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initComponents();
         
-        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 99, 2);
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
         maxRoundsSelector.setModel(spinnerModel);
         assistantWantedCheckBox.setSelected(true);
         autocompleteWantedCheckBox.setSelected(true);
@@ -194,12 +194,6 @@ public class MenuView extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (maxRounds < 1 || maxRounds%2!=0) {
-             JOptionPane.showMessageDialog(null,
-                    "Du kannst nur eine ungerade Anzahl von Runden über 1 spielen.", "Starting Error",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
         this.setVisible(false);
         System.out.println("assistand" + assistantWanted);
         System.out.println("auto" + autocompleteWanted);
@@ -211,7 +205,13 @@ public class MenuView extends javax.swing.JFrame {
         // h));
         // int maxPlayers = length();
         System.out.println(pM.getAllPlayers().size() + "Gaming");
-        Game game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
+        Game game;
+        if (rb1.isSelected()) {
+            game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
+        } else {
+                byte zahl = (byte) maxRounds;
+            game = new Game(autocompleteWanted, assistantWanted, zahl, pM.getAllPlayers());    
+        }
 
         new GameView(game).setVisible(true);
         this.setVisible(false);

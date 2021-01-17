@@ -1160,6 +1160,7 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_skipPlayer8ActionPerformed
 
     private void cellEdited(int row, int column) {
+        System.out.println("cell edited");
         if (row != -1 && column != -1) {
             Object obj = playercard.getValueAt(row, column);
             try {
