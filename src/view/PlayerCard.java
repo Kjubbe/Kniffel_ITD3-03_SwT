@@ -24,8 +24,9 @@ public class PlayerCard extends javax.swing.JFrame {
     public PlayerCard(Game game, Player player) {
         this.game = game;
         this.player = player;
+        this.setLocationRelativeTo(null);
         initComponents();
-
+        this.setTitle("Spielerkarte von " + player.getName());
         playercardName.setText("Spielerkarte von " + player.getName());
         tableSetFieldNames();
         tableSetPoints();

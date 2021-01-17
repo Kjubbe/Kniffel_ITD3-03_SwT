@@ -18,6 +18,7 @@ public class GameView extends javax.swing.JFrame {
 
     public GameView(Game game) {
         this.game = game;
+        this.setLocationRelativeTo(null);
         initComponents();
         tableSetFieldNames();
         showDefaultDie();

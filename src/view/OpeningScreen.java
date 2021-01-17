@@ -19,6 +19,8 @@ public class OpeningScreen extends javax.swing.JFrame {
     static PlayerManagement pM;
     public OpeningScreen() {
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
         initComponents();
         pM = PlayerManagement.getInstance();
         this.ErrorLabel.setVisible(false);
@@ -151,6 +153,7 @@ public class OpeningScreen extends javax.swing.JFrame {
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         new MenuView();
+        this.dispose();
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

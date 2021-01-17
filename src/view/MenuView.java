@@ -28,6 +28,7 @@ public class MenuView extends javax.swing.JFrame {
      */
     public MenuView() {
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -206,8 +207,10 @@ public class MenuView extends javax.swing.JFrame {
 
     }
 
-    private void updatePlayers() {
-        quickPlayers = pM.getAllPlayers();
+    public static void updatePlayers() {
+        System.out.println(pM.getAllPlayers());
+        playerList.removeAllElements();
+        playerList.addAll(pM.getAllPlayers());
     }
 
     public static void showError() {
@@ -245,7 +248,7 @@ public class MenuView extends javax.swing.JFrame {
 
     private int numberOfRounds;
     private int maxRounds;
-    java.util.List<Player> quickPlayers = new ArrayList<Player>();
+    static java.util.List<Player> quickPlayers = new ArrayList<Player>();
     static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
     private boolean assistantWanted;
     private boolean autocompleteWanted;

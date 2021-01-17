@@ -15,6 +15,6 @@ public class Main {
 	 * @param args command parameters
 	 */
 	public static void main(String[] args) {
-                new OpeningScreen();
+		new OpeningScreen();
 	}
 }
