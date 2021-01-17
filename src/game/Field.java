@@ -142,6 +142,15 @@ public class Field {
 	}
 
 	/**
+	 * check if this field is crossed
+	 * 
+	 * @return if crossed
+	 */
+	public boolean isChosen() {
+		return chosenValue != -1 && chosenValue != 0;
+	}
+
+	/**
 	 * get the name of this card
 	 * 
 	 * @return name

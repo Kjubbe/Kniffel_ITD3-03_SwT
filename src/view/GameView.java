@@ -5,6 +5,15 @@
  */
 package view;
 
+import java.awt.event.*;
+
+import javax.swing.AbstractAction;
+import javax.swing.DefaultCellEditor;
+import javax.swing.KeyStroke;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+
 import game.Card;
 import game.Game;
 
@@ -22,9 +31,7 @@ public class GameView extends javax.swing.JFrame {
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
-        
-        
-
+    
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
         counterLabel.setText(game.rolls + "/3");
 
@@ -220,7 +227,9 @@ public class GameView extends javax.swing.JFrame {
         playercard.setBackground(new java.awt.Color(55, 55, 55));
         playercard.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
         playercard.setForeground(new java.awt.Color(255, 255, 255));
-        playercard.setModel(new javax.swing.table.DefaultTableModel(
+
+        
+         DefaultTableModel dft = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -245,11 +254,36 @@ public class GameView extends javax.swing.JFrame {
             new String [] {
                 "", "Punktzahl"
             }
-        ));
+        ) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                if (column == 0 || (row >= 6 && row <= 8) || row >= 16) {
+                    return false;
+                }
+
+               return !game.useAutocalc;
+            }
+         };
+
+
+        dft.addTableModelListener(new TableModelListener() {
+
+			@Override
+			public void tableChanged(TableModelEvent e) {
+                cellEdited(playercard.getSelectedRow(), playercard.getSelectedColumn());
+			}
+            
+        });
+
         playercard.setToolTipText("Spielerkarte");
         playercard.setFocusCycleRoot(true);
         playercard.setName(""); // NOI18N
         playercard.setRowHeight(25);
+        playercard.putClientProperty("terminateEditOnFocusLost", true);
+        playercard.setModel(dft);
+
         playercardScrollPane.setViewportView(playercard);
 
         dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/1.png"))); // NOI18N
@@ -1125,6 +1159,24 @@ public class GameView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_skipPlayer8ActionPerformed
 
+    private void cellEdited(int row, int column) {
+        if (row != -1 && column != -1) {
+            Object obj = playercard.getValueAt(row, column);
+            try {
+                if (obj != null) {
+                    String input = obj.toString();
+                    System.out.println(input);
+                    int n = Integer.parseInt(input);
+                    game.chooseField(row, n);
+                    refresh();
+                }
+            } catch (Exception ex) {
+                playercard.setValueAt(null, row, column);
+                System.out.println("Du lutscher!");
+            }
+        }
+    }
+
     /**
      * Setting the fieldnames into the playercard
      */
@@ -1165,22 +1217,23 @@ public class GameView extends javax.swing.JFrame {
      * Setting the points into the playercard
      */
     private void tableSetPoints() {
+        System.out.println(game.useAutofill);
         for (int i = 0; i < 6; i++) {
-            if (game.currentPlayer.getCard().allFields[i].isOpen()) {
+            if (game.currentPlayer.getCard().allFields[i].isOpen() && game.useAutofill) {
                 playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getCurrentValue(), i, 1);
             } else if (game.currentPlayer.getCard().allFields[i].isCrossed()) {
                 playercard.setValueAt("---", i, 1);
-            } else {
+            } else if (game.currentPlayer.getCard().allFields[i].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getChosenValue(), i, 1);
             }
 
         }
         for (int j = 6; j < 13; j++) {
-            if (game.currentPlayer.getCard().allFields[j].isOpen()) {
+            if (game.currentPlayer.getCard().allFields[j].isOpen() && game.useAutofill) {
                 playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getCurrentValue(), j + 3, 1);
             } else if (game.currentPlayer.getCard().allFields[j].isCrossed()) {
                 playercard.setValueAt("---", j + 3, 1);
-            } else {
+            } else if (game.currentPlayer.getCard().allFields[j].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getChosenValue(), j + 3, 1);
             }
 
@@ -1198,9 +1251,7 @@ public class GameView extends javax.swing.JFrame {
      */
     private void refresh() {
         showDefaultDie();
-        if(game.useAutofill == true) {
-            tableSetPoints();
-        }
+        tableSetPoints();
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
         yourTurnLabel.setVisible(true);
         yourTurnLabel.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");

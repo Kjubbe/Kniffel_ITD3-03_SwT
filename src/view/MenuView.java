@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -144,6 +145,11 @@ public class MenuView extends javax.swing.JFrame {
         assistantWantedCheckBox.setToolTipText("");
         autocompleteWantedCheckBox.setText("Automatisch ausfüllen");
         autocompleteWantedCheckBox.setToolTipText("");
+        autocompleteWantedCheckBox.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autocompleteWantedCheckBoxActionPerformed(evt);
+                }
+            });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,7 +206,7 @@ public class MenuView extends javax.swing.JFrame {
         // h));
         // int maxPlayers = length();
         System.out.println(pM.getAllPlayers().size() + "Gaming");
-        Game game = new Game(assistantWanted, autocompleteWanted, numberOfRounds, pM.getAllPlayers());
+        Game game = new Game(autocompleteWanted, assistantWanted, numberOfRounds, pM.getAllPlayers());
 
         new GameView(game).setVisible(true);
         this.setVisible(false);
@@ -227,8 +233,17 @@ public class MenuView extends javax.swing.JFrame {
     }
 
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        new LoginScreenView().setVisible(true);
+            new LoginScreenView().setVisible(true);
 
+    }
+    
+    private void autocompleteWantedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        if (autocompleteWantedCheckBox.isSelected()) {
+                assistantWantedCheckBox.setSelected(true);
+               assistantWantedCheckBox.setEnabled(false);     
+       } else {
+        assistantWantedCheckBox.setEnabled(true);
+        }
     }
 
     // Variables declaration - do not modify
