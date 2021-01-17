@@ -267,15 +267,16 @@ public class GameView extends javax.swing.JFrame {
             }
          };
 
+         if (!game.useAutocalc) {
+            dft.addTableModelListener(new TableModelListener() {
 
-        dft.addTableModelListener(new TableModelListener() {
-
-			@Override
-			public void tableChanged(TableModelEvent e) {
-                cellEdited(playercard.getSelectedRow(), playercard.getSelectedColumn());
-			}
-            
-        });
+                @Override
+                public void tableChanged(TableModelEvent e) {
+                    cellEdited(playercard.getSelectedRow(), playercard.getSelectedColumn());
+                }
+                
+            });
+         }
 
         playercard.setToolTipText("Spielerkarte");
         playercard.setFocusCycleRoot(true);
@@ -448,6 +449,9 @@ public class GameView extends javax.swing.JFrame {
         });
 
         FeldWaehlenButton.setText("Feld auswählen");
+        if (!game.useAutocalc) {
+            FeldWaehlenButton.setEnabled(false);
+        }
         FeldWaehlenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeldWaehlenButtonActionPerformed(evt);
@@ -1160,20 +1164,27 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_skipPlayer8ActionPerformed
 
     private void cellEdited(int row, int column) {
-        System.out.println("cell edited");
-        if (row != -1 && column != -1) {
+        if (row != -1 && column != -1 && (row < 6 || (row > 8 && row < 16))) {
             Object obj = playercard.getValueAt(row, column);
-            try {
-                if (obj != null) {
-                    String input = obj.toString();
-                    System.out.println(input);
-                    int n = Integer.parseInt(input);
-                    game.chooseField(row, n);
-                    refresh();
+            if (obj != null) {
+                String input = obj.toString();
+                if (input.contains("---") || input.contains("gewählt: ")) {
+                    return;
                 }
-            } catch (Exception ex) {
+                int index = row;
+                if (index > 5) {
+                    index -= 3;
+                }
+                try {
+                    int n = Integer.parseInt(input);
+                    if (game.chooseField(index, n)) {
+                        System.out.println("chosen value, refresh: " + n);
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Du lutscher!");
+                }
                 playercard.setValueAt(null, row, column);
-                System.out.println("Du lutscher!");
+                refresh();
             }
         }
     }
@@ -1226,6 +1237,8 @@ public class GameView extends javax.swing.JFrame {
                 playercard.setValueAt("---", i, 1);
             } else if (game.currentPlayer.getCard().allFields[i].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getChosenValue(), i, 1);
+            } else {
+                playercard.setValueAt(null, i, 1);
             }
 
         }
@@ -1236,6 +1249,8 @@ public class GameView extends javax.swing.JFrame {
                 playercard.setValueAt("---", j + 3, 1);
             } else if (game.currentPlayer.getCard().allFields[j].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getChosenValue(), j + 3, 1);
+            } else {
+                playercard.setValueAt(null, j + 3, 1);
             }
 
         }

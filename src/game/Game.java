@@ -228,9 +228,12 @@ public class Game {
 	 * @param index index of the field
 	 * @param value value of the field
 	 */
-	public void chooseField(int index, int value) {
-		currentPlayer.getCard().chooseField(index, value);
-		nextPlayer();
+	public boolean chooseField(int index, int value) {
+		boolean result = currentPlayer.getCard().chooseField(index, value);
+		if (result) {
+			nextPlayer();
+		}
+		return result;
 	}
 
 	/**

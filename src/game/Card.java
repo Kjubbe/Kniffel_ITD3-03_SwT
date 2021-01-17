@@ -267,9 +267,9 @@ public class Card {
 	 * @param index the index of the field to be crossed
 	 * @param value the new value of the field
 	 */
-	public void chooseField(int index, int value) {
+	public boolean chooseField(int index, int value) {
 		Field field = allFields[index];
-		field.choose(value);
+		return field.choose(value);
 	}
 
 	/**

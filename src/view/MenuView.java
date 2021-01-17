@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SpinnerNumberModel;
 
@@ -29,6 +30,7 @@ public class MenuView extends javax.swing.JFrame {
     public MenuView() {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
         
         SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
@@ -142,6 +144,7 @@ public class MenuView extends javax.swing.JFrame {
 
         assistantWantedCheckBox.setText("Assistent nutzen");
         assistantWantedCheckBox.setToolTipText("");
+        assistantWantedCheckBox.setEnabled(false);
         autocompleteWantedCheckBox.setText("Automatisch ausfüllen");
         autocompleteWantedCheckBox.setToolTipText("");
         autocompleteWantedCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -205,13 +208,7 @@ public class MenuView extends javax.swing.JFrame {
         // h));
         // int maxPlayers = length();
         System.out.println(pM.getAllPlayers().size() + "Gaming");
-        Game game;
-        if (rb1.isSelected()) {
-            game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
-        } else {
-                byte zahl = (byte) maxRounds;
-            game = new Game(autocompleteWanted, assistantWanted, zahl, pM.getAllPlayers());    
-        }
+        Game game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
 
         new GameView(game).setVisible(true);
         this.setVisible(false);
