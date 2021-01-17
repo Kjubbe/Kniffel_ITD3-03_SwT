@@ -6,6 +6,8 @@
 package view;
 
 import game.Game;
+
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,24 +16,35 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EndDialogView extends javax.swing.JFrame {
 
+        private boolean last;
+
     /**
      * Creates new form EndDialogView
      */
     public Game game;
 
-    public EndDialogView(Game game) {
-        this.game = game;
+    public EndDialogView(Game game, boolean last) {
+            this.game = game;
+            this.last = last;
         this.setVisible(true);
         initComponents();
 
         // winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!");
         // auskommentiert, da es ohne gewinner noch fehlermeldung gibt
-        winnerLabel.setText("Die Runde ist vorbei!");
+        
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
-        for (int i = 0; i < game.players.size(); i++) {
-            model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getPoints() });
+        if (this.last) {
+                winnerLabel.setText("Das Spiel ist vorbei!");
+                for (int i = 0; i < game.players.size(); i++) {
+                        model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getWins() });
+                }
+        } else {
+                winnerLabel.setText("Die Runde ist vorbei!");
+                for (int i = 0; i < game.players.size(); i++) {
+                        model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getPoints() });
+                    }
         }
     }
 
@@ -61,10 +74,18 @@ public class EndDialogView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(spielerTabelle);
 
         winnerLabel.setText("hat das Spiel gewonnen!");
+        if (this.last) {
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
+                }, new String[] { "Spieler", "Gewonnene Spiele" }));
+                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else {
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-        }, new String[] { "Spieler", "Punkte" }));
+                }, new String[] { "Spieler", "Punkte in dieser Runde" }));
+        }
+        
+
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

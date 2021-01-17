@@ -231,25 +231,25 @@ public class GameView extends javax.swing.JFrame {
         
          DefaultTableModel dft = new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Zwischensumme:", null},
-                {"Bonus bei min. 63:", null},
-                {"Gesamter erster Teil:", null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Gesamter erster Teil:", null},
-                {"Gesamter zweiter Teil:", null},
-                {"Gesamtsumme", null}
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Zwischensumme:", 0},
+                {"Bonus bei min. 63:", 0},
+                {"Gesamter erster Teil:", 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Gesamter erster Teil:", 0},
+                {"Gesamter zweiter Teil:", 0},
+                {"Gesamtsumme", 0}
             },
             new String [] {
                 "", "Punktzahl"
@@ -259,8 +259,15 @@ public class GameView extends javax.swing.JFrame {
             @Override
             public boolean isCellEditable(int row, int column) {
                 //all cells false
-                if (column == 0 || (row >= 6 && row <= 8) || row >= 16) {
-                    return false;
+                 if (column == 0 || (row >= 6 && row <= 8) || row >= 16) {
+                     return false;
+                 }
+                 int i = row;
+                 if (i > 5) {
+                    i -= 3;
+                    }
+                if (game.currentPlayer.getCard().allFields[i].isCrossed() || game.currentPlayer.getCard().allFields[i].isChosen()) {
+                     return false;
                 }
 
                return !game.useAutocalc;
@@ -1000,9 +1007,11 @@ public class GameView extends javax.swing.JFrame {
         if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
             if (index > 5) {
             index -= 3;
-        }
-        game.crossField(index);
-        refresh();
+            }
+        
+            if (game.crossField(index)) {
+                refresh();
+            }
         } else {
             System.out.println("Falsche Zeile");
         }
@@ -1010,7 +1019,7 @@ public class GameView extends javax.swing.JFrame {
 
     private void FeldWaehlenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeldWaehlenButtonActionPerformed
         int index = playercard.getSelectedRow();
-        if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
+        if (index != -1 && index != 6 && index != 7 && index != 8 && index != 16 && index != 17 && index != 18) {
             if (index > 5) {
                 index -= 3;
             }

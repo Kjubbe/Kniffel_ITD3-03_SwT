@@ -158,6 +158,8 @@ public class Card {
 			// test if the adjacent numbers are increasing
 			if (num[i] == num[i + 1] + 1) {
 				increase++;
+			} else {
+				increase = 0;
 			}
 
 			// two adjacent pairs are equal to three same numbers

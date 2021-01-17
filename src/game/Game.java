@@ -163,13 +163,9 @@ public class Game {
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
 
-		if (isGameOver()) {
-			JDialog fenster = new JDialog();
-			fenster.add(new JLabel("Toll!"));
-			fenster.setVisible(true);
-			fenster.pack(); // TODO
-		} else {
-			new EndDialogView(this).setVisible(true);
+		boolean gameOver = isGameOver();
+		new EndDialogView(this, gameOver).setVisible(true);
+		if (!gameOver) {
 			restart();
 		}
 	}
