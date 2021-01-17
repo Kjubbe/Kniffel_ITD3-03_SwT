@@ -188,7 +188,7 @@ public class PlayerManagement {
         for (Player p : loggedIn) {
             if (p instanceof RegisteredPlayer && p.isSavingStats()) {
                 try {
-                    Databaseinterface.getInstance().savePlayer((RegisteredPlayer) p);
+                    Databaseinterface.getInstance().updatePlayerStats((RegisteredPlayer) p);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

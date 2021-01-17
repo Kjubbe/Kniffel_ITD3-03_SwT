@@ -75,6 +75,7 @@ public class LoginScreenView extends javax.swing.JFrame {
         });
 
         jRadioButton1.setText("Statistik speichern");
+        jRadioButton1.setSelected(true);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);

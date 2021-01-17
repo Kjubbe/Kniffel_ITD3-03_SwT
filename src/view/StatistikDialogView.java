@@ -13,10 +13,15 @@ import game.Stats;
  */
 public class StatistikDialogView extends javax.swing.JFrame {
 
+        private Stats playerStats;
+        private String name;
+
     /**
      * Creates new form StatistikDialogView
      */
-    public StatistikDialogView(Stats playerStats) {
+    public StatistikDialogView(Stats playerStats, String name) {
+            this.playerStats = playerStats;
+            this.name = name;
         this.setVisible(true);
         System.out.println("StatistikDialog");
         initComponents();
@@ -47,8 +52,6 @@ public class StatistikDialogView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(41, 128, 185));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -57,7 +60,7 @@ public class StatistikDialogView extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel2.setText("Benutzername");
+        jLabel2.setText(name);
 
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setText("Gespielte Spiele:");
@@ -79,27 +82,27 @@ public class StatistikDialogView extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel4.setText("0");
+        jLabel4.setText("" + playerStats.getGamesPlayed());
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel5.setText("0");
+        jLabel5.setText("" + playerStats.getGamesWon());
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel6.setText("0");
+        jLabel6.setText("" + playerStats.getDiceRolled());
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel7.setText("0");
+        jLabel7.setText("" + playerStats.getPoints());
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel8.setText("0");
+        jLabel8.setText("" + format(playerStats.getTimePlayed()));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel15.setText("0");
+        jLabel15.setText("" + playerStats.getRoundsPlayed());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,6 +165,14 @@ public class StatistikDialogView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private String format(int timePlayed) {
+        int sec = timePlayed / 1000;
+            int min = sec / 60;
+            int hours = min / 60;
+
+        return "" + sec + "s " + min + "m " + hours + "h";
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

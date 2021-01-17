@@ -146,7 +146,7 @@ public final class Databaseinterface {
                         + playerStats.getGamesPlayed() + "," + "roundsPlayed=" + playerStats.getRoundsPlayed() + ","
                         + "points=" + playerStats.getPoints() + "," + "diceRolled=" + playerStats.getDiceRolled() + ","
                         + "timePlayed=" + playerStats.getTimePlayed() + " WHERE id=" + statsId); // update their stats
-                result = true;
+                result = true; // (0,0,4,12,254,55,2)
             }
         }
 

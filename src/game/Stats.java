@@ -15,13 +15,12 @@ public class Stats {
 	private Player statsOf;
 
 	private GregorianCalendar start;
-	private GregorianCalendar stop;
 	private int gamesWon;
 	private int gamesPlayed;
 	private int roundsPlayed;
 	private int points;
 	private int diceRolled;
-	private double timePlayed;
+	private int timePlayed;
 
 	/**
 	 * Constructor, assigns values
@@ -53,10 +52,15 @@ public class Stats {
 	 */
 	public Stats(Player statsOf) {
 		this.statsOf = statsOf;
+		start = new GregorianCalendar();
 	}
 
+	/**
+	 * stop playing
+	 */
 	public void stopPlaying() {
-		stop = new GregorianCalendar();
+		System.out.println("time saved");
+		timePlayed += new GregorianCalendar().getTimeInMillis() - start.getTimeInMillis();
 	}
 
 	/**
@@ -150,7 +154,7 @@ public class Stats {
 	/**
 	 * @return the timePlayed
 	 */
-	public double getTimePlayed() {
+	public int getTimePlayed() {
 		return timePlayed;
 	}
 }

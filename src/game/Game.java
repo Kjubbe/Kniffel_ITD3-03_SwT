@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import database.PlayerManagement;
 import view.EndDialogView;
 
 /**
@@ -165,6 +166,11 @@ public class Game {
 		new EndDialogView(this, gameOver).setVisible(true);
 		if (!gameOver) {
 			restart();
+		} else {
+			for (Player p : players) {
+				p.getStats().stopPlaying();
+			}
+			PlayerManagement.getInstance().savePlayers();
 		}
 	}
 

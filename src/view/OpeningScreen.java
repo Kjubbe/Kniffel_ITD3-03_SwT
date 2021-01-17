@@ -146,13 +146,15 @@ public class OpeningScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void showStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStatsButtonActionPerformed
-    Stats stats = pM.getStats(playerNameTextField.getText());
+        String name = playerNameTextField.getText();
+        Stats stats = pM.getStats(name);
             System.out.println(stats);
             if (stats == null) {
                 ErrorLabel.setVisible(true);
             } else {
-                new StatistikDialogView(stats);
-            }    }//GEN-LAST:event_showStatsButtonActionPerformed
+                new StatistikDialogView(stats, name);
+            }
+        }//GEN-LAST:event_showStatsButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         new MenuView();
