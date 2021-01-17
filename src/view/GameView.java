@@ -1272,6 +1272,9 @@ public class GameView extends javax.swing.JFrame {
         yourTurnLabel.setVisible(true);
         yourTurnLabel.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
         counterLabel.setText(game.rolls + "/3");
+        if (game.isGameOver()) {
+            this.dispose();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

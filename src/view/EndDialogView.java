@@ -26,7 +26,7 @@ public class EndDialogView extends javax.swing.JFrame {
 
         // winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!");
         // auskommentiert, da es ohne gewinner noch fehlermeldung gibt
-        winnerLabel.setText(game.players.get(1).getName() + " hat das Spiel gewonnen!");
+        winnerLabel.setText("Die Runde ist vorbei!");
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
@@ -59,8 +59,6 @@ public class EndDialogView extends javax.swing.JFrame {
                                 { null, null }, { null, null }, { null, null } },
                         new String[] { "Title 1", "Title 2" }));
         jScrollPane2.setViewportView(spielerTabelle);
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         winnerLabel.setText("hat das Spiel gewonnen!");
 

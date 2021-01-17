@@ -1,6 +1,10 @@
 package game;
 
 import java.util.List;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
 import view.EndDialogView;
 
 /**
@@ -41,7 +45,7 @@ public class Game {
 	private final int[] diceValues = new int[DICE.length];
 	public int rolls;
 
-	public static final int MAX_ROUNDS = 13;
+	public static final int MAX_ROUNDS = 3;
 	private int roundsPlayed;
 	private int gamesPlayed;
 
@@ -126,11 +130,11 @@ public class Game {
 	}
 
 	/**
-	 * get to the next game
+	 * check if the game is over
 	 * 
 	 * @return true if this was the last game
 	 */
-	public boolean nextGame() {
+	public boolean isGameOver() {
 		// first, check if someone has won enough games
 		boolean done = false;
 		for (Player p : players) {
@@ -141,11 +145,6 @@ public class Game {
 		}
 		// second, check if there are enough games played
 		boolean over = done || gamesPlayed >= maxGames;
-		if (!over) {
-			restart();
-		} else {
-			findWinner();
-		}
 		return over;
 	}
 
@@ -163,8 +162,16 @@ public class Game {
 		}
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
-		new EndDialogView(this).setVisible(true);
-		nextGame();
+
+		if (isGameOver()) {
+			JDialog fenster = new JDialog();
+			fenster.add(new JLabel("Toll!"));
+			fenster.setVisible(true);
+			fenster.pack(); // TODO
+		} else {
+			new EndDialogView(this).setVisible(true);
+			restart();
+		}
 	}
 
 	/**
