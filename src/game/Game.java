@@ -33,6 +33,7 @@ public class Game {
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
 	public final List<Player> players; // contains all participating players
+	private final Player[] seats = new Player[PlayerManagement.MAX_PLAYERS];
 
 	public Player currentPlayer; // the current player doing his turn
 	private int playerIndex; // index of the current player
@@ -66,6 +67,7 @@ public class Game {
 		this.gamesToWin = maxGames;
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
+		init();
 	}
 
 	/**
@@ -84,6 +86,13 @@ public class Game {
 		this.gamesToWin = gamesToWin;
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
+		init();
+	}
+
+	private void init() {
+		for (int i = 0; i < players.size(); i++) {
+			seats[i] = players.get(i);
+		}
 	}
 
 	/**
@@ -190,10 +199,11 @@ public class Game {
 	/**
 	 * remove a player from the server
 	 * 
-	 * @param player Player, who is removed
+	 * @param index Index of the Player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean removePlayer(Player player) {
+	public boolean removePlayer(int index) {
+		Player player = seats[index];
 		if (player == currentPlayer) {
 			skipPlayer(player);
 		}
