@@ -1113,7 +1113,7 @@ public class GameView extends javax.swing.JFrame {
      * 
      * @param index
      */
-    private void removePlayer(int index) {
+    private void removePlayer(int index) { // TODO shits not working
         if (game.removePlayer(game.players.get(index))) {
             player1Button.setVisible(false);
             refresh();
