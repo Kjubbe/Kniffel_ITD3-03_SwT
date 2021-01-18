@@ -10,7 +10,7 @@ import view.OpeningScreen;
 public class Main {
 
 	/**
-	 * Main method, creates a new start screen
+	 * Main method, creates a new opening screen
 	 * 
 	 * @param args command parameters
 	 */
