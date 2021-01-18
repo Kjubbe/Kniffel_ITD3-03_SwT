@@ -967,15 +967,21 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
-        removePlayer(0);
+        if (removePlayer(0)) {
+            player1Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
     private void removePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer2ActionPerformed
-        removePlayer(1);
+        if (removePlayer(1)) {
+            player2Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
-        removePlayer(3);
+        if (removePlayer(3)) {
+            player4Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
@@ -1047,19 +1053,28 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_showPlayer8CardActionPerformed
 
     private void removePlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer5ActionPerformed
-        removePlayer(4);
+        if (removePlayer(4)) {
+            player5Button.setVisible(false);
+        }
+        
     }//GEN-LAST:event_removePlayer5ActionPerformed
 
     private void removePlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer6ActionPerformed
-        removePlayer(5);
+        if (removePlayer(5)) {
+            player6Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer6ActionPerformed
 
     private void removePlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer7ActionPerformed
-        removePlayer(6);
+        if (removePlayer(6)) {
+            player7Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer7ActionPerformed
 
     private void removePlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer8ActionPerformed
-        removePlayer(7);
+        if (removePlayer(7)) {
+            player8Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer8ActionPerformed
 
     private void skipPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer1ActionPerformed
@@ -1113,13 +1128,14 @@ public class GameView extends javax.swing.JFrame {
      * 
      * @param index
      */
-    private void removePlayer(int index) { // TODO shits not working
-        if (game.removePlayer(game.players.get(index))) {
-            player1Button.setVisible(false);
+    private boolean removePlayer(int index) {
+        boolean result = game.removePlayer(index);
+        if (result) {
             refresh();
         } else {
             System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
+        return result;
     }
 
     /**
