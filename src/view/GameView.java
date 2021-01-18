@@ -1131,13 +1131,13 @@ public class GameView extends javax.swing.JFrame {
      * @param index
      */
     private boolean removePlayer(int index) {
-        boolean result = game.removePlayer(index);
-        if (result) {
+        int result = game.removePlayer(index);
+        if (result == -1) {
             refresh();
         } else {
             System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
-        return result;
+        return result == 1;
     }
 
     /**

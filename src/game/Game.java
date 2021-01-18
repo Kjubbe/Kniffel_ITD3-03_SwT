@@ -214,28 +214,30 @@ public class Game {
 	 * remove a player from the server
 	 * 
 	 * @param index Index of the Player, who is removed
-	 * @return if the removing was successful or not
+	 * @return the mode
 	 */
-	public boolean removePlayer(int index) {
+	public int removePlayer(int index) {
 		System.out.println("removing player at seat index " + index);
-		boolean result = false;
+		int mode = 0;
 		if (players.size() > 2) {
 			Player player = seats[index];
 			System.out.println("current playerindex: " + playerIndex);
 			int checkIndex = players.indexOf(player);
-			result = players.remove(player);
+			boolean result = players.remove(player);
+			mode = result ? 1 : 0;
 
 			if (checkIndex <= playerIndex) {
 				playerIndex--;
 				System.out.println("red playerindex: " + playerIndex);
 			}
 			if (player == currentPlayer) {
+				mode = -1;
 				nextPlayer();
 			}
 			
 		}
-		System.out.println("result: " + result);
-		return result;
+		System.out.println("result: " + mode);
+		return mode;
 	}
 
 	/**
