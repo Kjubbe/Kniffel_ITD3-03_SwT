@@ -2,6 +2,12 @@ package game;
 
 import java.util.List;
 
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+
+import database.PlayerManagement;
+import view.EndDialogView;
+
 /**
  * a game instance manages the game and their players
  * 
@@ -40,7 +46,7 @@ public class Game {
 	private final int[] diceValues = new int[DICE.length];
 	public int rolls;
 
-	public static final int MAX_ROUNDS = 13;
+	public static final int MAX_ROUNDS = 3;
 	private int roundsPlayed;
 	private int gamesPlayed;
 
@@ -100,10 +106,7 @@ public class Game {
 				diceValues[i] = DICE[i].getValue(); // set each value in the array
 			}
 			currentPlayer.getCard().calculatePoints(diceValues); // calculate the values for the fields
-		} else { // end the turn when more than 3 rolls
-			currentPlayer.getStats().increaseRoundsPlayed();
 		}
-
 		return turnOver;
 	}
 
@@ -125,11 +128,11 @@ public class Game {
 	}
 
 	/**
-	 * get to the next game
+	 * check if the game is over
 	 * 
 	 * @return true if this was the last game
 	 */
-	public boolean nextGame() {
+	public boolean isGameOver() {
 		// first, check if someone has won enough games
 		boolean done = false;
 		for (Player p : players) {
@@ -140,11 +143,6 @@ public class Game {
 		}
 		// second, check if there are enough games played
 		boolean over = done || gamesPlayed >= maxGames;
-		if (!over) {
-			restart();
-		} else {
-			findWinner();
-		}
 		return over;
 	}
 
@@ -158,11 +156,22 @@ public class Game {
 			if (points > winner.getPoints()) {
 				winner = p;
 			}
-			// TODO tie
+			p.getStats().increasePoints(points);
+			p.getStats().increaseGamesPlayed();
 		}
 		winner.increaseWins();
 		winner.getStats().increaseGamesWon();
-		nextGame();
+
+		boolean gameOver = isGameOver();
+		new EndDialogView(this, gameOver).setVisible(true);
+		if (!gameOver) {
+			restart();
+		} else {
+			for (Player p : players) {
+				p.getStats().stopPlaying();
+			}
+			PlayerManagement.getInstance().savePlayers();
+		}
 	}
 
 	/**
@@ -215,6 +224,7 @@ public class Game {
 	public boolean chooseField(int index) {
 		boolean result = currentPlayer.getCard().chooseField(index);
 		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
 			nextPlayer();
 		}
 		return result;
@@ -226,9 +236,13 @@ public class Game {
 	 * @param index index of the field
 	 * @param value value of the field
 	 */
-	public void chooseField(int index, int value) {
-		currentPlayer.getCard().chooseField(index, value);
-		nextPlayer();
+	public boolean chooseField(int index, int value) {
+		boolean result = currentPlayer.getCard().chooseField(index, value);
+		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
+			nextPlayer();
+		}
+		return result;
 	}
 
 	/**
@@ -240,6 +254,7 @@ public class Game {
 	public boolean crossField(int index) {
 		boolean result = currentPlayer.getCard().crossField(index);
 		if (result) {
+			currentPlayer.getStats().increaseRoundsPlayed();
 			nextPlayer();
 		}
 		return result;

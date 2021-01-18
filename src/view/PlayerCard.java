@@ -24,8 +24,9 @@ public class PlayerCard extends javax.swing.JFrame {
     public PlayerCard(Game game, Player player) {
         this.game = game;
         this.player = player;
+        this.setLocationRelativeTo(null);
         initComponents();
-
+        this.setTitle("Spielerkarte");
         playercardName.setText("Spielerkarte von " + player.getName());
         tableSetFieldNames();
         tableSetPoints();
@@ -51,25 +52,25 @@ public class PlayerCard extends javax.swing.JFrame {
         playercard.setForeground(new java.awt.Color(255, 255, 255));
         playercard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Zwischensumme:", null},
-                {"Bonus bei min. 63:", null},
-                {"Gesamter erster Teil:", null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Gesamter erster Teil:", null},
-                {"Gesamter zweiter Teil:", null},
-                {"Gesamtsumme", null}
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Zwischensumme:", 0},
+                {"Bonus bei min. 63:", 0},
+                {"Gesamter erster Teil:", 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Gesamter erster Teil:", 0},
+                {"Gesamter zweiter Teil:", 0},
+                {"Gesamtsumme", 0}
             },
             new String [] {
                 "", "Punktzahl"
@@ -85,23 +86,19 @@ public class PlayerCard extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+                .createSequentialGroup().addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playercardName)
-                    .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(playercardName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                        .addComponent(playercardName).addComponent(playercardScrollPane,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE)));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(playercardName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playercardScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,13 +138,12 @@ public class PlayerCard extends javax.swing.JFrame {
             }
 
         }
-        playercard.setValueAt(player.getCard().getPart1(false), 6, 1);     // Part 1
-        playercard.setValueAt(player.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
-        playercard.setValueAt(player.getCard().getPart1(true), 16, 1);    // Part 1
-        playercard.setValueAt(player.getCard().getPart2(), 17, 1);    // Part 2
-        playercard.setValueAt(player.getCard().getTotal(), 18, 1);    // Totals
+        playercard.setValueAt(player.getCard().getPart1(false), 6, 1); // Part 1
+        playercard.setValueAt(player.getCard().getPart1(true), 8, 1); // Part 1 + Bonus
+        playercard.setValueAt(player.getCard().getPart1(true), 16, 1); // Part 1
+        playercard.setValueAt(player.getCard().getPart2(), 17, 1); // Part 2
+        playercard.setValueAt(player.getCard().getTotal(), 18, 1); // Totals
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable playercard;

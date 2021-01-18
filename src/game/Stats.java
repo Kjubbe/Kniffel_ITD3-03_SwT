@@ -1,5 +1,7 @@
 package game;
 
+import java.util.GregorianCalendar;
+
 /**
  * contains all data for a player
  * 
@@ -11,12 +13,14 @@ public class Stats {
 
 	// data fields
 	private Player statsOf;
+
+	private GregorianCalendar start;
 	private int gamesWon;
 	private int gamesPlayed;
 	private int roundsPlayed;
 	private int points;
 	private int diceRolled;
-	private double timePlayed;
+	private int timePlayed;
 
 	/**
 	 * Constructor, assigns values
@@ -38,6 +42,7 @@ public class Stats {
 		this.points = points;
 		this.diceRolled = diceRolled;
 		this.timePlayed = timePlayed;
+		start = new GregorianCalendar();
 	}
 
 	/**
@@ -47,6 +52,15 @@ public class Stats {
 	 */
 	public Stats(Player statsOf) {
 		this.statsOf = statsOf;
+		start = new GregorianCalendar();
+	}
+
+	/**
+	 * stop playing
+	 */
+	public void stopPlaying() {
+		System.out.println("time saved");
+		timePlayed += new GregorianCalendar().getTimeInMillis() - start.getTimeInMillis();
 	}
 
 	/**
@@ -140,7 +154,7 @@ public class Stats {
 	/**
 	 * @return the timePlayed
 	 */
-	public double getTimePlayed() {
+	public int getTimePlayed() {
 		return timePlayed;
 	}
 }

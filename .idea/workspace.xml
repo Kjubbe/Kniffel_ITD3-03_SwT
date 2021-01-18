@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c2c7a15-8a86-4ad5-8535-d82366105fc0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Kniffel_ITD3-03_SwT" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jsXtENNuD09vFekw9fBYjiG8HV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c2c7a15-8a86-4ad5-8535-d82366105fc0" name="Default Changelist" comment="" />
+      <created>1604593985571</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604593985571</updated>
+      <workItem from="1604772050007" duration="5210000" />
+      <workItem from="1604845100368" duration="1304000" />
+      <workItem from="1604928783283" duration="1500000" />
+      <workItem from="1605008100841" duration="27000" />
+      <workItem from="1605274880353" duration="329000" />
+      <workItem from="1606065281308" duration="1433000" />
+      <workItem from="1606483463337" duration="2029000" />
+      <workItem from="1606495164115" duration="1583000" />
+      <workItem from="1606497770728" duration="954000" />
+      <workItem from="1607251891577" duration="854000" />
+      <workItem from="1607257537603" duration="627000" />
+      <workItem from="1607259787621" duration="1359000" />
+      <workItem from="1607862176997" duration="687000" />
+    </task>
+    <task id="LOCAL-00001" summary="Implemented primitive StartScreenGUI">
+      <created>1604772404876</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604772404876</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implemented primitive StartScreenGUI">
+      <created>1604774697229</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604774697229</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge branch 'master' of https://github.com/Kjubbe/Kniffel_ITD3-03_SwT&#10;&#10;# Conflicts:&#10;#&#9;src/game/Card.java">
+      <created>1604845509906</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604845509906</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'master' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/Main.java">
+      <created>1604845661767</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604845661767</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactored ...GUI into ...View">
+      <created>1604845893104</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604845893104</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added import">
+      <created>1604929051844</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604929051844</updated>
+    </task>
+    <task id="LOCAL-00007" summary="deleted other files">
+      <created>1604929177059</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604929177059</updated>
+    </task>
+    <task id="LOCAL-00008" summary="implememented menuView">
+      <created>1605274933869</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605274933869</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Merge branch 'hannes' into simeon&#10;&#10;# Conflicts:&#10;#&#9;nbproject/genfiles.properties">
+      <created>1606065311159</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606065311159</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Merge branch 'kjell' into simeon&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit.">
+      <created>1606065842625</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606065842625</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Merge branch 'kjell_playermanagement' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/game/Game.java">
+      <created>1606065914320</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606065914320</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added all necessary buttons">
+      <created>1606488343078</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606488343078</updated>
+    </task>
+    <task id="LOCAL-00013" summary="merged kjell into simeon">
+      <created>1606492609552</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606492609552</updated>
+    </task>
+    <task id="LOCAL-00014" summary="merged nils into simeon">
+      <created>1606497157237</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606497157237</updated>
+    </task>
+    <task id="LOCAL-00015" summary="open loginscreen">
+      <created>1606497601468</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606497601468</updated>
+    </task>
+    <task id="LOCAL-00016" summary="merged hannes into simeon">
+      <created>1606498062194</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1606498062194</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added from login to list">
+      <created>1607257565100</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607257565100</updated>
+    </task>
+    <task id="LOCAL-00018" summary="merged jarmo">
+      <created>1607257772062</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1607257772062</updated>
+    </task>
+    <task id="LOCAL-00019" summary="made playerlist flexible">
+      <created>1607259810958</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607259810958</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Merge branch 'nils' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/Main.java&#10;#&#9;src/view/GameView.java">
+      <created>1607260404793</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1607260404793</updated>
+    </task>
+    <task id="LOCAL-00021" summary="changed updatePlayers() to receive from playermanagement">
+      <created>1607862216188</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1607862216188</updated>
+    </task>
+    <task id="LOCAL-00022" summary="added error message">
+      <created>1607863959504</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1607863959504</updated>
+    </task>
+    <task id="LOCAL-00023" summary="added more errors">
+      <created>1607864748413</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1607864748413</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added error image">
+      <created>1607864810815</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1607864810815</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented primitive StartScreenGUI" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/Kjubbe/Kniffel_ITD3-03_SwT&#10;&#10;# Conflicts:&#10;#&#9;src/game/Card.java" />
+    <MESSAGE value="Merge branch 'master' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/Main.java" />
+    <MESSAGE value="refactored ...GUI into ...View" />
+    <MESSAGE value="added import" />
+    <MESSAGE value="deleted other files" />
+    <MESSAGE value="implememented menuView" />
+    <MESSAGE value="Merge branch 'hannes' into simeon&#10;&#10;# Conflicts:&#10;#&#9;nbproject/genfiles.properties" />
+    <MESSAGE value="Merge branch 'kjell' into simeon&#10;# Please enter a commit message to explain why this merge is necessary,&#10;# especially if it merges an updated upstream into a topic branch.&#10;#&#10;# Lines starting with '#' will be ignored, and an empty message aborts&#10;# the commit." />
+    <MESSAGE value="Merge branch 'kjell_playermanagement' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/game/Game.java" />
+    <MESSAGE value="added all necessary buttons" />
+    <MESSAGE value="merged kjell into simeon" />
+    <MESSAGE value="merged nils into simeon" />
+    <MESSAGE value="open loginscreen" />
+    <MESSAGE value="merged hannes into simeon" />
+    <MESSAGE value="added from login to list" />
+    <MESSAGE value="merged jarmo" />
+    <MESSAGE value="made playerlist flexible" />
+    <MESSAGE value="Merge branch 'nils' into simeon&#10;&#10;# Conflicts:&#10;#&#9;src/Main.java&#10;#&#9;src/view/GameView.java" />
+    <MESSAGE value="changed updatePlayers() to receive from playermanagement" />
+    <MESSAGE value="added error message" />
+    <MESSAGE value="added more errors" />
+    <MESSAGE value="added error image" />
+    <option name="LAST_COMMIT_MESSAGE" value="added error image" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1621" y="-888" key="#Project_Structure" timestamp="1604595118456">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1621" y="-888" key="#Project_Structure/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604595118456" />
+    <state x="1485" y="-892" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604595133835">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1485" y="-892" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604595133835" />
+    <state x="1743" y="-725" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604594069338">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1743" y="-725" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604594069338" />
+    <state x="1758" y="-763" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1604595006130">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1758" y="-763" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604595006130" />
+    <state x="1760" y="-855" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1604594872546">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1760" y="-855" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604594872546" />
+    <state x="1874" y="-641" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1604594075984">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1874" y="-641" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604594075984" />
+    <state x="1466" y="-951" key="CommitChangelistDialog2" timestamp="1607864810721">
+      <screen x="1059" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1513" y="-927" key="CommitChangelistDialog2/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1606065914232" />
+    <state x="1466" y="-951" key="CommitChangelistDialog2/0.25.1440.875/1059.-1055.1920.1055@1059.-1055.1920.1055" timestamp="1607864810721" />
+    <state x="1159" y="-955" width="1720" height="857" key="DiffContextDialog" timestamp="1607257300576">
+      <screen x="1059" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1159" y="-957" width="1720" height="857" key="DiffContextDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604774276953" />
+    <state x="1159" y="-955" key="DiffContextDialog/0.25.1440.875/1059.-1055.1920.1055@1059.-1055.1920.1055" timestamp="1607257300576" />
+    <state x="1334" y="-946" key="MergeDialog" timestamp="1607259864925">
+      <screen x="1059" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1443" y="-890" key="MergeDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1606065902817" />
+    <state x="1334" y="-946" key="MergeDialog/0.25.1440.875/1059.-1055.1920.1055@1059.-1055.1920.1055" timestamp="1607259864925" />
+    <state x="1661" y="-824" key="MultipleFileMergeDialog" timestamp="1607259869170">
+      <screen x="1059" y="-1055" width="1920" height="1055" />
+    </state>
+    <state x="1661" y="-826" key="MultipleFileMergeDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1606065902855" />
+    <state x="1661" y="-824" key="MultipleFileMergeDialog/0.25.1440.875/1059.-1055.1920.1055@1059.-1055.1920.1055" timestamp="1607259869170" />
+    <state x="1461" y="-997" key="SettingsEditor" timestamp="1604597206425">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1461" y="-997" key="SettingsEditor/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604597206425" />
+    <state x="397" y="295" key="com.intellij.ide.util.TipDialog" timestamp="1607862232243">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="1588" y="-730" key="com.intellij.ide.util.TipDialog/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1606065288520" />
+    <state x="397" y="295" key="com.intellij.ide.util.TipDialog/0.25.1440.875/1059.-1055.1920.1055@1059.-1055.1920.1055" timestamp="1607862232243" />
+    <state x="1754" y="-655" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1604595255196">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1754" y="-655" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604595255196" />
+    <state x="1692" y="-298" key="run.anything.popup" timestamp="1604596016039">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1692" y="-298" key="run.anything.popup/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604596016039" />
+    <state x="1684" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1604772764304">
+      <screen x="1059" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="1684" y="-822" width="670" height="676" key="search.everywhere.popup/0.23.1440.877/1059.-1057.1920.1057@1059.-1057.1920.1057" timestamp="1604772764304" />
+  </component>
+</project>

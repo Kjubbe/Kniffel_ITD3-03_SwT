@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class Card {
 
 	private Player owner; // card owner
-	private static final int BONUS = 35; // the amount of bonus points
+	public static final int BONUS = 35; // the amount of bonus points
 	private static final int BONUS_REQ = 63; // the required amount of points in part 1 to get bonus points
 	private static final int PART1_END_INDEX = 5;
 
@@ -103,9 +103,9 @@ public class Card {
 	 */
 	public void calculatePoints(int[] num) {
 		// reset all fields
-                setToZero();
+		setToZero();
 
-                // first, sort the values
+		// first, sort the values
 		num = bubbleSort(num);
 
 		System.out.println(Arrays.toString(num));
@@ -158,6 +158,10 @@ public class Card {
 			// test if the adjacent numbers are increasing
 			if (num[i] == num[i + 1] + 1) {
 				increase++;
+			} else {
+				if (increase < 3) {
+					increase = 0;
+				}
 			}
 
 			// two adjacent pairs are equal to three same numbers
@@ -267,9 +271,9 @@ public class Card {
 	 * @param index the index of the field to be crossed
 	 * @param value the new value of the field
 	 */
-	public void chooseField(int index, int value) {
+	public boolean chooseField(int index, int value) {
 		Field field = allFields[index];
-		field.choose(value);
+		return field.choose(value);
 	}
 
 	/**

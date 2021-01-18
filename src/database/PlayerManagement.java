@@ -67,7 +67,13 @@ public class PlayerManagement {
                 if (saveStats) {
                     player.saveStats();
                 }
-                return addPlayer(player);
+                
+                Map<String, Boolean> res = addPlayer(player);
+                if (res.containsValue(false)) {
+                    logout(name);
+                    res = addPlayer(player);
+                }
+                return res; // add the logged in player
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -93,7 +99,7 @@ public class PlayerManagement {
                 }
 
                 boolean saved = Databaseinterface.getInstance().savePlayer(player);
-                
+
                 // if adding the player failed, remove the local player
                 Map<String, Boolean> res = addPlayer(player);
                 if (res.containsValue(false) && saved) {
@@ -188,7 +194,7 @@ public class PlayerManagement {
         for (Player p : loggedIn) {
             if (p instanceof RegisteredPlayer && p.isSavingStats()) {
                 try {
-                    Databaseinterface.getInstance().savePlayer((RegisteredPlayer) p);
+                    Databaseinterface.getInstance().updatePlayerStats((RegisteredPlayer) p);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

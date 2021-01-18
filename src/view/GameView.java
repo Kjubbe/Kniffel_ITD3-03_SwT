@@ -5,6 +5,15 @@
  */
 package view;
 
+import java.awt.event.*;
+
+import javax.swing.AbstractAction;
+import javax.swing.DefaultCellEditor;
+import javax.swing.KeyStroke;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+
 import game.Card;
 import game.Game;
 
@@ -18,12 +27,11 @@ public class GameView extends javax.swing.JFrame {
 
     public GameView(Game game) {
         this.game = game;
+        this.setTitle("Knifflig - Game");
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
-        
-        
-
+    
         playercardOf.setText("Spielerkarte von " + game.currentPlayer.getName());
         counterLabel.setText(game.rolls + "/3");
 
@@ -132,6 +140,8 @@ public class GameView extends javax.swing.JFrame {
         
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
+
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -177,7 +187,6 @@ public class GameView extends javax.swing.JFrame {
         playercardOf = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         OptionsButton = new javax.swing.JMenu();
-        pauseGame = new javax.swing.JMenuItem();
         restartGame = new javax.swing.JMenuItem();
         quitGame = new javax.swing.JMenuItem();
         player1Button = new javax.swing.JMenu();
@@ -220,36 +229,71 @@ public class GameView extends javax.swing.JFrame {
         playercard.setBackground(new java.awt.Color(55, 55, 55));
         playercard.setFont(new java.awt.Font("Calibri", 2, 14)); // NOI18N
         playercard.setForeground(new java.awt.Color(255, 255, 255));
-        playercard.setModel(new javax.swing.table.DefaultTableModel(
+
+        
+         DefaultTableModel dft = new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Zwischensumme:", null},
-                {"Bonus bei min. 63:", null},
-                {"Gesamter erster Teil:", null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {"Gesamter erster Teil:", null},
-                {"Gesamter zweiter Teil:", null},
-                {"Gesamtsumme", null}
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Zwischensumme:", 0},
+                {"Bonus bei min. 63:", 0},
+                {"Gesamter erster Teil:", 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {0, 0},
+                {"Gesamter erster Teil:", 0},
+                {"Gesamter zweiter Teil:", 0},
+                {"Gesamtsumme", 0}
             },
             new String [] {
                 "", "Punktzahl"
             }
-        ));
+        ) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                 if (column == 0 || (row >= 6 && row <= 8) || row >= 16) {
+                     return false;
+                 }
+                 int i = row;
+                 if (i > 5) {
+                    i -= 3;
+                    }
+                if (game.currentPlayer.getCard().allFields[i].isCrossed() || game.currentPlayer.getCard().allFields[i].isChosen()) {
+                     return false;
+                }
+
+               return !game.useAutocalc;
+            }
+         };
+
+         if (!game.useAutocalc) {
+            dft.addTableModelListener(new TableModelListener() {
+
+                @Override
+                public void tableChanged(TableModelEvent e) {
+                    cellEdited(playercard.getSelectedRow(), playercard.getSelectedColumn());
+                }
+                
+            });
+         }
+
         playercard.setToolTipText("Spielerkarte");
         playercard.setFocusCycleRoot(true);
         playercard.setName(""); // NOI18N
         playercard.setRowHeight(25);
+        playercard.putClientProperty("terminateEditOnFocusLost", true);
+        playercard.setModel(dft);
+
         playercardScrollPane.setViewportView(playercard);
 
         dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/1.png"))); // NOI18N
@@ -414,6 +458,9 @@ public class GameView extends javax.swing.JFrame {
         });
 
         FeldWaehlenButton.setText("Feld auswählen");
+        if (!game.useAutocalc) {
+            FeldWaehlenButton.setEnabled(false);
+        }
         FeldWaehlenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FeldWaehlenButtonActionPerformed(evt);
@@ -430,14 +477,6 @@ public class GameView extends javax.swing.JFrame {
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         OptionsButton.setText("Optionen");
-
-        pauseGame.setText("Spiel pausieren");
-        pauseGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pauseGameActionPerformed(evt);
-            }
-        });
-        OptionsButton.add(pauseGame);
 
         restartGame.setText("Spiel neustarten");
         restartGame.addActionListener(new java.awt.event.ActionListener() {
@@ -781,7 +820,8 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_crossFieldButtonActionPerformed
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
-        dispose();
+        new OpeningScreen();
+        this.dispose();
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1ButtonActionPerformed
@@ -914,6 +954,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(2));
         player3Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
@@ -921,14 +963,11 @@ public class GameView extends javax.swing.JFrame {
         new PlayerCard(game, game.players.get(3)).setVisible(true);
     }//GEN-LAST:event_showPlayer4CardActionPerformed
 
-    private void pauseGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseGameActionPerformed
-        //Pause Game
-    }//GEN-LAST:event_pauseGameActionPerformed
-
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // Restart Game
         game.restart();
-        dispose();
+        //dispose();
+        refresh();
         System.out.println("test");
     }//GEN-LAST:event_restartGameActionPerformed
 
@@ -936,6 +975,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(0));
         player1Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
@@ -943,6 +984,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(1));
         player2Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
@@ -950,6 +993,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(3));
         player4Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
@@ -966,9 +1011,11 @@ public class GameView extends javax.swing.JFrame {
         if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
             if (index > 5) {
             index -= 3;
-        }
-        game.crossField(index);
-        refresh();
+            }
+        
+            if (game.crossField(index)) {
+                refresh();
+            }
         } else {
             System.out.println("Falsche Zeile");
         }
@@ -976,12 +1023,16 @@ public class GameView extends javax.swing.JFrame {
 
     private void FeldWaehlenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeldWaehlenButtonActionPerformed
         int index = playercard.getSelectedRow();
-        if (index != 6 & index != 7 & index != 8 & index != 16 & index != 17 & index != 18){
+        if (index != -1 && index != 6 && index != 7 && index != 8 && index != 16 && index != 17 && index != 18) {
             if (index > 5) {
-            index -= 3;
-        }
-        game.chooseField(index);
-        refresh();
+                index -= 3;
+            }
+            
+            if (game.chooseField(index)) {
+                refresh();
+            } else {
+                System.out.println("Diese Feld kann nicht ausgewählt werden");
+            }
         } else {
             System.out.println("Falsche Zeile");
         }
@@ -1020,6 +1071,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(4));
         player5Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer5ActionPerformed
 
@@ -1027,6 +1080,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(5));
         player6Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer6ActionPerformed
 
@@ -1034,6 +1089,8 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(6));
         player7Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer7ActionPerformed
 
@@ -1041,48 +1098,109 @@ public class GameView extends javax.swing.JFrame {
         if(game.players.size() > 2) {
         game.removePlayer(game.players.get(7));
         player8Button.setVisible(false);
+        } else if(game.players.size() == 2) {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
     }//GEN-LAST:event_removePlayer8ActionPerformed
 
     private void skipPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer1ActionPerformed
-        game.skipPlayer(game.players.get(0));
-        refresh();
+        if(game.currentPlayer == game.players.get(0)) {
+            game.skipPlayer(game.players.get(0));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
+        
     }//GEN-LAST:event_skipPlayer1ActionPerformed
 
     private void skipPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer2ActionPerformed
-        game.skipPlayer(game.players.get(1));
-        refresh();
+        if(game.currentPlayer == game.players.get(1)) {
+            game.skipPlayer(game.players.get(1));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer2ActionPerformed
 
     private void skipPlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer3ActionPerformed
-        game.skipPlayer(game.players.get(2));
-        refresh();
+        if(game.currentPlayer == game.players.get(2)) {
+            game.skipPlayer(game.players.get(2));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer3ActionPerformed
 
     private void skipPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer4ActionPerformed
-        game.skipPlayer(game.players.get(3));
-        refresh();
+        if(game.currentPlayer == game.players.get(3)) {
+            game.skipPlayer(game.players.get(3));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer4ActionPerformed
 
     private void skipPlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer5ActionPerformed
-        game.skipPlayer(game.players.get(4));
-        refresh();
+        if(game.currentPlayer == game.players.get(4)) {
+            game.skipPlayer(game.players.get(4));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer5ActionPerformed
 
     private void skipPlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer6ActionPerformed
-        game.skipPlayer(game.players.get(5));
-        refresh();
+        if(game.currentPlayer == game.players.get(5)) {
+            game.skipPlayer(game.players.get(5));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer6ActionPerformed
 
     private void skipPlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer7ActionPerformed
-        game.skipPlayer(game.players.get(6));
-        refresh();
+        if(game.currentPlayer == game.players.get(6)) {
+            game.skipPlayer(game.players.get(6));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer7ActionPerformed
 
     private void skipPlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer8ActionPerformed
-        game.skipPlayer(game.players.get(7));
-        refresh();
+        if(game.currentPlayer == game.players.get(7)) {
+            game.skipPlayer(game.players.get(7));
+            refresh();
+        } else {
+            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
+        }
     }//GEN-LAST:event_skipPlayer8ActionPerformed
+
+    private void cellEdited(int row, int column) {
+        if (row != -1 && column != -1 && (row < 6 || (row > 8 && row < 16))) {
+            Object obj = playercard.getValueAt(row, column);
+            if (obj != null) {
+                String input = obj.toString();
+                if (input.contains("---") || input.contains("gewählt: ")) {
+                    return;
+                }
+                int index = row;
+                if (index > 5) {
+                    index -= 3;
+                }
+                try {
+                    int n = Integer.parseInt(input);
+                    if (game.chooseField(index, n)) {
+                        System.out.println("chosen value, refresh: " + n);
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Du lutscher!");
+                }
+                playercard.setValueAt(null, row, column);
+                refresh();
+            }
+        }
+    }
 
     /**
      * Setting the fieldnames into the playercard
@@ -1124,27 +1242,35 @@ public class GameView extends javax.swing.JFrame {
      * Setting the points into the playercard
      */
     private void tableSetPoints() {
+        System.out.println(game.useAutofill);
         for (int i = 0; i < 6; i++) {
-            if (game.currentPlayer.getCard().allFields[i].isOpen()) {
+            if (game.currentPlayer.getCard().allFields[i].isOpen() && game.useAutofill) {
                 playercard.setValueAt(game.currentPlayer.getCard().allFields[i].getCurrentValue(), i, 1);
             } else if (game.currentPlayer.getCard().allFields[i].isCrossed()) {
                 playercard.setValueAt("---", i, 1);
-            } else {
+            } else if (game.currentPlayer.getCard().allFields[i].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[i].getChosenValue(), i, 1);
+            } else {
+                playercard.setValueAt(null, i, 1);
             }
 
         }
         for (int j = 6; j < 13; j++) {
-            if (game.currentPlayer.getCard().allFields[j].isOpen()) {
+            if (game.currentPlayer.getCard().allFields[j].isOpen() && game.useAutofill) {
                 playercard.setValueAt(game.currentPlayer.getCard().allFields[j].getCurrentValue(), j + 3, 1);
             } else if (game.currentPlayer.getCard().allFields[j].isCrossed()) {
                 playercard.setValueAt("---", j + 3, 1);
-            } else {
+            } else if (game.currentPlayer.getCard().allFields[j].isChosen()) {
                 playercard.setValueAt("gewählt: " + game.currentPlayer.getCard().allFields[j].getChosenValue(), j + 3, 1);
+            } else {
+                playercard.setValueAt(null, j + 3, 1);
             }
 
         }
-        playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1);     // Part 1
+        playercard.setValueAt(game.currentPlayer.getCard().getPart1(false), 6, 1); // Part 1
+        int bonus = game.currentPlayer.getCard().getPart1(false) != game.currentPlayer.getCard().getPart1(true) ? Card.BONUS
+                : 0;
+        playercard.setValueAt(bonus, 7, 1);     // Bonus
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 8, 1);     // Part 1 + Bonus
         playercard.setValueAt(game.currentPlayer.getCard().getPart1(true), 16, 1);    // Part 1
         playercard.setValueAt(game.currentPlayer.getCard().getPart2(), 17, 1);    // Part 2
@@ -1162,6 +1288,9 @@ public class GameView extends javax.swing.JFrame {
         yourTurnLabel.setVisible(true);
         yourTurnLabel.setText(game.currentPlayer + ", du bist dran. Würfel jetzt!");
         counterLabel.setText(game.rolls + "/3");
+        if (game.isGameOver()) {
+            this.dispose();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1183,7 +1312,6 @@ public class GameView extends javax.swing.JFrame {
     private javax.swing.JLabel dice9;
     private javax.swing.JSeparator dieSeperation;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem pauseGame;
     private javax.swing.JMenu player1Button;
     private javax.swing.JMenu player2Button;
     private javax.swing.JMenu player3Button;

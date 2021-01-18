@@ -16,14 +16,6 @@
             <Property name="text" type="java.lang.String" value="Optionen"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="pauseGame">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Spiel pausieren"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pauseGameActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="restartGame">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spiel neustarten"/>

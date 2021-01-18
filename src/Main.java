@@ -1,9 +1,9 @@
-import view.StartScreenView;
+import view.OpeningScreen;
 
 /**
  * Main
  * 
- * @author Kjell Treder @Kjubbe
+ * @author Kjell Treder
  *
  */
 
@@ -15,6 +15,6 @@ public class Main {
 	 * @param args command parameters
 	 */
 	public static void main(String[] args) {
-		new StartScreenView();
+		new OpeningScreen();
 	}
 }

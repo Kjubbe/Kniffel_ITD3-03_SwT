@@ -106,8 +106,12 @@ public class Field {
 	 * 
 	 * @param value the value for this field
 	 */
-	public void choose(int value) {
-		this.chosenValue = value;
+	public boolean choose(int value) {
+		boolean result = isOpen();
+		if (result) {
+			this.chosenValue = value;
+		}
+		return result;
 	}
 
 	/**
@@ -139,6 +143,15 @@ public class Field {
 	 */
 	public boolean isCrossed() {
 		return chosenValue == -1;
+	}
+
+	/**
+	 * check if this field is crossed
+	 * 
+	 * @return if crossed
+	 */
+	public boolean isChosen() {
+		return chosenValue != -1 && chosenValue != 0;
 	}
 
 	/**
