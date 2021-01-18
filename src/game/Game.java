@@ -185,7 +185,6 @@ public class Game {
 		} else {
 			restart();
 		}
-
 	}
 
 	/**
