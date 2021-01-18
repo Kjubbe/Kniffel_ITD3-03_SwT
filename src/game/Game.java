@@ -222,10 +222,10 @@ public class Game {
 		if (players.size() > 2) {
 			Player player = seats[index];
 			System.out.println("current playerindex: " + playerIndex);
-
+			int checkIndex = players.indexOf(player);
 			result = players.remove(player);
 
-			if (players.indexOf(player) <= playerIndex) {
+			if (checkIndex <= playerIndex) {
 				playerIndex--;
 				System.out.println("red playerindex: " + playerIndex);
 			}
