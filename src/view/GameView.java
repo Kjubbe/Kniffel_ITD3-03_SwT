@@ -951,7 +951,9 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
-        removePlayer(2);
+        if (removePlayer(2)) {
+            player3Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
