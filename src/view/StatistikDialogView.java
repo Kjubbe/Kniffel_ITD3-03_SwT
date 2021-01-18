@@ -91,7 +91,7 @@ public class StatistikDialogView extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel6.setText("" + playerStats.getDiceRolled());
+        jLabel6.setText("" + playerStats.getDiceRolled() + " mal");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
