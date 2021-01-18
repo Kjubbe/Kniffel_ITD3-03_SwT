@@ -197,7 +197,11 @@ public class Game {
 		if (player == currentPlayer) {
 			skipPlayer(player);
 		}
-		return players.remove(player);
+		boolean result = false;
+		if (players.size() > 2) {
+			result = players.remove(player);
+		}
+		return result;
 	}
 
 	/**
