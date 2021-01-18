@@ -52,6 +52,12 @@ public class Stats {
 	 */
 	public Stats(Player statsOf) {
 		this.statsOf = statsOf;
+	}
+
+	/**
+	 * start playing
+	 */
+	public void startPlaying() {
 		start = new GregorianCalendar();
 	}
 

@@ -33,6 +33,7 @@ public class Game {
 	private final int gamesToWin; // max number of games to be won to win the whole game
 
 	public final List<Player> players; // contains all participating players
+	private final Player[] seats = new Player[PlayerManagement.MAX_PLAYERS];
 
 	public Player currentPlayer; // the current player doing his turn
 	private int playerIndex; // index of the current player
@@ -66,6 +67,7 @@ public class Game {
 		this.gamesToWin = maxGames;
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
+		init();
 	}
 
 	/**
@@ -84,6 +86,16 @@ public class Game {
 		this.gamesToWin = gamesToWin;
 		this.players = players;
 		this.currentPlayer = players.get(playerIndex);
+		init();
+	}
+
+	private void init() {
+		for (int i = 0; i < players.size(); i++) {
+			seats[i] = players.get(i);
+		}
+		for (Player p : players) {
+			p.getStats().startPlaying();
+		}
 	}
 
 	/**
@@ -143,6 +155,7 @@ public class Game {
 		}
 		// second, check if there are enough games played
 		boolean over = done || gamesPlayed >= maxGames;
+		System.out.println("Checking if game is over: " + over);
 		return over;
 	}
 
@@ -164,14 +177,25 @@ public class Game {
 
 		boolean gameOver = isGameOver();
 		new EndDialogView(this, gameOver).setVisible(true);
-		if (!gameOver) {
-			restart();
-		} else {
+		if (gameOver) {
 			for (Player p : players) {
 				p.getStats().stopPlaying();
 			}
 			PlayerManagement.getInstance().savePlayers();
+		} else {
+			restart();
 		}
+
+	}
+
+	/**
+	 * start the next game
+	 */
+	public void nextGame() {
+		for (Player p : players) {
+			p.wins = 0;
+		}
+		restart();
 	}
 
 	/**
@@ -190,17 +214,28 @@ public class Game {
 	/**
 	 * remove a player from the server
 	 * 
-	 * @param player Player, who is removed
+	 * @param index Index of the Player, who is removed
 	 * @return if the removing was successful or not
 	 */
-	public boolean removePlayer(Player player) {
-		if (player == currentPlayer) {
-			skipPlayer(player);
-		}
+	public boolean removePlayer(int index) {
+		System.out.println("removing player at seat index " + index);
 		boolean result = false;
 		if (players.size() > 2) {
+			Player player = seats[index];
+			System.out.println("current playerindex: " + playerIndex);
+
 			result = players.remove(player);
+
+			if (players.indexOf(player) <= playerIndex) {
+				playerIndex--;
+				System.out.println("red playerindex: " + playerIndex);
+			}
+			if (player == currentPlayer) {
+				nextPlayer();
+			}
+			
 		}
+		System.out.println("result: " + result);
 		return result;
 	}
 

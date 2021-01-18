@@ -92,7 +92,7 @@ public class MenuView extends javax.swing.JFrame {
 
         jPanel1.setToolTipText("");
 
-        maxRoundsLabel.setText("max. Rundenanzahl");
+        maxRoundsLabel.setText("Runden werden gespielt");
         maxRoundsLabel.setToolTipText("");
 
         addPlayerButton.setText("Spieler hinzufügen");

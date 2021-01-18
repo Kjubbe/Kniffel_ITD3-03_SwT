@@ -53,7 +53,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer1Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer1Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer1Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer1.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer1.setText(game.players.get(j).getName() + " entfernen");
@@ -64,7 +64,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer2Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer2Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer2Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer2.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer2.setText(game.players.get(j).getName() + " entfernen");
@@ -75,7 +75,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer3Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer3Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer3Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer3.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer3.setText(game.players.get(j).getName() + " entfernen");
@@ -86,7 +86,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer4Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer4Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer4Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer4.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer4.setText(game.players.get(j).getName() + " entfernen");
@@ -97,7 +97,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer5Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer5Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer5Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer5.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer5.setText(game.players.get(j).getName() + " entfernen");
@@ -108,7 +108,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer6Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer6Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer6Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer6.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer6.setText(game.players.get(j).getName() + " entfernen");
@@ -130,7 +130,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer8Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer8Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer8Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer8.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer8.setText(game.players.get(j).getName() + " entfernen");
@@ -951,7 +951,9 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
-        removePlayer(2);
+        if (removePlayer(2)) {
+            player3Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
@@ -967,15 +969,21 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
-        removePlayer(0);
+        if (removePlayer(0)) {
+            player1Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
     private void removePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer2ActionPerformed
-        removePlayer(1);
+        if (removePlayer(1)) {
+            player2Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
-        removePlayer(3);
+        if (removePlayer(3)) {
+            player4Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
@@ -1047,19 +1055,28 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_showPlayer8CardActionPerformed
 
     private void removePlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer5ActionPerformed
-        removePlayer(4);
+        if (removePlayer(4)) {
+            player5Button.setVisible(false);
+        }
+        
     }//GEN-LAST:event_removePlayer5ActionPerformed
 
     private void removePlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer6ActionPerformed
-        removePlayer(5);
+        if (removePlayer(5)) {
+            player6Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer6ActionPerformed
 
     private void removePlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer7ActionPerformed
-        removePlayer(6);
+        if (removePlayer(6)) {
+            player7Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer7ActionPerformed
 
     private void removePlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer8ActionPerformed
-        removePlayer(7);
+        if (removePlayer(7)) {
+            player8Button.setVisible(false);
+        }
     }//GEN-LAST:event_removePlayer8ActionPerformed
 
     private void skipPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer1ActionPerformed
@@ -1113,13 +1130,14 @@ public class GameView extends javax.swing.JFrame {
      * 
      * @param index
      */
-    private void removePlayer(int index) {
-        if (game.removePlayer(game.players.get(index))) {
-            player1Button.setVisible(false);
+    private boolean removePlayer(int index) {
+        boolean result = game.removePlayer(index);
+        if (result) {
             refresh();
         } else {
             System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
+        return result;
     }
 
     /**
