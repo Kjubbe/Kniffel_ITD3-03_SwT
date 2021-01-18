@@ -27,7 +27,7 @@ public class GameView extends javax.swing.JFrame {
 
     public GameView(Game game) {
         this.game = game;
-        this.setLocationRelativeTo(null);
+        this.setTitle("Knifflig - Game");
         initComponents();
         tableSetFieldNames();
         showDefaultDie();
@@ -140,6 +140,8 @@ public class GameView extends javax.swing.JFrame {
         
         playercard.setRowHeight(25);
         playercardScrollPane.setViewportView(playercard);
+
+        this.setLocationRelativeTo(null);
     }
 
     /**

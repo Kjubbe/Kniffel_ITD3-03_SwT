@@ -28,8 +28,7 @@ public class MenuView extends javax.swing.JFrame {
      * Creates new form MenuView
      */
     public MenuView() {
-        this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        this.setTitle("Knifflig - Menu");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
         
@@ -38,7 +37,8 @@ public class MenuView extends javax.swing.JFrame {
         assistantWantedCheckBox.setSelected(true);
         autocompleteWantedCheckBox.setSelected(true);
 
-        
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -49,7 +49,7 @@ public class MenuView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
+        setBackground(new java.awt.Color(41, 128, 185));
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
         jDialog3 = new javax.swing.JDialog();

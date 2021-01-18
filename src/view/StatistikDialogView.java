@@ -166,12 +166,11 @@ public class StatistikDialogView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private String format(int timePlayed) {
-        int sec = timePlayed / 1000;
-            int min = sec / 60;
-            int hours = min / 60;
-
-        return "" + sec + "s " + min + "m " + hours + "h";
+    private String format(int ms) {
+        int s = (int) (ms / 1000D) % 60;
+        int m = (int) ((ms / (1000D * 60)) % 60);
+        int h = (int) ((ms / (1000D * 60 * 60)) % 24);
+        return "" + h + "h " + m + "m " + s + "s";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
