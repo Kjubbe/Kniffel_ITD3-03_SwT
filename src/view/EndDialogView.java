@@ -7,7 +7,6 @@ package view;
 
 import game.Game;
 
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +26,8 @@ public class EndDialogView extends javax.swing.JFrame {
             this.game = game;
             this.last = last;
             this.setVisible(true);
-        this.setTitle("Zusammenfassung");
+            this.setTitle("Zusammenfassung");
+        this.setLocationRelativeTo(null);
         initComponents();
 
         // winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!");
@@ -39,7 +39,7 @@ public class EndDialogView extends javax.swing.JFrame {
         if (this.last) {
                 winnerLabel.setText("Das Spiel ist vorbei!");
                 for (int i = 0; i < game.players.size(); i++) {
-                        model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getWins() });
+                        model.addRow(new Object[] { game.players.get(i).getName(), game.players.get(i).getPoints(), game.players.get(i).getWins() });
                 }
                 jButton1.setText("Hauptmenü");
         } else {
@@ -69,36 +69,65 @@ public class EndDialogView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
+        if (this.last) {
+            spielerTabelle.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null}
+                },
+                new String [] {
+                    "Title 1", "Title 2", "Title 3"
+                }
+            ));
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
 
-        spielerTabelle.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2"
-            }
-        ));
+                },
+                new String [] {
+                    "Spieler", "Punkte diese Runde", "Siege"
+                }
+            ));
+        } else {
+            spielerTabelle.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null}
+                },
+                new String [] {
+                    "Title 1", "Title 2"
+                }
+            ));
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+
+                },
+                new String [] {
+                    "Spieler", "Punkte"
+                }
+            ));
+        }
+        
         jScrollPane2.setViewportView(spielerTabelle);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        if (this.last) {
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        }
 
         winnerLabel.setText("hat das Spiel gewonnen!");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Spieler", "Punkte"
-            }
-        ));
+        
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("jButton1");
