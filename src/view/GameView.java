@@ -53,7 +53,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer1Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer1Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer1Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer1.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer1.setText(game.players.get(j).getName() + " entfernen");
@@ -64,7 +64,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer2Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer2Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer2Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer2.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer2.setText(game.players.get(j).getName() + " entfernen");
@@ -75,7 +75,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer3Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer3Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer3Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer3.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer3.setText(game.players.get(j).getName() + " entfernen");
@@ -86,7 +86,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer4Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer4Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer4Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer4.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer4.setText(game.players.get(j).getName() + " entfernen");
@@ -97,7 +97,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer5Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer5Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer5Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer5.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer5.setText(game.players.get(j).getName() + " entfernen");
@@ -108,7 +108,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer6Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer6Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer6Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer6.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer6.setText(game.players.get(j).getName() + " entfernen");
@@ -130,7 +130,7 @@ public class GameView extends javax.swing.JFrame {
                 if (game.players.get(j).getName().charAt(game.players.get(j).getName().length() - 1) != 's') {
                     showPlayer8Card.setText(game.players.get(j).getName() + "s" + " Spielerkarte");
                 } else {
-                    showPlayer8Card.setText(game.players.get(j).getName() + "Spielerkarte");
+                    showPlayer8Card.setText(game.players.get(j).getName() + " Spielerkarte");
                 }
                 skipPlayer8.setText(game.players.get(j).getName() + " überspringen");
                 removePlayer8.setText(game.players.get(j).getName() + " entfernen");
