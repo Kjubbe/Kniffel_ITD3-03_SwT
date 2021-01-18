@@ -951,16 +951,11 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_dice10MouseClicked
 
     private void removePlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer3ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(2));
-        player3Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(2);
     }//GEN-LAST:event_removePlayer3ActionPerformed
 
     private void showPlayer4CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer4CardActionPerformed
-        new PlayerCard(game, game.players.get(3)).setVisible(true);
+        showCard(3);
     }//GEN-LAST:event_showPlayer4CardActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
@@ -972,30 +967,15 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void removePlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer1ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(0));
-        player1Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(0);
     }//GEN-LAST:event_removePlayer1ActionPerformed
 
     private void removePlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer2ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(1));
-        player2Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(1);
     }//GEN-LAST:event_removePlayer2ActionPerformed
 
     private void removePlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer4ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(3));
-        player4Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(3);
     }//GEN-LAST:event_removePlayer4ActionPerformed
 
     private void dice3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dice3MouseClicked
@@ -1039,143 +1019,124 @@ public class GameView extends javax.swing.JFrame {
     }//GEN-LAST:event_FeldWaehlenButtonActionPerformed
 
     private void showPlayer1CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer1CardActionPerformed
-        new PlayerCard(game, game.players.get(0)).setVisible(true);
+        showCard(0);
     }//GEN-LAST:event_showPlayer1CardActionPerformed
 
     private void showPlayer2CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer2CardActionPerformed
-        new PlayerCard(game, game.players.get(1)).setVisible(true);
-
+        showCard(1);
     }//GEN-LAST:event_showPlayer2CardActionPerformed
 
     private void showPlayer3CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer3CardActionPerformed
-        new PlayerCard(game, game.players.get(2)).setVisible(true);
+        showCard(2);
     }//GEN-LAST:event_showPlayer3CardActionPerformed
 
     private void showPlayer5CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer5CardActionPerformed
-        new PlayerCard(game, game.players.get(4)).setVisible(true);
+        showCard(4);
     }//GEN-LAST:event_showPlayer5CardActionPerformed
 
     private void showPlayer6CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer6CardActionPerformed
-        new PlayerCard(game, game.players.get(5)).setVisible(true);
+        showCard(5);
     }//GEN-LAST:event_showPlayer6CardActionPerformed
 
     private void showPlayer7CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer7CardActionPerformed
-        new PlayerCard(game, game.players.get(6)).setVisible(true);
+        showCard(6);
     }//GEN-LAST:event_showPlayer7CardActionPerformed
 
     private void showPlayer8CardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayer8CardActionPerformed
-        new PlayerCard(game, game.players.get(7)).setVisible(true);
+        showCard(7);
     }//GEN-LAST:event_showPlayer8CardActionPerformed
 
     private void removePlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer5ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(4));
-        player5Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(4);
     }//GEN-LAST:event_removePlayer5ActionPerformed
 
     private void removePlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer6ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(5));
-        player6Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(5);
     }//GEN-LAST:event_removePlayer6ActionPerformed
 
     private void removePlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer7ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(6));
-        player7Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(6);
     }//GEN-LAST:event_removePlayer7ActionPerformed
 
     private void removePlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayer8ActionPerformed
-        if(game.players.size() > 2) {
-        game.removePlayer(game.players.get(7));
-        player8Button.setVisible(false);
-        } else if(game.players.size() == 2) {
-            System.out.println("Es können keine weiteren Spieler entfernt werden.");
-        }
+        removePlayer(7);
     }//GEN-LAST:event_removePlayer8ActionPerformed
 
     private void skipPlayer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer1ActionPerformed
-        if(game.currentPlayer == game.players.get(0)) {
-            game.skipPlayer(game.players.get(0));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
-        
+        skipPlayer(0);
     }//GEN-LAST:event_skipPlayer1ActionPerformed
 
     private void skipPlayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer2ActionPerformed
-        if(game.currentPlayer == game.players.get(1)) {
-            game.skipPlayer(game.players.get(1));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(1);
     }//GEN-LAST:event_skipPlayer2ActionPerformed
 
     private void skipPlayer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer3ActionPerformed
-        if(game.currentPlayer == game.players.get(2)) {
-            game.skipPlayer(game.players.get(2));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(2);
     }//GEN-LAST:event_skipPlayer3ActionPerformed
 
     private void skipPlayer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer4ActionPerformed
-        if(game.currentPlayer == game.players.get(3)) {
-            game.skipPlayer(game.players.get(3));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(3);
     }//GEN-LAST:event_skipPlayer4ActionPerformed
 
     private void skipPlayer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer5ActionPerformed
-        if(game.currentPlayer == game.players.get(4)) {
-            game.skipPlayer(game.players.get(4));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(4);
     }//GEN-LAST:event_skipPlayer5ActionPerformed
 
     private void skipPlayer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer6ActionPerformed
-        if(game.currentPlayer == game.players.get(5)) {
-            game.skipPlayer(game.players.get(5));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(5);
     }//GEN-LAST:event_skipPlayer6ActionPerformed
 
     private void skipPlayer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer7ActionPerformed
-        if(game.currentPlayer == game.players.get(6)) {
-            game.skipPlayer(game.players.get(6));
-            refresh();
-        } else {
-            System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
-        }
+        skipPlayer(6);
     }//GEN-LAST:event_skipPlayer7ActionPerformed
 
     private void skipPlayer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipPlayer8ActionPerformed
-        if(game.currentPlayer == game.players.get(7)) {
-            game.skipPlayer(game.players.get(7));
+        skipPlayer(7);
+    }//GEN-LAST:event_skipPlayer8ActionPerformed
+
+    /**
+     * skips a player by index
+     * 
+     * @param index
+     */
+    private void skipPlayer(int index) {
+        if (game.currentPlayer == game.players.get(index)) {
+            game.skipPlayer(game.players.get(index));
             refresh();
         } else {
             System.out.println("Dieser Spieler ist gerade nicht dran und kann nicht geskippt werden.");
         }
-    }//GEN-LAST:event_skipPlayer8ActionPerformed
+    }
 
+    /**
+     * removes a player by index
+     * 
+     * @param index
+     */
+    private void removePlayer(int index) {
+        if (game.removePlayer(game.players.get(index))) {
+            player1Button.setVisible(false);
+            refresh();
+        } else {
+            System.out.println("Es können keine weiteren Spieler entfernt werden.");
+        }
+    }
+
+    /**
+     * shows the card of a player by index
+     * 
+     * @param index
+     */
+    private void showCard(int index) {
+        new PlayerCard(game, game.players.get(index)).setVisible(true);
+    }
+
+    /**
+     * invoked when a cell gets edited
+     * 
+     * @param row row index of the cell
+     * @param column column index of the cell
+     */
     private void cellEdited(int row, int column) {
         if (row != -1 && column != -1 && (row < 6 || (row > 8 && row < 16))) {
             Object obj = playercard.getValueAt(row, column);
@@ -1203,7 +1164,7 @@ public class GameView extends javax.swing.JFrame {
     }
 
     /**
-     * Setting the fieldnames into the playercard
+     * Setting the field names into the playercard
      */
     private void tableSetFieldNames() {
         for (int i = 0; i < 6; i++) {
