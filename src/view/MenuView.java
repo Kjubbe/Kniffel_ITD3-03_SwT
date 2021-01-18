@@ -3,7 +3,7 @@ package view;
 import game.Game;
 import game.Player;
 
-
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import javax.swing.DefaultListModel;
@@ -14,9 +14,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ListSelectionEvent;
 
 import database.PlayerManagement;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -39,6 +41,7 @@ public class MenuView extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        updatePlayers();
     }
 
     /**
@@ -102,6 +105,17 @@ public class MenuView extends javax.swing.JFrame {
 
         JListOfPlayers.setModel(playerList);
         jScrollPane1.setViewportView(JListOfPlayers);
+        JListOfPlayers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JListOfPlayers.addKeyListener(new java.awt.event.KeyAdapter() {
+                @Override
+                public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+                                String name = JListOfPlayers.getSelectedValue().getName();
+                                PlayerManagement.getInstance().logout(name);
+                                updatePlayers();
+                        }
+                }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,7 +207,7 @@ public class MenuView extends javax.swing.JFrame {
         autocompleteWanted = autocompleteWantedCheckBox.isSelected();
         if (playerList.size() < 2) {
             JOptionPane.showMessageDialog(null,
-                    "Es müssen mindestends zwei Spieler vorhanden sein.", "Starting Error",
+                    "Man braucht min. zwei Spieler, um das Spiel zu starten.", "Zu wenig Spieler",
                     JOptionPane.ERROR_MESSAGE);
             return;
         }

@@ -26,7 +26,8 @@ public class EndDialogView extends javax.swing.JFrame {
     public EndDialogView(Game game, boolean last) {
             this.game = game;
             this.last = last;
-        this.setVisible(true);
+            this.setVisible(true);
+        this.setTitle("Zusammenfassung");
         initComponents();
 
         // winnerLabel.setText(game.winner.getName() + " hat das Spiel gewonnen!");

@@ -22,7 +22,8 @@ public class StatistikDialogView extends javax.swing.JFrame {
     public StatistikDialogView(Stats playerStats, String name) {
             this.playerStats = playerStats;
             this.name = name;
-        this.setVisible(true);
+            this.setVisible(true);
+        this.setTitle("Statistik");
         System.out.println("StatistikDialog");
         initComponents();
     }

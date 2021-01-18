@@ -67,7 +67,13 @@ public class PlayerManagement {
                 if (saveStats) {
                     player.saveStats();
                 }
-                return addPlayer(player);
+                
+                Map<String, Boolean> res = addPlayer(player);
+                if (res.containsValue(false)) {
+                    logout(name);
+                    res = addPlayer(player);
+                }
+                return res; // add the logged in player
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
