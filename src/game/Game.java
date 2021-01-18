@@ -155,6 +155,7 @@ public class Game {
 		}
 		// second, check if there are enough games played
 		boolean over = done || gamesPlayed >= maxGames;
+		System.out.println("Checking if game is over: " + over);
 		return over;
 	}
 
@@ -179,9 +180,20 @@ public class Game {
 		if (gameOver) {
 			for (Player p : players) {
 				p.getStats().stopPlaying();
-				p.wins = 0;
 			}
 			PlayerManagement.getInstance().savePlayers();
+		} else {
+			restart();
+		}
+
+	}
+
+	/**
+	 * start the next game
+	 */
+	public void nextGame() {
+		for (Player p : players) {
+			p.wins = 0;
 		}
 		restart();
 	}
