@@ -1134,10 +1134,10 @@ public class GameView extends javax.swing.JFrame {
         int result = game.removePlayer(index);
         if (result == -1) {
             refresh();
-        } else {
+        } else if (game.players.size() == 2) {
             System.out.println("Es können keine weiteren Spieler entfernt werden.");
         }
-        return result == 1;
+        return result == 1 || result == -1;
     }
 
     /**
