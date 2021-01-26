@@ -104,8 +104,7 @@ public class Game {
 	 * @return true if turn endet
 	 */
 	public boolean rollDie() {
-		// boolean turnOver = rolls >= 3;
-		boolean turnOver = false;
+		boolean turnOver = rolls >= 3;
 
 		if (!turnOver) {
 			for (Die d : DICE) { // roll the die
