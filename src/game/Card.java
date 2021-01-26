@@ -159,7 +159,7 @@ public class Card {
 			if (num[i] == num[i + 1] + 1) {
 				increase++;
 			} else {
-				if (increase < 3) {
+				if (increase < 3 && num[i] != num[i + 1]) {
 					increase = 0;
 				}
 			}
@@ -259,7 +259,6 @@ public class Card {
 		boolean result = field.choose();
 		if (result) {
 			setToZero();
-			owner.getStats().increasePoints(field.getChosenValue()); // TODO is this the right place?
 		}
 		return result;
 	}

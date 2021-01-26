@@ -107,15 +107,6 @@ public class Stats {
 	}
 
 	/**
-	 * Increase the time played
-	 * 
-	 * @param time to be added
-	 */
-	public void increaseTimePlayed(int time) {
-		this.timePlayed += time; // TODO time played increase
-	}
-
-	/**
 	 * @return the diceRolled
 	 */
 	public int getDiceRolled() {
