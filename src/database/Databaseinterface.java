@@ -12,17 +12,25 @@ import game.RegisteredPlayer;
 import game.Stats;
 
 /**
- * interface for communicating with the database
+ * interface for communicating with the database. the database consists of
+ * players and their stats, which can be saved with this class
  * 
  * @author Kjell Treder
  */
 
 public final class Databaseinterface {
 
+    /**
+     * instance of this class, singleton pattern
+     */
     private static Databaseinterface instance;
+
+    /**
+     * contains the current connection object to the database
+     */
     private Connection conn;
 
-    // data for the connection
+    // data for the jdbc connection
     private static final String DRIVER_NAME = "org.hsqldb.jdbc.JDBCDriver";
     private static final String DB_URL = "jdbc:hsqldb:file:data/KniffelStats;ifexists=true";
     private static final String NAME = "SA";
@@ -30,7 +38,7 @@ public final class Databaseinterface {
 
     /**
      * private constructor prevents external instantiation, the Databaseinterface
-     * can be instantiated with getInstance method
+     * can be instantiated with the getInstance method
      */
     private Databaseinterface() {
         try {
@@ -43,19 +51,19 @@ public final class Databaseinterface {
 
     /**
      * get the instance of this class, there can only be one instance at a time
-     * (singleton)
+     * (singleton pattern)
      * 
      * @return the current instance, or a new instance, if there is none
      */
     public static Databaseinterface getInstance() {
-        if (instance == null) {
+        if (instance == null) { // if there is no instance, create a new one
             instance = new Databaseinterface();
         }
         return instance;
     }
 
     /**
-     * get all players from the database
+     * get all players from the database used for testing in cleaning the database
      * 
      * @return List with all players
      * @throws SQLException if a database access error occurs
@@ -74,7 +82,7 @@ public final class Databaseinterface {
             // check for the players stats
             ResultSet statsSet = read("SELECT * FROM Stats WHERE id=" + statsId);
             if (check(statsSet)) { // stats found
-                Stats stats = new Stats(player, statsSet.getInt("gamesWon"), statsSet.getInt("gamesPlayed"),
+                Stats stats = new Stats(statsSet.getInt("gamesWon"), statsSet.getInt("gamesPlayed"),
                         statsSet.getInt("roundsPlayed"), statsSet.getInt("points"), statsSet.getInt("diceRolled"),
                         statsSet.getInt("timePlayed")); // new stats object
                 player.assignStats(stats); // assign the stats to the player
@@ -89,7 +97,7 @@ public final class Databaseinterface {
     /**
      * read a player from the database by the name
      * 
-     * @param name name and primary key of the player
+     * @param name name (primary key) of the player
      * @return a player object with the name, password and stats
      * @throws SQLException if a database access error occurs
      */
@@ -111,7 +119,7 @@ public final class Databaseinterface {
         Stats stats = null;
         set = read("SELECT * FROM Stats WHERE id=" + statsId);
         if (check(set)) { // stats found
-            stats = new Stats(player, set.getInt("gamesWon"), set.getInt("gamesPlayed"), set.getInt("roundsPlayed"),
+            stats = new Stats(set.getInt("gamesWon"), set.getInt("gamesPlayed"), set.getInt("roundsPlayed"),
                     set.getInt("points"), set.getInt("diceRolled"), set.getInt("timePlayed")); // new stats object
             player.assignStats(stats); // assign the stats to the player
         } else { // stats not found
@@ -125,11 +133,11 @@ public final class Databaseinterface {
     /**
      * update a players stats in the database
      * 
-     * @param player player object containing data
+     * @param player player object containing stats
      * @return if successful
      * @throws SQLException if a database access error occurs
      */
-    public boolean updatePlayerStats(RegisteredPlayer player) throws SQLException {
+    public boolean updatePlayer(RegisteredPlayer player) throws SQLException {
         boolean result = false;
         connect();
 
@@ -155,37 +163,10 @@ public final class Databaseinterface {
     }
 
     /**
-     * update a players password in the database
-     * 
-     * @param player player object containing data
-     * @return if successful
-     * @throws SQLException if a database access error occurs
-     */
-    public boolean updatePlayerPassword(RegisteredPlayer player) throws SQLException {
-        boolean result = false;
-        connect();
-
-        // player and their stats can not be null
-        if (player != null) {
-            // check for the player in the database
-            ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + player.getName() + "'");
-            if (check(set)) { // player found
-                // update the players password
-                write("UPDATE RegisteredPlayer SET password='" + player.getPassword() + "' WHERE name='"
-                        + player.getName() + "'");
-                result = true;
-            }
-        }
-
-        close();
-        return result;
-    }
-
-    /**
      * save a new player in the database
      * 
      * @param player player object containing data
-     * @return if successful: false if the player name exists
+     * @return true if successful, false if the player name exists
      * @throws SQLException if a database access error occurs
      */
     public boolean savePlayer(RegisteredPlayer player) throws SQLException {
@@ -328,6 +309,5 @@ public final class Databaseinterface {
         for (RegisteredPlayer p : allPlayers()) {
             deletePlayer(p.getName());
         }
-        write("ALTER TABLE PUBLIC.STATS ALTER COLUMN ID RESTART WITH 0");
     }
 }

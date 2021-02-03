@@ -7,20 +7,16 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ListSelectionEvent;
 
 import database.PlayerManagement;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 /**
+ * the menu is shown when a new game should be created. in the menu the users
+ * can make settings to the game and add players
  *
  * @author simeonmurzin
  */
@@ -33,7 +29,7 @@ public class MenuView extends javax.swing.JFrame {
         this.setTitle("Knifflig - Menu");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
-        
+
         SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
         maxRoundsSelector.setModel(spinnerModel);
         assistantWantedCheckBox.setSelected(true);
@@ -89,7 +85,6 @@ public class MenuView extends javax.swing.JFrame {
         jDialog3Layout.setVerticalGroup(jDialog3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGap(0, 300, Short.MAX_VALUE));
 
-
         jPanel1.setToolTipText("");
 
         maxRoundsLabel.setText("Runden werden gespielt");
@@ -107,14 +102,14 @@ public class MenuView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(JListOfPlayers);
         JListOfPlayers.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JListOfPlayers.addKeyListener(new java.awt.event.KeyAdapter() {
-                @Override
-                public void keyPressed(KeyEvent e) {
-                        if (e.getKeyCode() == KeyEvent.VK_DELETE) {
-                                String name = JListOfPlayers.getSelectedValue().getName();
-                                PlayerManagement.getInstance().logout(name);
-                                updatePlayers();
-                        }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+                    String name = JListOfPlayers.getSelectedValue().getName();
+                    PlayerManagement.getInstance().logout(name);
+                    updatePlayers();
                 }
+            }
         });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -162,10 +157,10 @@ public class MenuView extends javax.swing.JFrame {
         autocompleteWantedCheckBox.setText("Automatisch ausfüllen");
         autocompleteWantedCheckBox.setToolTipText("");
         autocompleteWantedCheckBox.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 autocompleteWantedCheckBoxActionPerformed(evt);
-                }
-            });
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,50 +196,63 @@ public class MenuView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    /**
+     * invoked when the game is started
+     * 
+     * @param evt
+     */
     private void StartGameButtonActionPerformed(java.awt.event.ActionEvent evt) {
+
+        // get the user input
         maxRounds = (int) maxRoundsSelector.getValue();
         assistantWanted = assistantWantedCheckBox.isSelected();
         autocompleteWanted = autocompleteWantedCheckBox.isSelected();
-        if (playerList.size() < 2) {
-            JOptionPane.showMessageDialog(null,
-                    "Man braucht min. zwei Spieler, um das Spiel zu starten.", "Zu wenig Spieler",
-                    JOptionPane.ERROR_MESSAGE);
+        if (playerList.size() < 2) { // the game only starts with 2 or more players
+            JOptionPane.showMessageDialog(null, "Man braucht min. zwei Spieler, um das Spiel zu starten.",
+                    "Zu wenig Spieler", JOptionPane.ERROR_MESSAGE);
             return;
         }
         this.setVisible(false);
-        System.out.println("assistand" + assistantWanted);
-        System.out.println("auto" + autocompleteWanted);
-        System.out.println("maxRounds:" + maxRounds);
-        System.out.println("playerList" + playerList);
 
-        // new game.Game(a=assistanWanted);
-        // addPlayersToGame(new game.Game(s, pw, assistantWanted, NORMAL, WIDTH, WIDTH,
-        // h));
-        // int maxPlayers = length();
-        System.out.println(pM.getAllPlayers().size() + "Gaming");
+        // create a new game
         Game game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
 
+        // create a new view, which displays the game
         new GameView(game).setVisible(true);
-        this.setVisible(false);
-
     }
 
+    /**
+     * update the displayed playerlist from the playermanagement playerlist
+     */
     public static void updatePlayers() {
         playerList.removeAllElements();
         playerList.addAll(pM.getAllPlayers());
     }
 
+    /**
+     * add a new player. creates a new login screen
+     * 
+     * @param evt event
+     */
     private void addPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {
-            new LoginScreenView().setVisible(true);
+        new LoginScreenView().setVisible(true);
 
     }
-    
+
+    /**
+     * invoked, when the autocomplete checkbox is clicked
+     * 
+     * @param evt
+     */
     private void autocompleteWantedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {
         if (autocompleteWantedCheckBox.isSelected()) {
-                assistantWantedCheckBox.setSelected(true);
-               assistantWantedCheckBox.setEnabled(false);     
-       } else {
-        assistantWantedCheckBox.setEnabled(true);
+            // assistant is enabled by default with autocomplete enabled
+            assistantWantedCheckBox.setSelected(true);
+            // you can not change the assistant with autocomplete enabled
+            assistantWantedCheckBox.setEnabled(false);
+        } else {
+            // you can change the assistant with autocomplete disabled
+            assistantWantedCheckBox.setEnabled(true);
         }
     }
 
@@ -262,11 +270,10 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JSpinner maxRoundsSelector;
     // End of variables declaration
 
-    private int maxRounds;
-    static DefaultListModel<Player> playerList = new DefaultListModel<Player>();
-    private boolean assistantWanted;
-    private boolean autocompleteWanted;
-    LinkedList stringList = new LinkedList<String>();
-    static PlayerManagement pM = PlayerManagement.getInstance();
+    private int maxRounds; // maximum amount of rounds to be played
+    static DefaultListModel<Player> playerList = new DefaultListModel<Player>(); // list shown in the window
+    private boolean assistantWanted; // if the assistant is wanted
+    private boolean autocompleteWanted; // if autocomplete is wanted
+    static PlayerManagement pM = PlayerManagement.getInstance(); // reference to the playermanagement
 
 }
