@@ -8,6 +8,7 @@ package view;
 import game.Stats;
 
 /**
+ * shows a dialog displaying the stats of a player
  *
  * @author jarmo
  */
@@ -169,6 +170,12 @@ public class StatistikDialogView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * formats milliseconds to an hour, minute and second format
+     * 
+     * @param ms
+     * @return
+     */
     private String format(int ms) {
         int s = (int) (ms / 1000D) % 60;
         int m = (int) ((ms / (1000D * 60)) % 60);

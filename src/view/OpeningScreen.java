@@ -16,7 +16,7 @@ import database.PlayerManagement;
 public class OpeningScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form OpeningScreen
+     * reference to the playermanagement
      */
     static PlayerManagement pM;
 
@@ -148,6 +148,12 @@ public class OpeningScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * invoked when stats should be shown by the show stats button. creates a new
+     * dialog showing the stats
+     * 
+     * @param evt
+     */
     private void showStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_showStatsButtonActionPerformed
         String name = playerNameTextField.getText();
         Stats stats = pM.getStats(name);
@@ -155,10 +161,17 @@ public class OpeningScreen extends javax.swing.JFrame {
         if (stats == null) {
             ErrorLabel.setVisible(true);
         } else {
+            ErrorLabel.setVisible(false);
             new StatistikDialogView(stats, name);
         }
     }// GEN-LAST:event_showStatsButtonActionPerformed
 
+    /**
+     * invoked when a new game should be created by the new game button. disposes
+     * this window and creates a new menu
+     * 
+     * @param evt the event
+     */
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_newGameButtonActionPerformed
         new MenuView();
         this.dispose();

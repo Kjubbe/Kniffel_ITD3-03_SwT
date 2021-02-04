@@ -2,7 +2,7 @@ package game;
 
 /**
  * contains information about a specific field on a card. a field holds three
- * values and can be crossed or chosen with a specific value
+ * possible values and can be crossed or chosen (even with a specific value)
  * 
  * @author Kjell Treder
  *
@@ -10,23 +10,28 @@ package game;
 
 public class Field {
 
+    /**
+     * name of this field
+     */
     private final String name;
 
     /**
-     * contains the default value of this field. most fields do not have a default
-     * value
+     * contains the default value of this field. the default value is set as the
+     * chosen value, when this field gets chosen
      */
     private int defaultValue;
 
     /**
-     * contains the possible, current value for this field. this is calculated by
-     * the card for each turn
+     * contains the possible, current value for this field. should this card be
+     * chosen this value is set as the chosen value. this is calculated by the card
+     * for each turn
      */
     private int currentValue;
 
     /**
-     * contains the chosen value for this card. this value can only change once. it
-     * is -1 if the card is crossed
+     * contains the chosen value for this card. this value can only change once,
+     * because a field can only be chosen once. the value is == -1 when the card is
+     * crossed and > 0 when the card is chosen
      */
     private int chosenValue;
 
@@ -51,7 +56,8 @@ public class Field {
     }
 
     /**
-     * get the actual value of this card for calculations
+     * get the value of this card for calculations. this means a crossed card is
+     * valued at zero points, just like an unchosen card
      * 
      * @return value of this card
      */
@@ -61,7 +67,7 @@ public class Field {
     }
 
     /**
-     * get the current value
+     * get the current value of this field
      * 
      * @return value of this card
      */
@@ -70,7 +76,8 @@ public class Field {
     }
 
     /**
-     * set the current value for this card
+     * sets the current value for this card with a new value. this is done by
+     * calculation from the card
      * 
      * @param value value to be set
      */
@@ -79,7 +86,7 @@ public class Field {
     }
 
     /**
-     * set the current value to the default value
+     * sets the current value to the default value
      */
     public void setValue() {
         this.currentValue = defaultValue;
@@ -87,9 +94,9 @@ public class Field {
 
     /**
      * choose this field, sets the chosen value to the current value when the card
-     * is not chosen or crossed and if the current value is not 0
+     * is open and if the current value is not 0
      * 
-     * @return if successful
+     * @return if choosing was successful
      */
     public boolean choose() {
         // there is no point in choosing a card which is worth 0 points. so it is not
@@ -102,7 +109,7 @@ public class Field {
     }
 
     /**
-     * choose this field by giving it a value
+     * choose this field by giving it a value. only possible when this field is open
      * 
      * @param value the value for this field
      */
@@ -115,9 +122,9 @@ public class Field {
     }
 
     /**
-     * cross this field
+     * cross this field. only possible when this field is open
      * 
-     * @return if successful
+     * @return if crossing was successful
      */
     public boolean cross() {
         boolean result = isOpen();
@@ -128,30 +135,30 @@ public class Field {
     }
 
     /**
-     * check if this field is open
+     * check if this field is open. an open field has a chosen value of zero
      * 
-     * @return if open
+     * @return if this field is open and can be chosen
      */
     public boolean isOpen() {
         return chosenValue == 0;
     }
 
     /**
-     * check if this field is crossed
+     * check if this field is crossed. a crossed field has a chosen value of -1
      * 
-     * @return if crossed
+     * @return if this field is crossed
      */
     public boolean isCrossed() {
         return chosenValue == -1;
     }
 
     /**
-     * check if this field is crossed
+     * check if this field is chosen. a chosen field has a value greater than zero
      * 
-     * @return if crossed
+     * @return if this field is chosen
      */
     public boolean isChosen() {
-        return chosenValue != -1 && chosenValue != 0;
+        return chosenValue > 0;
     }
 
     /**

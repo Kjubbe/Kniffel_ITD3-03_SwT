@@ -3,8 +3,9 @@ package game;
 import java.util.Random;
 
 /**
- * contains information about a specific die with a value. a die can be rolled
- * and toggled
+ * contains information about a specific die with a value. a die can be rolled,
+ * toggled to disable rolling and has value from 1 to 6 assigned to it with each
+ * roll
  * 
  * @author Kjell Treder
  *
@@ -12,19 +13,27 @@ import java.util.Random;
 
 public class Die {
 
-    // data fields
-    private boolean isRollable = true; // if the die is rollable
-    private int value; // value of the die
+    /**
+     * true, if the die is rollable, otherwise false. if this value is false its
+     * value will not change with a roll
+     */
+    private boolean isRollable = true;
 
     /**
-     * Random object for dice randomness
+     * value of the die
+     */
+    private int value;
+
+    /**
+     * random object for dice randomness
      */
     private static final Random rng = new Random();
 
     /**
-     * roll the die. generates a random value between 1 and 6
+     * roll the die. generates a random value for this die between 1 and 6, if this
+     * die is rollable
      * 
-     * @return if successful
+     * @return true when rolled
      */
     public boolean roll() {
         if (isRollable) {
@@ -52,7 +61,7 @@ public class Die {
     /**
      * check if the die is rollable
      * 
-     * @return rollable boolean of the die
+     * @return true if this die is rollable, otherwise false
      */
     public boolean isRollable() {
         return isRollable;

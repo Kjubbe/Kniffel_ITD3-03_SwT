@@ -12,13 +12,12 @@ import javax.swing.JOptionPane;
 public class LoginScreenView extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginScreenView
+     * Creates new form LoginScreenView, initializes components
      */
     public LoginScreenView() {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setTitle("Neuer Spieler");
-        System.out.println("LoginScreen");
         initComponents();
     }
 
@@ -141,7 +140,7 @@ public class LoginScreenView extends javax.swing.JFrame {
     /**
      * empty
      * 
-     * @param evt
+     * @param evt the event
      */
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // empty
@@ -175,7 +174,7 @@ public class LoginScreenView extends javax.swing.JFrame {
     /**
      * invoked when the guest button is clicked
      * 
-     * @param evt
+     * @param evt the event
      */
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {
         // get the input from the user
@@ -194,7 +193,7 @@ public class LoginScreenView extends javax.swing.JFrame {
     /**
      * invoked when the register button is clicked
      * 
-     * @param evt
+     * @param evt the event
      */
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {
 

@@ -11,18 +11,43 @@ import java.util.GregorianCalendar;
 
 public class Stats {
 
-    private GregorianCalendar start; // time the player started playing
+    /**
+     * starting time, is set when the game begins
+     */
+    private GregorianCalendar start;
 
-    // data which this stats saves
+    /**
+     * amount of games won over multiple games
+     */
     private int gamesWon;
+
+    /**
+     * amount of games played over multiple games
+     */
     private int gamesPlayed;
+
+    /**
+     * amount of rounds played over multiple games
+     */
     private int roundsPlayed;
+
+    /**
+     * amount of points gathered over multiple games
+     */
     private int points;
+
+    /**
+     * amount of dice rolled over multiple games
+     */
     private int diceRolled;
+
+    /**
+     * amount of time played over multiple games
+     */
     private int timePlayed;
 
     /**
-     * Constructor, assigns values
+     * constructor, assigns all values
      * 
      * @param gamesWon     count of how many games have been won
      * @param gamesPlayed  count of how many games have been played
@@ -48,7 +73,7 @@ public class Stats {
     }
 
     /**
-     * start playing
+     * start playing, creates a new timestamp
      */
     public void startPlaying() {
         start = new GregorianCalendar();
@@ -58,33 +83,34 @@ public class Stats {
      * stop playing
      */
     public void stopPlaying() {
-        System.out.println("time saved");
+        // create a new timestamp and add the difference from finish and start to the
+        // time played
         timePlayed += new GregorianCalendar().getTimeInMillis() - start.getTimeInMillis();
     }
 
     /**
-     * Increase the number of games won
+     * increase the number of games won
      */
     public void increaseGamesWon() {
         this.gamesWon++;
     }
 
     /**
-     * Increase the number games played
+     * increase the number of games played
      */
     public void increaseGamesPlayed() {
         this.gamesPlayed++;
     }
 
     /**
-     * Increase the number games played
+     * increase the number of rounds played
      */
     public void increaseRoundsPlayed() {
         this.roundsPlayed++;
     }
 
     /**
-     * Increase the number of total points by n
+     * increase the number of total points by n
      * 
      * @param n the amounts of points to be added
      */
@@ -93,34 +119,42 @@ public class Stats {
     }
 
     /**
-     * Increase the number of dice rolled
+     * increase the number of dice rolled
      */
     public void increaseDiceRolled() {
         this.diceRolled++;
     }
 
     /**
-     * @return the diceRolled
+     * getter for diceRolled
+     * 
+     * @return the amount of dice rolled
      */
     public int getDiceRolled() {
         return diceRolled;
     }
 
     /**
-     * @return the gamesPlayed
+     * getter for gamesPlayed
+     * 
+     * @return the amount of games played
      */
     public int getGamesPlayed() {
         return gamesPlayed;
     }
 
     /**
-     * @return the gamesWon
+     * getter for gamesWon
+     * 
+     * @return the amount of games won
      */
     public int getGamesWon() {
         return gamesWon;
     }
 
     /**
+     * getter for the points
+     * 
      * @return the points
      */
     public int getPoints() {
@@ -128,14 +162,18 @@ public class Stats {
     }
 
     /**
-     * @return the roundsPlayed
+     * getter for roundsPlayed
+     * 
+     * @return the amount of rounds played
      */
     public int getRoundsPlayed() {
         return roundsPlayed;
     }
 
     /**
-     * @return the timePlayed
+     * getter for timePlayed
+     * 
+     * @return the time played
      */
     public int getTimePlayed() {
         return timePlayed;

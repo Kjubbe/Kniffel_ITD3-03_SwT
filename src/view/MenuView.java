@@ -4,7 +4,6 @@ import game.Game;
 import game.Player;
 
 import java.awt.event.KeyEvent;
-import java.util.LinkedList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;

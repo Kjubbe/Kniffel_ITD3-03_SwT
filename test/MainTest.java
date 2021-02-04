@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * testing class for testing main - use seeds for testing
+ * empty testing class
  * 
  * @author Kjell Treder
  */
@@ -20,12 +20,12 @@ public class MainTest {
     }
 
     /**
-     * test
+     * test after setup
      */
     @Test
     public void test() {
         // testing goes here
         System.out.println("Testing...");
-        assertTrue(true);
+        assertTrue(true); // :)
     }
 }

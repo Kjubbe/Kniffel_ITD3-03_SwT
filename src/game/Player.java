@@ -1,8 +1,8 @@
 package game;
 
 /**
- * Player, contains information about the state of the player. the player
- * participates in the game
+ * contains information about the state of the player. the player participates
+ * in the game, has stats and a card
  * 
  * @author Kjell Treder
  *
@@ -10,23 +10,38 @@ package game;
 
 public class Player {
 
-    // data fields
-    protected String name; // name of this player
-    protected boolean saveStats; // if the stats should be saved
-
-    protected Stats myStats; // contains the stats of the player
-    protected Card myCard = new Card(); // contains the card of the player
-
-    protected int wins; // amount of wins
+    /**
+     * name of the player
+     */
+    protected String name;
 
     /**
-     * Constructor, gives a name, assigns a stat and a card
+     * true if stats should be saved, otherwise false
+     */
+    protected boolean saveStats; // if the stats should be saved
+
+    /**
+     * reference to the stats object for this player
+     */
+    protected Stats myStats = new Stats();
+
+    /**
+     * reference to the card of this player
+     */
+    protected Card myCard = new Card();
+
+    /**
+     * amount of wins this player has for the current game
+     */
+    protected int wins;
+
+    /**
+     * constructor, sets the name
      * 
      * @param name name
      */
     public Player(String name) {
         this.name = name;
-        assignStats();
     }
 
     /**
@@ -45,7 +60,7 @@ public class Player {
     }
 
     /**
-     * Assign stats to this player
+     * assign stats to this player
      * 
      * @param stats Stats to be assigned
      */
@@ -54,66 +69,59 @@ public class Player {
     }
 
     /**
-     * Assign stats to this player TODO remove, this is for testing purposes
-     */
-    public final void assignStats() {
-        this.myStats = new Stats();
-    }
-
-    /**
-     * Increase number of wins
+     * increase number of wins
      */
     public void increaseWins() {
         this.wins++;
     }
 
     /**
-     * Assign a card to a player
+     * assign a new card to this player
      */
     public final void assignCard() {
         this.myCard = new Card();
     }
 
     /**
-     * Getter for the name
+     * getter for the name
      * 
-     * @return name
+     * @return name of this player
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Getter for the stats
+     * getter for the stats
      * 
-     * @return stats
+     * @return stats of this player
      */
     public Stats getStats() {
         return myStats;
     }
 
     /**
-     * Getter for the card
+     * getter for the card
      * 
-     * @return card
+     * @return card of this player
      */
     public Card getCard() {
         return myCard;
     }
 
     /**
-     * Getter for the points
+     * getter for the points
      * 
-     * @return total points
+     * @return total points for this player
      */
     public int getPoints() {
         return myCard.getTotal();
     }
 
     /**
-     * Getter for the amount of wins
+     * getter for the amount of wins
      * 
-     * @return total points
+     * @return win amount of this player
      */
     public int getWins() {
         return wins;
@@ -122,7 +130,7 @@ public class Player {
     /**
      * check if player wants to save their stats
      * 
-     * @return if saving stats
+     * @return true if saving stats, otherwise false
      */
     public boolean isSavingStats() {
         return saveStats;

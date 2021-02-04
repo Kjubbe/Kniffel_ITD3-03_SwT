@@ -21,17 +21,30 @@ import game.Stats;
  */
 
 public class DatabaseinterfaceTest {
+    /**
+     * list with all players
+     */
     private final List<RegisteredPlayer> players = new ArrayList<>();
+
+    /**
+     * random object for random data
+     */
     private static final Random rng = new Random();
+
+    /**
+     * determines if the test is cleaned up
+     */
     private static boolean CLEANED_UP;
 
     /**
-     * toggle cleaning the database before testing
+     * toggle cleaning the database before testing, the programmer should set this
+     * value
      */
     private static boolean CLEAN_BEFORE = true;
 
     /**
-     * toggle cleaning the database after testing
+     * toggle cleaning the database after testing, the programmer should set this
+     * value
      */
     private static final boolean CLEAN_AFTER = true;
 
@@ -57,7 +70,6 @@ public class DatabaseinterfaceTest {
                 new RegisteredPlayer("Wolly", "p"), new RegisteredPlayer("Zugtu488", ""),
                 new RegisteredPlayer("Pfennato", "zuDaOpKa"), new RegisteredPlayer("Solariuuuu", "IhHbArKiEdPgUd")));
         for (RegisteredPlayer p : players) {
-            p.assignStats(); // give each player stats
             generate(p); // generate data for the player
         }
     }
@@ -99,7 +111,7 @@ public class DatabaseinterfaceTest {
     }
 
     /**
-     * test
+     * test the database, creates random data sets and randomly tests methods
      */
     @Test
     public void test() {
@@ -131,7 +143,6 @@ public class DatabaseinterfaceTest {
                 if (state < 0.21) { // 21% creating new player
                     RegisteredPlayer newP = new RegisteredPlayer("name" + rng.nextInt(99999),
                             "pw" + rng.nextInt(99999));
-                    newP.assignStats();
                     generate(newP);
                     result = Databaseinterface.getInstance().savePlayer(newP);
                     if (result) { // if created, add to the list
@@ -210,6 +221,9 @@ public class DatabaseinterfaceTest {
         }
     }
 
+    /**
+     * after the test delete created content
+     */
     @After
     public void delete() {
         if (CLEAN_AFTER || CLEAN_BEFORE) { // clean up

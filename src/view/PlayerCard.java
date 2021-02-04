@@ -10,12 +10,21 @@ import game.Game;
 import game.Player;
 
 /**
+ * shows the playercard in a new window. the playercard shows the chosen values
+ * for the player referenced
  *
  * @author hanne
  */
 public class PlayerCard extends javax.swing.JFrame {
 
+    /**
+     * reference to the game
+     */
     private Game game;
+
+    /**
+     * reference to the player
+     */
     private Player player;
 
     /**
@@ -86,7 +95,7 @@ public class PlayerCard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Setting the fieldnames into the playercard
+     * setting the fieldnames into the playercard
      */
     private void tableSetFieldNames() {
         for (int i = 0; i < 6; i++) {
@@ -98,7 +107,7 @@ public class PlayerCard extends javax.swing.JFrame {
     }
 
     /**
-     * Setting the points into the playercard
+     * setting the points into the playercard
      */
     private void tableSetPoints() {
         for (int i = 0; i < 6; i++) {

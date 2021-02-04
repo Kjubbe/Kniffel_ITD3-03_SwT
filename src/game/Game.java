@@ -2,14 +2,13 @@ package game;
 
 import java.util.List;
 
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-
 import database.PlayerManagement;
 import view.EndDialogView;
 
 /**
- * a game instance manages the game and their players
+ * a game instance manages the game and their players. each player gets their
+ * turn until all rounds are played. each player can roll dice, choose and cross
+ * fields. when all rounds are played a winner is chosen
  * 
  * @author Kjell Treder
  *
@@ -19,59 +18,104 @@ public class Game {
 
     /**
      * toggles the use of autofill. if autofill is enabled, all fields on the card
-     * are filled with values to choose from
+     * are filled automatically with values to choose from. should autofill be
+     * disabled the card will not show values
      */
     public final boolean useAutofill;
 
     /**
      * toggles the use of auto calculation. if auto calculation is enabled, the
-     * chosen field calculates its value automatically
+     * chosen field calculates its value automatically. with no autocalculation, the
+     * players need to write the values inside the table themselves
      */
     public final boolean useAutocalc;
 
-    private final int maxGames; // max number of games to be played
-    private final int gamesToWin; // max number of games to be won to win the whole game
-
-    public final List<Player> players; // contains all participating players
-    private final Player[] seats = new Player[PlayerManagement.MAX_PLAYERS];
-
-    private Player currentPlayer; // the current player doing his turn
-    private int playerIndex; // index of the current player
-    private Player winner; // winner of the game
+    /**
+     * contains the maximum number of games to be played
+     */
+    private final int maxGames;
 
     /**
-     * array of dice for rolling
+     * contains all players in a list. the order of the list determines the order of
+     * the turns. this list contains all participating players. removed players will
+     * also be removed from this list
+     */
+    public final List<Player> players;
+
+    /**
+     * models the shown player seats in the view. each player gets a seat. the seats
+     * will not change over the course of the game, removing a player only removes
+     * them from the list and not this array. this is needed to manage removing
+     * players correctly
+     */
+    private final Player[] seats = new Player[PlayerManagement.MAX_PLAYERS];
+
+    /**
+     * contains the player who is currently playing and doing his turn
+     */
+    private Player currentPlayer;
+
+    /**
+     * contains the index of the playing player in the list. this index is
+     * incremented after each turn to switch to the next player in the list by index
+     */
+    private int playerIndex;
+
+    /**
+     * array of the dice. these dice get rolled each turn ans simulate the dice
+     * shown in the view
      */
     public static final Die[] DICE = { new Die(), new Die(), new Die(), new Die(), new Die() };
+
+    /**
+     * maximum amount of rolls each player has
+     */
     public static final int MAX_ROLLS = 3;
-    private final int[] diceValues = new int[DICE.length];
+
+    /**
+     * the maximum amount of rounds to be played. this value corresponds with the
+     * total amount of fields on the card
+     */
+    public static final int MAX_ROUNDS = 13;
+
+    /**
+     * roll counter containing the amount of rolls for this turn. rolls is never >
+     * MAX_ROLLS
+     */
     private int rolls;
 
-    public static final int MAX_ROUNDS = 3; // TODO change
+    /**
+     * rounds counter containing the amount of rounds played. rounds is never >
+     * MAX_ROUNDS
+     */
     private int roundsPlayed;
+
+    /**
+     * games counter containing the amount of games played. games is never >
+     * maxGames
+     */
     private int gamesPlayed;
 
     /**
-     * Constructor, defines the name, a password, the usage of the assistant, max
-     * players, max Games, games to win and the host.
+     * constructor, defines the usage of the assistant and autocalc, max Games and
+     * all the players
      * 
-     * @param autofill if using autofill
-     * @param autocalc if using autocalc
+     * @param autofill if using autofill for this game
+     * @param autocalc if using autocalc for this game
      * @param maxGames number of max games
-     * @param players  players on the server
+     * @param players  participating players
      */
     public Game(boolean autofill, boolean autocalc, int maxGames, List<Player> players) {
         this.useAutofill = autofill;
         this.useAutocalc = autocalc;
         this.maxGames = maxGames;
-        this.gamesToWin = maxGames;
         this.players = players;
-        this.currentPlayer = players.get(playerIndex);
-        init();
+        this.currentPlayer = players.get(0); // first player starts
+        init(); // initialize
     }
 
     /**
-     * initialize the data fields
+     * initialize: each player starts playing and the seats get set
      */
     private void init() {
         // fill in the seats
@@ -85,12 +129,12 @@ public class Game {
     /**
      * roll all die
      * 
-     * @return true if turn endet
+     * @return true if turn endet, otherwise false
      */
     public boolean rollDie() {
 
-        // the turn is over if rolls is equals or more than 3
-        boolean turnOver = rolls >= 3;
+        // the turn is over if rolls is equals or more than MAX_ROLLS
+        boolean turnOver = rolls >= MAX_ROLLS;
 
         // roll all die if the game is not over
         if (!turnOver) {
@@ -102,6 +146,7 @@ public class Game {
             rolls++; // increase the roll counter
 
             // get the values of the dice
+            int[] diceValues = new int[DICE.length];
             for (int i = 0; i < diceValues.length; i++) {
                 diceValues[i] = DICE[i].getValue(); // set each value in the array
             }
@@ -135,25 +180,14 @@ public class Game {
      * @return true if this was the last game
      */
     public boolean isGameOver() {
-        // first, check if someone has won enough games
-        boolean done = false;
-        for (Player p : players) {
-            if (p.getWins() >= gamesToWin) {
-                done = true;
-                break;
-            }
-        }
-        // second, check if there are enough games played
-        boolean over = done || gamesPlayed >= maxGames;
-        System.out.println("Checking if game is over: " + over);
-        return over;
+        return gamesPlayed >= maxGames;
     }
 
     /**
      * find the winner of the game
      */
     public void findWinner() {
-        winner = players.get(0); // first player is the winner
+        Player winner = players.get(0); // first player is the winner
 
         // check all players to find the winner
         for (Player p : players) {
@@ -208,7 +242,7 @@ public class Game {
     }
 
     /**
-     * remove a player from the server
+     * remove a player from this game
      * 
      * @param index Index of the Player, who is removed
      * @return 0 if removing the player was not successful, 1 if removing was
@@ -250,10 +284,10 @@ public class Game {
     }
 
     /**
-     * remove a player from the server
+     * skip a players turn. only the current player can be skipped
      * 
-     * @param player player, who is removed
-     * @return if the removing was successful or not
+     * @param player player, who should be skipped
+     * @return if the skipping was possible
      */
     public boolean skipPlayer(Player player) {
         boolean result = player == currentPlayer;
@@ -265,7 +299,7 @@ public class Game {
     }
 
     /**
-     * choose a field
+     * choose a field by index
      * 
      * @param index index of the field
      * @return if successful
@@ -280,7 +314,7 @@ public class Game {
     }
 
     /**
-     * choose a field and its value
+     * choose a field and its value by index
      * 
      * @param index index of the field
      * @param value value of the field
@@ -295,7 +329,7 @@ public class Game {
     }
 
     /**
-     * cross a field
+     * cross a field by index
      * 
      * @param index index of the field
      * @return if successful
@@ -310,12 +344,30 @@ public class Game {
     }
 
     /**
-     * get a player from the list at an index
+     * get a player from the list of participating players at an index
      * 
      * @param index the index of the player in the list
-     * @return the player
+     * @return the player at that index in the list
      */
     public Player getPlayerAt(int index) {
         return this.players.get(index);
+    }
+
+    /**
+     * get the player, who is currently playing
+     * 
+     * @return the player object
+     */
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    /**
+     * get the roll count
+     * 
+     * @return the amount of rolls
+     */
+    public int getRollCount() {
+        return rolls;
     }
 }

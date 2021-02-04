@@ -3,9 +3,9 @@ package game;
 import java.util.Arrays;
 
 /**
- * contains information about a card of a player. the player can choose or cross
- * fields. this class also manages all calculations with points for all existing
- * fields
+ * contains information about a card of a player. a card consists of multiple
+ * fields. the player can choose or cross fields. this class manages all
+ * calculations with points for the fields on the card
  * 
  * @author Kjell Treder
  *
@@ -13,11 +13,22 @@ import java.util.Arrays;
 
 public class Card {
 
-    public static final int BONUS = 35; // the amount of bonus points
-    private static final int BONUS_REQ = 63; // the required amount of points in part 1 to get bonus points
+    /**
+     * the amount of bonus points added
+     */
+    public static final int BONUS = 35;
+
+    /**
+     * the required amount of points needed in part 1 to get the bonus points
+     */
+    private static final int BONUS_REQ = 63;
+
+    /**
+     * index of the last field on the allFields array from the first part
+     */
     private static final int PART1_END_INDEX = 5;
 
-    // indices of the fields on the card
+    // indices of all the fields on the card
     private static final int THREE_OF_A_KIND_INDEX = 6;
     private static final int FOUR_OF_A_KIND_INDEX = 7;
     private static final int FULL_HOUSE_INDEX = 8;
@@ -26,39 +37,37 @@ public class Card {
     private static final int YAHTZEE_INDEX = 11;
     private static final int CHANCE_INDEX = 12;
 
-    // array with all the strings for the field names on this card
-    protected static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
+    /**
+     * contains all names for the fields. used for displaying and for the actual
+     * fields
+     */
+    public static final String[] FIELD_NAMES = { "Nur Einser Zählen", "Nur Zweier Zählen", "Nur Dreier Zählen",
             "Nur Vierer Zählen", "Nur Fünfer Zählen", "Nur Sechser Zählen", "Dreier Pasch", "Vierer Pasch",
             "Full House", "Kleine Straße", "Große Straße", "Kniffel", "Chance" };
 
-    // array with all the fields on this card
+    /**
+     * array with all fields on this card. each field gets constructed with their
+     * name and an optional default value
+     */
     public final Field[] allFields = { new Field(FIELD_NAMES[0]), new Field(FIELD_NAMES[1]), new Field(FIELD_NAMES[2]),
             new Field(FIELD_NAMES[3]), new Field(FIELD_NAMES[4]), new Field(FIELD_NAMES[5]), new Field(FIELD_NAMES[6]),
             new Field(FIELD_NAMES[7]), new Field(FIELD_NAMES[8], 25), new Field(FIELD_NAMES[9], 30),
             new Field(FIELD_NAMES[10], 40), new Field(FIELD_NAMES[11], 50), new Field(FIELD_NAMES[12]) };
 
     /**
-     * constructor, assigns a player to this card
-     */
-    public Card() {
-        //
-    }
-
-    /**
-     * calculate and return the total points of the card
+     * get the total points of the card
      * 
-     * @return total points
+     * @return total points with bonus if applicable
      */
     public int getTotal() {
         return getPart1(true) + getPart2();
     }
 
     /**
-     * calculate and return the points of part 1
+     * get the sum of the points of part 1
      * 
-     * @param withBonus if the point calculation should include the bonus if
-     *                  applicable
-     * @return points of part 1
+     * @param withBonus if the calculation should include the bonus if applicable
+     * @return part 1 total
      */
     public int getPart1(boolean withBonus) {
         int result = 0;
@@ -72,9 +81,9 @@ public class Card {
     }
 
     /**
-     * calculate and return the total points of part 2
+     * get the sum of the points of part 2
      * 
-     * @return points of part 2
+     * @return part 2 total
      */
     public int getPart2() {
         int result = 0;
@@ -85,7 +94,7 @@ public class Card {
     }
 
     /**
-     * calculate the points for the fields
+     * calculate the the available points for each field from the five dice values
      * 
      * @param num values of the five dice
      */
@@ -95,8 +104,6 @@ public class Card {
 
         // first, sort the values
         num = bubbleSort(num);
-
-        System.out.println(Arrays.toString(num));
 
         // calculate the total
         int total = 0;
@@ -133,6 +140,8 @@ public class Card {
          * remembers if a quad exists
          */
         boolean quad = false;
+
+        // check every value
         for (int i = 0; i < num.length - 1; i++) {
             // test if the adjacent numbers are the same
             if (num[i] == num[i + 1]) {
@@ -154,13 +163,13 @@ public class Card {
 
             // two adjacent pairs are equal to three same numbers
             // triple found
-            if (sameAdjacentPairs == 2 && !triple) { // its a triple // TODO check if boolean triple check is needed
+            if (sameAdjacentPairs == 2 && !triple) { // its a triple
                 specialNumber = num[i]; // store the special number for the triple
                 triple = true;
             }
             // three adjacent pairs are equal to three same numbers
             // triple found
-            if (sameAdjacentPairs == 3 && !quad) { // its also a quad // TODO check if boolean quad check is needed
+            if (sameAdjacentPairs == 3 && !quad) { // its also a quad
                 quad = true;
             }
         }
@@ -223,10 +232,10 @@ public class Card {
     }
 
     /**
-     * cross a field
+     * cross a field by index
      * 
      * @param index the index of the field to be crossed
-     * @return if successful
+     * @return if the field was crossed
      */
     public boolean crossField(int index) {
         Field field = allFields[index];
@@ -238,10 +247,10 @@ public class Card {
     }
 
     /**
-     * choose a field
+     * choose a field by index
      * 
      * @param index the index of the field to be chosen
-     * @return if successful
+     * @return if the field was chosen
      */
     public boolean chooseField(int index) {
         Field field = allFields[index];
@@ -253,11 +262,12 @@ public class Card {
     }
 
     /**
-     * choose a field and set its value. this is useful when playing without
-     * autocalc
+     * choose a field by index and set its value. this is needed when playing
+     * without autocalc
      * 
      * @param index the index of the field to be crossed
      * @param value the new value of the field
+     * @return if the field was chosen
      */
     public boolean chooseField(int index, int value) {
         Field field = allFields[index];
@@ -268,6 +278,7 @@ public class Card {
      * bubble-sorting algorithm for sorting the dice values
      * 
      * @param num value of the five dice
+     * @return num, but sorted
      */
     private static int[] bubbleSort(int[] num) {
         boolean unsorted = true;
