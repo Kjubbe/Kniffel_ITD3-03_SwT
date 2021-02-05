@@ -60,7 +60,7 @@ public class EndDialogView extends javax.swing.JFrame {
             for (int i = 0; i < game.players.size(); i++) {
                 model.addRow(new Object[] { game.getPlayerAt(i).getName(), game.getPlayerAt(i).getPoints() });
             }
-            jButton1.setText("Nächste Runde");
+            jButton1.setText("Weiter");
         }
     }
 
