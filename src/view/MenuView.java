@@ -270,9 +270,9 @@ public class MenuView extends javax.swing.JFrame {
     // End of variables declaration
 
     private int maxRounds; // maximum amount of rounds to be played
-    static DefaultListModel<Player> playerList = new DefaultListModel<Player>(); // list shown in the window
+    private static DefaultListModel<Player> playerList = new DefaultListModel<Player>(); // list shown in the window
     private boolean assistantWanted; // if the assistant is wanted
     private boolean autocompleteWanted; // if autocomplete is wanted
-    static PlayerManagement pM = PlayerManagement.getInstance(); // reference to the playermanagement
+    private static PlayerManagement pM = PlayerManagement.getInstance(); // reference to the playermanagement
 
 }

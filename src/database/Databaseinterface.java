@@ -63,38 +63,6 @@ public final class Databaseinterface {
     }
 
     /**
-     * get all players from the database used for testing in cleaning the database
-     * 
-     * @return List with all players
-     * @throws SQLException if a database access error occurs
-     */
-    public List<RegisteredPlayer> allPlayers() throws SQLException {
-        List<RegisteredPlayer> all = new ArrayList<>();
-        connect();
-
-        // select all players
-        ResultSet set = read("SELECT * FROM RegisteredPlayer");
-        while (check(set)) { // go through all players
-            // create new player object with data
-            RegisteredPlayer player = new RegisteredPlayer(set.getString("name"), set.getString("password"));
-            int statsId = set.getInt("stats_id");
-
-            // check for the players stats
-            ResultSet statsSet = read("SELECT * FROM Stats WHERE id=" + statsId);
-            if (check(statsSet)) { // stats found
-                Stats stats = new Stats(statsSet.getInt("gamesWon"), statsSet.getInt("gamesPlayed"),
-                        statsSet.getInt("roundsPlayed"), statsSet.getInt("points"), statsSet.getInt("diceRolled"),
-                        statsSet.getInt("timePlayed")); // new stats object
-                player.assignStats(stats); // assign the stats to the player
-                all.add(player);
-            }
-        }
-
-        close();
-        return all;
-    }
-
-    /**
      * read a player from the database by the name
      * 
      * @param name name (primary key) of the player
@@ -199,29 +167,6 @@ public final class Databaseinterface {
     }
 
     /**
-     * delete a player from the database by the name
-     * 
-     * @param name name of the player
-     * @return if successful
-     * @throws SQLException if a database access error occurs
-     */
-    public boolean deletePlayer(String name) throws SQLException {
-        boolean result = false;
-        connect();
-
-        // check for the player in the database
-        ResultSet set = read("SELECT * FROM RegisteredPlayer WHERE name='" + name + "'");
-        if (check(set)) { // player found
-            write("DELETE FROM RegisteredPlayer WHERE name='" + name + "'"); // delete the player
-            write("DELETE FROM Stats WHERE id=" + set.getInt("stats_id")); // delete their stats
-            result = true;
-        }
-
-        close();
-        return result;
-    }
-
-    /**
      * connect to the database
      * 
      * @throws SQLException if a database access error occurs
@@ -298,16 +243,5 @@ public final class Databaseinterface {
      */
     private static boolean check(ResultSet set) throws SQLException {
         return set != null && set.next(); // valid, if not null and has at least one changed row
-    }
-
-    /**
-     * reset the whole database
-     * 
-     * @throws SQLException if a database access error occurs
-     */
-    public void reset() throws SQLException {
-        for (RegisteredPlayer p : allPlayers()) {
-            deletePlayer(p.getName());
-        }
     }
 }

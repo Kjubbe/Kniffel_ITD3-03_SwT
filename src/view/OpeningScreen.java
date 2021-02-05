@@ -18,7 +18,7 @@ public class OpeningScreen extends javax.swing.JFrame {
     /**
      * reference to the playermanagement
      */
-    static PlayerManagement pM;
+    private static PlayerManagement pM;
 
     /**
      * constructor inits components

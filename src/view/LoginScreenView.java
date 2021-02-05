@@ -73,11 +73,6 @@ public class LoginScreenView extends javax.swing.JFrame {
 
         jRadioButton1.setText("Statistik speichern");
         jRadioButton1.setSelected(true);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
         login.setText("Einloggen");
         login.setActionCommand("login");
@@ -136,15 +131,6 @@ public class LoginScreenView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
-
-    /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // empty
-    }
 
     /**
      * invoked when the login button is clicked

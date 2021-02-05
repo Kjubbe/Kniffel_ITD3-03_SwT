@@ -255,7 +255,8 @@ public class PlayerManagement {
                 hasCap = true;
             } else if (Character.isLowerCase(c)) {
                 hasLow = true;
-            } else if (password.length() < 7) {
+            }
+            if (password.length() > 7) {
                 goodLength = true;
             }
             if (hasNum && hasCap && hasLow && goodLength) {

@@ -66,7 +66,7 @@ public class Stats {
     }
 
     /**
-     * empty constructor
+     * constructor, leaves all stats at zero
      */
     public Stats() {
         // all stats set to zero

@@ -159,7 +159,7 @@ public class Game {
     /**
      * get to the next player
      */
-    public void nextPlayer() {
+    private void nextPlayer() {
         playerIndex++; // go to the next player in the list
         rolls = 0; // reset the roll counter
 
@@ -186,7 +186,7 @@ public class Game {
     /**
      * find the winner of the game
      */
-    public void findWinner() {
+    private void findWinner() {
         Player winner = players.get(0); // first player is the winner
 
         // check all players to find the winner

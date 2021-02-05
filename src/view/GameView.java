@@ -23,7 +23,7 @@ public class GameView extends javax.swing.JFrame {
     /**
      * reference to the game shown
      */
-    public Game game;
+    private Game game;
 
     /**
      * constructor, builds the view
@@ -452,11 +452,6 @@ public class GameView extends javax.swing.JFrame {
         jMenuBar1.add(OptionsButton);
 
         player1Button.setText("Spieler 1");
-        player1Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                player1ButtonActionPerformed(evt);
-            }
-        });
 
         showPlayer1Card.setText("Spielerkarte anzeigen");
         showPlayer1Card.addActionListener(new java.awt.event.ActionListener() {
@@ -485,11 +480,6 @@ public class GameView extends javax.swing.JFrame {
         jMenuBar1.add(player1Button);
 
         player2Button.setText("Spieler 2");
-        player2Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                player2ButtonActionPerformed(evt);
-            }
-        });
 
         showPlayer2Card.setText("Spielerkarte anzeigen");
         showPlayer2Card.addActionListener(new java.awt.event.ActionListener() {
@@ -518,11 +508,6 @@ public class GameView extends javax.swing.JFrame {
         jMenuBar1.add(player2Button);
 
         player3Button.setText("Spieler 3");
-        player3Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                player3ButtonActionPerformed(evt);
-            }
-        });
 
         showPlayer3Card.setText("Spielerkarte anzeigen");
         showPlayer3Card.addActionListener(new java.awt.event.ActionListener() {
@@ -551,11 +536,6 @@ public class GameView extends javax.swing.JFrame {
         jMenuBar1.add(player3Button);
 
         player4Button.setText("Spieler 4");
-        player4Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                player4ButtonActionPerformed(evt);
-            }
-        });
 
         showPlayer4Card.setText("Spielerkarte anzeigen");
         showPlayer4Card.addActionListener(new java.awt.event.ActionListener() {
@@ -770,15 +750,6 @@ public class GameView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void crossFieldButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_crossFieldButtonActionPerformed
-        // empty
-    }// GEN-LAST:event_crossFieldButtonActionPerformed
-
-    /**
      * quit the game. shows a new opening screen and disposes this window
      * 
      * @param evt the event
@@ -787,42 +758,6 @@ public class GameView extends javax.swing.JFrame {
         new OpeningScreen();
         this.dispose();
     }// GEN-LAST:event_quitGameActionPerformed
-
-    /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void player1ButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_player1ButtonActionPerformed
-        // empty
-    }// GEN-LAST:event_player1ButtonActionPerformed
-
-    /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void player2ButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_player2ButtonActionPerformed
-        // empty
-    }// GEN-LAST:event_player2ButtonActionPerformed
-
-    /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void player4ButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_player4ButtonActionPerformed
-        // empty
-    }// GEN-LAST:event_player4ButtonActionPerformed
-
-    /**
-     * empty
-     * 
-     * @param evt the event
-     */
-    private void player3ButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_player3ButtonActionPerformed
-        // empty
-    }// GEN-LAST:event_player3ButtonActionPerformed
 
     /**
      * roll the dice. this changes the pictures of the dice shown

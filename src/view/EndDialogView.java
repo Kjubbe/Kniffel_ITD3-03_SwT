@@ -27,7 +27,7 @@ public class EndDialogView extends javax.swing.JFrame {
     /**
      * Creates new form EndDialogView
      */
-    public Game game;
+    private Game game;
 
     /**
      * constructor creates a new dialog
