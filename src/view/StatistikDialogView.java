@@ -19,6 +19,9 @@ public class StatistikDialogView extends javax.swing.JFrame {
 
     /**
      * Creates new form StatistikDialogView
+     * 
+     * @param playerStats stats of the player, to be displayed
+     * @param name name of the player
      */
     public StatistikDialogView(Stats playerStats, String name) {
         this.playerStats = playerStats;

@@ -29,6 +29,9 @@ public class PlayerCard extends javax.swing.JFrame {
 
     /**
      * Creates new form PlayerCard
+     * 
+     * @param game reference to the game
+     * @param player reference to the player
      */
     public PlayerCard(Game game, Player player) {
         this.game = game;
