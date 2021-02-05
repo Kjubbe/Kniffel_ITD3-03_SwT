@@ -112,6 +112,7 @@ public class Field {
      * choose this field by giving it a value. only possible when this field is open
      * 
      * @param value the value for this field
+     * @return if choosing was successful
      */
     public boolean choose(int value) {
         boolean result = isOpen();

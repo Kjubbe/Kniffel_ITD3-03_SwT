@@ -76,7 +76,7 @@ public class Game {
      * the maximum amount of rounds to be played. this value corresponds with the
      * total amount of fields on the card
      */
-    public static final int MAX_ROUNDS = 2;
+    public static final int MAX_ROUNDS = 13;
 
     /**
      * roll counter containing the amount of rolls for this turn. rolls is never >
@@ -304,7 +304,7 @@ public class Game {
      * choose a field by index
      * 
      * @param index index of the field
-     * @return if successful
+     * @return if choosing was successful
      */
     public boolean chooseField(int index) {
         boolean result = currentPlayer.getCard().chooseField(index);
@@ -320,6 +320,7 @@ public class Game {
      * 
      * @param index index of the field
      * @param value value of the field
+     * @return if choosing was successful
      */
     public boolean chooseField(int index, int value) {
         boolean result = currentPlayer.getCard().chooseField(index, value);
@@ -334,7 +335,7 @@ public class Game {
      * cross a field by index
      * 
      * @param index index of the field
-     * @return if successful
+     * @return if crossing was successful
      */
     public boolean crossField(int index) {
         boolean result = currentPlayer.getCard().crossField(index);

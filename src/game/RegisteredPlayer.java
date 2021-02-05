@@ -17,8 +17,8 @@ public class RegisteredPlayer extends Player {
     /**
      * constructor, calls the super constructor and sets the password
      * 
-     * @param n  name
-     * @param pw password
+     * @param name  name
+     * @param password password
      */
     public RegisteredPlayer(String name, String password) {
         super(name);
