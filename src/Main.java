@@ -1,7 +1,7 @@
 import view.OpeningScreen;
 
 /**
- * Main
+ * Main, contains the main-method
  * 
  * @author Kjell Treder
  *
@@ -10,7 +10,8 @@ import view.OpeningScreen;
 public class Main {
 
 	/**
-	 * Main method, creates a new opening screen
+	 * Main method, software starts when this method is invoked, creates a new
+	 * opening screen, users can proceed from there
 	 * 
 	 * @param args command parameters
 	 */

@@ -1,26 +1,23 @@
 package view;
 
 import database.PlayerManagement;
-import game.Stats;
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 /**
+ * the login screen is created, when a player should be added to the game. the
+ * loginscreen enables the user to login, register and play as a guest
  *
  * @author jarmo
  */
 public class LoginScreenView extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginScreenView
+     * Creates new form LoginScreenView, initializes components
      */
     public LoginScreenView() {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setTitle("Neuer Spieler");
-        System.out.println("LoginScreen");
         initComponents();
     }
 
@@ -43,7 +40,6 @@ public class LoginScreenView extends javax.swing.JFrame {
         register = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         login = new javax.swing.JButton();
-
 
         jPanel1.setBackground(new java.awt.Color(41, 128, 185));
 
@@ -77,11 +73,6 @@ public class LoginScreenView extends javax.swing.JFrame {
 
         jRadioButton1.setText("Statistik speichern");
         jRadioButton1.setSelected(true);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
         login.setText("Einloggen");
         login.setActionCommand("login");
@@ -141,85 +132,81 @@ public class LoginScreenView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-
-    }
-
-    // Password Validator (1 Großbuchstabe, 1 Zahl und ein Minuskel)
-    private static boolean checkPassword(String password) {
-        boolean hasNum = false;
-        boolean hasCap = false;
-        boolean hasLow = false;
-        char c;
-        for (int i = 0; i < password.length(); i++) {   
-            c = password.charAt(i);
-            if (Character.isDigit(c)) {
-                hasNum = true;
-            } else if (Character.isUpperCase(c)) {
-                hasCap = true;
-            } else if (Character.isLowerCase(c)) {
-                hasLow = true;
-            }
-            if (hasNum && hasCap && hasLow) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    /**
+     * invoked when the login button is clicked
+     * 
+     * @param evt
+     */
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {
 
+        // get the input from the user
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
 
+        // if logging in is successful
         if (PlayerManagement.getInstance().login(playerName, playerPassword, statsSave).containsValue(true)) {
-            MenuView.updatePlayers();
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Du bist nun als \"" + playerName + "\" eingeloggt", "Erfolgreich eingeloggt",
-                    JOptionPane.INFORMATION_MESSAGE);
-        } else {
+            MenuView.updatePlayers(); // update the player list
+            JOptionPane.showMessageDialog(null, "Du bist nun als \"" + playerName + "\" eingeloggt",
+                    "Erfolgreich eingeloggt", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } else { // logging in is not successful
             JOptionPane.showMessageDialog(null,
-                    "Der Benutzername wurde nicht gefunden oder das Passwort ist nicht korrekt", "Fehler beim Einloggen",
-                    JOptionPane.ERROR_MESSAGE);
+                    "Der Benutzername wurde nicht gefunden oder das Passwort ist nicht korrekt",
+                    "Fehler beim Einloggen", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    /**
+     * invoked when the guest button is clicked
+     * 
+     * @param evt the event
+     */
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {
+        // get the input from the user
         String playerName = jFormattedTextField1.getText();
-        
+
+        // try playing as a guest
         if (PlayerManagement.getInstance().playAsGuest(playerName).containsValue(false)) {
-            JOptionPane.showMessageDialog(null,
-                    "Der Spieler konnte nicht hinzugefügt werden.",
-                    "Add Error", JOptionPane.ERROR_MESSAGE);
-        } else {
+            JOptionPane.showMessageDialog(null, "Der Spieler konnte nicht hinzugefügt werden.", "Add Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else { // if playing as a guest is successful
             MenuView.updatePlayers();
-            this.setVisible(false);
+            this.dispose();
         }
     }
 
+    /**
+     * invoked when the register button is clicked
+     * 
+     * @param evt the event
+     */
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {
+
+        // get the input from the user
         String playerName = jFormattedTextField1.getText();
         String playerPassword = String.valueOf(jPasswordField1.getPassword());
         Boolean statsSave = jRadioButton1.isSelected();
 
-        if (playerName.length() < 3) {
+        if (playerName.length() < 3) { // no short usernames
             JOptionPane.showMessageDialog(null, "Der Benutzername muss mindestens 3 Zeichen lang sein!",
                     "Benutzername zu kurz", JOptionPane.ERROR_MESSAGE);
-        } else if (playerPassword.length() < 7 || checkPassword(playerPassword) == false) {
+        } else if (!PlayerManagement.getInstance().checkPassword(playerPassword)) { // password is not valid
             JOptionPane.showMessageDialog(null,
                     "Das Passwort muss min. sieben Zeichen lang sein und min. einen Großbuchstaben und eine Zahl beinhalten.",
                     "Schlechtes Passwort", JOptionPane.ERROR_MESSAGE);
-        } else {
+        } else { // player can register
             if (PlayerManagement.getInstance().register(playerName, playerPassword, statsSave).containsValue(false)) {
+                // registering the player failed
                 JOptionPane.showMessageDialog(null, "Dieser Benutzername existiert bereits", "Fehler beim Registrieren",
                         JOptionPane.ERROR_MESSAGE);
             } else {
+                // registering successful
                 MenuView.updatePlayers();
-                this.setVisible(false);
                 JOptionPane.showMessageDialog(null,
                         "Registrierung erfolgreich, der Account \"" + playerName + "\" wurde erstellt und eingeloggt.",
                         "Erfolgreich registriert und eingeloggt", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
             }
         }
     }

@@ -11,13 +11,17 @@ import game.RegisteredPlayer;
 import game.Stats;
 
 /**
- * manages players inside the database
+ * manages players from the database, players can be logged in, registered and
+ * play as a guest
  * 
  * @author Kjell Treder
  */
 
 public class PlayerManagement {
 
+    /**
+     * instance of this class, singleton pattern
+     */
     private static PlayerManagement instance;
 
     /**
@@ -25,7 +29,14 @@ public class PlayerManagement {
      */
     private List<Player> loggedIn = new ArrayList<>();
 
+    /**
+     * maximum amount of players
+     */
     public static final int MAX_PLAYERS = 8;
+
+    /**
+     * error and success messages
+     */
     private static final String MAX_REACHED = "Maximale Anzahl an Spielern erreicht.";
     private static final String PLAYER_ALREADY_ADDED = "Spieler bereits hinzugefügt";
     private static final String SUCCESS = "Spieler wurde hinzugefügt.";
@@ -33,7 +44,7 @@ public class PlayerManagement {
 
     /**
      * private constructor prevents external instantiation, the PlayerManagement can
-     * be instantiated with getInstance
+     * be instantiated with the getInstance method
      */
     private PlayerManagement() {
         // empty
@@ -41,12 +52,12 @@ public class PlayerManagement {
 
     /**
      * get the instance of this class, there can only be one instance at a time
-     * (singleton)
+     * (singleton pattern)
      * 
      * @return the current instance, or a new instance, if there is none
      */
     public static PlayerManagement getInstance() {
-        if (instance == null) {
+        if (instance == null) { // if there is no instance, create a new one
             instance = new PlayerManagement();
         }
         return instance;
@@ -62,18 +73,26 @@ public class PlayerManagement {
      */
     public Map<String, Boolean> login(String name, String password, boolean saveStats) {
         try {
+            // retrieve the player from the database
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
+
+            // if the player is found and has a correct password
             if (player != null && password.equals(player.getPassword())) {
-                if (saveStats) {
+                if (saveStats) { // save the stats of the players, when the boolean is set
                     player.saveStats();
                 }
-                
+
+                // logged in players should replace quest players
+                // if a quest with the same name as the logged in player exists,
+                // they will be replaced by the logged in player
+
+                // try adding the player
                 Map<String, Boolean> res = addPlayer(player);
-                if (res.containsValue(false)) {
-                    logout(name);
-                    res = addPlayer(player);
+                if (res.containsValue(false)) { // if adding the player failed, try removing a quest
+                    logout(name); // remove the quest
+                    res = addPlayer(player); // try adding the player again
                 }
-                return res; // add the logged in player
+                return res;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -91,22 +110,31 @@ public class PlayerManagement {
      */
     public Map<String, Boolean> register(String name, String password, boolean saveStats) {
         try {
+            // retrieve the player from the database
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
+
+            // if there is no player in the database, the player can register
             if (player == null) {
+                // create a new player object
                 player = new RegisteredPlayer(name, password);
-                if (saveStats) {
+                if (saveStats) { // save the stats of the players, when the boolean is set
                     player.saveStats();
                 }
 
+                // save the created player in the database
                 boolean saved = Databaseinterface.getInstance().savePlayer(player);
 
-                // if adding the player failed, remove the local player
+                // logged in players should replace quest players
+                // if a quest with the same name as the logged in player exists,
+                // they will be replaced by the logged in player
+
+                // try adding the player
                 Map<String, Boolean> res = addPlayer(player);
-                if (res.containsValue(false) && saved) {
-                    logout(name);
-                    res = addPlayer(player);
+                if (res.containsValue(false) && saved) { // if adding the player failed, try removing a quest
+                    logout(name); // remove the quest
+                    res = addPlayer(player); // try adding the player again
                 }
-                return res; // add the logged in player
+                return res;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -121,9 +149,9 @@ public class PlayerManagement {
      * @return if successful
      */
     public boolean logout(String name) {
-        for (Player p : loggedIn) {
-            if (p.getName().equals(name)) {
-                loggedIn.remove(p);
+        for (Player p : loggedIn) { // iterate over every player
+            if (p.getName().equals(name)) { // player found
+                loggedIn.remove(p); // remove the player
                 return true;
             }
         }
@@ -137,7 +165,7 @@ public class PlayerManagement {
      * @return if successful
      */
     public Map<String, Boolean> playAsGuest(String name) {
-        return addPlayer(new Player(name));
+        return addPlayer(new Player(name)); // try adding the player
     }
 
     /**
@@ -148,15 +176,15 @@ public class PlayerManagement {
      * @return if unique
      */
     private Map<String, Boolean> addPlayer(Player player) {
-        if (loggedIn.size() >= MAX_PLAYERS) {
+        if (loggedIn.size() >= MAX_PLAYERS) { // check for maximum player amount
             return Collections.singletonMap(MAX_REACHED, false);
         }
         for (Player p : loggedIn) {
-            if (p.getName().equals(player.getName())) {
+            if (p.getName().equals(player.getName())) { // check if the player already participates
                 return Collections.singletonMap(PLAYER_ALREADY_ADDED, false);
             }
         }
-        loggedIn.add(player);
+        loggedIn.add(player); // add the player to the list
         return Collections.singletonMap(SUCCESS, true);
     }
 
@@ -168,9 +196,10 @@ public class PlayerManagement {
      */
     public Stats getStats(String name) {
         try {
+            // get the player from the database
             RegisteredPlayer player = Databaseinterface.getInstance().retrievePlayer(name);
-            if (player != null) {
-                return player.getStats();
+            if (player != null) { // player found
+                return player.getStats(); // get their stats
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -191,14 +220,49 @@ public class PlayerManagement {
      * save all players in the database
      */
     public void savePlayers() {
-        for (Player p : loggedIn) {
+        for (Player p : loggedIn) { // iterate over every player
+
+            // save only the stats from registered players and the ones, who want to
             if (p instanceof RegisteredPlayer && p.isSavingStats()) {
                 try {
-                    Databaseinterface.getInstance().updatePlayerStats((RegisteredPlayer) p);
+                    // update the players stats in the database
+                    Databaseinterface.getInstance().updatePlayer((RegisteredPlayer) p);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
             }
         }
+    }
+
+    /**
+     * validate a password, a password needs at least one uppercase letter, one
+     * lowercase letter and one digit
+     * 
+     * @param password the password to be checked
+     * @return if the password is valid
+     */
+    public static boolean checkPassword(String password) {
+        boolean hasNum = false;
+        boolean hasCap = false;
+        boolean hasLow = false;
+        boolean goodLength = false;
+        char c;
+        for (int i = 0; i < password.length(); i++) {
+            c = password.charAt(i);
+            if (Character.isDigit(c)) {
+                hasNum = true;
+            } else if (Character.isUpperCase(c)) {
+                hasCap = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLow = true;
+            }
+            if (password.length() > 7) {
+                goodLength = true;
+            }
+            if (hasNum && hasCap && hasLow && goodLength) {
+                return true;
+            }
+        }
+        return false;
     }
 }
