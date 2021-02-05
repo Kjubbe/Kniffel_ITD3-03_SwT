@@ -26,7 +26,6 @@ public class StatistikDialogView extends javax.swing.JFrame {
         this.setVisible(true);
         this.setTitle("Statistik");
         this.setLocationRelativeTo(null);
-        System.out.println("StatistikDialog");
         initComponents();
     }
 

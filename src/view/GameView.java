@@ -1269,6 +1269,7 @@ public class GameView extends javax.swing.JFrame {
             if (obj != null) {
                 String input = obj.toString();
                 if (input.contains("---") || input.contains("gewählt: ")) {
+                    playercard.setValueAt(null, row, column);
                     return;
                 }
                 int index = row;
@@ -1279,7 +1280,8 @@ public class GameView extends javax.swing.JFrame {
                     int n = Integer.parseInt(input);
                     game.chooseField(index, n);
                 } catch (Exception ex) {
-                    ex.printStackTrace();
+                    playercard.setValueAt(null, row, column);
+                    return;
                 }
                 playercard.setValueAt(null, row, column);
                 refresh();

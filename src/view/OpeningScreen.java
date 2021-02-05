@@ -157,7 +157,6 @@ public class OpeningScreen extends javax.swing.JFrame {
     private void showStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_showStatsButtonActionPerformed
         String name = playerNameTextField.getText();
         Stats stats = pM.getStats(name);
-        System.out.println(stats);
         if (stats == null) {
             ErrorLabel.setVisible(true);
         } else {

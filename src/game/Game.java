@@ -180,7 +180,6 @@ public class Game {
      * @return true if this was the last game
      */
     public boolean isGameOver() {
-        System.out.println("Checking if game is over: " +  gamesPlayed + "/" + maxGames);
         return gamesPlayed >= maxGames;
     }
 
