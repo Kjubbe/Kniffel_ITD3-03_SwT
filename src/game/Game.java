@@ -76,7 +76,7 @@ public class Game {
      * the maximum amount of rounds to be played. this value corresponds with the
      * total amount of fields on the card
      */
-    public static final int MAX_ROUNDS = 13;
+    public static final int MAX_ROUNDS = 2;
 
     /**
      * roll counter containing the amount of rolls for this turn. rolls is never >
@@ -180,6 +180,7 @@ public class Game {
      * @return true if this was the last game
      */
     public boolean isGameOver() {
+        System.out.println("Checking if game is over: " +  gamesPlayed + "/" + maxGames);
         return gamesPlayed >= maxGames;
     }
 
@@ -187,6 +188,7 @@ public class Game {
      * find the winner of the game
      */
     private void findWinner() {
+        gamesPlayed++;
         Player winner = players.get(0); // first player is the winner
 
         // check all players to find the winner
@@ -286,10 +288,11 @@ public class Game {
     /**
      * skip a players turn. only the current player can be skipped
      * 
-     * @param player player, who should be skipped
+     * @param index index of the player, who should be skipped
      * @return if the skipping was possible
      */
-    public boolean skipPlayer(Player player) {
+    public boolean skipPlayer(int index) {
+        Player player = seats[index];
         boolean result = player == currentPlayer;
         if (result) { // only the current player can be skipped
             currentPlayer.getCard().setToZero(); // reset the players card

@@ -211,13 +211,12 @@ public class MenuView extends javax.swing.JFrame {
                     "Zu wenig Spieler", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        this.setVisible(false);
-
         // create a new game
         Game game = new Game(autocompleteWanted, assistantWanted, maxRounds, pM.getAllPlayers());
 
         // create a new view, which displays the game
         new GameView(game).setVisible(true);
+        this.dispose();
     }
 
     /**

@@ -2,6 +2,8 @@ package game;
 
 import java.util.GregorianCalendar;
 
+import view.EndDialogView;
+
 /**
  * contains all statistical data for a player
  * 
@@ -77,6 +79,7 @@ public class Stats {
      */
     public void startPlaying() {
         start = new GregorianCalendar();
+        System.out.println("started playing");
     }
 
     /**
@@ -86,6 +89,7 @@ public class Stats {
         // create a new timestamp and add the difference from finish and start to the
         // time played
         timePlayed += new GregorianCalendar().getTimeInMillis() - start.getTimeInMillis();
+        System.out.println("stopped playing: " + timePlayed);
     }
 
     /**
@@ -93,6 +97,7 @@ public class Stats {
      */
     public void increaseGamesWon() {
         this.gamesWon++;
+        System.out.println("increased rounds won");
     }
 
     /**
@@ -100,6 +105,7 @@ public class Stats {
      */
     public void increaseGamesPlayed() {
         this.gamesPlayed++;
+        System.out.println("increased games played");
     }
 
     /**
@@ -107,6 +113,7 @@ public class Stats {
      */
     public void increaseRoundsPlayed() {
         this.roundsPlayed++;
+        System.out.println("increased rounds played");
     }
 
     /**
@@ -116,6 +123,7 @@ public class Stats {
      */
     public void increasePoints(int n) {
         this.points += n;
+        System.out.println("increased points");
     }
 
     /**
@@ -123,6 +131,7 @@ public class Stats {
      */
     public void increaseDiceRolled() {
         this.diceRolled++;
+        System.out.println("increased dice rolled");
     }
 
     /**

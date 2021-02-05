@@ -147,9 +147,9 @@ public class LoginScreenView extends javax.swing.JFrame {
         // if logging in is successful
         if (PlayerManagement.getInstance().login(playerName, playerPassword, statsSave).containsValue(true)) {
             MenuView.updatePlayers(); // update the player list
-            this.setVisible(false); //
             JOptionPane.showMessageDialog(null, "Du bist nun als \"" + playerName + "\" eingeloggt",
                     "Erfolgreich eingeloggt", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         } else { // logging in is not successful
             JOptionPane.showMessageDialog(null,
                     "Der Benutzername wurde nicht gefunden oder das Passwort ist nicht korrekt",
@@ -172,7 +172,7 @@ public class LoginScreenView extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } else { // if playing as a guest is successful
             MenuView.updatePlayers();
-            this.setVisible(false);
+            this.dispose();
         }
     }
 
@@ -203,10 +203,10 @@ public class LoginScreenView extends javax.swing.JFrame {
             } else {
                 // registering successful
                 MenuView.updatePlayers();
-                this.setVisible(false);
                 JOptionPane.showMessageDialog(null,
                         "Registrierung erfolgreich, der Account \"" + playerName + "\" wurde erstellt und eingeloggt.",
                         "Erfolgreich registriert und eingeloggt", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
             }
         }
     }

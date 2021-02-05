@@ -807,7 +807,7 @@ public class GameView extends javax.swing.JFrame {
         if (game.getRollCount() > 0) {
             dice1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dice-transparent.png")));
             dice6.setIcon(new javax.swing.ImageIcon(
-                    getClass().getResource("/resources/dice-" + Game.DICE[0].getValue() + ".png")));
+                    getClass().getResource("/resources/dice-" + Game.DICE[0].getValue() + "-gray.png")));
             Game.DICE[0].toggle();
         }
     }// GEN-LAST:event_dice1MouseClicked
@@ -821,7 +821,7 @@ public class GameView extends javax.swing.JFrame {
         if (game.getRollCount() > 0) {
             dice2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dice-transparent.png")));
             dice7.setIcon(new javax.swing.ImageIcon(
-                    getClass().getResource("/resources/dice-" + Game.DICE[1].getValue() + ".png")));
+                    getClass().getResource("/resources/dice-" + Game.DICE[1].getValue() + "-gray.png")));
             Game.DICE[1].toggle();
         }
     }// GEN-LAST:event_dice2MouseClicked
@@ -835,7 +835,7 @@ public class GameView extends javax.swing.JFrame {
         if (game.getRollCount() > 0) {
             dice4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dice-transparent.png")));
             dice9.setIcon(new javax.swing.ImageIcon(
-                    getClass().getResource("/resources/dice-" + Game.DICE[3].getValue() + ".png")));
+                    getClass().getResource("/resources/dice-" + Game.DICE[3].getValue() + "-gray.png")));
             Game.DICE[3].toggle();
         }
     }// GEN-LAST:event_dice4MouseClicked
@@ -849,7 +849,7 @@ public class GameView extends javax.swing.JFrame {
         if (game.getRollCount() > 0) {
             dice5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dice-transparent.png")));
             dice10.setIcon(new javax.swing.ImageIcon(
-                    getClass().getResource("/resources/dice-" + Game.DICE[4].getValue() + ".png")));
+                    getClass().getResource("/resources/dice-" + Game.DICE[4].getValue() + "-gray.png")));
             Game.DICE[4].toggle();
         }
     }// GEN-LAST:event_dice5MouseClicked
@@ -1003,7 +1003,7 @@ public class GameView extends javax.swing.JFrame {
         if (game.getRollCount() > 0) {
             dice3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/dice-transparent.png")));
             dice8.setIcon(new javax.swing.ImageIcon(
-                    getClass().getResource("/resources/dice-" + Game.DICE[2].getValue() + ".png")));
+                    getClass().getResource("/resources/dice-" + Game.DICE[2].getValue() + "-gray.png")));
             Game.DICE[2].toggle();
         }
     }// GEN-LAST:event_dice3MouseClicked
@@ -1230,8 +1230,7 @@ public class GameView extends javax.swing.JFrame {
      * @param index index of the player in the header
      */
     private void skipPlayer(int index) {
-        if (game.getCurrentPlayer() == game.players.get(index)) {
-            game.skipPlayer(game.players.get(index));
+        if (game.skipPlayer(index)) {
             refresh();
         }
     }
